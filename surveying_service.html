@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HakiSurvey Plots Ltd | Professional Surveying Services in Kenya</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1e40af;
+            --primary-dark: #1e3a8a;
+            --secondary: #0f766e;
+            --accent: #dc2626;
+            --light: #f8fafc;
+            --dark: #1e293b;
+            --gray: #64748b;
+            --gray-light: #e2e8f0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo i {
+            font-size: 28px;
+            color: var(--primary);
+        }
+        
+        .logo-text {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--dark);
+        }
+        
+        .nav-desktop {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .nav-link {
+            text-decoration: none;
+            color: var(--gray);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-link:hover, .nav-link.active {
+            color: var(--primary);
+        }
+        
+        .cta-button {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .cta-button:hover {
+            background-color: var(--primary-dark);
+        }
+        
+        .mobile-menu-button {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: var(--dark);
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 20px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn-primary {
+            background-color: white;
+            color: var(--primary);
+            border: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .btn-secondary {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+            padding: 12px 25px;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .btn-secondary:hover {
+            background-color: white;
+            color: var(--primary);
+        }
+        
+        /* Services Section */
+        .services {
+            padding: 80px 0;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-header h2 {
+            font-size: 36px;
+            color: var(--dark);
+            margin-bottom: 15px;
+        }
+        
+        .section-header p {
+            font-size: 18px;
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .services-nav {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 40px;
+        }
+        
+        .service-nav-btn {
+            background-color: var(--gray-light);
+            color: var(--gray);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .service-nav-btn.active, .service-nav-btn:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .service-icon {
+            height: 80px;
+            background-color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .service-icon i {
+            font-size: 32px;
+            color: white;
+        }
+        
+        .service-content {
+            padding: 25px;
+        }
+        
+        .service-content h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        .service-content p {
+            color: var(--gray);
+            margin-bottom: 20px;
+        }
+        
+        .service-features {
+            margin-bottom: 25px;
+        }
+        
+        .service-feature {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 10px;
+        }
+        
+        .service-feature i {
+            color: var(--secondary);
+            margin-right: 10px;
+            margin-top: 3px;
+        }
+        
+        .service-cta {
+            display: block;
+            width: 100%;
+            text-align: center;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-decoration: none;
+        }
+        
+        .service-cta:hover {
+            background-color: var(--primary-dark);
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            background-color: var(--primary);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        .cta-section h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        
+        .cta-section p {
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h4 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: white;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column a {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column a:hover {
+            color: white;
+        }
+        
+        .footer-column .contact-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            color: #cbd5e1;
+        }
+        
+        .footer-column .contact-info i {
+            margin-right: 10px;
+            color: var(--primary);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #334155;
+            color: #94a3b8;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .nav-desktop, .header-cta {
+                display: none;
+            }
+            
+            .mobile-menu-button {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .section-header h2 {
+                font-size: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-map-marked-alt"></i>
+                    <span class="logo-text">HakiSurvey Plots Ltd</span>
+                </div>
+                
+                <nav class="nav-desktop">
+                    <a href="#home" class="nav-link active">Home</a>
+                    <a href="#services" class="nav-link">Services</a>
+                    <a href="#about" class="nav-link">About</a>
+                    <a href="#contact" class="nav-link">Contact</a>
+                </nav>
+                
+                <button class="cta-button">Get Quote</button>
+                
+                <button class="mobile-menu-button">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>Professional Surveying Services in Kenya</h1>
+            <p>Precision land surveys, aerial mapping, and GIS solutions for development projects across all 47 counties. Licensed, insured, and trusted by developers, government agencies, and landowners.</p>
+            <div class="hero-buttons">
+                <button class="btn-primary">View Our Services</button>
+                <button class="btn-secondary">Contact Us Today</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Comprehensive Surveying Services</h2>
+                <p>We offer a complete range of professional surveying services tailored to Kenya's unique topography and legal requirements</p>
+            </div>
+            
+            <div class="services-nav">
+                <button class="service-nav-btn active">All Services</button>
+                <button class="service-nav-btn">Land & Property</button>
+                <button class="service-nav-btn">Construction</button>
+                <button class="service-nav-btn">Environmental</button>
+                <button class="service-nav-btn">Technology</button>
+            </div>
+            
+            <div class="services-grid">
+                <!-- Topographical Survey -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-mountain"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Topographical Surveys</h3>
+                        <p>Detailed mapping of land contours, elevations, and natural features to create accurate base maps for engineering and construction projects.</p>
+                        
+                        <div class="service-features">
+                            <div class="service-feature">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Contour mapping with precise elevation data</span>
+                            </div>
+                            <div class="service-feature">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Identification of trees, water bodies, and man-made structures</span>
+                            </div>
+                            <div class="service-feature">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Essential for drainage design and earthwork calculations</span>
+                            </div>
+                        </div>
+                        
+                        <a href="#" class="service-cta">Request Topographical Survey</a>
+                    </div>
+                </div>
+                
+                <!-- Cadastral Survey -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-vector-square"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Cadastral Surveys</h3>
+                        <p>Legal boundary definition and property demarcation for land ownership, title registration, and dispute resolution in accordance with Kenyan law.</p>
+                        
+                        <div class="service-features">
+                            <div class="service-feature">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Precise boundary marking with permanent beacons</span>
+                            </div>
+                            <div class="service-feature">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Preparation of survey plans for land registration</span>
+                            </div>
+                            <div class="service-feature">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Expert testimony for land dispute cases in court</span>
+                            </div>
+                        </div>
+                        
+                        <a href="#" class="service-cta">Request Cadastral Survey</a>
+                    </div>
+                </div>
+                
+                <!-- Building Site Survey -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-hard-hat"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Building Site Surveys</h3>
+                        <p>Comprehensive construction support from initial site planning to final as-built verification, ensuring projects are built according to design specifications.</p>
+                        
+                        <div class="service-features">
+                            <div class="service-feature">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Precise setting out of building corners and levels</span>
+                            </div>
+                            <div class="service-feature">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Regular monitoring during construction phases</span>
+                            </div>
+                            <div class="service-feature">
+                                <i class="fas fa-check-circle"></i>
+                                <span>As-built surveys to verify completed construction</span>
+                            </div>
+                        </div>
+                        
+                        <a href="#" class="service-cta">Request Building Site Survey</a>
+                    </div>
+                </div>
+                
+                <!-- Aerial & Drone Survey -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-drone"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Aerial & Drone Surveys</h3>
+                        <p>High-resolution aerial mapping using advanced drone technology to capture large areas quickly, safely, and cost-effectively.</p>
+                        
+                        <div class="service-features">
+                            <div class="service-feature">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Orthomosaic maps with centimeter-level accuracy</span>
+                            </div>
+                            <div class="service-feature">
+                                <i class="fas fa-check-circle"></i>
+                                <span>3D modeling of terrain and structures</span>
+                            </div>
+                            <div class="service-feature">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Regular progress monitoring for construction sites</span>
+                            </div>
+                        </div>
+                        
+                        <a href="#" class="service-cta">Request Aerial Survey</a>
+                    </div>
+                </div>
+                
+                <!-- Resource Mapping -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-tree"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Resource Mapping</h3>
+                        <p>Identification and mapping of natural resources including forests, agricultural land, water sources, and mineral deposits for sustainable management.</p>
+                        
+                        <div class="service-features">
+                            <div class="service-feature">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Forest inventory and timber volume calculations</span>
+                            </div>
+                            <div class="service-feature">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Agricultural land assessment and crop health monitoring</span>
+                            </div>
+                            <div class="service-feature">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Mineral resource identification and mapping</span>
+                            </div>
+                        </div>
+                        
+                        <a href="#" class="service-cta">Request Resource Mapping</a>
+                    </div>
+                </div>
+                
+                <!-- Bathymetric Survey -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-water"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Bathymetric Surveys</h3>
+                        <p>Underwater terrain mapping for lakes, rivers, dams, and coastal areas to support water resource management, navigation, and construction projects.</p>
+                        
+                        <div class="service-features">
+                            <div class="service-feature">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Lake and river bed mapping with depth profiling</span>
+                            </div>
+                            <div class="service-feature">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Reservoir capacity calculations and sedimentation monitoring</span>
+                            </div>
+                            <div class="service-feature">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Dredging volume calculations and monitoring</span>
+                            </div>
+                        </div>
+                        
+                        <a href="#" class="service-cta">Request Bathymetric Survey</a>
+                    </div>
+                </div>
+                
+                <!-- GIS Services -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-map-marked-alt"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>GIS Services</h3>
+                        <p>Geographic Information Systems for spatial data analysis, mapping, and decision support across various sectors and applications.</p>
+                        
+                        <div class="service-features">
+                            <div class="service-feature">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Spatial database development and management</span>
+                            </div>
+                            <div class="service-feature">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Thematic mapping for land use planning and analysis</span>
+                            </div>
+                            <div class="service-feature">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Custom GIS application development</span>
+                            </div>
+                        </div>
+                        
+                        <a href="#" class="service-cta">Request GIS Services</a>
+                    </div>
+                </div>
+                
+                <!-- Ground Penetrating Radar -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-radar"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Ground Penetrating Radar (GPR)</h3>
+                        <p>Non-destructive subsurface investigation to detect utilities, voids, and other underground features without excavation.</p>
+                        
+                        <div class="service-features">
+                            <div class="service-feature">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Utility detection and mapping (water pipes, cables)</span>
+                            </div>
+                            <div class="service-feature">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Void and cavity detection beneath surfaces</span>
+                            </div>
+                            <div class="service-feature">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Concrete scanning for rebar and conduit location</span>
+                            </div>
+                        </div>
+                        
+                        <a href="#" class="service-cta">Request GPR Survey</a>
+                    </div>
+                </div>
+                
+                <!-- Land Documentation Support -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-file-contract"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Land Documentation Support</h3>
+                        <p>Comprehensive assistance with title deed processing, land registration, and compliance with Kenyan land laws and regulations.</p>
+                        
+                        <div class="service-features">
+                            <div class="service-feature">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Title deed processing and registration support</span>
+                            </div>
+                            <div class="service-feature">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Land subdivision and consolidation documentation</span>
+                            </div>
+                            <div class="service-feature">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Liaison with land registries and government offices</span>
+                            </div>
+                        </div>
+                        
+                        <a href="#" class="service-cta">Request Documentation Support</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to Start Your Project?</h2>
+            <p>Contact us today for professional surveying services across Kenya. We serve Nairobi, Mombasa, Kisumu, and all 47 counties with precision, reliability, and expertise.</p>
+            <div class="hero-buttons">
+                <button class="btn-primary">
+                    <i class="fas fa-phone"></i> Call Now: +254 700 000 000
+                </button>
+                <button class="btn-secondary">
+                    <i class="fas fa-envelope"></i> Email Us
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <div class="logo">
+                        <i class="fas fa-map-marked-alt"></i>
+                        <span class="logo-text">HakiSurvey Plots Ltd</span>
+                    </div>
+                    <p>Professional surveying services for Kenya's development needs. Precision, accuracy, and reliability guaranteed.</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Contact Info</h4>
+                    <div class="contact-info">
+                        <i class="fas fa-phone"></i>
+                        <span>+254 700 000 000</span>
+                    </div>
+                    <div class="contact-info">
+                        <i class="fas fa-envelope"></i>
+                        <span>info@hakisurvey.co.ke</span>
+                    </div>
+                    <div class="contact-info">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Nairobi, Kenya</span>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Certifications</h4>
+                    <ul>
+                        <li>✓ Licensed Surveyors</li>
+                        <li>✓ ISO Certified</li>
+                        <li>✓ NCA Approved</li>
+                        <li>✓ Fully Insured</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 HakiSurvey Plots Ltd. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu-button').addEventListener('click', function() {
+            alert('Mobile menu would open here. In a real implementation, this would show a dropdown menu.');
+        });
+        
+        // Service navigation buttons
+        const serviceNavButtons = document.querySelectorAll('.service-nav-btn');
+        serviceNavButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                serviceNavButtons.forEach(btn => btn.classList.remove('active'));
+                this.classList.add('active');
+                
+                // In a real implementation, this would filter the services
+                alert('Services would be filtered by category: ' + this.textContent);
+            });
+        });
+        
+        // Service request buttons
+        const serviceRequestButtons = document.querySelectorAll('.service-cta');
+        serviceRequestButtons.forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                const serviceName = this.closest('.service-card').querySelector('h3').textContent;
+                alert('Request form would open for: ' + serviceName);
+            });
+        });
+        
+        // CTA buttons
+        document.querySelector('.btn-primary').addEventListener('click', function() {
+            document.getElementById('services').scrollIntoView({ behavior: 'smooth' });
+        });
+        
+        document.querySelector('.btn-secondary').addEventListener('click', function() {
+            alert('Contact form would open here.');
+        });
+        
+        // Header CTA button
+        document.querySelector('.cta-button').addEventListener('click', function() {
+            alert('Quote request form would open here.');
+        });
+    </script>
+</body>
+</html>

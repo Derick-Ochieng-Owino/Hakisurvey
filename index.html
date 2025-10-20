@@ -23,67 +23,63 @@
         .active-page { display: block; }
         .nav-link.active { color: #1e40af; font-weight: 600; }
     </style>
+    <link rel="stylesheet" href="navbar.css">
 </head>
 <body class="antialiased text-gray-800 bg-gray-50">
     <!-- NAVBAR -->
-    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur shadow-sm">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-16">
-                <a href="#" class="flex items-center space-x-2" onclick="showPage('home')">
-                    <div class="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center">
-                      <img src="logo.png" alt="Company Logo">
-                        <i class="fas fa-map-marked-alt text-white text-sm"></i>
-                    </div>
-                    <div class="typing-container">
-                        <span class="font-bold text-lg text-blue-600">Haki</span><span class="font-bold text-lg text-yellow-500">Survey</span>
-                    </div>
-                </a>
-                
-                <nav class="hidden md:flex items-center space-x-8 text-sm font-medium">
-                    <a href="#" class="nav-link active" onclick="showPage('home')">Home</a>
-                    
-                    <!-- Services Dropdown -->
-                    <div class="dropdown relative">
-                        <a href="#" class="text-gray-600 hover:text-blue-600 nav-link flex items-center" onclick="showPage('services')">
-                            Services <i class="fas fa-chevron-down ml-1 text-xs"></i>
-                        </a>
-                        <div class="dropdown-menu absolute hidden bg-white shadow-lg rounded-md mt-2 py-2 w-64 z-50">
-                            <a href="#land-property" class="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600" onclick="showPage('services')">Land & Property Solutions</a>
-                            <a href="#surveying" class="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600" onclick="showPage('services')">Surveying Specialties</a>
-                            <a href="#aerial" class="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600" onclick="showPage('services')">Aerial & Drone Surveying</a>
-                            <a href="#engineering" class="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600" onclick="showPage('services')">Engineering & Geospatial</a>
-                            <a href="#consultancy" class="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600" onclick="showPage('services')">Consultancy & Environmental</a>
-                            <a href="#technology" class="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600" onclick="showPage('services')">Technology & Innovation</a>
-                        </div>
-                    </div>
-                    
-                    <a href="#" class="text-gray-600 hover:text-blue-600 nav-link" onclick="showPage('projects')">Projects</a>
-                    <a href="#" class="text-gray-600 hover:text-blue-600 nav-link" onclick="showPage('about')">About</a>
-                    <a href="#" class="text-gray-600 hover:text-blue-600 nav-link" onclick="showPage('resources')">Resources</a>
-                    <a href="#" class="text-gray-600 hover:text-blue-600 nav-link" onclick="showPage('contact')">Contact</a>
-                    <a href="#quote" class="ml-4 inline-block px-4 py-2 bg-yellow-500 text-white rounded-lg shadow hover:bg-yellow-600" onclick="showPage('contact')">Request Quote</a>
-                </nav>
-                
-                <!-- Mobile menu button -->
-                <button class="md:hidden text-gray-600" id="mobile-menu-button">
-                    <i class="fas fa-bars text-xl"></i>
-                </button>
+
+
+    <header>
+        <nav class="navbar">
+            <!-- Logo -->
+            <div class="logo">
+            <div class="logo-icon">
+                <img src="logo.png" alt="Company Logo" style="width: 22px; height: 22px;">
+                <!-- Optional icon if image fails -->
+                <!-- <i class="fas fa-map-marked-alt"></i> -->
             </div>
-        </div>
-        
-        <!-- Mobile menu -->
-        <div id="mobile-menu" class="md:hidden hidden border-t bg-white">
-            <div class="px-4 py-3 flex flex-col gap-2">
-                <a href="#" class="block py-2 px-4 hover:bg-blue-50 rounded" onclick="showPage('home')">Home</a>
-                <a href="#" class="block py-2 px-4 hover:bg-blue-50 rounded" onclick="showPage('services')">Services</a>
-                <a href="#" class="block py-2 px-4 hover:bg-blue-50 rounded" onclick="showPage('projects')">Projects</a>
-                <a href="#" class="block py-2 px-4 hover:bg-blue-50 rounded" onclick="showPage('about')">About</a>
-                <a href="#" class="block py-2 px-4 hover:bg-blue-50 rounded" onclick="showPage('resources')">Resources</a>
-                <a href="#" class="block py-2 px-4 hover:bg-blue-50 rounded" onclick="showPage('contact')">Contact</a>
-                <a href="#quote" class="block mt-2 px-3 py-2 bg-yellow-500 text-white rounded text-center" onclick="showPage('contact')">Request Quote</a>
+            <div class="logo-text">
+                <span>Haki</span><span>Survey</span>
             </div>
-        </div>
+            </div>
+
+            <ul class="nav-links" id="nav-links">
+        <li>
+            <a href="#" class="nav-link active" data-page="home" onclick="showPage('home')">Home</a>
+        </li>
+
+        <!-- Dropdown for Services -->
+        <li class="dropdown">
+            <a href="#" class="nav-link" data-page="services" onclick="showPage('services')">
+            Services <i class="fas fa-chevron-down"></i>
+            </a>
+            <div class="dropdown-content">
+            <a href="#land-property" class="nav-sub-link" data-section="land-property" onclick="showPage('services')">Land & Property Solutions</a>
+            <a href="surveying_service.html" class="nav-sub-link" data-section="surveying" onclick="showPage('services')">Surveying Specialties</a>
+            <a href="#aerial" class="nav-sub-link" data-section="aerial" onclick="showPage('services')">Aerial & Drone Surveying</a>
+            <a href="#engineering" class="nav-sub-link" data-section="engineering" onclick="showPage('services')">Engineering & Geospatial</a>
+            <a href="#consultancy" class="nav-sub-link" data-section="consultancy" onclick="showPage('services')">Consultancy & Environmental</a>
+            <a href="#technology" class="nav-sub-link" data-section="technology" onclick="showPage('services')">Technology & Innovation</a>
+            </div>
+        </li>
+
+        <li><a href="#" class="nav-link" data-page="projects" onclick="showPage('projects')">Projects</a></li>
+        <li><a href="#" class="nav-link" data-page="about" onclick="showPage('about')">About</a></li>
+        <li><a href="#" class="nav-link" data-page="resources" onclick="showPage('resources')">Resources</a></li>
+        <li><a href="#" class="nav-link" data-page="contact" onclick="showPage('contact')">Contact</a></li>
+        <li><button class="cta-button" onclick="showPage('contact')">Request Quote</button></li>
+        </ul>
+
+
+            <!-- Hamburger for Mobile -->
+            <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+            </div>
+        </nav>
     </header>
+
 
     <!-- HOME PAGE -->
     <div id="home" class="page active-page">
@@ -272,150 +268,150 @@
     </div>
 
     <!-- SERVICES PAGE -->
-    <div id="services" class="page">
-        <section class="py-16 bg-gradient-to-b from-blue-50 to-white">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-12" data-aos="fade-up">
-                    <h1 class="text-3xl font-bold text-gray-800 mb-4">Our Services</h1>
-                    <p class="text-gray-600 max-w-2xl mx-auto">Comprehensive geospatial solutions tailored to your project requirements</p>
-                </div>
-                
-                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                    <!-- Services Navigation -->
-                    <div class="lg:col-span-1">
-                        <div class="bg-white rounded-xl shadow p-6 sticky top-24">
-                            <h3 class="font-semibold text-lg mb-4">Service Categories</h3>
-                            <ul class="space-y-2">
-                                <li><a href="#land-property" class="block p-3 rounded-lg hover:bg-blue-50 text-blue-700">Land & Property Solutions</a></li>
-                                <li><a href="#surveying" class="block p-3 rounded-lg hover:bg-blue-50 text-gray-700">Surveying Specialties</a></li>
-                                <li><a href="#aerial" class="block p-3 rounded-lg hover:bg-blue-50 text-gray-700">Aerial & Drone Surveying</a></li>
-                                <li><a href="#engineering" class="block p-3 rounded-lg hover:bg-blue-50 text-gray-700">Engineering & Geospatial Services</a></li>
-                                <li><a href="#consultancy" class="block p-3 rounded-lg hover:bg-blue-50 text-gray-700">Consultancy & Environmental</a></li>
-                                <li><a href="#technology" class="block p-3 rounded-lg hover:bg-blue-50 text-gray-700">Technology & Innovation</a></li>
-                            </ul>
-                        </div>
+<div id="services" class="page">
+    <section class="py-16 bg-gradient-to-b from-blue-50 to-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Title -->
+            <div class="text-center mb-12" data-aos="fade-up">
+                <h1 class="text-3xl font-bold text-gray-800 mb-4">Our Services</h1>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    Comprehensive geospatial solutions tailored to your project requirements
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Sidebar Navigation -->
+                <div class="lg:col-span-1">
+                    <div class="bg-white rounded-xl shadow p-6 sticky top-24">
+                        <h3 class="font-semibold text-lg mb-4">Service Categories</h3>
+                        <ul class="space-y-2" id="services-nav">
+                            <li><a href="#land-property" class="block p-3 rounded-lg text-gray-700 hover:bg-blue-50">Land & Property Solutions</a></li>
+                            <li><a href="#surveying" class="block p-3 rounded-lg text-gray-700 hover:bg-blue-50">Surveying Specialties</a></li>
+                            <li><a href="#aerial" class="block p-3 rounded-lg text-gray-700 hover:bg-blue-50">Aerial & Drone Surveying</a></li>
+                            <li><a href="#engineering" class="block p-3 rounded-lg text-gray-700 hover:bg-blue-50">Engineering & Geospatial Services</a></li>
+                            <li><a href="#consultancy" class="block p-3 rounded-lg text-gray-700 hover:bg-blue-50">Consultancy & Environmental</a></li>
+                            <li><a href="#technology" class="block p-3 rounded-lg text-gray-700 hover:bg-blue-50">Technology & Innovation</a></li>
+                        </ul>
                     </div>
-                    
-                    <!-- Services Content -->
-                    <div class="lg:col-span-2 space-y-12">
-                        <!-- Land & Property Solutions -->
-                        <section id="land-property" class="bg-white rounded-xl shadow p-6" data-aos="fade-up">
-                            <div class="flex items-center mb-6">
-                                <div class="w-12 h-12 rounded-lg bg-blue-100 flex items-center justify-center text-blue-700 mr-4">
-                                    <i class="fas fa-landmark text-xl"></i>
-                                </div>
-                                <h2 class="text-2xl font-bold text-gray-800">Land & Property Solutions</h2>
+                </div>
+
+                <!-- Services Content -->
+                <div class="lg:col-span-2 space-y-12">
+
+                    <!-- 1. Land & Property Solutions -->
+                    <section id="land-property" class="bg-white rounded-xl shadow p-6 scroll-mt-24" data-aos="fade-up">
+                        <div class="flex items-center mb-6">
+                            <div class="w-12 h-12 rounded-lg bg-blue-100 flex items-center justify-center text-blue-700 mr-4">
+                                <i class="fas fa-landmark text-xl"></i>
                             </div>
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <div class="p-4 border rounded-lg">
-                                    <h3 class="font-semibold text-lg mb-2">Land Brokerage</h3>
-                                    <p class="text-gray-600">Professional land acquisition and sales services with verified documentation.</p>
-                                </div>
-                                <div class="p-4 border rounded-lg">
-                                    <h3 class="font-semibold text-lg mb-2">Land Verification</h3>
-                                    <p class="text-gray-600">Comprehensive verification of land ownership, boundaries and legal status.</p>
-                                </div>
-                                <div class="p-4 border rounded-lg">
-                                    <h3 class="font-semibold text-lg mb-2">Documentation & Title Deed Support</h3>
-                                    <p class="text-gray-600">Assistance with title processing, transfers, and registration procedures.</p>
-                                </div>
-                                <div class="p-4 border rounded-lg">
-                                    <h3 class="font-semibold text-lg mb-2">Real Estate Mapping</h3>
-                                    <p class="text-gray-600">Detailed property mapping for development planning and investment analysis.</p>
-                                </div>
-                            </div>
-                        </section>
-                        
-                        <!-- Surveying Specialties -->
-                        <section id="surveying" class="bg-white rounded-xl shadow p-6" data-aos="fade-up">
-                            <div class="flex items-center mb-6">
-                                <div class="w-12 h-12 rounded-lg bg-green-100 flex items-center justify-center text-green-700 mr-4">
-                                    <i class="fas fa-ruler-combined text-xl"></i>
-                                </div>
-                                <h2 class="text-2xl font-bold text-gray-800">Surveying Specialties</h2>
-                            </div>
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <div class="p-4 border rounded-lg">
-                                    <h3 class="font-semibold text-lg mb-2">Cadastral Surveys</h3>
-                                    <p class="text-gray-600">Legal boundary definition and property registration surveys.</p>
-                                </div>
-                                <div class="p-4 border rounded-lg">
-                                    <h3 class="font-semibold text-lg mb-2">Topographic Surveys</h3>
-                                    <p class="text-gray-600">Detailed terrain mapping with contours and feature identification.</p>
-                                </div>
-                                <div class="p-4 border rounded-lg">
-                                    <h3 class="font-semibold text-lg mb-2">Boundary Demarcation</h3>
-                                    <p class="text-gray-600">Physical marking of property boundaries with permanent markers.</p>
-                                </div>
-                                <div class="p-4 border rounded-lg">
-                                    <h3 class="font-semibold text-lg mb-2">Building & Engineering Surveys</h3>
-                                    <p class="text-gray-600">Precise measurements for construction and infrastructure projects.</p>
-                                </div>
-                                <div class="p-4 border rounded-lg">
-                                    <h3 class="font-semibold text-lg mb-2">Bathymetric Surveys</h3>
-                                    <p class="text-gray-600">Underwater terrain mapping for lakes, rivers and coastal areas.</p>
-                                </div>
-                            </div>
-                        </section>
-                        
-                        <!-- Aerial & Drone Surveying -->
-                        <section id="aerial" class="bg-white rounded-xl shadow p-6" data-aos="fade-up">
-                            <div class="flex items-center mb-6">
-                                <div class="w-12 h-12 rounded-lg bg-purple-100 flex items-center justify-center text-purple-700 mr-4">
-                                    <i class="fas fa-drone text-xl"></i>
-                                </div>
-                                <h2 class="text-2xl font-bold text-gray-800">Aerial & Drone Surveying</h2>
-                            </div>
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <div class="p-4 border rounded-lg">
-                                    <h3 class="font-semibold text-lg mb-2">Drone Surveying & Mapping</h3>
-                                    <p class="text-gray-600">High-resolution aerial imagery and mapping with advanced drones.</p>
-                                </div>
-                                <div class="p-4 border rounded-lg">
-                                    <h3 class="font-semibold text-lg mb-2">Construction Monitoring</h3>
-                                    <p class="text-gray-600">Progress tracking and quality control through regular aerial surveys.</p>
-                                </div>
-                                <div class="p-4 border rounded-lg">
-                                    <h3 class="font-semibold text-lg mb-2">Environmental Monitoring</h3>
-                                    <p class="text-gray-600">Aerial assessment of environmental changes and impacts.</p>
-                                </div>
-                                <div class="p-4 border rounded-lg">
-                                    <h3 class="font-semibold text-lg mb-2">Agricultural Mapping</h3>
-                                    <p class="text-gray-600">Crop health analysis and precision farming solutions.</p>
-                                </div>
-                                <div class="p-4 border rounded-lg">
-                                    <h3 class="font-semibold text-lg mb-2">3D Modeling</h3>
-                                    <p class="text-gray-600">Photorealistic 3D models from aerial imagery for visualization.</p>
-                                </div>
-                                <div class="p-4 border rounded-lg">
-                                    <h3 class="font-semibold text-lg mb-2">Infrastructure Planning</h3>
-                                    <p class="text-gray-600">Aerial data for route planning and infrastructure development.</p>
-                                </div>
-                                <div class="p-4 border rounded-lg">
-                                    <h3 class="font-semibold text-lg mb-2">DTMs & DEMs</h3>
-                                    <p class="text-gray-600">Digital Terrain Models and Digital Elevation Models from aerial data.</p>
-                                </div>
-                                <div class="p-4 border rounded-lg">
-                                    <h3 class="font-semibold text-lg mb-2">Volumetric Calculations</h3>
-                                    <p class="text-gray-600">Precise volume measurements for stockpiles and earthworks.</p>
-                                </div>
-                                <div class="p-4 border rounded-lg">
-                                    <h3 class="font-semibold text-lg mb-2">Disaster Assessment</h3>
-                                    <p class="text-gray-600">Rapid damage assessment and mapping after natural disasters.</p>
-                                </div>
-                            </div>
-                        </section>
-                        
-                        <!-- Additional sections would follow the same pattern -->
-                        <div class="text-center py-8">
-                            <p class="text-gray-600 mb-4">Interested in our services?</p>
-                            <a href="#" class="inline-block px-6 py-3 bg-yellow-500 text-white rounded-lg shadow hover:bg-yellow-600" onclick="showPage('contact')">Request a Quote</a>
+                            <h2 class="text-2xl font-bold text-gray-800">Land & Property Solutions</h2>
                         </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="p-4 border rounded-lg"><h3 class="font-semibold text-lg mb-2">Land & Property Brokerage</h3><p class="text-gray-600">Connecting buyers and sellers, ensuring transparent transactions and verified documentation.</p></div>
+                            <div class="p-4 border rounded-lg"><h3 class="font-semibold text-lg mb-2">Land Verification</h3><p class="text-gray-600">Authenticating ownership, boundaries, and legal status before purchase or development.</p></div>
+                            <div class="p-4 border rounded-lg"><h3 class="font-semibold text-lg mb-2">Documentation & Title Deed Support</h3><p class="text-gray-600">Assistance with title processing, transfers, subdivisions, and regulatory compliance.</p></div>
+                            <div class="p-4 border rounded-lg"><h3 class="font-semibold text-lg mb-2">Real Estate Mapping</h3><p class="text-gray-600">Accurate mapping for property development planning and feasibility studies.</p></div>
+                        </div>
+                    </section>
+
+                    <!-- 2. Surveying Specialties -->
+                    <section id="surveying" class="bg-white rounded-xl shadow p-6 scroll-mt-24" data-aos="fade-up">
+                        <div class="flex items-center mb-6">
+                            <div class="w-12 h-12 rounded-lg bg-green-100 flex items-center justify-center text-green-700 mr-4">
+                                <i class="fas fa-ruler-combined text-xl"></i>
+                            </div>
+                            <h2 class="text-2xl font-bold text-gray-800">Surveying Specialties</h2>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="p-4 border rounded-lg"><h3 class="font-semibold mb-2">Cadastral Surveying</h3><p class="text-gray-600">Legal property boundary definition for ownership and registration.</p></div>
+                            <div class="p-4 border rounded-lg"><h3 class="font-semibold mb-2">Topographical Surveying</h3><p class="text-gray-600">Terrain mapping for planning, design, and engineering applications.</p></div>
+                            <div class="p-4 border rounded-lg"><h3 class="font-semibold mb-2">Boundary Demarcation</h3><p class="text-gray-600">Installing physical markers to prevent disputes.</p></div>
+                            <div class="p-4 border rounded-lg"><h3 class="font-semibold mb-2">Building & Engineering Surveys</h3><p class="text-gray-600">Site layout, monitoring, and as-built verification for construction.</p></div>
+                            <div class="p-4 border rounded-lg"><h3 class="font-semibold mb-2">Bathymetric Surveys</h3><p class="text-gray-600">Underwater terrain mapping for lakes, rivers, and coastal infrastructure.</p></div>
+                            <div class="p-4 border rounded-lg"><h3 class="font-semibold mb-2">Resource Mapping</h3><p class="text-gray-600">Forest, agricultural, and mineral resource identification.</p></div>
+                        </div>
+                    </section>
+
+                    <!-- 3. Aerial & Drone Surveying -->
+                    <section id="aerial" class="bg-white rounded-xl shadow p-6 scroll-mt-24" data-aos="fade-up">
+                        <div class="flex items-center mb-6">
+                            <div class="w-12 h-12 rounded-lg bg-purple-100 flex items-center justify-center text-purple-700 mr-4">
+                                <i class="fas fa-drone text-xl"></i>
+                            </div>
+                            <h2 class="text-2xl font-bold text-gray-800">Aerial & Drone Surveying</h2>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="p-4 border rounded-lg"><h3 class="font-semibold mb-2">Drone Surveying & Mapping</h3><p class="text-gray-600">High-resolution aerial data collection for large areas.</p></div>
+                            <div class="p-4 border rounded-lg"><h3 class="font-semibold mb-2">Construction Monitoring</h3><p class="text-gray-600">Real-time site visuals for project tracking.</p></div>
+                            <div class="p-4 border rounded-lg"><h3 class="font-semibold mb-2">Environmental Monitoring</h3><p class="text-gray-600">Assessing ecological change and conservation support.</p></div>
+                            <div class="p-4 border rounded-lg"><h3 class="font-semibold mb-2">Agricultural Mapping</h3><p class="text-gray-600">Multispectral crop analysis for precision agriculture.</p></div>
+                            <div class="p-4 border rounded-lg"><h3 class="font-semibold mb-2">3D Modeling</h3><p class="text-gray-600">Photorealistic terrain and structure visualization.</p></div>
+                            <div class="p-4 border rounded-lg"><h3 class="font-semibold mb-2">Infrastructure Planning</h3><p class="text-gray-600">Drone data for route design and utility planning.</p></div>
+                            <div class="p-4 border rounded-lg"><h3 class="font-semibold mb-2">DTMs & DEMs</h3><p class="text-gray-600">Elevation models for hydrology, planning, and engineering.</p></div>
+                            <div class="p-4 border rounded-lg"><h3 class="font-semibold mb-2">Volumetric Calculations</h3><p class="text-gray-600">Stockpile and earthworks volume measurements.</p></div>
+                            <div class="p-4 border rounded-lg"><h3 class="font-semibold mb-2">Disaster Assessment</h3><p class="text-gray-600">Rapid mapping for emergency response and recovery.</p></div>
+                        </div>
+                    </section>
+
+                    <!-- 4. Engineering & Geospatial -->
+                    <section id="engineering" class="bg-white rounded-xl shadow p-6 scroll-mt-24" data-aos="fade-up">
+                        <div class="flex items-center mb-6">
+                            <div class="w-12 h-12 rounded-lg bg-yellow-100 flex items-center justify-center text-yellow-700 mr-4">
+                                <i class="fas fa-drafting-compass text-xl"></i>
+                            </div>
+                            <h2 class="text-2xl font-bold text-gray-800">Engineering & Geospatial Services</h2>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="p-4 border rounded-lg"><h3 class="font-semibold mb-2">Highway & Transport Surveys</h3><p class="text-gray-600">Route alignment, corridor mapping, and planning.</p></div>
+                            <div class="p-4 border rounded-lg"><h3 class="font-semibold mb-2">As-Built Surveys</h3><p class="text-gray-600">Verification of constructed works against design.</p></div>
+                            <div class="p-4 border rounded-lg"><h3 class="font-semibold mb-2">Volumetric Surveys</h3><p class="text-gray-600">3D modeling and material computation for earthworks.</p></div>
+                            <div class="p-4 border rounded-lg"><h3 class="font-semibold mb-2">BIM & Digital Twins</h3><p class="text-gray-600">Integrating survey data with BIM workflows for smart infrastructure.</p></div>
+                            <div class="p-4 border rounded-lg"><h3 class="font-semibold mb-2">Indoor Mapping</h3><p class="text-gray-600">Mapping complex facilities for navigation and planning.</p></div>
+                            <div class="p-4 border rounded-lg"><h3 class="font-semibold mb-2">Site Engineering</h3><p class="text-gray-600">Precise setting out and deformation monitoring.</p></div>
+                            <div class="p-4 border rounded-lg"><h3 class="font-semibold mb-2">Mapping & GIS Services</h3><p class="text-gray-600">Spatial analysis and data integration for decision-making.</p></div>
+                            <div class="p-4 border rounded-lg"><h3 class="font-semibold mb-2">Land Data Analysis</h3><p class="text-gray-600">Spatial data management for government and developers.</p></div>
+                        </div>
+                    </section>
+
+                    <!-- 5. Consultancy & Environmental -->
+                    <section id="consultancy" class="bg-white rounded-xl shadow p-6 scroll-mt-24" data-aos="fade-up">
+                        <div class="flex items-center mb-6">
+                            <div class="w-12 h-12 rounded-lg bg-teal-100 flex items-center justify-center text-teal-700 mr-4">
+                                <i class="fas fa-leaf text-xl"></i>
+                            </div>
+                            <h2 class="text-2xl font-bold text-gray-800">Consultancy & Environmental</h2>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="p-4 border rounded-lg"><h3 class="font-semibold mb-2">Geomatics Consultancy</h3><p class="text-gray-600">Expert guidance on geospatial technology and workflows.</p></div>
+                            <div class="p-4 border rounded-lg"><h3 class="font-semibold mb-2">Environmental Impact Assessments</h3><p class="text-gray-600">Regulatory compliance and sustainability evaluations.</p></div>
+                            <div class="p-4 border rounded-lg"><h3 class="font-semibold mb-2">Environmental Monitoring</h3><p class="text-gray-600">Long-term tracking and conservation support.</p></div>
+                        </div>
+                    </section>
+
+                    <!-- 6. Technology & Innovation -->
+                    <section id="technology" class="bg-white rounded-xl shadow p-6 scroll-mt-24" data-aos="fade-up">
+                        <div class="flex items-center mb-6">
+                            <div class="w-12 h-12 rounded-lg bg-red-100 flex items-center justify-center text-red-700 mr-4">
+                                <i class="fas fa-microchip text-xl"></i>
+                            </div>
+                            <h2 class="text-2xl font-bold text-gray-800">Technology & Innovation</h2>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="p-4 border rounded-lg"><h3 class="font-semibold mb-2">Survey Equipment & Technology Supply</h3><p class="text-gray-600">Providing GNSS, drones, total stations, and sensors.</p></div>
+                            <div class="p-4 border rounded-lg"><h3 class="font-semibold mb-2">Advanced GIS Software & Remote Sensing</h3><p class="text-gray-600">Satellite imagery, data fusion, and GIS platforms.</p></div>
+                        </div>
+                    </section>
+
+                    <!-- CTA -->
+                    <div class="text-center py-8">
+                        <p class="text-gray-600 mb-4">Interested in our services?</p>
+                        <a href="#" class="inline-block px-6 py-3 bg-blue-600 text-white rounded-lg shadow hover:bg-blue-700" onclick="showPage('contact')">Request a Quote</a>
                     </div>
                 </div>
             </div>
-        </section>
-    </div>
+        </div>
+    </section>
+</div>
 
     <!-- PROJECTS PAGE -->
     <div id="projects" class="page">
@@ -842,7 +838,7 @@
             el.innerHTML = html;
         }
 
-        loadComponent('external_navbar', 'external_navbar.html');
+        loadComponent('external_navbar', 'navbar.html');
         loadComponent('external_footer', 'footer.html');
     </script>
     <!-- WhatsApp floating -->
@@ -850,95 +846,6 @@
         <i class="fa-brands fa-whatsapp fa-lg"></i>
     </a>
 
-    <script>
-        // Initialize AOS
-        AOS.init({
-            duration: 800,
-            once: true
-        });
-        
-        // Set current year in footer
-        document.getElementById('year').textContent = new Date().getFullYear();
-        
-        // Mobile menu toggle
-        document.getElementById('mobile-menu-button').addEventListener('click', function() {
-            const mobileMenu = document.getElementById('mobile-menu');
-            mobileMenu.classList.toggle('hidden');
-        });
-        
-        // Page navigation function
-        function showPage(pageId) {
-            // Hide all pages
-            document.querySelectorAll('.page').forEach(page => {
-                page.classList.remove('active-page');
-            });
-            
-            // Show selected page
-            document.getElementById(pageId).classList.add('active-page');
-            
-            // Update active nav link
-            document.querySelectorAll('.nav-link').forEach(link => {
-                link.classList.remove('active');
-            });
-            
-            // Set the clicked link as active (home is default)
-            if (pageId === 'home') {
-                document.querySelector('.nav-link').classList.add('active');
-            } else {
-                const activeLink = Array.from(document.querySelectorAll('.nav-link')).find(link => 
-                    link.textContent.trim().toLowerCase().includes(pageId.toLowerCase())
-                );
-                if (activeLink) {
-                    activeLink.classList.add('active');
-                }
-            }
-            
-            // Close mobile menu if open
-            document.getElementById('mobile-menu').classList.add('hidden');
-            
-            // Scroll to top
-            window.scrollTo(0, 0);
-        }
-        
-        // Swiper initialization
-        const swiper = new Swiper('.mySwiper', {
-            slidesPerView: 1,
-            spaceBetween: 30,
-            loop: true,
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            },
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-next',
-            },
-        });
-        
-        // Form submission handler
-        document.querySelectorAll('form').forEach(form => {
-            form.addEventListener('submit', function(event) {
-                event.preventDefault();
-                const formStatus = this.querySelector('#form-status') || document.getElementById('form-status');
-                if (formStatus) {
-                    formStatus.classList.remove('hidden');
-                    
-                    // In a real implementation, you would send the form data to a server here
-                    // For demo purposes, we'll just show the success message
-                    setTimeout(() => {
-                        formStatus.classList.add('hidden');
-                    }, 3000);
-                }
-            });
-        });
-        
-        // Typing animation for company name
-        document.addEventListener('DOMContentLoaded', function() {
-            const companyName = document.querySelector('.typing-container');
-            if (companyName) {
-                companyName.innerHTML = '<span class="font-bold text-lg text-blue-600">Haki</span><span class="font-bold text-lg text-yellow-500">Survey</span><span class="typed-cursor">|</span>';
-            }
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
