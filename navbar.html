@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HakiSurvey - Responsive Navbar</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            background: white;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            padding: 0 20px;
+            margin-bottom: 30px;
+            width: 100%;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .logo-text {
+            font-size: 22px;
+            font-weight: 700;
+            color: #1e293b;
+        }
+
+        .logo-text span:first-child {
+            color: #1e40af;
+        }
+
+        .logo-text span:last-child {
+            color: #f59e0b;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #475569;
+            font-weight: 500;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 5px 0;
+        }
+
+        .nav-links a:hover {
+            color: #1e40af;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #1e40af;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a.active {
+            color: #1e40af;
+            font-weight: 600;
+        }
+
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-content {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            min-width: 220px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            padding: 10px 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            z-index: 100;
+        }
+
+        .dropdown:hover .dropdown-content {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-content a {
+            display: block;
+            padding: 10px 20px;
+            color: #475569;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .dropdown-content a:hover {
+            background: #f1f5f9;
+            color: #1e40af;
+            padding-left: 25px;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(245, 158, 11, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(245, 158, 11, 0.4);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 4px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: #1e293b;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+
+        /* Mobile Styles */
+        @media (max-width: 968px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                align-items: center;
+                padding: 20px 0;
+                gap: 0;
+                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+                clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+                transition: all 0.5s ease;
+                z-index: 99;
+            }
+
+            .nav-links.active {
+                clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+            }
+
+            .nav-links li {
+                width: 100%;
+                text-align: center;
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 15px 0;
+                width: 100%;
+                border-bottom: 1px solid #f1f5f9;
+            }
+
+            .nav-links a:last-child {
+                border-bottom: none;
+            }
+
+            .dropdown-content {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                box-shadow: none;
+                background: #f8fafc;
+                border-radius: 0;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.4s ease;
+            }
+
+            .dropdown.active .dropdown-content {
+                max-height: 300px;
+            }
+
+            .dropdown-content a {
+                padding: 12px 0;
+                border-bottom: 1px solid #e2e8f0;
+            }
+
+            .dropdown-content a:last-child {
+                border-bottom: none;
+            }
+
+            .cta-button {
+                margin-top: 15px;
+            }
+        }
+
+        .demo-content {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 800px;
+            margin-top: 20px;
+        }
+
+        .demo-content h1 {
+            color: #1e293b;
+            margin-bottom: 15px;
+            font-size: 28px;
+        }
+
+        .demo-content p {
+            color: #475569;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .instructions {
+            background: #f1f5f9;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 30px;
+        }
+
+        .instructions h3 {
+            color: #1e40af;
+            margin-bottom: 10px;
+        }
+
+        .instructions ul {
+            padding-left: 20px;
+            color: #475569;
+        }
+
+        .instructions li {
+            margin-bottom: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <nav class="navbar">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-map-marked-alt"></i>
+                    </div>
+                    <div class="logo-text">
+                        <span>Haki</span><span>Survey</span>
+                    </div>
+                </div>
+
+                <ul class="nav-links">
+                    <li><a href="#" class="active">Home</a></li>
+                    
+                    <li class="dropdown">
+                        <a href="#">Services <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-content">
+                            <a href="#">Land & Property Solutions</a>
+                            <a href="#">Surveying Specialties</a>
+                            <a href="#">Aerial & Drone Surveying</a>
+                            <a href="#">Engineering & Geospatial</a>
+                            <a href="#">Consultancy & Environmental</a>
+                            <a href="#">Technology & Innovation</a>
+                        </div>
+                    </li>
+                    
+                    <li><a href="#">Projects</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Resources</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><button class="cta-button">Request Quote</button></li>
+                </ul>
+
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </header>
+
+        <div class="demo-content">
+            <h1>HakiSurvey Plots Ltd</h1>
+            <p>This is a demonstration of a responsive navbar with smooth hamburger menu toggle for mobile devices. Resize your browser window to see the responsive behavior in action.</p>
+            <p>The navbar includes:</p>
+            <ul>
+                <li>Company logo with two-color text effect</li>
+                <li>Navigation links with hover effects</li>
+                <li>Dropdown menu for Services</li>
+                <li>Call-to-action button</li>
+                <li>Hamburger menu for mobile devices with smooth animation</li>
+            </ul>
+
+            <div class="instructions">
+                <h3>Implementation Instructions</h3>
+                <ul>
+                    <li>Copy the HTML structure into your navbar.html file</li>
+                    <li>Copy the CSS styles into your stylesheet</li>
+                    <li>Copy the JavaScript into your script file or add it to your existing JavaScript</li>
+                    <li>Customize colors, fonts, and other styles to match your website design</li>
+                    <li>Update the navigation links to point to your actual pages</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script>
+        async function loadComponent(id, file) {
+            const el = document.getElementById(id);
+            const response = await fetch(file);
+            const html = await response.text();
+            el.innerHTML = html;
+        }
+
+        loadComponent('external_navbar', 'external_navbar.html');
+        loadComponent('external_footer', 'footer.html');
+   
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburger = document.querySelector('.hamburger');
+            const navLinks = document.querySelector('.nav-links');
+            const dropdowns = document.querySelectorAll('.dropdown');
+            
+            // Toggle mobile menu
+            hamburger.addEventListener('click', function() {
+                hamburger.classList.toggle('active');
+                navLinks.classList.toggle('active');
+            });
+            
+            // Handle dropdowns on mobile
+            if (window.innerWidth <= 968) {
+                dropdowns.forEach(dropdown => {
+                    const dropdownLink = dropdown.querySelector('a');
+                    
+                    dropdownLink.addEventListener('click', function(e) {
+                        if (window.innerWidth <= 968) {
+                            e.preventDefault();
+                            dropdown.classList.toggle('active');
+                        }
+                    });
+                });
+            }
+            
+            // Close mobile menu when clicking on a link
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', function() {
+                    if (window.innerWidth <= 968) {
+                        hamburger.classList.remove('active');
+                        navLinks.classList.remove('active');
+                        
+                        // Close any open dropdowns
+                        dropdowns.forEach(dropdown => {
+                            dropdown.classList.remove('active');
+                        });
+                    }
+                });
+            });
+            
+            // Handle window resize
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 968) {
+                    // Reset mobile menu state on larger screens
+                    hamburger.classList.remove('active');
+                    navLinks.classList.remove('active');
+                    
+                    // Reset dropdowns
+                    dropdowns.forEach(dropdown => {
+                        dropdown.classList.remove('active');
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
