@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HakiSurvey Plots Ltd</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/swiper@9/swiper-bundle.min.css" />
+    <script src="https://unpkg.com/swiper@9/swiper-bundle.min.js"></script>
+    <script src="https://kit.fontawesome.com/a2e0c1d6f8.js" crossorigin="anonymous"></script>
+    <style>
+        .hero-overlay { background: linear-gradient(180deg, rgba(0,0,0,0.35), rgba(0,0,0,0.55)); }
+        .hero-media { height: 56vh; min-height: 360px; max-height: 720px; }
+        .swiper-button-prev, .swiper-button-next { color: #003366; }
+        .dropdown:hover .dropdown-menu { display: block; }
+        .typing-container { display: inline-block; }
+        .typed-cursor { opacity: 1; animation: blink 0.7s infinite; }
+        @keyframes blink { 0% { opacity: 1; } 50% { opacity: 0; } 100% { opacity: 1; } }
+        .page { display: none; }
+        .active-page { display: block; }
+        .nav-link.active { color: #1e40af; font-weight: 600; }
+    </style>
+</head>
+<body class="antialiased text-gray-800 bg-gray-50">
+    <!-- NAVBAR -->
+    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <a href="#" class="flex items-center space-x-2" onclick="showPage('home')">
+                    <div class="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center">
+                      <img src="logo.png" alt="Company Logo">
+                        <i class="fas fa-map-marked-alt text-white text-sm"></i>
+                    </div>
+                    <div class="typing-container">
+                        <span class="font-bold text-lg text-blue-600">Haki</span><span class="font-bold text-lg text-yellow-500">Survey</span>
+                    </div>
+                </a>
+                
+                <nav class="hidden md:flex items-center space-x-8 text-sm font-medium">
+                    <a href="#" class="nav-link active" onclick="showPage('home')">Home</a>
+                    
+                    <!-- Services Dropdown -->
+                    <div class="dropdown relative">
+                        <a href="#" class="text-gray-600 hover:text-blue-600 nav-link flex items-center" onclick="showPage('services')">
+                            Services <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                        </a>
+                        <div class="dropdown-menu absolute hidden bg-white shadow-lg rounded-md mt-2 py-2 w-64 z-50">
+                            <a href="#land-property" class="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600" onclick="showPage('services')">Land & Property Solutions</a>
+                            <a href="#surveying" class="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600" onclick="showPage('services')">Surveying Specialties</a>
+                            <a href="#aerial" class="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600" onclick="showPage('services')">Aerial & Drone Surveying</a>
+                            <a href="#engineering" class="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600" onclick="showPage('services')">Engineering & Geospatial</a>
+                            <a href="#consultancy" class="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600" onclick="showPage('services')">Consultancy & Environmental</a>
+                            <a href="#technology" class="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600" onclick="showPage('services')">Technology & Innovation</a>
+                        </div>
+                    </div>
+                    
+                    <a href="#" class="text-gray-600 hover:text-blue-600 nav-link" onclick="showPage('projects')">Projects</a>
+                    <a href="#" class="text-gray-600 hover:text-blue-600 nav-link" onclick="showPage('about')">About</a>
+                    <a href="#" class="text-gray-600 hover:text-blue-600 nav-link" onclick="showPage('resources')">Resources</a>
+                    <a href="#" class="text-gray-600 hover:text-blue-600 nav-link" onclick="showPage('contact')">Contact</a>
+                    <a href="#quote" class="ml-4 inline-block px-4 py-2 bg-yellow-500 text-white rounded-lg shadow hover:bg-yellow-600" onclick="showPage('contact')">Request Quote</a>
+                </nav>
+                
+                <!-- Mobile menu button -->
+                <button class="md:hidden text-gray-600" id="mobile-menu-button">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="md:hidden hidden border-t bg-white">
+            <div class="px-4 py-3 flex flex-col gap-2">
+                <a href="#" class="block py-2 px-4 hover:bg-blue-50 rounded" onclick="showPage('home')">Home</a>
+                <a href="#" class="block py-2 px-4 hover:bg-blue-50 rounded" onclick="showPage('services')">Services</a>
+                <a href="#" class="block py-2 px-4 hover:bg-blue-50 rounded" onclick="showPage('projects')">Projects</a>
+                <a href="#" class="block py-2 px-4 hover:bg-blue-50 rounded" onclick="showPage('about')">About</a>
+                <a href="#" class="block py-2 px-4 hover:bg-blue-50 rounded" onclick="showPage('resources')">Resources</a>
+                <a href="#" class="block py-2 px-4 hover:bg-blue-50 rounded" onclick="showPage('contact')">Contact</a>
+                <a href="#quote" class="block mt-2 px-3 py-2 bg-yellow-500 text-white rounded text-center" onclick="showPage('contact')">Request Quote</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- HOME PAGE -->
+    <div id="home" class="page active-page">
+        <!-- HERO SECTION -->
+        <section class="relative hero-media overflow-hidden">
+            <!-- Background image with overlay -->
+            <div class="absolute inset-0 w-full h-full">
+                <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1600&q=80" 
+                     alt="Drone aerial view" 
+                     class="w-full h-full object-cover opacity-70">
+                <div class="absolute inset-0 hero-overlay"></div>
+            </div>
+
+            <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center">
+                <div class="text-white max-w-2xl" data-aos="fade-up">
+                    <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight">Precision Surveying. Smarter Land Solutions.</h1>
+                    <p class="mt-4 text-lg sm:text-xl text-gray-100/90">Cadastral, topographic, drone & GIS services for developers, farmers and infrastructure projects. Accurate data. Faster delivery. Trusted results.</p>
+
+                    <div class="mt-6 flex gap-3">
+                        <a href="#" class="inline-flex items-center gap-2 px-5 py-3 bg-yellow-500 text-white rounded-lg shadow hover:bg-yellow-600" onclick="showPage('contact')">
+                            <i class="fa-solid fa-envelope"></i> Request a Quote
+                        </a>
+                        <a href="#" class="inline-flex items-center gap-2 px-5 py-3 bg-white/20 text-white rounded-lg hover:bg-white/30" onclick="showPage('projects')">
+                            <i class="fa-solid fa-images"></i> View Projects
+                        </a>
+                    </div>
+
+                    <div class="mt-6 text-gray-200 text-sm">
+                        <span class="inline-flex items-center gap-2"><i class="fa-solid fa-check-circle text-yellow-300"></i> Licensed surveyors • Modern GNSS & drone fleet • Nationwide coverage</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- QUICK SERVICES -->
+        <section id="services-preview" class="py-14">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-10" data-aos="fade-up">
+                    <h2 class="text-2xl font-semibold">Our Core Services</h2>
+                    <p class="mt-2 text-gray-600">Comprehensive land & geospatial solutions — from cadastral boundary surveys to drone-based mapping and environmental assessments.</p>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Service Card -->
+                    <div class="bg-white rounded-2xl p-6 shadow hover:shadow-lg transition" data-aos="fade-up" data-aos-delay="50">
+                        <div class="text-3xl w-12 h-12 rounded-md flex items-center justify-center bg-blue-50 text-blue-700 mb-4"><i class="fa-solid fa-map-location-dot"></i></div>
+                        <h3 class="font-semibold">Cadastral & Boundary Surveys</h3>
+                        <p class="mt-2 text-sm text-gray-600">Legal property surveys for registration, subdivision & dispute resolution.</p>
+                    </div>
+
+                    <div class="bg-white rounded-2xl p-6 shadow hover:shadow-lg transition" data-aos="fade-up" data-aos-delay="100">
+                        <div class="text-3xl w-12 h-12 rounded-md flex items-center justify-center bg-blue-50 text-blue-700 mb-4"><i class="fa-solid fa-mountain-sun"></i></div>
+                        <h3 class="font-semibold">Topographic Surveys & DTMs</h3>
+                        <p class="mt-2 text-sm text-gray-600">Contour mapping, ground models and site planning deliverables for construction and design.</p>
+                    </div>
+
+                    <div class="bg-white rounded-2xl p-6 shadow hover:shadow-lg transition" data-aos="fade-up" data-aos-delay="150">
+                        <div class="text-3xl w-12 h-12 rounded-md flex items-center justify-center bg-blue-50 text-blue-700 mb-4"><i class="fa-solid fa-drone"></i></div>
+                        <h3 class="font-semibold">Drone & Aerial Mapping</h3>
+                        <p class="mt-2 text-sm text-gray-600">High-resolution orthomosaics, 3D models, volumetrics and multispectral analysis.</p>
+                    </div>
+
+                    <div class="bg-white rounded-2xl p-6 shadow hover:shadow-lg transition" data-aos="fade-up" data-aos-delay="200">
+                        <div class="text-3xl w-12 h-12 rounded-md flex items-center justify-center bg-blue-50 text-blue-700 mb-4"><i class="fa-solid fa-building"></i></div>
+                        <h3 class="font-semibold">Engineering Surveys & BIM</h3>
+                        <p class="mt-2 text-sm text-gray-600">As-built surveys, setting out, BIM integration and construction monitoring.</p>
+                    </div>
+                </div>
+
+                <div class="text-center mt-10">
+                    <a href="#" class="inline-block px-6 py-3 bg-blue-700 text-white rounded-lg shadow hover:bg-blue-800" onclick="showPage('services')">View All Services</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROJECTS CAROUSEL -->
+        <section id="projects-preview" class="py-12 bg-gradient-to-b from-white to-gray-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex items-center justify-between mb-6" data-aos="fade-up">
+                    <h2 class="text-2xl font-semibold">Featured Projects</h2>
+                    <a href="#" class="text-sm text-blue-700 hover:underline" onclick="showPage('projects')">View all projects</a>
+                </div>
+
+                <div class="swiper mySwiper" data-aos="fade-up" data-aos-delay="50">
+                    <div class="swiper-wrapper">
+                        <!-- Slide 1 -->
+                        <div class="swiper-slide flex flex-col md:flex-row gap-6 items-center p-6 bg-white rounded-2xl shadow">
+                            <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=900&q=60" alt="Project 1" class="w-full md:w-1/2 rounded-lg object-cover h-56">
+                            <div class="md:flex-1">
+                                <h3 class="text-lg font-semibold">Highway Route Survey — Eastern Corridor</h3>
+                                <p class="mt-3 text-gray-600">Topographic survey and corridor mapping for route optimization and earthwork volume calculations.</p>
+                                <div class="mt-4 text-sm text-gray-500"><strong>Deliverables:</strong> DTM, alignment, stakeout points, volume reports</div>
+                            </div>
+                        </div>
+
+                        <!-- Slide 2 -->
+                        <div class="swiper-slide flex flex-col md:flex-row gap-6 items-center p-6 bg-white rounded-2xl shadow">
+                            <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=60" alt="Project 2" class="w-full md:w-1/2 rounded-lg object-cover h-56">
+                            <div class="md:flex-1">
+                                <h3 class="text-lg font-semibold">Agricultural Multispectral Mapping</h3>
+                                <p class="mt-3 text-gray-600">Drone multispectral flights for crop health, irrigation planning and yield optimization.</p>
+                                <div class="mt-4 text-sm text-gray-500"><strong>Deliverables:</strong> NDVI maps, prescription zones, orthomosaic</div>
+                            </div>
+                        </div>
+
+                        <!-- Slide 3 -->
+                        <div class="swiper-slide flex flex-col md:flex-row gap-6 items-center p-6 bg-white rounded-2xl shadow">
+                            <img src="https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?auto=format&fit=crop&w=900&q=60" alt="Project 3" class="w-full md:w-1/2 rounded-lg object-cover h-56">
+                            <div class="md:flex-1">
+                                <h3 class="text-lg font-semibold">Urban Development — As-Built Surveys</h3>
+                                <p class="mt-3 text-gray-600">As-built verification and BIM-ready deliverables for multi-story development.</p>
+                                <div class="mt-4 text-sm text-gray-500"><strong>Deliverables:</strong> Point cloud, CAD as-built, QA reports</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- swiper controls -->
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-pagination mt-4"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT PREVIEW -->
+        <section id="about-preview" class="py-12">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div data-aos="fade-up">
+                    <h2 class="text-2xl font-semibold">About HakiSurvey</h2>
+                    <p class="mt-4 text-gray-600">HakiSurvey Plots Ltd provides modern surveying and geospatial services combining experienced licensed surveyors, a professional drone fleet, and advanced GIS software. We support clients across property, agriculture, infrastructure and environment sectors.</p>
+
+                    <ul class="mt-4 space-y-2 text-sm text-gray-600">
+                        <li><i class="fa-solid fa-check text-yellow-500 mr-2"></i>Licensed surveyors & engineers</li>
+                        <li><i class="fa-solid fa-check text-yellow-500 mr-2"></i>GNSS, total stations, drones & photogrammetry</li>
+                        <li><i class="fa-solid fa-check text-yellow-500 mr-2"></i>BIM & GIS integration</li>
+                    </ul>
+
+                    <div class="mt-6">
+                        <a href="#" class="inline-block px-5 py-3 bg-blue-700 text-white rounded-lg shadow" onclick="showPage('about')">Learn More About Us</a>
+                    </div>
+                </div>
+
+                <div data-aos="fade-left">
+                    <div class="bg-white rounded-2xl shadow p-6">
+                        <h4 class="font-semibold mb-3">Our Expertise</h4>
+                        <div class="grid grid-cols-2 gap-3 text-sm text-gray-600">
+                            <div><strong>Cadastral Surveys</strong><div class="text-xs">Boundary definition & registration</div></div>
+                            <div><strong>Drone Mapping</strong><div class="text-xs">Orthomosaics & volumetrics</div></div>
+                            <div><strong>Topographic</strong><div class="text-xs">DTMs & contouring</div></div>
+                            <div><strong>Environmental</strong><div class="text-xs">EIA & monitoring</div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- RESOURCES PREVIEW -->
+        <section id="resources-preview" class="py-10 bg-gray-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex items-center justify-between mb-6" data-aos="fade-up">
+                    <h2 class="text-xl font-semibold">Resources & Downloads</h2>
+                    <a href="#" class="text-sm text-blue-700 hover:underline" onclick="showPage('resources')">View all resources</a>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <article class="bg-white rounded-xl shadow p-5" data-aos="fade-up">
+                        <h3 class="font-semibold">Service Brochure</h3>
+                        <p class="mt-2 text-sm text-gray-600">Comprehensive PDF with full service descriptions, equipment and case studies.</p>
+                        <div class="mt-3">
+                            <a href="#" class="inline-block px-4 py-2 bg-yellow-500 text-white rounded">Download PDF</a>
+                        </div>
+                    </article>
+
+                    <article class="bg-white rounded-xl shadow p-5" data-aos="fade-up" data-aos-delay="50">
+                        <h3 class="font-semibold">Case Study: Highway Survey</h3>
+                        <p class="mt-2 text-sm text-gray-600">Summary of methodology, deliverables and impact for a road alignment project.</p>
+                    </article>
+
+                    <article class="bg-white rounded-xl shadow p-5" data-aos="fade-up" data-aos-delay="100">
+                        <h3 class="font-semibold">Blog & Insights</h3>
+                        <p class="mt-2 text-sm text-gray-600">Articles on drone regulations, mapping best practices and GIS workflows.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- SERVICES PAGE -->
+    <div id="services" class="page">
+        <section class="py-16 bg-gradient-to-b from-blue-50 to-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12" data-aos="fade-up">
+                    <h1 class="text-3xl font-bold text-gray-800 mb-4">Our Services</h1>
+                    <p class="text-gray-600 max-w-2xl mx-auto">Comprehensive geospatial solutions tailored to your project requirements</p>
+                </div>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <!-- Services Navigation -->
+                    <div class="lg:col-span-1">
+                        <div class="bg-white rounded-xl shadow p-6 sticky top-24">
+                            <h3 class="font-semibold text-lg mb-4">Service Categories</h3>
+                            <ul class="space-y-2">
+                                <li><a href="#land-property" class="block p-3 rounded-lg hover:bg-blue-50 text-blue-700">Land & Property Solutions</a></li>
+                                <li><a href="#surveying" class="block p-3 rounded-lg hover:bg-blue-50 text-gray-700">Surveying Specialties</a></li>
+                                <li><a href="#aerial" class="block p-3 rounded-lg hover:bg-blue-50 text-gray-700">Aerial & Drone Surveying</a></li>
+                                <li><a href="#engineering" class="block p-3 rounded-lg hover:bg-blue-50 text-gray-700">Engineering & Geospatial Services</a></li>
+                                <li><a href="#consultancy" class="block p-3 rounded-lg hover:bg-blue-50 text-gray-700">Consultancy & Environmental</a></li>
+                                <li><a href="#technology" class="block p-3 rounded-lg hover:bg-blue-50 text-gray-700">Technology & Innovation</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Services Content -->
+                    <div class="lg:col-span-2 space-y-12">
+                        <!-- Land & Property Solutions -->
+                        <section id="land-property" class="bg-white rounded-xl shadow p-6" data-aos="fade-up">
+                            <div class="flex items-center mb-6">
+                                <div class="w-12 h-12 rounded-lg bg-blue-100 flex items-center justify-center text-blue-700 mr-4">
+                                    <i class="fas fa-landmark text-xl"></i>
+                                </div>
+                                <h2 class="text-2xl font-bold text-gray-800">Land & Property Solutions</h2>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div class="p-4 border rounded-lg">
+                                    <h3 class="font-semibold text-lg mb-2">Land Brokerage</h3>
+                                    <p class="text-gray-600">Professional land acquisition and sales services with verified documentation.</p>
+                                </div>
+                                <div class="p-4 border rounded-lg">
+                                    <h3 class="font-semibold text-lg mb-2">Land Verification</h3>
+                                    <p class="text-gray-600">Comprehensive verification of land ownership, boundaries and legal status.</p>
+                                </div>
+                                <div class="p-4 border rounded-lg">
+                                    <h3 class="font-semibold text-lg mb-2">Documentation & Title Deed Support</h3>
+                                    <p class="text-gray-600">Assistance with title processing, transfers, and registration procedures.</p>
+                                </div>
+                                <div class="p-4 border rounded-lg">
+                                    <h3 class="font-semibold text-lg mb-2">Real Estate Mapping</h3>
+                                    <p class="text-gray-600">Detailed property mapping for development planning and investment analysis.</p>
+                                </div>
+                            </div>
+                        </section>
+                        
+                        <!-- Surveying Specialties -->
+                        <section id="surveying" class="bg-white rounded-xl shadow p-6" data-aos="fade-up">
+                            <div class="flex items-center mb-6">
+                                <div class="w-12 h-12 rounded-lg bg-green-100 flex items-center justify-center text-green-700 mr-4">
+                                    <i class="fas fa-ruler-combined text-xl"></i>
+                                </div>
+                                <h2 class="text-2xl font-bold text-gray-800">Surveying Specialties</h2>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div class="p-4 border rounded-lg">
+                                    <h3 class="font-semibold text-lg mb-2">Cadastral Surveys</h3>
+                                    <p class="text-gray-600">Legal boundary definition and property registration surveys.</p>
+                                </div>
+                                <div class="p-4 border rounded-lg">
+                                    <h3 class="font-semibold text-lg mb-2">Topographic Surveys</h3>
+                                    <p class="text-gray-600">Detailed terrain mapping with contours and feature identification.</p>
+                                </div>
+                                <div class="p-4 border rounded-lg">
+                                    <h3 class="font-semibold text-lg mb-2">Boundary Demarcation</h3>
+                                    <p class="text-gray-600">Physical marking of property boundaries with permanent markers.</p>
+                                </div>
+                                <div class="p-4 border rounded-lg">
+                                    <h3 class="font-semibold text-lg mb-2">Building & Engineering Surveys</h3>
+                                    <p class="text-gray-600">Precise measurements for construction and infrastructure projects.</p>
+                                </div>
+                                <div class="p-4 border rounded-lg">
+                                    <h3 class="font-semibold text-lg mb-2">Bathymetric Surveys</h3>
+                                    <p class="text-gray-600">Underwater terrain mapping for lakes, rivers and coastal areas.</p>
+                                </div>
+                            </div>
+                        </section>
+                        
+                        <!-- Aerial & Drone Surveying -->
+                        <section id="aerial" class="bg-white rounded-xl shadow p-6" data-aos="fade-up">
+                            <div class="flex items-center mb-6">
+                                <div class="w-12 h-12 rounded-lg bg-purple-100 flex items-center justify-center text-purple-700 mr-4">
+                                    <i class="fas fa-drone text-xl"></i>
+                                </div>
+                                <h2 class="text-2xl font-bold text-gray-800">Aerial & Drone Surveying</h2>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div class="p-4 border rounded-lg">
+                                    <h3 class="font-semibold text-lg mb-2">Drone Surveying & Mapping</h3>
+                                    <p class="text-gray-600">High-resolution aerial imagery and mapping with advanced drones.</p>
+                                </div>
+                                <div class="p-4 border rounded-lg">
+                                    <h3 class="font-semibold text-lg mb-2">Construction Monitoring</h3>
+                                    <p class="text-gray-600">Progress tracking and quality control through regular aerial surveys.</p>
+                                </div>
+                                <div class="p-4 border rounded-lg">
+                                    <h3 class="font-semibold text-lg mb-2">Environmental Monitoring</h3>
+                                    <p class="text-gray-600">Aerial assessment of environmental changes and impacts.</p>
+                                </div>
+                                <div class="p-4 border rounded-lg">
+                                    <h3 class="font-semibold text-lg mb-2">Agricultural Mapping</h3>
+                                    <p class="text-gray-600">Crop health analysis and precision farming solutions.</p>
+                                </div>
+                                <div class="p-4 border rounded-lg">
+                                    <h3 class="font-semibold text-lg mb-2">3D Modeling</h3>
+                                    <p class="text-gray-600">Photorealistic 3D models from aerial imagery for visualization.</p>
+                                </div>
+                                <div class="p-4 border rounded-lg">
+                                    <h3 class="font-semibold text-lg mb-2">Infrastructure Planning</h3>
+                                    <p class="text-gray-600">Aerial data for route planning and infrastructure development.</p>
+                                </div>
+                                <div class="p-4 border rounded-lg">
+                                    <h3 class="font-semibold text-lg mb-2">DTMs & DEMs</h3>
+                                    <p class="text-gray-600">Digital Terrain Models and Digital Elevation Models from aerial data.</p>
+                                </div>
+                                <div class="p-4 border rounded-lg">
+                                    <h3 class="font-semibold text-lg mb-2">Volumetric Calculations</h3>
+                                    <p class="text-gray-600">Precise volume measurements for stockpiles and earthworks.</p>
+                                </div>
+                                <div class="p-4 border rounded-lg">
+                                    <h3 class="font-semibold text-lg mb-2">Disaster Assessment</h3>
+                                    <p class="text-gray-600">Rapid damage assessment and mapping after natural disasters.</p>
+                                </div>
+                            </div>
+                        </section>
+                        
+                        <!-- Additional sections would follow the same pattern -->
+                        <div class="text-center py-8">
+                            <p class="text-gray-600 mb-4">Interested in our services?</p>
+                            <a href="#" class="inline-block px-6 py-3 bg-yellow-500 text-white rounded-lg shadow hover:bg-yellow-600" onclick="showPage('contact')">Request a Quote</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- PROJECTS PAGE -->
+    <div id="projects" class="page">
+        <section class="py-16 bg-gradient-to-b from-white to-gray-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12" data-aos="fade-up">
+                    <h1 class="text-3xl font-bold text-gray-800 mb-4">Our Projects</h1>
+                    <p class="text-gray-600 max-w-2xl mx-auto">Showcasing innovative drone mapping, cadastral surveys, topographic analysis, and infrastructure monitoring solutions.</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Project 1 -->
+                    <div class="bg-white rounded-xl overflow-hidden shadow-md card-hover" data-aos="fade-up" data-aos-delay="100">
+                        <div class="h-48 bg-blue-100 relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=800&q=80" alt="Highway Survey" class="w-full h-full object-cover">
+                            <div class="absolute top-4 left-4">
+                                <span class="px-3 py-1 bg-blue-600 text-white text-xs font-medium rounded-full">Infrastructure</span>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">Highway Route Survey — Eastern Corridor</h3>
+                            <p class="text-gray-600 mb-4">Comprehensive topographic survey and corridor mapping for route optimization and precise earthwork volume calculations.</p>
+                            <div class="mb-4">
+                                <h4 class="text-sm font-semibold text-gray-700 mb-2">Deliverables:</h4>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded">DTM</span>
+                                    <span class="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded">Alignment</span>
+                                    <span class="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded">Stakeout Points</span>
+                                    <span class="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded">Volume Reports</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Project 2 -->
+                    <div class="bg-white rounded-xl overflow-hidden shadow-md card-hover" data-aos="fade-up" data-aos-delay="200">
+                        <div class="h-48 bg-green-100 relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1597079913144-05d7f8b7ef43?auto=format&fit=crop&w=800&q=80" alt="Agricultural Mapping" class="w-full h-full object-cover">
+                            <div class="absolute top-4 left-4">
+                                <span class="px-3 py-1 bg-green-600 text-white text-xs font-medium rounded-full">Agriculture</span>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">Agricultural Multispectral Mapping</h3>
+                            <p class="text-gray-600 mb-4">Advanced drone multispectral flights for crop health analysis, precision irrigation planning, and yield optimization.</p>
+                            <div class="mb-4">
+                                <h4 class="text-sm font-semibold text-gray-700 mb-2">Deliverables:</h4>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded">NDVI Maps</span>
+                                    <span class="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded">Orthomosaics</span>
+                                    <span class="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded">Prescription Zones</span>
+                                    <span class="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded">Yield Analysis</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Project 3 -->
+                    <div class="bg-white rounded-xl overflow-hidden shadow-md card-hover" data-aos="fade-up" data-aos-delay="300">
+                        <div class="h-48 bg-purple-100 relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1541976590-713941681591?auto=format&fit=crop&w=800&q=80" alt="Urban Development" class="w-full h-full object-cover">
+                            <div class="absolute top-4 left-4">
+                                <span class="px-3 py-1 bg-purple-600 text-white text-xs font-medium rounded-full">Urban Planning</span>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">Urban Development — As-Built Surveys</h3>
+                            <p class="text-gray-600 mb-4">Precision as-built verification and BIM-ready deliverables for multi-story development projects with millimeter accuracy.</p>
+                            <div class="mb-4">
+                                <h4 class="text-sm font-semibold text-gray-700 mb-2">Deliverables:</h4>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded">CAD As-Built</span>
+                                    <span class="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded">Point Clouds</span>
+                                    <span class="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded">QA Reports</span>
+                                    <span class="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded">BIM Integration</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Additional projects would follow the same pattern -->
+                </div>
+                
+                <div class="text-center mt-12" data-aos="fade-up">
+                    <a href="#" class="inline-flex items-center px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors" onclick="showPage('contact')">
+                        Start Your Project <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ABOUT PAGE -->
+    <div id="about" class="page">
+        <section class="py-16 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12" data-aos="fade-up">
+                    <h1 class="text-3xl font-bold text-gray-800 mb-4">About HakiSurvey Plots Ltd</h1>
+                    <p class="text-gray-600 max-w-2xl mx-auto">Leading provider of precision surveying and geospatial solutions with cutting-edge technology and expertise.</p>
+                </div>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
+                    <div data-aos="fade-right">
+                        <h2 class="text-2xl font-bold text-gray-800 mb-6">Company Overview</h2>
+                        <p class="text-gray-600 mb-4">HakiSurvey Plots Ltd was established with a vision to revolutionize the surveying industry in Kenya by combining traditional expertise with modern technology. Our team of licensed surveyors, engineers, and GIS specialists brings decades of combined experience to every project.</p>
+                        <p class="text-gray-600 mb-4">We serve a diverse client base including government agencies, private developers, agricultural enterprises, and environmental organizations across East Africa.</p>
+                        <p class="text-gray-600">Our commitment to accuracy, innovation, and client satisfaction has made us a trusted partner for critical infrastructure, property development, and environmental projects.</p>
+                    </div>
+                    <div data-aos="fade-left">
+                        <img src="https://images.unsplash.com/photo-1568992688065-536aad8a12f6?auto=format&fit=crop&w=800&q=80" alt="Surveying Team" class="rounded-xl shadow-lg">
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+                    <div class="bg-blue-50 rounded-xl p-6 text-center" data-aos="fade-up">
+                        <div class="w-16 h-16 rounded-full bg-blue-100 flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-bullseye text-blue-600 text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Our Mission</h3>
+                        <p class="text-gray-600">To deliver precise, reliable geospatial data and surveying solutions that empower our clients to make informed decisions and achieve their project goals.</p>
+                    </div>
+                    
+                    <div class="bg-green-50 rounded-xl p-6 text-center" data-aos="fade-up" data-aos-delay="100">
+                        <div class="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-eye text-green-600 text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Our Vision</h3>
+                        <p class="text-gray-600">To be East Africa's leading surveying and geospatial solutions provider, recognized for innovation, accuracy, and transformative impact on development projects.</p>
+                    </div>
+                    
+                    <div class="bg-purple-50 rounded-xl p-6 text-center" data-aos="fade-up" data-aos-delay="200">
+                        <div class="w-16 h-16 rounded-full bg-purple-100 flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-heart text-purple-600 text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Our Values</h3>
+                        <p class="text-gray-600">Integrity, precision, innovation, and client focus guide everything we do, ensuring we deliver exceptional value and build lasting relationships.</p>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-50 rounded-xl p-8" data-aos="fade-up">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">Expertise & Technology</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div>
+                            <h3 class="text-xl font-semibold text-gray-800 mb-4">Our Expertise</h3>
+                            <ul class="space-y-3">
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                                    <span class="text-gray-600">Licensed professional surveyors with extensive field experience</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                                    <span class="text-gray-600">GIS specialists with advanced spatial analysis capabilities</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                                    <span class="text-gray-600">Drone pilots certified for commercial operations</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                                    <span class="text-gray-600">Environmental assessment and monitoring specialists</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold text-gray-800 mb-4">Our Technology</h3>
+                            <ul class="space-y-3">
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                                    <span class="text-gray-600">Advanced GNSS systems for centimeter-level accuracy</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                                    <span class="text-gray-600">Professional drone fleet with multispectral and RTK capabilities</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                                    <span class="text-gray-600">Total stations and 3D laser scanners</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                                    <span class="text-gray-600">Industry-leading GIS and CAD software</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- RESOURCES PAGE -->
+    <div id="resources" class="page">
+        <section class="py-16 bg-gradient-to-b from-gray-50 to-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12" data-aos="fade-up">
+                    <h1 class="text-3xl font-bold text-gray-800 mb-4">Resources</h1>
+                    <p class="text-gray-600 max-w-2xl mx-auto">Access our service brochures, case studies, and industry insights to learn more about our capabilities and expertise.</p>
+                </div>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
+                    <!-- Service Brochures -->
+                    <div class="bg-white rounded-xl shadow p-6" data-aos="fade-up">
+                        <div class="flex items-center mb-6">
+                            <div class="w-12 h-12 rounded-lg bg-blue-100 flex items-center justify-center text-blue-700 mr-4">
+                                <i class="fas fa-file-pdf text-xl"></i>
+                            </div>
+                            <h2 class="text-2xl font-bold text-gray-800">Service Brochures</h2>
+                        </div>
+                        <p class="text-gray-600 mb-6">Download our detailed service brochures to learn more about our capabilities, equipment, and project approach.</p>
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between p-4 border rounded-lg">
+                                <div>
+                                    <h3 class="font-semibold text-gray-800">Comprehensive Services Overview</h3>
+                                    <p class="text-sm text-gray-600">PDF • 2.4 MB</p>
+                                </div>
+                                <a href="#" class="px-4 py-2 bg-blue-600 text-white rounded-lg text-sm hover:bg-blue-700">Download</a>
+                            </div>
+                            <div class="flex items-center justify-between p-4 border rounded-lg">
+                                <div>
+                                    <h3 class="font-semibold text-gray-800">Drone Surveying Capabilities</h3>
+                                    <p class="text-sm text-gray-600">PDF • 1.8 MB</p>
+                                </div>
+                                <a href="#" class="px-4 py-2 bg-blue-600 text-white rounded-lg text-sm hover:bg-blue-700">Download</a>
+                            </div>
+                            <div class="flex items-center justify-between p-4 border rounded-lg">
+                                <div>
+                                    <h3 class="font-semibold text-gray-800">Land & Property Solutions</h3>
+                                    <p class="text-sm text-gray-600">PDF • 1.5 MB</p>
+                                </div>
+                                <a href="#" class="px-4 py-2 bg-blue-600 text-white rounded-lg text-sm hover:bg-blue-700">Download</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Case Studies -->
+                    <div class="bg-white rounded-xl shadow p-6" data-aos="fade-up" data-aos-delay="100">
+                        <div class="flex items-center mb-6">
+                            <div class="w-12 h-12 rounded-lg bg-green-100 flex items-center justify-center text-green-700 mr-4">
+                                <i class="fas fa-clipboard-list text-xl"></i>
+                            </div>
+                            <h2 class="text-2xl font-bold text-gray-800">Case Studies</h2>
+                        </div>
+                        <p class="text-gray-600 mb-6">Explore detailed case studies showcasing our project methodologies, challenges, and successful outcomes.</p>
+                        <div class="space-y-4">
+                            <div class="p-4 border rounded-lg">
+                                <h3 class="font-semibold text-gray-800 mb-2">Highway Route Survey — Eastern Corridor</h3>
+                                <p class="text-sm text-gray-600 mb-3">How we delivered precise topographic data for a major infrastructure project.</p>
+                                <a href="#" class="text-blue-600 text-sm font-medium">Read Case Study →</a>
+                            </div>
+                            <div class="p-4 border rounded-lg">
+                                <h3 class="font-semibold text-gray-800 mb-2">Agricultural Multispectral Mapping</h3>
+                                <p class="text-sm text-gray-600 mb-3">Using drone technology to optimize crop health and irrigation.</p>
+                                <a href="#" class="text-blue-600 text-sm font-medium">Read Case Study →</a>
+                            </div>
+                            <div class="p-4 border rounded-lg">
+                                <h3 class="font-semibold text-gray-800 mb-2">Urban Development — As-Built Surveys</h3>
+                                <p class="text-sm text-gray-600 mb-3">Precision verification for a multi-story commercial development.</p>
+                                <a href="#" class="text-blue-600 text-sm font-medium">Read Case Study →</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Blog & Insights -->
+                    <div class="bg-white rounded-xl shadow p-6" data-aos="fade-up" data-aos-delay="200">
+                        <div class="flex items-center mb-6">
+                            <div class="w-12 h-12 rounded-lg bg-purple-100 flex items-center justify-center text-purple-700 mr-4">
+                                <i class="fas fa-blog text-xl"></i>
+                            </div>
+                            <h2 class="text-2xl font-bold text-gray-800">Blog & Insights</h2>
+                        </div>
+                        <p class="text-gray-600 mb-6">Stay updated with the latest industry trends, technology advancements, and best practices in surveying and geospatial solutions.</p>
+                        <div class="space-y-4">
+                            <div class="p-4 border rounded-lg">
+                                <span class="text-xs font-medium text-blue-600 bg-blue-50 px-2 py-1 rounded">Technology</span>
+                                <h3 class="font-semibold text-gray-800 mt-2 mb-2">The Future of Drone Surveying in East Africa</h3>
+                                <p class="text-sm text-gray-600 mb-3">Exploring how drone technology is transforming land surveying practices across the region.</p>
+                                <a href="#" class="text-blue-600 text-sm font-medium">Read Article →</a>
+                            </div>
+                            <div class="p-4 border rounded-lg">
+                                <span class="text-xs font-medium text-green-600 bg-green-50 px-2 py-1 rounded">Best Practices</span>
+                                <h3 class="font-semibold text-gray-800 mt-2 mb-2">5 Key Considerations for Land Verification</h3>
+                                <p class="text-sm text-gray-600 mb-3">Essential factors to evaluate before purchasing or developing land.</p>
+                                <a href="#" class="text-blue-600 text-sm font-medium">Read Article →</a>
+                            </div>
+                            <div class="p-4 border rounded-lg">
+                                <span class="text-xs font-medium text-purple-600 bg-purple-50 px-2 py-1 rounded">Industry News</span>
+                                <h3 class="font-semibold text-gray-800 mt-2 mb-2">New Regulations for Surveying Professionals</h3>
+                                <p class="text-sm text-gray-600 mb-3">Updates on licensing requirements and professional standards.</p>
+                                <a href="#" class="text-blue-600 text-sm font-medium">Read Article →</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-center" data-aos="fade-up">
+                    <p class="text-gray-600 mb-6">Need specific information or have questions about our resources?</p>
+                    <a href="#" class="inline-block px-6 py-3 bg-yellow-500 text-white rounded-lg shadow hover:bg-yellow-600" onclick="showPage('contact')">Contact Our Team</a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- CONTACT PAGE -->
+    <div id="contact" class="page">
+        <section class="py-16 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12" data-aos="fade-up">
+                    <h1 class="text-3xl font-bold text-gray-800 mb-4">Contact Us</h1>
+                    <p class="text-gray-600 max-w-2xl mx-auto">Get in touch with our team to discuss your project requirements or request a quote.</p>
+                </div>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    <!-- Contact Form -->
+                    <div data-aos="fade-right">
+                        <h2 class="text-2xl font-bold text-gray-800 mb-6">Send us a Message</h2>
+                        <form class="space-y-6 bg-gray-50 p-8 rounded-xl">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Full Name *</label>
+                                    <input type="text" id="name" name="name" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                                </div>
+                                <div>
+                                    <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email Address *</label>
+                                    <input type="email" id="email" name="email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                                </div>
+                            </div>
+                            <div>
+                                <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">Phone Number</label>
+                                <input type="tel" id="phone" name="phone" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                            </div>
+                            <div>
+                                <label for="service" class="block text-sm font-medium text-gray-700 mb-2">Service Interest</label>
+                                <select id="service" name="service" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                                    <option value="">Select a service</option>
+                                    <option value="land-property">Land & Property Solutions</option>
+                                    <option value="surveying">Surveying Specialties</option>
+                                    <option value="aerial">Aerial & Drone Surveying</option>
+                                    <option value="engineering">Engineering & Geospatial Services</option>
+                                    <option value="consultancy">Consultancy & Environmental</option>
+                                    <option value="technology">Technology & Innovation</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="message" class="block text-sm font-medium text-gray-700 mb-2">Project Details / Message *</label>
+                                <textarea id="message" name="message" rows="5" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"></textarea>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <label for="attachment" class="block text-sm font-medium text-gray-700 mb-2">Attach Files (Optional)</label>
+                                    <input type="file" id="attachment" name="attachment" class="text-sm text-gray-500">
+                                </div>
+                                <button type="submit" id="quote" class="px-6 py-3 bg-blue-700 text-white font-medium rounded-lg hover:bg-blue-800 transition-colors">Send Message</button>
+                            </div>
+                            <p id="form-status" class="text-sm text-green-600 hidden mt-2">Thank you! Your message has been sent successfully.</p>
+                        </form>
+                    </div>
+                    
+                    <!-- Contact Information -->
+                    <div data-aos="fade-left">
+                        <h2 class="text-2xl font-bold text-gray-800 mb-6">Get in Touch</h2>
+                        <div class="bg-gray-50 rounded-xl p-8 mb-8">
+                            <h3 class="text-xl font-semibold text-gray-800 mb-4">Office Information</h3>
+                            <div class="space-y-4">
+                                <div class="flex items-start">
+                                    <i class="fas fa-map-marker-alt text-blue-600 mt-1 mr-4"></i>
+                                    <div>
+                                        <p class="font-medium text-gray-800">Nairobi Office</p>
+                                        <p class="text-gray-600">Survey Plaza, Westlands<br>Nairobi, Kenya</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center">
+                                    <i class="fas fa-phone text-blue-600 mr-4"></i>
+                                    <div>
+                                        <p class="font-medium text-gray-800">+254 700 123 456</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center">
+                                    <i class="fas fa-envelope text-blue-600 mr-4"></i>
+                                    <div>
+                                        <p class="font-medium text-gray-800">info@hakisurvey.co.ke</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <i class="fas fa-clock text-blue-600 mt-1 mr-4"></i>
+                                    <div>
+                                        <p class="font-medium text-gray-800">Business Hours</p>
+                                        <p class="text-gray-600">Monday - Friday: 8:00 AM - 5:00 PM<br>Saturday: 9:00 AM - 1:00 PM</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gray-50 rounded-xl p-8">
+                            <h3 class="text-xl font-semibold text-gray-800 mb-4">Regional Offices</h3>
+                            <div class="space-y-6">
+                                <div>
+                                    <p class="font-medium text-gray-800 mb-2">Mombasa Branch</p>
+                                    <p class="text-gray-600 text-sm">Nyali Center, Mombasa Road<br>+254 700 234 567</p>
+                                </div>
+                                <div>
+                                    <p class="font-medium text-gray-800 mb-2">Kisumu Branch</p>
+                                    <p class="text-gray-600 text-sm">Lakeview Plaza, Oginga Odinga Street<br>+254 700 345 678</p>
+                                </div>
+                                <div>
+                                    <p class="font-medium text-gray-800 mb-2">Nakuru Branch</p>
+                                    <p class="text-gray-600 text-sm">Menengai Complex, Kenyatta Avenue<br>+254 700 456 789</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- FOOTER -->
+    
+    <div id="external_footer"></div>
+    <script>
+        async function loadComponent(id, file) {
+            const el = document.getElementById(id);
+            const response = await fetch(file);
+            const html = await response.text();
+            el.innerHTML = html;
+        }
+
+        loadComponent('external_navbar', 'external_navbar.html');
+        loadComponent('external_footer', 'footer.html');
+    </script>
+    <!-- WhatsApp floating -->
+    <a href="https://wa.me/254700123456?text=Hi%20HakiSurvey%2C%20I%20need%20a%20survey%20quote." target="_blank" class="fixed right-6 bottom-6 z-50 shadow-lg rounded-full bg-green-500 p-4 text-white" title="Chat on WhatsApp">
+        <i class="fa-brands fa-whatsapp fa-lg"></i>
+    </a>
+
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+        
+        // Set current year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+        
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Page navigation function
+        function showPage(pageId) {
+            // Hide all pages
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active-page');
+            });
+            
+            // Show selected page
+            document.getElementById(pageId).classList.add('active-page');
+            
+            // Update active nav link
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+            });
+            
+            // Set the clicked link as active (home is default)
+            if (pageId === 'home') {
+                document.querySelector('.nav-link').classList.add('active');
+            } else {
+                const activeLink = Array.from(document.querySelectorAll('.nav-link')).find(link => 
+                    link.textContent.trim().toLowerCase().includes(pageId.toLowerCase())
+                );
+                if (activeLink) {
+                    activeLink.classList.add('active');
+                }
+            }
+            
+            // Close mobile menu if open
+            document.getElementById('mobile-menu').classList.add('hidden');
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+        
+        // Swiper initialization
+        const swiper = new Swiper('.mySwiper', {
+            slidesPerView: 1,
+            spaceBetween: 30,
+            loop: true,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-next',
+            },
+        });
+        
+        // Form submission handler
+        document.querySelectorAll('form').forEach(form => {
+            form.addEventListener('submit', function(event) {
+                event.preventDefault();
+                const formStatus = this.querySelector('#form-status') || document.getElementById('form-status');
+                if (formStatus) {
+                    formStatus.classList.remove('hidden');
+                    
+                    // In a real implementation, you would send the form data to a server here
+                    // For demo purposes, we'll just show the success message
+                    setTimeout(() => {
+                        formStatus.classList.add('hidden');
+                    }, 3000);
+                }
+            });
+        });
+        
+        // Typing animation for company name
+        document.addEventListener('DOMContentLoaded', function() {
+            const companyName = document.querySelector('.typing-container');
+            if (companyName) {
+                companyName.innerHTML = '<span class="font-bold text-lg text-blue-600">Haki</span><span class="font-bold text-lg text-yellow-500">Survey</span><span class="typed-cursor">|</span>';
+            }
+        });
+    </script>
+</body>
+</html>
