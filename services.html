@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="external_navbar"></div>
+    <div id="external_footer"></div>
+    <script>
+        async function loadComponent(id, file) {
+            const el = document.getElementById(id);
+            const response = await fetch(file);
+            const html = await response.text();
+            el.innerHTML = html;
+        }
+
+        loadComponent('external_navbar', 'external_navbar.html');
+        loadComponent('external_footer', 'footer.html');
+    </script>
+</body>
+</html>
