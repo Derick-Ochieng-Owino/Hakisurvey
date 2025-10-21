@@ -1,49 +1,63 @@
-// =========================
+// ==========================
 // INIT AOS ANIMATIONS
-// =========================
+// ==========================
 AOS.init({
   duration: 800,
-  once: true
+  once: true,
 });
 
-// =========================
+// ==========================
 // FOOTER YEAR
-// =========================
+// ==========================
 const yearEl = document.getElementById('year');
 if (yearEl) {
   yearEl.textContent = new Date().getFullYear();
 }
 
-// =========================
+// ==========================
 // PAGE NAVIGATION
-// =========================
+// ==========================
 function showPage(pageId) {
+  // Hide all pages and show the selected one
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active-page'));
   document.getElementById(pageId)?.classList.add('active-page');
 
+  // Update nav link active state
   document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
   const activeLink = Array.from(document.querySelectorAll('.nav-link'))
     .find(l => l.textContent.trim().toLowerCase().includes(pageId.toLowerCase()));
   if (activeLink) activeLink.classList.add('active');
 
-  const mobileMenu = document.getElementById('mobile-menu');
-  if (mobileMenu) mobileMenu.classList.add('hidden');
+  // Close mobile menu after navigating
+  const navLinks = document.querySelector('.nav-links');
+  const hamburger = document.querySelector('.hamburger');
+  if (navLinks && hamburger) {
+    navLinks.classList.remove('active');
+    hamburger.classList.remove('active');
+  }
+
+  // Scroll to top smoothly
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-// =========================
+// ==========================
 // MOBILE NAV TOGGLE
-// =========================
-const mobileBtn = document.getElementById('mobile-menu-button');
-if (mobileBtn) {
-  mobileBtn.addEventListener('click', () => {
-    document.getElementById('mobile-menu')?.classList.toggle('hidden');
-  });
-}
+// ==========================
+document.addEventListener('DOMContentLoaded', () => {
+  const hamburger = document.querySelector('.hamburger');
+  const navLinks = document.querySelector('.nav-links');
 
-// =========================
+  if (hamburger && navLinks) {
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      navLinks.classList.toggle('active');
+    });
+  }
+});
+
+// ==========================
 // ACCORDIONS
-// =========================
+// ==========================
 document.querySelectorAll('.accordion').forEach(btn => {
   btn.addEventListener('click', () => {
     const panel = btn.nextElementSibling;
@@ -53,9 +67,9 @@ document.querySelectorAll('.accordion').forEach(btn => {
   });
 });
 
-// =========================
+// ==========================
 // SWIPER SLIDER
-// =========================
+// ==========================
 if (document.querySelector('.mySwiper')) {
   new Swiper('.mySwiper', {
     slidesPerView: 1,
@@ -63,13 +77,16 @@ if (document.querySelector('.mySwiper')) {
     loop: true,
     pagination: { el: '.swiper-pagination', clickable: true },
     navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
-    breakpoints: { 768: { slidesPerView: 1.2 }, 1024: { slidesPerView: 1.3 } }
+    breakpoints: {
+      768: { slidesPerView: 1.2 },
+      1024: { slidesPerView: 1.3 },
+    },
   });
 }
 
-// =========================
+// ==========================
 // FORM SUBMISSION
-// =========================
+// ==========================
 document.querySelectorAll('form').forEach(form => {
   form.addEventListener('submit', e => {
     e.preventDefault();
@@ -81,11 +98,30 @@ document.querySelectorAll('form').forEach(form => {
   });
 });
 
-// =========================
+// MOBILE DROPDOWN TOGGLE
+document.addEventListener('DOMContentLoaded', () => {
+  const dropdownToggles = document.querySelectorAll('.dropdown > a');
+
+  dropdownToggles.forEach(toggle => {
+    toggle.addEventListener('click', e => {
+      const parentDropdown = toggle.parentElement;
+      const isMobile = window.innerWidth <= 968;
+
+      if (isMobile) {
+        e.preventDefault(); // prevent navigation
+        parentDropdown.classList.toggle('active');
+      }
+    });
+  });
+});
+
+
+
+// ==========================
 // SECTION HIGHLIGHT ON SCROLL
-// =========================
+// ==========================
 const sections = document.querySelectorAll('section[id]');
-const navLinks = document.querySelectorAll('#services-nav a');
+const serviceLinks = document.querySelectorAll('#services-nav a');
 
 window.addEventListener('scroll', () => {
   let current = '';
@@ -95,10 +131,11 @@ window.addEventListener('scroll', () => {
       current = sec.id;
     }
   });
-  navLinks.forEach(link => {
-    link.classList.remove('bg-blue-50','text-blue-700','font-semibold');
+
+  serviceLinks.forEach(link => {
+    link.classList.remove('bg-blue-50', 'text-blue-700', 'font-semibold');
     if (link.getAttribute('href') === `#${current}`) {
-      link.classList.add('bg-blue-50','text-blue-700','font-semibold');
+      link.classList.add('bg-blue-50', 'text-blue-700', 'font-semibold');
     }
   });
 });

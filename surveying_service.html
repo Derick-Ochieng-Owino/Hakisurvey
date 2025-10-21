@@ -6,6 +6,7 @@
     <title>HakiSurvey Plots Ltd | Professional Surveying Services in Kenya</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="navbar.css">
     <style>
         :root {
             --primary: #1e40af;
@@ -29,6 +30,7 @@
             line-height: 1.6;
             color: var(--dark);
             background-color: var(--light);
+            overflow-x: hidden;
         }
         
         .container {
@@ -38,84 +40,13 @@
             padding: 0 20px;
         }
         
-        /* Header Styles */
-        header {
-            background-color: white;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-        
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 0;
-        }
-        
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .logo i {
-            font-size: 28px;
-            color: var(--primary);
-        }
-        
-        .logo-text {
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--dark);
-        }
-        
-        .nav-desktop {
-            display: flex;
-            gap: 30px;
-        }
-        
-        .nav-link {
-            text-decoration: none;
-            color: var(--gray);
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-        
-        .nav-link:hover, .nav-link.active {
-            color: var(--primary);
-        }
-        
-        .cta-button {
-            background-color: var(--primary);
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        
-        .cta-button:hover {
-            background-color: var(--primary-dark);
-        }
-        
-        .mobile-menu-button {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 24px;
-            color: var(--dark);
-            cursor: pointer;
-        }
-        
         /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
             color: white;
-            padding: 80px 0;
+            padding: 120px 0;
             text-align: center;
         }
         
@@ -237,17 +168,10 @@
             box-shadow: 0 10px 25px rgba(0,0,0,0.1);
         }
         
-        .service-icon {
-            height: 80px;
-            background-color: var(--primary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .service-icon i {
-            font-size: 32px;
-            color: white;
+        .service-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
         }
         
         .service-content {
@@ -379,12 +303,24 @@
         
         /* Responsive Styles */
         @media (max-width: 768px) {
-            .nav-desktop, .header-cta {
+            .nav-links {
                 display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
             }
             
-            .mobile-menu-button {
-                display: block;
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .hamburger {
+                display: flex;
             }
             
             .hero h1 {
@@ -402,33 +338,64 @@
             .section-header h2 {
                 font-size: 30px;
             }
+            
+            .dropdown-content {
+                position: static;
+                box-shadow: none;
+                padding-left: 20px;
+            }
         }
     </style>
 </head>
 <body>
     <!-- Header -->
     <header>
-        <div class="container">
-            <div class="header-content">
-                <div class="logo">
-                    <i class="fas fa-map-marked-alt"></i>
-                    <span class="logo-text">HakiSurvey Plots Ltd</span>
-                </div>
-                
-                <nav class="nav-desktop">
-                    <a href="#home" class="nav-link active">Home</a>
-                    <a href="#services" class="nav-link">Services</a>
-                    <a href="#about" class="nav-link">About</a>
-                    <a href="#contact" class="nav-link">Contact</a>
-                </nav>
-                
-                <button class="cta-button">Get Quote</button>
-                
-                <button class="mobile-menu-button">
-                    <i class="fas fa-bars"></i>
-                </button>
+        <nav class="navbar">
+            <!-- Logo -->
+            <div class="logo">
+            <div class="logo-icon">
+                <img src="https://i.pinimg.com/736x/6d/2e/a8/6d2ea81769e1c4a4e9da4dedbc3db9f6.jpg" alt="Company Logo" style="width: 40px; height: 40px;">
             </div>
-        </div>
+            <div class="logo-text">
+                <span>Haki</span><span>Survey</span>
+            </div>
+            </div>
+
+            <ul class="nav-links" id="nav-links">
+        <li>
+            <a href="index.html" class="nav-link active" data-page="home" onclick="showPage('home')">Home</a>
+        </li>
+
+        <!-- Dropdown for Services -->
+        <li class="dropdown">
+            <a href="#" class="nav-link" data-page="services" onclick="showPage('services')">
+            Services <i class="fas fa-chevron-down"></i>
+            </a>
+            <ul class="dropdown-content">
+                <a href="#land-property" class="nav-sub-link" data-section="land-property" onclick="showPage('services')">Land & Property Solutions</a>
+                <a href="surveying_service.html" class="nav-sub-link" data-section="surveying" onclick="showPage('services')">Surveying Specialties</a>
+                <a href="#aerial" class="nav-sub-link" data-section="aerial" onclick="showPage('services')">Aerial & Drone Surveying</a>
+                <a href="#engineering" class="nav-sub-link" data-section="engineering" onclick="showPage('services')">Engineering & Geospatial</a>
+                <a href="#consultancy" class="nav-sub-link" data-section="consultancy" onclick="showPage('services')">Consultancy & Environmental</a>
+                <a href="#technology" class="nav-sub-link" data-section="technology" onclick="showPage('services')">Technology & Innovation</a>
+            </ul>
+        </li>
+
+        <li><a href="#" class="nav-link" data-page="projects" onclick="showPage('projects')">Projects</a></li>
+        <li><a href="#" class="nav-link" data-page="about" onclick="showPage('about')">About</a></li>
+        <li><a href="#" class="nav-link" data-page="resources" onclick="showPage('resources')">Resources</a></li>
+        <li><a href="#" class="nav-link" data-page="contact" onclick="showPage('contact')">Contact</a></li>
+        <li><button class="cta-button" onclick="showPage('contact')">Request Quote</button></li>
+        </ul>
+
+
+            <!-- Hamburger for Mobile -->
+            <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+            </div>
+        </nav>
     </header>
 
     <!-- Hero Section -->
@@ -462,9 +429,7 @@
             <div class="services-grid">
                 <!-- Topographical Survey -->
                 <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-mountain"></i>
-                    </div>
+                    <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');"></div>
                     <div class="service-content">
                         <h3>Topographical Surveys</h3>
                         <p>Detailed mapping of land contours, elevations, and natural features to create accurate base maps for engineering and construction projects.</p>
@@ -490,9 +455,7 @@
                 
                 <!-- Cadastral Survey -->
                 <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-vector-square"></i>
-                    </div>
+                    <div class="service-image" style="background-image: url('https://i.pinimg.com/1200x/1a/ba/5f/1aba5fac23d4fd6e7b0da431ce17600d.jpg');"></div>
                     <div class="service-content">
                         <h3>Cadastral Surveys</h3>
                         <p>Legal boundary definition and property demarcation for land ownership, title registration, and dispute resolution in accordance with Kenyan law.</p>
@@ -518,9 +481,7 @@
                 
                 <!-- Building Site Survey -->
                 <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-hard-hat"></i>
-                    </div>
+                    <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');"></div>
                     <div class="service-content">
                         <h3>Building Site Surveys</h3>
                         <p>Comprehensive construction support from initial site planning to final as-built verification, ensuring projects are built according to design specifications.</p>
@@ -546,9 +507,7 @@
                 
                 <!-- Aerial & Drone Survey -->
                 <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-drone"></i>
-                    </div>
+                    <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1473968512647-3e447244af8f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');"></div>
                     <div class="service-content">
                         <h3>Aerial & Drone Surveys</h3>
                         <p>High-resolution aerial mapping using advanced drone technology to capture large areas quickly, safely, and cost-effectively.</p>
@@ -574,9 +533,7 @@
                 
                 <!-- Resource Mapping -->
                 <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-tree"></i>
-                    </div>
+                    <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2073&q=80');"></div>
                     <div class="service-content">
                         <h3>Resource Mapping</h3>
                         <p>Identification and mapping of natural resources including forests, agricultural land, water sources, and mineral deposits for sustainable management.</p>
@@ -602,9 +559,7 @@
                 
                 <!-- Bathymetric Survey -->
                 <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-water"></i>
-                    </div>
+                    <div class="service-image" style="background-image: url('https://i.pinimg.com/1200x/66/17/db/6617dbf5d96c24cb78717cfa786765ff.jpg');"></div>
                     <div class="service-content">
                         <h3>Bathymetric Surveys</h3>
                         <p>Underwater terrain mapping for lakes, rivers, dams, and coastal areas to support water resource management, navigation, and construction projects.</p>
@@ -625,90 +580,6 @@
                         </div>
                         
                         <a href="#" class="service-cta">Request Bathymetric Survey</a>
-                    </div>
-                </div>
-                
-                <!-- GIS Services -->
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-map-marked-alt"></i>
-                    </div>
-                    <div class="service-content">
-                        <h3>GIS Services</h3>
-                        <p>Geographic Information Systems for spatial data analysis, mapping, and decision support across various sectors and applications.</p>
-                        
-                        <div class="service-features">
-                            <div class="service-feature">
-                                <i class="fas fa-check-circle"></i>
-                                <span>Spatial database development and management</span>
-                            </div>
-                            <div class="service-feature">
-                                <i class="fas fa-check-circle"></i>
-                                <span>Thematic mapping for land use planning and analysis</span>
-                            </div>
-                            <div class="service-feature">
-                                <i class="fas fa-check-circle"></i>
-                                <span>Custom GIS application development</span>
-                            </div>
-                        </div>
-                        
-                        <a href="#" class="service-cta">Request GIS Services</a>
-                    </div>
-                </div>
-                
-                <!-- Ground Penetrating Radar -->
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-radar"></i>
-                    </div>
-                    <div class="service-content">
-                        <h3>Ground Penetrating Radar (GPR)</h3>
-                        <p>Non-destructive subsurface investigation to detect utilities, voids, and other underground features without excavation.</p>
-                        
-                        <div class="service-features">
-                            <div class="service-feature">
-                                <i class="fas fa-check-circle"></i>
-                                <span>Utility detection and mapping (water pipes, cables)</span>
-                            </div>
-                            <div class="service-feature">
-                                <i class="fas fa-check-circle"></i>
-                                <span>Void and cavity detection beneath surfaces</span>
-                            </div>
-                            <div class="service-feature">
-                                <i class="fas fa-check-circle"></i>
-                                <span>Concrete scanning for rebar and conduit location</span>
-                            </div>
-                        </div>
-                        
-                        <a href="#" class="service-cta">Request GPR Survey</a>
-                    </div>
-                </div>
-                
-                <!-- Land Documentation Support -->
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-file-contract"></i>
-                    </div>
-                    <div class="service-content">
-                        <h3>Land Documentation Support</h3>
-                        <p>Comprehensive assistance with title deed processing, land registration, and compliance with Kenyan land laws and regulations.</p>
-                        
-                        <div class="service-features">
-                            <div class="service-feature">
-                                <i class="fas fa-check-circle"></i>
-                                <span>Title deed processing and registration support</span>
-                            </div>
-                            <div class="service-feature">
-                                <i class="fas fa-check-circle"></i>
-                                <span>Land subdivision and consolidation documentation</span>
-                            </div>
-                            <div class="service-feature">
-                                <i class="fas fa-check-circle"></i>
-                                <span>Liaison with land registries and government offices</span>
-                            </div>
-                        </div>
-                        
-                        <a href="#" class="service-cta">Request Documentation Support</a>
                     </div>
                 </div>
             </div>
@@ -737,8 +608,12 @@
             <div class="footer-content">
                 <div class="footer-column">
                     <div class="logo">
-                        <i class="fas fa-map-marked-alt"></i>
-                        <span class="logo-text">HakiSurvey Plots Ltd</span>
+                        <div class="logo-icon">
+                            <img src="https://i.pinimg.com/736x/6d/2e/a8/6d2ea81769e1c4a4e9da4dedbc3db9f6.jpg" alt="Company Logo" style="width: 40px; height: 40px;">
+                        </div>
+                        <div class="logo-text">
+                            <span>Haki</span><span>Survey</span>
+                        </div>
                     </div>
                     <p>Professional surveying services for Kenya's development needs. Precision, accuracy, and reliability guaranteed.</p>
                 </div>
@@ -788,8 +663,8 @@
 
     <script>
         // Mobile menu toggle
-        document.querySelector('.mobile-menu-button').addEventListener('click', function() {
-            alert('Mobile menu would open here. In a real implementation, this would show a dropdown menu.');
+        document.getElementById('hamburger').addEventListener('click', function() {
+            document.getElementById('nav-links').classList.toggle('active');
         });
         
         // Service navigation buttons
@@ -815,17 +690,35 @@
         });
         
         // CTA buttons
-        document.querySelector('.btn-primary').addEventListener('click', function() {
+        document.querySelectorAll('.btn-primary')[0].addEventListener('click', function() {
             document.getElementById('services').scrollIntoView({ behavior: 'smooth' });
         });
         
-        document.querySelector('.btn-secondary').addEventListener('click', function() {
+        document.querySelectorAll('.btn-secondary')[0].addEventListener('click', function() {
             alert('Contact form would open here.');
         });
         
         // Header CTA button
         document.querySelector('.cta-button').addEventListener('click', function() {
             alert('Quote request form would open here.');
+        });
+        
+        // Nav link active state
+        const navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                if(this.getAttribute('href').startsWith('#')) {
+                    e.preventDefault();
+                    navLinks.forEach(l => l.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    if(targetElement) {
+                        targetElement.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }
+            });
         });
     </script>
 </body>

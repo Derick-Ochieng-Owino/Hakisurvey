@@ -3,6 +3,13 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    margin: 0;
+    padding: 0;
+}
+
+/* Ensure html also has no margin/padding */
+html {
+    scroll-padding-top: 80px; /* Prevents anchor links from being hidden behind sticky navbar */
 }
 
 .container {
@@ -11,25 +18,37 @@ body {
     margin: 0 auto;
 }
 
+/* Fixed sticky header */
 header {
     background: white;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    border-radius: 2cqb;            
-    padding: 0 20px;
+    padding: 0;
     margin-bottom: 30px;
     width: 100%;
-    position: sticky;    
-    top: 0;                      
-    z-index: 1000;                 
+    position: sticky;
+    top: 0; /* This is crucial for sticky positioning */
+    z-index: 1000;
+    /* Remove any transforms that might interfere */
+    transform: translateZ(0); /* Hardware acceleration */
 }
 
 .navbar {
+    position: sticky;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 0;
+    padding: 15px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
 }
 
+/* Add some top padding to your main content to account for sticky navbar */
+main {
+    padding-top: 20px; /* Adjust based on your navbar height */
+}
+
+/* Rest of your existing styles... */
 .logo {
     display: flex;
     align-items: center;
@@ -67,6 +86,8 @@ header {
     display: flex;
     gap: 30px;
     list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
 .nav-links a {
@@ -124,7 +145,7 @@ header {
     visibility: hidden;
     transform: translateY(10px);
     transition: all 0.3s ease;
-    z-index: 100;
+    z-index: 1001; /* Higher than header z-index */
 }
 
 .dropdown:hover .dropdown-content {
@@ -191,6 +212,7 @@ header {
     transform: rotate(-45deg) translate(6px, -6px);
 }
 
+/* Mobile Styles */
 @media (max-width: 968px) {
     .hamburger {
         display: flex;
@@ -198,34 +220,41 @@ header {
 
     .nav-links {
         position: fixed;
-        top: 80px;
+        top: 70px; /* Match navbar height */
         left: 0;
         width: 100%;
         background: white;
         flex-direction: column;
         align-items: center;
-        padding: 20px 0;
+        padding: 0;
         gap: 0;
         box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
         clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
         transition: all 0.5s ease;
-        z-index: 99;
+        z-index: 999;
+        max-height: 0;
+        overflow: hidden;
+        height: auto;
     }
 
     .nav-links.active {
         clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+        max-height: 80vh;
+        overflow-y: auto;
     }
 
     .nav-links li {
         width: 100%;
         text-align: center;
+        margin: 0;
     }
 
     .nav-links a {
         display: block;
-        padding: 15px 0;
+        padding: 15px 20px;
         width: 100%;
         border-bottom: 1px solid #f1f5f9;
+        box-sizing: border-box;
     }
 
     .nav-links a:last-child {
@@ -233,16 +262,19 @@ header {
     }
 
     .dropdown-content {
-        position: static;
+        position: static !important;
+        background: #f8fafc;
+        box-shadow: none;
+        border-radius: 0;
+        width: 100%;
+        max-height: 0;
+        overflow: hidden;
         opacity: 1;
         visibility: visible;
         transform: none;
-        box-shadow: none;
-        background: #f8fafc;
-        border-radius: 0;
-        max-height: 0;
-        overflow: hidden;
         transition: max-height 0.4s ease;
+        padding: 0;
+        z-index: 1000;
     }
 
     .dropdown.active .dropdown-content {
@@ -250,8 +282,11 @@ header {
     }
 
     .dropdown-content a {
-        padding: 12px 0;
+        padding: 12px 20px;
+        display: block;
+        text-align: center;
         border-bottom: 1px solid #e2e8f0;
+        box-sizing: border-box;
     }
 
     .dropdown-content a:last-child {
@@ -259,6 +294,18 @@ header {
     }
 
     .cta-button {
-        margin-top: 15px;
+        margin: 15px 20px;
+        width: calc(100% - 40px);
+        box-sizing: border-box;
+    }
+
+    body.menu-open {
+        overflow: hidden;
+    }
+    
+    /* Ensure sticky works on mobile */
+    header {
+        position: sticky;
+        top: 0;
     }
 }

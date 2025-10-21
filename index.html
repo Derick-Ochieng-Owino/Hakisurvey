@@ -24,19 +24,29 @@
         .nav-link.active { color: #1e40af; font-weight: 600; }
     </style>
     <link rel="stylesheet" href="navbar.css">
+    <link rel="stylesheet" href="loading.css">
 </head>
 <body class="antialiased text-gray-800 bg-gray-50">
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-logo">
+            <div class="loading-logo-icon">H</div>
+            <div class="loading-logo-text">
+                <span>Haki</span><span>Survey</span>
+            </div>
+        </div>
+        <div class="loading-spinner"></div>
+        <div class="loading-text">Loading...</div>
+        <div class="loading-progress">
+            <div class="loading-progress-bar" id="progressBar"></div>
+        </div>
+    </div>
     <!-- NAVBAR -->
-
-
     <header>
         <nav class="navbar">
             <!-- Logo -->
             <div class="logo">
             <div class="logo-icon">
-                <img src="logo.png" alt="Company Logo" style="width: 22px; height: 22px;">
-                <!-- Optional icon if image fails -->
-                <!-- <i class="fas fa-map-marked-alt"></i> -->
+                <img src="https://i.pinimg.com/736x/6d/2e/a8/6d2ea81769e1c4a4e9da4dedbc3db9f6.jpg" alt="Company Logo" style="width: 40px; height: 40px;">
             </div>
             <div class="logo-text">
                 <span>Haki</span><span>Survey</span>
@@ -53,14 +63,14 @@
             <a href="#" class="nav-link" data-page="services" onclick="showPage('services')">
             Services <i class="fas fa-chevron-down"></i>
             </a>
-            <div class="dropdown-content">
-            <a href="#land-property" class="nav-sub-link" data-section="land-property" onclick="showPage('services')">Land & Property Solutions</a>
-            <a href="surveying_service.html" class="nav-sub-link" data-section="surveying" onclick="showPage('services')">Surveying Specialties</a>
-            <a href="#aerial" class="nav-sub-link" data-section="aerial" onclick="showPage('services')">Aerial & Drone Surveying</a>
-            <a href="#engineering" class="nav-sub-link" data-section="engineering" onclick="showPage('services')">Engineering & Geospatial</a>
-            <a href="#consultancy" class="nav-sub-link" data-section="consultancy" onclick="showPage('services')">Consultancy & Environmental</a>
-            <a href="#technology" class="nav-sub-link" data-section="technology" onclick="showPage('services')">Technology & Innovation</a>
-            </div>
+            <ul class="dropdown-content">
+                <a href="#land-property" class="nav-sub-link" data-section="land-property" onclick="showPage('services')">Land & Property Solutions</a>
+                <a href="surveying_service.html" class="nav-sub-link" data-section="surveying" onclick="showPage('services')">Surveying Specialties</a>
+                <a href="#aerial" class="nav-sub-link" data-section="aerial" onclick="showPage('services')">Aerial & Drone Surveying</a>
+                <a href="#engineering" class="nav-sub-link" data-section="engineering" onclick="showPage('services')">Engineering & Geospatial</a>
+                <a href="#consultancy" class="nav-sub-link" data-section="consultancy" onclick="showPage('services')">Consultancy & Environmental</a>
+                <a href="#technology" class="nav-sub-link" data-section="technology" onclick="showPage('services')">Technology & Innovation</a>
+            </ul>
         </li>
 
         <li><a href="#" class="nav-link" data-page="projects" onclick="showPage('projects')">Projects</a></li>
@@ -80,14 +90,13 @@
         </nav>
     </header>
 
-
     <!-- HOME PAGE -->
     <div id="home" class="page active-page">
         <!-- HERO SECTION -->
         <section class="relative hero-media overflow-hidden">
             <!-- Background image with overlay -->
             <div class="absolute inset-0 w-full h-full">
-                <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1600&q=80" 
+                <img src="https://images.unsplash.com/photo-1682063631532-b865521538fa?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c3VydmV5aW5nJTIwcGhvdG9zfGVufDB8fDB8fHww&auto=format&fit=crop&q=60&w=400" 
                      alt="Drone aerial view" 
                      class="w-full h-full object-cover opacity-70">
                 <div class="absolute inset-0 hero-overlay"></div>
@@ -125,9 +134,13 @@
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                     <!-- Service Card -->
                     <div class="bg-white rounded-2xl p-6 shadow hover:shadow-lg transition" data-aos="fade-up" data-aos-delay="50">
-                        <div class="text-3xl w-12 h-12 rounded-md flex items-center justify-center bg-blue-50 text-blue-700 mb-4"><i class="fa-solid fa-map-location-dot"></i></div>
+                        <div class="w-12 h-12 rounded-md flex items-center justify-center mb-4 bg-gradient-to-br from-blue-100 to-blue-200 text-blue-700">
+                            <i class="fa-solid fa-map-location-dot text-2xl"></i>
+                        </div>
                         <h3 class="font-semibold">Cadastral & Boundary Surveys</h3>
-                        <p class="mt-2 text-sm text-gray-600">Legal property surveys for registration, subdivision & dispute resolution.</p>
+                        <p class="mt-2 text-sm text-gray-600">
+                            Legal property surveys for registration, subdivision & dispute resolution.
+                        </p>
                     </div>
 
                     <div class="bg-white rounded-2xl p-6 shadow hover:shadow-lg transition" data-aos="fade-up" data-aos-delay="100">
@@ -847,5 +860,6 @@
     </a>
 
     <script src="script.js"></script>
+    <script src="loading.js"></script>
 </body>
 </html>
