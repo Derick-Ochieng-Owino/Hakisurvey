@@ -1,24 +1,14 @@
-// ==========================
-// INIT AOS ANIMATIONS
-// ==========================
 AOS.init({
   duration: 800,
   once: true,
 });
 
-// ==========================
-// FOOTER YEAR
-// ==========================
 const yearEl = document.getElementById('year');
 if (yearEl) {
   yearEl.textContent = new Date().getFullYear();
 }
 
-// ==========================
-// PAGE NAVIGATION
-// ==========================
 function showPage(pageId) {
-  // Hide all pages and show the selected one
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active-page'));
   document.getElementById(pageId)?.classList.add('active-page');
 
@@ -40,9 +30,7 @@ function showPage(pageId) {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-// ==========================
-// MOBILE NAV TOGGLE
-// ==========================
+
 document.addEventListener('DOMContentLoaded', () => {
   const hamburger = document.querySelector('.hamburger');
   const navLinks = document.querySelector('.nav-links');

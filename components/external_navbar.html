@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HakiSurvey - Responsive Navbar</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles/navbar.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <!-- Logo -->
+            <div class="logo">
+            <div class="logo-icon">
+                <img src="https://i.pinimg.com/736x/6d/2e/a8/6d2ea81769e1c4a4e9da4dedbc3db9f6.jpg" alt="Company Logo" style="width: 40px; height: 40px;">
+            </div>
+            <div class="logo-text">
+                <span>Haki</span><span>Survey</span>
+            </div>
+            </div>
+
+            <ul class="nav-links" id="nav-links">
+        <li>
+            <a href="#" class="nav-link active" data-page="home" onclick="showPage('home')">Home</a>
+        </li>
+
+        <!-- Dropdown for Services -->
+        <!-- Dropdown for Services -->
+        <li class="dropdown">
+            <a href="surveying_service.html">
+                Services <i class="fas fa-chevron-down"></i>
+            </a>
+            <ul class="dropdown-content">
+                <a href="surveying_service.html#land-property" class="nav-sub-link">Land & Property Solutions</a>
+                <a href="surveying_service.html#surveying" class="nav-sub-link">Surveying Specialties</a>
+                <a href="surveying_service.html#aerial" class="nav-sub-link">Aerial & Drone Surveying</a>
+                <a href="surveying_service.html#engineering" class="nav-sub-link">Engineering & Geospatial</a>
+                <a href="surveying_service.html#consultancy" class="nav-sub-link">Consultancy & Environmental</a>
+                <a href="surveying_service.html#technology" class="nav-sub-link">Technology & Innovation</a>
+            </ul>
+        </li>
+
+        <li><a href="#" class="nav-link" data-page="projects" onclick="showPage('projects')">Projects</a></li>
+        <li><a href="#" class="nav-link" data-page="about" onclick="showPage('about')">About</a></li>
+        <li><a href="#" class="nav-link" data-page="resources" onclick="showPage('resources')">Resources</a></li>
+        <li><a href="#" class="nav-link" data-page="contact" onclick="showPage('contact')">Contact</a></li>
+        <li><button class="cta-button" onclick="showPage('contact')">Request Quote</button></li>
+        </ul>
+
+
+            <!-- Hamburger for Mobile -->
+            <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+            </div>
+        </nav>
+    </header>
+    <script>
+        async function loadComponent(id, file) {
+            const el = document.getElementById(id);
+            const response = await fetch(file);
+            const html = await response.text();
+            el.innerHTML = html;
+        }
+
+        loadComponent('navbar', 'external_navbar.html');
+        loadComponent('footer', 'external_footer.html');
+    </script>
+    <script src="scripts/script.js"></script>
+</body>
+</html>

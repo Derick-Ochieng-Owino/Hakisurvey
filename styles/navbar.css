@@ -7,9 +7,8 @@ body {
     padding: 0;
 }
 
-/* Ensure html also has no margin/padding */
 html {
-    scroll-padding-top: 80px; /* Prevents anchor links from being hidden behind sticky navbar */
+    scroll-padding-top: 80px;
 }
 
 .container {
@@ -18,18 +17,16 @@ html {
     margin: 0 auto;
 }
 
-/* Fixed sticky header */
 header {
     background: white;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     padding: 0;
-    margin-bottom: 30px;
+    margin-bottom: 0px;
     width: 100%;
     position: sticky;
-    top: 0; /* This is crucial for sticky positioning */
+    top: 0;
     z-index: 1000;
-    /* Remove any transforms that might interfere */
-    transform: translateZ(0); /* Hardware acceleration */
+    transform: translateZ(0);
 }
 
 .navbar {
