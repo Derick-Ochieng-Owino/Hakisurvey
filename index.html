@@ -23,23 +23,18 @@
         .active-page { display: block; }
         .nav-link.active { color: #1e40af; font-weight: 600; }
     </style>
-    <link rel="stylesheet" href="navbar.css">
-    <link rel="stylesheet" href="loading.css">
+    <link rel="stylesheet" href="styles/navbar.css">
+    <link rel="stylesheet" href="styles/loading.css">
 </head>
 <body class="antialiased text-gray-800 bg-gray-50">
-    <!-- <div class="loading-screen" id="loadingScreen">
+    <div class="loading-screen" id="loadingScreen">
         <div class="loading-logo">
-            <div class="loading-logo-icon">H</div>
-            <div class="loading-logo-text">
-                <span>Haki</span><span>Survey</span>
-            </div>
+            <div class="loading-circle"></div>
+            <img src="images/logo.png" alt="Company Logo">
         </div>
-        <div class="loading-spinner"></div>
-        <div class="loading-text">Loading...</div>
-        <div class="loading-progress">
-            <div class="loading-progress-bar" id="progressBar"></div>
-        </div>
-    </div> -->
+        <div class="loading-text">Loading, please wait...</div>
+    </div>
+
     <!-- NAVBAR -->
     <div id="external_navbar"></div>
 
@@ -270,7 +265,7 @@
                     <!-- Project 2 -->
                     <div class="bg-white rounded-xl overflow-hidden shadow-md card-hover" data-aos="fade-up" data-aos-delay="200">
                         <div class="h-48 bg-green-100 relative overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1597079913144-05d7f8b7ef43?auto=format&fit=crop&w=800&q=80" alt="Agricultural Mapping" class="w-full h-full object-cover">
+                            <img src="https://i.pinimg.com/736x/e3/7d/18/e37d180fe8d123459ab43a7ba5d2d3e9.jpg" alt="Agricultural Mapping" class="w-full h-full object-cover">
                             <div class="absolute top-4 left-4">
                                 <span class="px-3 py-1 bg-green-600 text-white text-xs font-medium rounded-full">Agriculture</span>
                             </div>
@@ -660,7 +655,7 @@
         }
 
         loadComponent('external_navbar', 'components/external_navbar.html');
-        loadComponent('external_footer', 'components/external_footerfooter.html');
+        loadComponent('external_footer', 'components/external_footer.html');
     </script>
     <!-- WhatsApp floating -->
     <a href="https://wa.me/254700123456?text=Hi%20HakiSurvey%2C%20I%20need%20a%20survey%20quote." target="_blank" class="fixed right-6 bottom-6 z-50 shadow-lg rounded-full bg-green-500 p-4 text-white" title="Chat on WhatsApp">
