@@ -67,14 +67,22 @@ class PageLoader {
 // =============================
 async function loadComponent(id, file) {
   const el = document.getElementById(id);
-  const response = await fetch(file);
-  const html = await response.text();
-  el.innerHTML = html;
+  if (!el) {
+    console.error(`❌ Element with id="${id}" not found in DOM`);
+    return;
+  }
 
-  // Initialize related JS after component loads
-  if (file.includes('navbar')) initNavbarScripts(el);
-  if (file.includes('footer')) initFooterScripts(el);
+  try {
+    const response = await fetch(file);
+    if (!response.ok) throw new Error(`Failed to fetch ${file} (${response.status})`);
+    const html = await response.text();
+    el.innerHTML = html;
+    console.log(`✅ Loaded ${file} into #${id}`);
+  } catch (err) {
+    console.error(`⚠️ Error loading ${file}:`, err);
+  }
 }
+
 
 function initNavbarScripts(parentEl) {
   const hamburger = parentEl.querySelector('.hamburger');

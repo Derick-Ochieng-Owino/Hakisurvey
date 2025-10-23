@@ -3,10 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title> About HakiSurvey Plots Ltd</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://unpkg.com/swiper@9/swiper-bundle.min.css" />
+    <script src="https://unpkg.com/swiper@9/swiper-bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 </head>
 <body>
-    <div class="navbar"></div>
+    <div id="navbar"></div>
 
     <!-- ABOUT PAGE -->
     <div id="about" class="page">
@@ -105,7 +109,21 @@
             </div>
         </section>
     </div>
-    
-    <div class="footer"></div>
+
+    <div id="footer"></div>
+    <!-- ✅ Place at the very end of the body -->
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('nav-links');
+        
+        if (hamburger) {
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            hamburger.classList.toggle('open');
+        });
+        }
+    });
+    </script>
 </body>
 </html>
