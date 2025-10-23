@@ -1,39 +1,250 @@
-<div id="navbar">
-  <div class="logo">
-    <div class="logo-icon">
-      <img src="https://i.pinimg.com/736x/6d/2e/a8/6d2ea81769e1c4a4e9da4dedbc3db9f6.jpg"
-      style="border-radius: 5cqb;"
-           alt="Company Logo" style="width: 40px; height: 40px;">
-    </div>
-    <div class="logo-text">
-      <span>Haki</span><span>Survey</span>
-    </div>
-  </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HakiSurvey</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1e40af',
+                        'primary-dark': '#1e3a8a',
+                        secondary: '#0f766e',
+                        accent: '#dc2626',
+                        light: '#f8fafc',
+                        dark: '#1e293b',
+                        gray: '#64748b',
+                        'gray-light': '#e2e8f0'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom styles for dropdown and animations */
+        .dropdown-content {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+        }
+        
+        .dropdown:hover .dropdown-content {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .mobile-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.5s ease;
+        }
+        
+        .mobile-menu.active {
+            max-height: 80vh;
+        }
+        
+        .hamburger span {
+            transition: all 0.3s ease;
+        }
+        
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+        
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-gray-50 to-blue-100 min-h-screen">
+    <!-- Navigation -->
+    <header class="bg-white shadow-lg sticky top-0 z-50 w-full">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <!-- Logo -->
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-gradient-to-br from-primary to-blue-500 rounded-full flex items-center justify-center">
+                        <img src="https://i.pinimg.com/736x/6d/2e/a8/6d2ea81769e1c4a4e9da4dedbc3db9f6.jpg" 
+                             alt="Company Logo" 
+                             class="w-8 h-8 rounded-[5cqb]">
+                    </div>
+                    <div class="text-xl font-bold text-dark">
+                        <span class="text-primary">Haki</span>
+                        <span class="text-amber-500">Survey</span>
+                    </div>
+                </div>
 
-  <ul class="nav-links" id="nav-links">
-    <li><a href="#" class="nav-link active" onclick="showPage('home')">Home</a></li>
-    <li class="dropdown">
-      <a href="surveying_service.html">Services <i class="fas fa-chevron-down"></i></a>
-      <ul class="dropdown-content">
-        <a href="surveying_service.html#land-property">Land & Property Solutions</a>
-        <a href="surveying_service.html#surveying">Surveying Specialties</a>
-        <a href="surveying_service.html#aerial">Aerial & Drone Surveying</a>
-        <a href="surveying_service.html#engineering">Engineering & Geospatial</a>
-        <a href="surveying_service.html#consultancy">Consultancy & Environmental</a>
-        <a href="surveying_service.html#technology">Technology & Innovation</a>
-      </ul>
-    </li>
-    <li><a href="projects.html">Projects</a></li>
-    <li><a href="about.html" >About</a></li>
-    <li><a href="resources.html" >Resources</a></li>
-    <li><a href="contact.html" >Contact</a></li>
-    <li><button class="cta-button" onclick="showPage('contact')">Request Quote</button></li>
-  </ul>
+                <!-- Desktop Navigation -->
+                <div class="hidden lg:flex items-center space-x-8">
+                    <a href="#" class="text-gray-600 hover:text-primary font-medium transition-colors duration-300 relative py-2 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all after:duration-300 hover:after:w-full">
+                        Home
+                    </a>
+                    
+                    <!-- Services Dropdown -->
+                    <div class="dropdown relative">
+                        <a href="surveying_service.html" class="text-gray-600 hover:text-primary font-medium transition-colors duration-300 flex items-center space-x-1 py-2">
+                            <span>Services</span>
+                            <i class="fas fa-chevron-down text-xs"></i>
+                        </a>
+                        <div class="dropdown-content absolute top-full left-0 bg-white min-w-[220px] shadow-xl rounded-lg py-2 z-50">
+                            <a href="surveying_service.html#land-property" class="block px-5 py-3 text-gray-600 hover:text-primary hover:bg-gray-50 transition-all duration-200 hover:pl-6">
+                                Land & Property Solutions
+                            </a>
+                            <a href="surveying_service.html#surveying" class="block px-5 py-3 text-gray-600 hover:text-primary hover:bg-gray-50 transition-all duration-200 hover:pl-6">
+                                Surveying Specialties
+                            </a>
+                            <a href="surveying_service.html#aerial" class="block px-5 py-3 text-gray-600 hover:text-primary hover:bg-gray-50 transition-all duration-200 hover:pl-6">
+                                Aerial & Drone Surveying
+                            </a>
+                            <a href="surveying_service.html#engineering" class="block px-5 py-3 text-gray-600 hover:text-primary hover:bg-gray-50 transition-all duration-200 hover:pl-6">
+                                Engineering & Geospatial
+                            </a>
+                            <a href="surveying_service.html#consultancy" class="block px-5 py-3 text-gray-600 hover:text-primary hover:bg-gray-50 transition-all duration-200 hover:pl-6">
+                                Consultancy & Environmental
+                            </a>
+                            <a href="surveying_service.html#technology" class="block px-5 py-3 text-gray-600 hover:text-primary hover:bg-gray-50 transition-all duration-200 hover:pl-6">
+                                Technology & Innovation
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <a href="projects.html" class="text-gray-600 hover:text-primary font-medium transition-colors duration-300 relative py-2 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all after:duration-300 hover:after:w-full">
+                        Projects
+                    </a>
+                    <a href="about.html" class="text-gray-600 hover:text-primary font-medium transition-colors duration-300 relative py-2 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all after:duration-300 hover:after:w-full">
+                        About
+                    </a>
+                    <a href="resources.html" class="text-gray-600 hover:text-primary font-medium transition-colors duration-300 relative py-2 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all after:duration-300 hover:after:w-full">
+                        Resources
+                    </a>
+                    <a href="contact.html" class="text-gray-600 hover:text-primary font-medium transition-colors duration-300 relative py-2 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all after:duration-300 hover:after:w-full">
+                        Contact
+                    </a>
+                    <button onclick="showPage('contact')" class="bg-gradient-to-r from-amber-500 to-amber-600 text-white px-6 py-2.5 rounded-lg font-semibold shadow-lg shadow-amber-500/30 hover:shadow-xl hover:shadow-amber-500/40 transition-all duration-300 hover:-translate-y-0.5">
+                        Request Quote
+                    </button>
+                </div>
 
-  <!-- Hamburger for Mobile -->
-  <div class="hamburger" id="hamburger">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-</div>
+                <!-- Mobile Hamburger -->
+                <div class="lg:hidden hamburger flex flex-col space-y-1 cursor-pointer">
+                    <span class="w-6 h-0.5 bg-dark rounded"></span>
+                    <span class="w-6 h-0.5 bg-dark rounded"></span>
+                    <span class="w-6 h-0.5 bg-dark rounded"></span>
+                </div>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div class="mobile-menu lg:hidden bg-white">
+                <div class="py-4 space-y-2 border-t border-gray-200">
+                    <a href="#" class="block py-3 px-4 text-gray-600 hover:text-primary hover:bg-gray-50 font-medium transition-colors duration-200 border-l-4 border-transparent hover:border-primary">
+                        Home
+                    </a>
+                    
+                    <!-- Mobile Services Dropdown -->
+                    <div class="mobile-dropdown">
+                        <a href="surveying_service.html" class="block py-3 px-4 text-gray-600 hover:text-primary hover:bg-gray-50 font-medium transition-colors duration-200 border-l-4 border-transparent hover:border-primary flex items-center justify-between">
+                            <span>Services</span>
+                            <i class="fas fa-chevron-down text-xs transition-transform duration-300"></i>
+                        </a>
+                        <div class="mobile-dropdown-content bg-gray-50 pl-8 overflow-hidden transition-all duration-400">
+                            <a href="surveying_service.html#land-property" class="block py-3 px-4 text-gray-600 hover:text-primary transition-colors duration-200 border-l-2 border-transparent hover:border-primary">
+                                Land & Property Solutions
+                            </a>
+                            <a href="surveying_service.html#surveying" class="block py-3 px-4 text-gray-600 hover:text-primary transition-colors duration-200 border-l-2 border-transparent hover:border-primary">
+                                Surveying Specialties
+                            </a>
+                            <a href="surveying_service.html#aerial" class="block py-3 px-4 text-gray-600 hover:text-primary transition-colors duration-200 border-l-2 border-transparent hover:border-primary">
+                                Aerial & Drone Surveying
+                            </a>
+                            <a href="surveying_service.html#engineering" class="block py-3 px-4 text-gray-600 hover:text-primary transition-colors duration-200 border-l-2 border-transparent hover:border-primary">
+                                Engineering & Geospatial
+                            </a>
+                            <a href="surveying_service.html#consultancy" class="block py-3 px-4 text-gray-600 hover:text-primary transition-colors duration-200 border-l-2 border-transparent hover:border-primary">
+                                Consultancy & Environmental
+                            </a>
+                            <a href="surveying_service.html#technology" class="block py-3 px-4 text-gray-600 hover:text-primary transition-colors duration-200 border-l-2 border-transparent hover:border-primary">
+                                Technology & Innovation
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <a href="projects.html" class="block py-3 px-4 text-gray-600 hover:text-primary hover:bg-gray-50 font-medium transition-colors duration-200 border-l-4 border-transparent hover:border-primary">
+                        Projects
+                    </a>
+                    <a href="about.html" class="block py-3 px-4 text-gray-600 hover:text-primary hover:bg-gray-50 font-medium transition-colors duration-200 border-l-4 border-transparent hover:border-primary">
+                        About
+                    </a>
+                    <a href="resources.html" class="block py-3 px-4 text-gray-600 hover:text-primary hover:bg-gray-50 font-medium transition-colors duration-200 border-l-4 border-transparent hover:border-primary">
+                        Resources
+                    </a>
+                    <a href="contact.html" class="block py-3 px-4 text-gray-600 hover:text-primary hover:bg-gray-50 font-medium transition-colors duration-200 border-l-4 border-transparent hover:border-primary">
+                        Contact
+                    </a>
+                    <button onclick="showPage('contact')" class="w-full text-left py-3 px-4 bg-gradient-to-r from-amber-500 to-amber-600 text-white font-semibold rounded-lg mt-4 shadow-lg shadow-amber-500/30 transition-all duration-300 hover:shadow-xl hover:shadow-amber-500/40">
+                        Request Quote
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <script>
+        // Mobile menu functionality
+        const hamburger = document.querySelector('.hamburger');
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const mobileDropdowns = document.querySelectorAll('.mobile-dropdown');
+
+        hamburger.addEventListener('click', function() {
+            this.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+            document.body.classList.toggle('menu-open');
+        });
+
+        // Mobile dropdown functionality
+        mobileDropdowns.forEach(dropdown => {
+            const trigger = dropdown.querySelector('a');
+            const content = dropdown.querySelector('.mobile-dropdown-content');
+            const icon = dropdown.querySelector('i');
+
+            trigger.addEventListener('click', function(e) {
+                e.preventDefault();
+                const isActive = content.style.maxHeight;
+                
+                // Close all other dropdowns
+                mobileDropdowns.forEach(otherDropdown => {
+                    if (otherDropdown !== dropdown) {
+                        const otherContent = otherDropdown.querySelector('.mobile-dropdown-content');
+                        const otherIcon = otherDropdown.querySelector('i');
+                        otherContent.style.maxHeight = null;
+                        otherIcon.style.transform = 'rotate(0deg)';
+                    }
+                });
+
+                // Toggle current dropdown
+                if (isActive) {
+                    content.style.maxHeight = null;
+                    icon.style.transform = 'rotate(0deg)';
+                } else {
+                    content.style.maxHeight = content.scrollHeight + 'px';
+                    icon.style.transform = 'rotate(180deg)';
+                }
+            });
+        });
+
+        function showPage(page) {
+            // Your page navigation logic here
+            console.log('Showing page:', page);
+        }
+    </script>
+</body>
+</html>
