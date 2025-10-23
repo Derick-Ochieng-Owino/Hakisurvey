@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="navbar"></div>
+
+    <!-- CONTACT PAGE -->
+    <div id="contact" class="page">
+        <section class="py-16 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12" data-aos="fade-up">
+                    <h1 class="text-3xl font-bold text-gray-800 mb-4">Contact Us</h1>
+                    <p class="text-gray-600 max-w-2xl mx-auto">Get in touch with our team to discuss your project requirements or request a quote.</p>
+                </div>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    <!-- Contact Form -->
+                    <div data-aos="fade-right">
+                        <h2 class="text-2xl font-bold text-gray-800 mb-6">Send us a Message</h2>
+                        <form class="space-y-6 bg-gray-50 p-8 rounded-xl">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Full Name *</label>
+                                    <input type="text" id="name" name="name" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                                </div>
+                                <div>
+                                    <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email Address *</label>
+                                    <input type="email" id="email" name="email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                                </div>
+                            </div>
+                            <div>
+                                <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">Phone Number</label>
+                                <input type="tel" id="phone" name="phone" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                            </div>
+                            <div>
+                                <label for="service" class="block text-sm font-medium text-gray-700 mb-2">Service Interest</label>
+                                <select id="service" name="service" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                                    <option value="">Select a service</option>
+                                    <option value="land-property">Land & Property Solutions</option>
+                                    <option value="surveying">Surveying Specialties</option>
+                                    <option value="aerial">Aerial & Drone Surveying</option>
+                                    <option value="engineering">Engineering & Geospatial Services</option>
+                                    <option value="consultancy">Consultancy & Environmental</option>
+                                    <option value="technology">Technology & Innovation</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="message" class="block text-sm font-medium text-gray-700 mb-2">Project Details / Message *</label>
+                                <textarea id="message" name="message" rows="5" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"></textarea>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <label for="attachment" class="block text-sm font-medium text-gray-700 mb-2">Attach Files (Optional)</label>
+                                    <input type="file" id="attachment" name="attachment" class="text-sm text-gray-500">
+                                </div>
+                                <button type="submit" id="quote" class="px-6 py-3 bg-blue-700 text-white font-medium rounded-lg hover:bg-blue-800 transition-colors">Send Message</button>
+                            </div>
+                            <p id="form-status" class="text-sm text-green-600 hidden mt-2">Thank you! Your message has been sent successfully.</p>
+                        </form>
+                    </div>
+                    
+                    <!-- Contact Information -->
+                    <div data-aos="fade-left">
+                        <h2 class="text-2xl font-bold text-gray-800 mb-6">Get in Touch</h2>
+                        <div class="bg-gray-50 rounded-xl p-8 mb-8">
+                            <h3 class="text-xl font-semibold text-gray-800 mb-4">Office Information</h3>
+                            <div class="space-y-4">
+                                <div class="flex items-start">
+                                    <i class="fas fa-map-marker-alt text-blue-600 mt-1 mr-4"></i>
+                                    <div>
+                                        <p class="font-medium text-gray-800">Nairobi Office</p>
+                                        <p class="text-gray-600">Survey Plaza, Westlands<br>Nairobi, Kenya</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center">
+                                    <i class="fas fa-phone text-blue-600 mr-4"></i>
+                                    <div>
+                                        <p class="font-medium text-gray-800">+254 700 123 456</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center">
+                                    <i class="fas fa-envelope text-blue-600 mr-4"></i>
+                                    <div>
+                                        <p class="font-medium text-gray-800">info@hakisurvey.co.ke</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <i class="fas fa-clock text-blue-600 mt-1 mr-4"></i>
+                                    <div>
+                                        <p class="font-medium text-gray-800">Business Hours</p>
+                                        <p class="text-gray-600">Monday - Friday: 8:00 AM - 5:00 PM<br>Saturday: 9:00 AM - 1:00 PM</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gray-50 rounded-xl p-8">
+                            <h3 class="text-xl font-semibold text-gray-800 mb-4">Regional Offices</h3>
+                            <div class="space-y-6">
+                                <div>
+                                    <p class="font-medium text-gray-800 mb-2">Mombasa Branch</p>
+                                    <p class="text-gray-600 text-sm">Nyali Center, Mombasa Road<br>+254 700 234 567</p>
+                                </div>
+                                <div>
+                                    <p class="font-medium text-gray-800 mb-2">Kisumu Branch</p>
+                                    <p class="text-gray-600 text-sm">Lakeview Plaza, Oginga Odinga Street<br>+254 700 345 678</p>
+                                </div>
+                                <div>
+                                    <p class="font-medium text-gray-800 mb-2">Nakuru Branch</p>
+                                    <p class="text-gray-600 text-sm">Menengai Complex, Kenyatta Avenue<br>+254 700 456 789</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <div class="footer"></div>
+</body>
+</html>

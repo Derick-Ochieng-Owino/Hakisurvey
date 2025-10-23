@@ -42,7 +42,7 @@ class PageLoader {
     this.showLoader();
     setTimeout(() => {
       this.hideLoader();
-      // window.location.href = url; // Enable for real navigation
+      window.location.href = url; // Enable for real navigation
     }, 1200);
   }
 
