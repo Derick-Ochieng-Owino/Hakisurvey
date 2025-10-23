@@ -15,7 +15,7 @@
 </head>
 <body>
     <!-- Header -->
-    <div id="external_navbar"></div>
+    <div id="navbar"></div>
 
     <!-- Services Page -->
     <div id="services" class="page active-page">
@@ -264,9 +264,8 @@
     </div>
 
     <!-- Footer -->
-    <div id="external_footer"></div>
+    <div id="footer"></div>
 
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         // Initialize AOS animations
         AOS.init({
@@ -374,8 +373,8 @@
   }
 
   // ✅ Load navbar and footer from the components folder
-  loadComponent('external_navbar', 'components/external_navbar.html');
-  loadComponent('external_footer', 'components/external_footer.html');
+  loadComponent('navbar', 'components/external_navbar.html');
+  loadComponent('footer', 'components/external_footer.html');
 </script>
 
 </body>
