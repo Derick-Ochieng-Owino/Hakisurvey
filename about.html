@@ -8,12 +8,13 @@
     <link rel="stylesheet" href="https://unpkg.com/swiper@9/swiper-bundle.min.css" />
     <script src="https://unpkg.com/swiper@9/swiper-bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+    <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
     <div id="navbar"></div>
 
     <!-- ABOUT PAGE -->
-    <div id="about" class="page">
+    <div id="about" class="page active-page">
         <section class="py-16 bg-white">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-12" data-aos="fade-up">
@@ -111,19 +112,21 @@
     </div>
 
     <div id="footer"></div>
-    <!-- ✅ Place at the very end of the body -->
     <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const hamburger = document.getElementById('hamburger');
-        const navLinks = document.getElementById('nav-links');
-        
-        if (hamburger) {
-        hamburger.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            hamburger.classList.toggle('open');
-        });
+        async function loadComponent(id, filePath) {
+            const el = document.getElementById(id);
+            try {
+            const response = await fetch(filePath);
+            if (!response.ok) throw new Error(`Failed to load ${filePath}`);
+            const html = await response.text();
+            el.innerHTML = html;
+            } catch (error) {
+            console.error(error);
+            }
         }
-    });
+
+        loadComponent('navbar', 'components/external_navbar.html');
+        loadComponent('footer', 'components/external_footer.html');
     </script>
 </body>
 </html>

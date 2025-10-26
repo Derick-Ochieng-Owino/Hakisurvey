@@ -8,11 +8,12 @@
     <link rel="stylesheet" href="https://unpkg.com/swiper@9/swiper-bundle.min.css" />
     <script src="https://unpkg.com/swiper@9/swiper-bundle.min.js"></script>
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+   <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
-    <div class="navbar"></div>
+    <div id="navbar"></div>
 
-    <div id="projects" class="page">
+    <div id="projects" class="page active-page">
         <section class="py-16 bg-gradient-to-b from-white to-gray-50">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-12" data-aos="fade-up">
@@ -104,15 +105,40 @@
 
     <div id="footer"></div>
     <script>
-        async function loadComponent(id, file) {
-            const el = document.getElementById(id);
-            const response = await fetch(file);
-            const html = await response.text();
-            el.innerHTML = html;
+      // Function to load external components
+      async function loadComponent(id, filePath) {
+        const element = document.getElementById(id);
+        try {
+          const response = await fetch(filePath);
+          if (!response.ok) throw new Error(`Failed to load ${filePath}`);
+          const html = await response.text();
+          element.innerHTML = html;
+          console.log(`✅ Loaded ${filePath} into #${id}`);
+        } catch (error) {
+          console.error(`❌ Error loading ${filePath}:`, error);
+          // Fallback content if external files fail to load
+          if (id === 'navbar') {
+            element.innerHTML = `
+              <div class="bg-white shadow-lg p-4 text-center">
+                <h1 class="text-xl font-bold text-blue-600">HakiSurvey Plots Ltd</h1>
+                <p class="text-gray-600">Navigation failed to load</p>
+              </div>
+            `;
+          } else if (id === 'footer') {
+            element.innerHTML = `
+              <footer class="bg-gray-800 text-white p-8 text-center">
+                <p>&copy; ${new Date().getFullYear()} HakiSurvey Plots Ltd. All rights reserved.</p>
+              </footer>
+            `;
+          }
         }
+      }
 
-        loadComponent('navbar', 'external_navbar.html');
-        loadComponent('footer', 'external_footer.html');
+      // Load components when page loads
+      document.addEventListener('DOMContentLoaded', function() {
+        loadComponent('navbar', 'components/external_navbar.html');
+        loadComponent('footer', 'components/external_footer.html');
+      });
     </script>
 </body>
 </html>

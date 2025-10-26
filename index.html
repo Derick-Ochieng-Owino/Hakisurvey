@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HakiSurvey Plots Ltd</title>
+    <link rel="stylesheet" href="styles/loading.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://unpkg.com/swiper@9/swiper-bundle.min.css" />
     <script src="https://unpkg.com/swiper@9/swiper-bundle.min.js"></script>
@@ -229,11 +230,16 @@
     
     <div id="footer"></div>
     <script>
-        async function loadComponent(id, file) {
+        async function loadComponent(id, filePath) {
             const el = document.getElementById(id);
-            const response = await fetch(file);
+            try {
+            const response = await fetch(filePath);
+            if (!response.ok) throw new Error(`Failed to load ${filePath}`);
             const html = await response.text();
             el.innerHTML = html;
+            } catch (error) {
+            console.error(error);
+            }
         }
 
         loadComponent('navbar', 'components/external_navbar.html');
@@ -245,5 +251,6 @@
     </a>
 
     <script src="scripts/script.js"></script>
+    <script src="scripts/loading.js"></script>
 </body>
 </html>
