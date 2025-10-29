@@ -24,6 +24,7 @@
 ================================= */
 html {
   scroll-padding-top: 80px;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -49,16 +50,15 @@ main {
 }
 
 /* ===============================
-   NAVBAR
+   STICKY NAVBAR - FIXED VERSION
 ================================= */
-header {
+#navbar {
+  position: sticky;
+  top: 0;
   background: white;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   width: 100%;
-  position: sticky;
-  top: 0;
   z-index: 1000;
-  transform: translateZ(0);
 }
 
 .navbar {
@@ -71,7 +71,7 @@ header {
   width: 100%;
 }
 
-/* Logo */
+/* Rest of your existing navbar styles... */
 .logo {
   display: flex;
   align-items: center;
@@ -105,7 +105,6 @@ header {
   color: #f59e0b;
 }
 
-/* Nav links */
 .nav-links {
   display: flex;
   gap: 30px;
@@ -147,7 +146,6 @@ header {
   font-weight: 600;
 }
 
-/* Dropdown */
 .dropdown {
   position: relative;
 }
@@ -188,7 +186,6 @@ header {
   padding-left: 25px;
 }
 
-/* Call-to-action button */
 .cta-button {
   background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
   color: white;
@@ -287,9 +284,10 @@ header {
 }
 
 /* ===============================
-   RESPONSIVE STYLES
+   TABLET STYLES (max-width: 968px)
 ================================= */
-@media (max-width: 968px) {
+@media only screen and (max-width: 968px) {
+  /* Navigation */
   .hamburger {
     display: flex;
   }
@@ -329,6 +327,7 @@ header {
     border-bottom: 1px solid var(--gray-light);
   }
 
+  /* Dropdown */
   .dropdown-content {
     position: static !important;
     background: var(--light);
@@ -347,6 +346,7 @@ header {
     max-height: 300px;
   }
 
+  /* Services Layout */
   .services-layout {
     grid-template-columns: 1fr;
   }
@@ -365,7 +365,11 @@ header {
   }
 }
 
-@media (max-width: 768px) {
+/* ===============================
+   MOBILE STYLES (max-width: 768px)
+================================= */
+@media only screen and (max-width: 768px) {
+  /* Typography */
   .section-header h1,
   .cta-section h2 {
     font-size: 30px;
@@ -373,5 +377,40 @@ header {
 
   .service-title {
     font-size: 22px;
+  }
+
+  /* Buttons */
+  .cta-button {
+    padding: 4px 10px;
+  }
+
+  /* Layout */
+  .navbar {
+    padding: 12px 15px;
+  }
+
+  .logo-text {
+    font-size: 18px;
+  }
+
+  /* CTA Section */
+  .cta-section {
+    padding: 40px 0;
+  }
+
+  .cta-section p {
+    font-size: 16px;
+    padding: 0 15px;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    width: 100%;
+    max-width: 280px;
   }
 }

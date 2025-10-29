@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Engineering & Geospatial Services | HakiSurvey Plots Ltd</title>
+    <meta name="description" content="Professional engineering surveying and geospatial solutions in Kenya including BIM integration, highway surveys, volumetric calculations, and spatial data management.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/style.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+        .service-card {
+            transition: all 0.3s ease;
+            border-left: 4px solid transparent;
+        }
+        .service-card:hover {
+            transform: translateY(-5px);
+            border-left-color: #3b82f6;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+    </style>
+</head>
+<div id="navbar"></div>
+<body class="gradient-bg min-h-screen">
+    <!-- Hero Section -->
+    <section class="relative py-16 lg:py-24 bg-gradient-to-r from-blue-800 to-blue-600 text-white">
+        <div class="absolute inset-0 bg-black opacity-40"></div>
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">Engineering & Geospatial Services</h1>
+            <p class="text-xl md:text-2xl max-w-3xl mx-auto mb-8">
+                Advanced engineering surveying and spatial data solutions for infrastructure development and smart city planning
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <button class="bg-amber-500 hover:bg-amber-600 text-white px-8 py-3 rounded-lg font-semibold text-lg transition duration-300">
+                    <i class="fas fa-phone mr-2"></i>Consult Our Engineers
+                </button>
+                <button class="bg-transparent border-2 border-white hover:bg-white hover:text-blue-800 text-white px-8 py-3 rounded-lg font-semibold text-lg transition duration-300">
+                    <i class="fas fa-calendar-alt mr-2"></i>Schedule Assessment
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Grid -->
+    <section class="py-16 lg:py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Comprehensive Engineering Solutions</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    Integrated engineering and geospatial services leveraging cutting-edge technology for infrastructure development and spatial intelligence
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Highway Surveys -->
+                <div class="service-card bg-white rounded-xl p-6 shadow-md">
+                    <div class="w-14 h-14 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-road text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Highway Surveys</h3>
+                    <p class="text-gray-600 mb-4">
+                        Comprehensive route alignment, corridor mapping, and planning surveys for road construction, expansion, and transportation infrastructure projects.
+                    </p>
+                    <ul class="text-gray-600 space-y-2">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <span>Route optimization and alignment</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <span>Corridor mapping and planning</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <span>Right-of-way determination</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <span>Intersection design surveys</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- As-Built Surveys -->
+                <div class="service-card bg-white rounded-xl p-6 shadow-md">
+                    <div class="w-14 h-14 bg-green-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-check-double text-green-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">As-Built Surveys</h3>
+                    <p class="text-gray-600 mb-4">
+                        Verification of constructed works against original design specifications to ensure compliance, quality control, and accurate documentation.
+                    </p>
+                    <ul class="text-gray-600 space-y-2">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <span>Construction compliance verification</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <span>Quality assurance documentation</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <span>Facility management preparation</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <span>Design deviation analysis</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Volumetric Surveys -->
+                <div class="service-card bg-white rounded-xl p-6 shadow-md">
+                    <div class="w-14 h-14 bg-amber-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-cube text-amber-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Volumetric Surveys</h3>
+                    <p class="text-gray-600 mb-4">
+                        3D modeling and precise material quantity calculations for earthworks, stockpile management, and construction progress tracking.
+                    </p>
+                    <ul class="text-gray-600 space-y-2">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <span>Cut and fill calculations</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <span>Stockpile volume measurements</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <span>Earthwork progress tracking</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <span>Material quantity verification</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- BIM & Digital Twins -->
+                <div class="service-card bg-white rounded-xl p-6 shadow-md">
+                    <div class="w-14 h-14 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-project-diagram text-purple-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">BIM & Digital Twins</h3>
+                    <p class="text-gray-600 mb-4">
+                        Integration of precise survey data with Building Information Modeling workflows to create intelligent digital representations of physical assets.
+                    </p>
+                    <ul class="text-gray-600 space-y-2">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <span>BIM model creation and validation</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <span>Digital twin development</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <span>Clash detection and coordination</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <span>4D/5D BIM implementation</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Indoor Mapping -->
+                <div class="service-card bg-white rounded-xl p-6 shadow-md">
+                    <div class="w-14 h-14 bg-indigo-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-building text-indigo-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Indoor Mapping</h3>
+                    <p class="text-gray-600 mb-4">
+                        Detailed mapping of complex indoor spaces, large facilities, and architectural interiors for navigation, planning, and facility management.
+                    </p>
+                    <ul class="text-gray-600 space-y-2">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <span>Facility floor plan creation</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <span>Indoor navigation systems</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <span>Space utilization analysis</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <span>Asset location mapping</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Site Engineering -->
+                <div class="service-card bg-white rounded-xl p-6 shadow-md">
+                    <div class="w-14 h-14 bg-red-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-hard-hat text-red-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Site Engineering</h3>
+                    <p class="text-gray-600 mb-4">
+                        Precise construction setting out, deformation monitoring, and engineering control for building and infrastructure projects.
+                    </p>
+                    <ul class="text-gray-600 space-y-2">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <span>Construction layout and setting out</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <span>Deformation monitoring</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <span>Structural alignment checks</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <span>Grade and elevation control</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Mapping & GIS Services -->
+                <div class="service-card bg-white rounded-xl p-6 shadow-md">
+                    <div class="w-14 h-14 bg-cyan-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-map-marked-alt text-cyan-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Mapping & GIS Services</h3>
+                    <p class="text-gray-600 mb-4">
+                        Advanced spatial analysis, data integration, and mapping solutions for informed decision-making and resource management.
+                    </p>
+                    <ul class="text-gray-600 space-y-2">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <span>Spatial data analysis</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <span>Thematic mapping</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <span>Geodatabase development</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <span>Web GIS applications</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Land Data Analysis & Spatial Data Management -->
+                <div class="service-card bg-white rounded-xl p-6 shadow-md">
+                    <div class="w-14 h-14 bg-emerald-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-database text-emerald-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Land Data Analysis & Spatial Data Management</h3>
+                    <p class="text-gray-600 mb-4">
+                        Comprehensive spatial data management, analysis, and visualization for government agencies, developers, and land management organizations.
+                    </p>
+                    <ul class="text-gray-600 space-y-2">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <span>Spatial database management</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <span>Land use planning analysis</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <span>Data integration and ETL processes</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <span>Spatial decision support systems</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technology Section -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Advanced Engineering Technology</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    Cutting-edge tools and methodologies for precision engineering and geospatial intelligence
+                </p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="text-center p-6">
+                    <i class="fas fa-satellite-dish text-4xl text-blue-600 mb-4"></i>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">GNSS & RTK Systems</h3>
+                    <p class="text-gray-600">High-precision positioning with centimeter-level accuracy for engineering control.</p>
+                </div>
+                <div class="text-center p-6">
+                    <i class="fas fa-robot text-4xl text-blue-600 mb-4"></i>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Robotic Total Stations</h3>
+                    <p class="text-gray-600">Automated surveying instruments for precise angle and distance measurements.</p>
+                </div>
+                <div class="text-center p-6">
+                    <i class="fas fa-laptop-code text-4xl text-blue-600 mb-4"></i>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">BIM Software</h3>
+                    <p class="text-gray-600">Advanced Building Information Modeling platforms for digital construction.</p>
+                </div>
+                <div class="text-center p-6">
+                    <i class="fas fa-cloud text-4xl text-blue-600 mb-4"></i>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Cloud GIS Platforms</h3>
+                    <p class="text-gray-600">Enterprise spatial data management and analysis in cloud environments.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Applications Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Industry Applications</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    Our engineering and geospatial services support diverse sectors with precision and innovation
+                </p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                    <i class="fas fa-bridge text-3xl text-blue-600 mb-4"></i>
+                    <h3 class="text-lg font-bold text-gray-800 mb-2">Civil Engineering</h3>
+                    <p class="text-gray-600 text-sm">Infrastructure design and construction</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                    <i class="fas fa-city text-3xl text-blue-600 mb-4"></i>
+                    <h3 class="text-lg font-bold text-gray-800 mb-2">Urban Planning</h3>
+                    <p class="text-gray-600 text-sm">Smart city development</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                    <i class="fas fa-industry text-3xl text-blue-600 mb-4"></i>
+                    <h3 class="text-lg font-bold text-gray-800 mb-2">Construction</h3>
+                    <p class="text-gray-600 text-sm">Building and development projects</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                    <i class="fas fa-gem text-3xl text-blue-600 mb-4"></i>
+                    <h3 class="text-lg font-bold text-gray-800 mb-2">Government</h3>
+                    <p class="text-gray-600 text-sm">Public works and land administration</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 bg-blue-700 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to Engineer Your Vision?</h2>
+            <p class="text-xl mb-8 max-w-3xl mx-auto">
+                Partner with our engineering and geospatial experts to transform your infrastructure projects with precision data and innovative solutions.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <button class="bg-amber-500 hover:bg-amber-600 text-white px-8 py-3 rounded-lg font-semibold text-lg transition duration-300">
+                    <i class="fas fa-phone mr-2"></i>Call +254 700 123 456
+                </button>
+                <button class="bg-transparent border-2 border-white hover:bg-white hover:text-blue-800 text-white px-8 py-3 rounded-lg font-semibold text-lg transition duration-300">
+                    <i class="fas fa-envelope mr-2"></i>Request Engineering Quote
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <div id="footer"></div>
+    <script>
+        async function loadComponent(id, filePath) {
+            const el = document.getElementById(id);
+            try {
+            const response = await fetch(filePath);
+            if (!response.ok) throw new Error(`Failed to load ${filePath}`);
+            const html = await response.text();
+            el.innerHTML = html;
+            } catch (error) {
+            console.error(error);
+            }
+        }
+
+        loadComponent('navbar', 'components/external_navbar.html');
+        loadComponent('footer', 'components/external_footer.html');
+    </script>
+    <script src="scripts/script.js"></script>
+</body>
+</html>

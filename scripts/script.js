@@ -1,14 +1,6 @@
-// ========================================
-// 🌐 COMPONENT HANDLER (NO LOADING SCREEN)
-// ========================================
-
-// =============================
-// 🧩 DYNAMIC COMPONENT LOADER
-// =============================
 async function loadComponent(id, file) {
     const el = document.getElementById(id);
     if (!el) {
-        console.error(`❌ Element with id="${id}" not found in DOM`);
         return;
     }
 
@@ -17,16 +9,13 @@ async function loadComponent(id, file) {
         if (!response.ok) throw new Error(`Failed to fetch ${file} (${response.status})`);
         const html = await response.text();
         el.innerHTML = html;
-        console.log(`✅ Loaded ${file} into #${id}`);
         
-        // Initialize component-specific scripts
         if (id === 'navbar') {
             initNavbarScripts(el);
         } else if (id === 'footer') {
             initFooterScripts(el);
         }
     } catch (err) {
-        console.error(`⚠️ Error loading ${file}:`, err);
         loadFallbackComponent(id);
     }
 }
@@ -105,8 +94,9 @@ function initNavbarScripts(parentEl) {
             navLinks.classList.toggle('active');
             document.body.classList.toggle('menu-open', navLinks.classList.contains('active'));
         });
-        console.log('✅ Navbar loaded and functional');
     }
+
+    setActiveNavLink();
 
     const navLinksAll = parentEl.querySelectorAll('.nav-link');
     navLinksAll.forEach(link => {
@@ -123,12 +113,8 @@ function initNavbarScripts(parentEl) {
 function initFooterScripts(parentEl) {
     const yearEl = parentEl.querySelector('#year');
     if (yearEl) yearEl.textContent = new Date().getFullYear();
-    console.log('✅ Footer loaded and functional');
 }
 
-// =============================
-// ✨ PAGE INTERACTIONS & EFFECTS
-// =============================
 function initPageInteractions() {
     if (typeof AOS !== 'undefined') {
         AOS.init({ duration: 800, once: true });
@@ -243,9 +229,6 @@ function initPageInteractions() {
     });
 }
 
-// =============================
-// 🚀 INITIALIZE EVERYTHING
-// =============================
 document.addEventListener('DOMContentLoaded', () => {
     loadComponent('navbar', 'components/external_navbar.html');
     loadComponent('footer', 'components/external_footer.html');
@@ -258,7 +241,26 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// Export functions for global access
+function setActiveNavLink() {
+    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    const navLinks = document.querySelectorAll('.nav-links a');
+    
+    navLinks.forEach(link => {
+        link.classList.remove('active');
+        const linkHref = link.getAttribute('href');
+        
+        // Main page match
+        if (linkHref === currentPage) {
+            link.classList.add('active');
+        }
+        
+        // Services page special handling
+        if (currentPage === 'services.html' && linkHref === 'services.html') {
+            link.classList.add('active');
+        }
+    });
+}
+
 window.loadComponent = loadComponent;
 window.showPage = showPage;
 window.showService = showService;
