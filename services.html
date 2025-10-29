@@ -7,11 +7,16 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
     <link rel="stylesheet" href="styles/style.css">
-    <style>
-        
-    </style>
+    <link rel="stylesheet" href="styles/loading.css">
 </head>
 <body>
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-logo">
+            <div class="loading-circle"></div>
+            <img src="https://i.pinimg.com/736x/6d/2e/a8/6d2ea81769e1c4a4e9da4dedbc3db9f6.jpg" alt="Loading" style="border-radius: 50%;">
+        </div>
+        <div class="loading-text">Loading, please wait...</div>
+    </div>
     <!-- Header -->
     <div id="navbar"></div>
 
@@ -282,6 +287,7 @@
     <!-- Footer -->
     <div id="footer"></div>
 
+    <script src="loading.js"></script>
     <script>
         // Load external components
         async function loadComponent(id, filePath) {
