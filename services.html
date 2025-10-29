@@ -3,21 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HakiSurvey Plots Ltd | Professional Surveying Services in Kenya</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Surveying Services in Kenya | Cadastral, Topographical & Drone Mapping</title>
+    <meta name="description" content="Comprehensive surveying services in Kenya including land verification, property mapping, aerial surveys, and engineering solutions. Serving Nairobi, Mombasa, Kisumu.">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
     <link rel="stylesheet" href="styles/style.css">
-    <link rel="stylesheet" href="styles/loading.css">
+    <link rel="stylesheet" href="styles/services.css">
+    <style>
+        
+    </style>
 </head>
 <body>
-    <div class="loading-screen" id="loadingScreen">
-        <div class="loading-logo">
-            <div class="loading-circle"></div>
-            <img src="https://i.pinimg.com/736x/6d/2e/a8/6d2ea81769e1c4a4e9da4dedbc3db9f6.jpg" alt="Loading" style="border-radius: 50%;">
-        </div>
-        <div class="loading-text">Loading, please wait...</div>
-    </div>
-    <!-- Header -->
     <div id="navbar"></div>
 
     <!-- Services Page -->
@@ -284,164 +279,23 @@
         </section>
     </div>
 
-    <!-- Footer -->
     <div id="footer"></div>
-
-    <script src="loading.js"></script>
+    <script src="scripts/script.js"></script>
     <script>
-        // Load external components
         async function loadComponent(id, filePath) {
-            const element = document.getElementById(id);
+            const el = document.getElementById(id);
             try {
-                const response = await fetch(filePath);
-                if (!response.ok) throw new Error(`Failed to load ${filePath}`);
-                const html = await response.text();
-                element.innerHTML = html;
-                
-                // Initialize any component-specific functionality after loading
-                if (id === 'navbar') {
-                    initializeNavbar();
-                }
+            const response = await fetch(filePath);
+            if (!response.ok) throw new Error(`Failed to load ${filePath}`);
+            const html = await response.text();
+            el.innerHTML = html;
             } catch (error) {
-                console.error(error);
-                // Fallback content if external file fails to load
-                if (id === 'navbar') {
-                    element.innerHTML = `
-                        <header class="header">
-                            <div class="container">
-                                <div class="header-content">
-                                    <div class="logo">HakiSurvey Plots Ltd</div>
-                                    <nav class="nav-links" id="nav-links">
-                                        <a href="#" class="active">Home</a>
-                                        <a href="#services">Services</a>
-                                        <a href="#about">About</a>
-                                        <a href="#projects">Projects</a>
-                                        <a href="#contact">Contact</a>
-                                    </nav>
-                                    <div class="hamburger" id="hamburger">
-                                        <span></span>
-                                        <span></span>
-                                        <span></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </header>
-                    `;
-                    initializeNavbar();
-                } else if (id === 'footer') {
-                    element.innerHTML = `
-                        <footer class="footer">
-                            <div class="container">
-                                <div class="footer-content">
-                                    <div class="footer-column">
-                                        <h3>HakiSurvey Plots Ltd</h3>
-                                        <p>Professional surveying services across Kenya with precision, reliability, and expertise.</p>
-                                    </div>
-                                    <div class="footer-column">
-                                        <h3>Quick Links</h3>
-                                        <ul>
-                                            <li><a href="#">Home</a></li>
-                                            <li><a href="#services">Services</a></li>
-                                            <li><a href="#about">About Us</a></li>
-                                            <li><a href="#contact">Contact</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="footer-column">
-                                        <h3>Contact Info</h3>
-                                        <ul>
-                                            <li><i class="fas fa-map-marker-alt"></i> Nairobi, Kenya</li>
-                                            <li><i class="fas fa-phone"></i> +254 700 000 000</li>
-                                            <li><i class="fas fa-envelope"></i> info@hakisurvey.co.ke</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="footer-bottom">
-                                    <p>&copy; <span id="year"></span> HakiSurvey Plots Ltd. All rights reserved.</p>
-                                </div>
-                            </div>
-                        </footer>
-                    `;
-                    document.getElementById('year').textContent = new Date().getFullYear();
-                }
+            console.error(error);
             }
         }
 
-        // Initialize navbar functionality
-        function initializeNavbar() {
-            const hamburger = document.getElementById('hamburger');
-            const navLinks = document.getElementById('nav-links');
-            
-            if (hamburger && navLinks) {
-                hamburger.addEventListener('click', () => {
-                    navLinks.classList.toggle('active');
-                    hamburger.classList.toggle('active');
-                });
-            }
-        }
-
-        // Service filtering function
-        function showService(serviceId) {
-            // Hide all service sections on desktop
-            if (window.innerWidth > 968) {
-                document.querySelectorAll('.service-section').forEach(section => {
-                    section.classList.remove('active');
-                });
-                
-                // Show the selected service section
-                document.getElementById(serviceId).classList.add('active');
-                
-                // Update sidebar active state
-                document.querySelectorAll('.services-nav a').forEach(link => {
-                    link.classList.remove('active');
-                });
-                
-                // Find and activate the corresponding sidebar link
-                const activeLink = Array.from(document.querySelectorAll('.services-nav a'))
-                    .find(link => link.getAttribute('href') === `#${serviceId}`);
-                if (activeLink) activeLink.classList.add('active');
-                
-                // Hide all service images
-                document.querySelectorAll('.service-image').forEach(img => {
-                    img.classList.remove('active');
-                });
-                
-                // Show the image corresponding to the selected service
-                const serviceImage = document.getElementById(`${serviceId}-img`);
-                if (serviceImage) serviceImage.classList.add('active');
-            }
-        }
-
-        // Initialize the page
-        document.addEventListener('DOMContentLoaded', () => {
-            // Load external components
-            loadComponent('navbar', 'components/external_navbar.html');
-            loadComponent('footer', 'components/external_footer.html');
-            
-            // Set current year in footer
-            document.getElementById('year').textContent = new Date().getFullYear();
-            
-            // Initialize the first service active on desktop
-            if (window.innerWidth > 968) {
-                showService('land-property');
-            }
-        });
-
-        // Handle window resize
-        window.addEventListener('resize', function() {
-            if (window.innerWidth <= 968) {
-                // On mobile, show all services
-                document.querySelectorAll('.service-section').forEach(section => {
-                    section.style.display = 'block';
-                });
-            } else {
-                // On desktop, show only active service
-                document.querySelectorAll('.service-section').forEach(section => {
-                    if (!section.classList.contains('active')) {
-                        section.style.display = 'none';
-                    }
-                });
-            }
-        });
+        loadComponent('navbar', 'components/external_navbar.html');
+        loadComponent('footer', 'components/external_footer.html');
     </script>
 </body>
 </html>

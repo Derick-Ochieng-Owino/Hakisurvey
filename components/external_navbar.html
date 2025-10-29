@@ -43,74 +43,19 @@
         </div>
     </nav>
 </header>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // === Mobile Menu Toggle ===
-            const hamburger = document.querySelector('.hamburger');
-            const mobileMenu = document.querySelector('.mobile-menu');
-
-            if (hamburger && mobileMenu) {
-                hamburger.addEventListener('click', () => {
-                    hamburger.classList.toggle('active');
-                    mobileMenu.classList.toggle('active');
-                });
+<script>
+        async function loadComponent(id, filePath) {
+            const el = document.getElementById(id);
+            try {
+            const response = await fetch(filePath);
+            if (!response.ok) throw new Error(`Failed to load ${filePath}`);
+            const html = await response.text();
+            el.innerHTML = html;
+            } catch (error) {
+            console.error(error);
             }
-
-            // === Mobile Dropdowns ===
-            const mobileDropdowns = document.querySelectorAll('.mobile-dropdown');
-
-            mobileDropdowns.forEach(dropdown => {
-                const trigger = dropdown.querySelector('a');
-                const content = dropdown.querySelector('.mobile-dropdown-content');
-                const icon = dropdown.querySelector('i');
-
-                trigger.addEventListener('click', e => {
-                    e.preventDefault();
-
-                    const isOpen = content.style.maxHeight && content.style.maxHeight !== '0px';
-
-                    // Close other dropdowns
-                    mobileDropdowns.forEach(other => {
-                        if (other !== dropdown) {
-                            const oc = other.querySelector('.mobile-dropdown-content');
-                            const oi = other.querySelector('i');
-                            oc.style.maxHeight = '0px';
-                            oi.style.transform = 'rotate(0deg)';
-                        }
-                    });
-
-                    // Toggle current dropdown
-                    if (isOpen) {
-                        content.style.maxHeight = '0px';
-                        icon.style.transform = 'rotate(0deg)';
-                    } else {
-                        content.style.maxHeight = content.scrollHeight + 'px';
-                        icon.style.transform = 'rotate(180deg)';
-                    }
-                });
-            });
-
-            // Close mobile menu when clicking outside
-            document.addEventListener('click', (e) => {
-                if (!e.target.closest('nav') && mobileMenu.classList.contains('active')) {
-                    hamburger.classList.remove('active');
-                    mobileMenu.classList.remove('active');
-                    
-                    // Close all mobile dropdowns
-                    mobileDropdowns.forEach(dropdown => {
-                        const content = dropdown.querySelector('.mobile-dropdown-content');
-                        const icon = dropdown.querySelector('i');
-                        content.style.maxHeight = '0px';
-                        icon.style.transform = 'rotate(0deg)';
-                    });
-                }
-            });
-        });
-
-        function showPage(page) {
-            // Your page navigation logic here
-            console.log('Showing page:', page);
-            // Example: window.location.href = page + '.html';
         }
+
+        loadComponent('navbar', 'components/external_navbar.html');
+        loadComponent('footer', 'components/external_footer.html');
     </script>
