@@ -1,4 +1,8 @@
-/* Auto-rotating gallery styles */
+img {
+  content-visibility: auto;
+  loading: lazy;
+}
+
 .gallery-container {
     position: relative;
     height: 500px;

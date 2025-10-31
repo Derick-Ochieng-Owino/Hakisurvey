@@ -1,6 +1,5 @@
 <header id="navbar_header">
     <nav id="navbar" class="navbar">
-        <!-- Logo -->
         <div class="logo">
             <div class="logo-icon">H</div>
             <div class="logo-text">
@@ -9,11 +8,9 @@
             </div>
         </div>
 
-        <!-- Desktop Navigation -->
         <ul class="nav-links">
             <li><a href="index.html" class="active">Home</a></li>
             
-            <!-- Services Dropdown -->
             <li class="dropdown">
                 <a href="services.html" data-toggle="dropdown">
                     Services <span class="arrow">▼</span>
@@ -34,10 +31,8 @@
             <li><a href="contact.html">Contact</a></li>
         </ul>
 
-        <!-- Call-to-action Button -->
         <button class="cta-button" onclick="showPage('contact')">Request Quote</button>
 
-        <!-- Hamburger Menu (Mobile) -->
         <div class="hamburger">
             <span></span>
             <span></span>
@@ -60,39 +55,4 @@
 
     loadComponent('navbar', 'components/external_navbar.html');
     loadComponent('footer', 'components/external_footer.html');
-
-    document.addEventListener("DOMContentLoaded", function () {
-    const hamburger = document.querySelector(".hamburger");
-    const navLinks = document.querySelector(".nav-links");
-    const body = document.body;
-
-    // Toggle mobile menu
-    hamburger.addEventListener("click", () => {
-      hamburger.classList.toggle("active");
-      navLinks.classList.toggle("active");
-      body.classList.toggle("menu-open");
-    });
-
-    // Dropdown toggle for small devices
-    document.querySelectorAll('[data-toggle="dropdown"]').forEach(link => {
-      link.addEventListener("click", (e) => {
-        if (window.innerWidth <= 968) {
-          e.preventDefault(); // prevent going to "services.html"
-          const dropdown = link.parentElement;
-          dropdown.classList.toggle("active");
-        }
-      });
-    });
-
-    // Close menu when clicking a link (optional)
-    document.querySelectorAll(".nav-links a").forEach(link => {
-      link.addEventListener("click", () => {
-        if (window.innerWidth <= 968) {
-          hamburger.classList.remove("active");
-          navLinks.classList.remove("active");
-          body.classList.remove("menu-open");
-        }
-      });
-    });
-  });
-    </script>
+</script>

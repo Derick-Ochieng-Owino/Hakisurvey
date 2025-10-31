@@ -87,6 +87,7 @@ function loadFallbackComponent(id) {
 function initNavbarScripts(parentEl) {
     const hamburger = parentEl.querySelector('.hamburger');
     const navLinks = parentEl.querySelector('.nav-links');
+    const dropdowns = parentEl.querySelectorAll('.dropdown');
 
     if (hamburger && navLinks) {
         hamburger.addEventListener('click', () => {
@@ -95,6 +96,60 @@ function initNavbarScripts(parentEl) {
             document.body.classList.toggle('menu-open', navLinks.classList.contains('active'));
         });
     }
+
+    // Mobile dropdown functionality
+    dropdowns.forEach(dropdown => {
+        const dropdownLink = dropdown.querySelector('a');
+        
+        dropdownLink.addEventListener('click', function(e) {
+            if (window.innerWidth <= 968) {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                // Close other dropdowns
+                dropdowns.forEach(otherDropdown => {
+                    if (otherDropdown !== dropdown) {
+                        otherDropdown.classList.remove('active');
+                    }
+                });
+                
+                // Toggle current dropdown
+                dropdown.classList.toggle('active');
+            }
+        });
+    });
+
+    // Close dropdowns when clicking outside on mobile
+    document.addEventListener('click', function(e) {
+        if (window.innerWidth <= 968 && !e.target.closest('.nav-links')) {
+            dropdowns.forEach(dropdown => {
+                dropdown.classList.remove('active');
+            });
+        }
+    });
+
+    // Close mobile menu when clicking on a link (except dropdown toggles)
+    if (navLinks) {
+        navLinks.addEventListener('click', function(e) {
+            if (e.target.tagName === 'A' && !e.target.parentElement.classList.contains('dropdown')) {
+                if (hamburger) hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+                document.body.classList.remove('menu-open');
+            }
+        });
+    }
+
+    // Handle window resize
+    window.addEventListener('resize', function() {
+        if (window.innerWidth > 968) {
+            if (hamburger) hamburger.classList.remove('active');
+            if (navLinks) navLinks.classList.remove('active');
+            document.body.classList.remove('menu-open');
+            dropdowns.forEach(dropdown => {
+                dropdown.classList.remove('active');
+            });
+        }
+    });
 
     setActiveNavLink();
 
@@ -105,6 +160,16 @@ function initNavbarScripts(parentEl) {
                 e.preventDefault();
                 const targetId = this.getAttribute('href').substring(1);
                 showPage(targetId);
+                
+                // Close mobile menu after clicking a link
+                if (window.innerWidth <= 968) {
+                    if (hamburger) hamburger.classList.remove('active');
+                    if (navLinks) navLinks.classList.remove('active');
+                    document.body.classList.remove('menu-open');
+                    dropdowns.forEach(dropdown => {
+                        dropdown.classList.remove('active');
+                    });
+                }
             }
         });
     });
