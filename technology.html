@@ -13,28 +13,68 @@
         body {
             font-family: 'Inter', sans-serif;
         }
-        .gradient-bg {
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        
+        /* Image hover overlay effect */
+        .image-overlay-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 0.75rem;
         }
+        
+        .image-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .image-overlay-container:hover .image-overlay {
+            opacity: 1;
+        }
+        
+        .overlay-content {
+            color: white;
+            text-align: center;
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+        }
+        
+        .image-overlay-container:hover .overlay-content {
+            transform: translateY(0);
+        }
+        
+        /* Service card animations */
         .service-card {
             transition: all 0.3s ease;
             border-left: 4px solid transparent;
         }
+        
         .service-card:hover {
             transform: translateY(-5px);
             border-left-color: #3b82f6;
             box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
         }
+        
         .tech-feature {
             transition: all 0.3s ease;
         }
+        
         .tech-feature:hover {
             transform: scale(1.05);
         }
     </style>
 </head>
-<div id="navbar"></div>
-<body class="gradient-bg min-h-screen">
+<body class="bg-gradient-to-br from-gray-50 to-gray-100 min-h-screen">
+    <!-- Navigation Placeholder -->
+    <div id="navbar"></div>
+
     <!-- Hero Section -->
     <section class="relative py-16 lg:py-24 bg-gradient-to-r from-purple-800 to-purple-600 text-white">
         <div class="absolute inset-0 bg-black opacity-40"></div>
@@ -48,8 +88,88 @@
                     <i class="fas fa-phone mr-2"></i>Technology Consultation
                 </button>
                 <button class="bg-transparent border-2 border-white hover:bg-white hover:text-purple-800 text-white px-8 py-3 rounded-lg font-semibold text-lg transition duration-300">
-                    <i class="fas fa-catalog mr-2"></i>View Equipment Catalog
+                    <i class="fas fa-book mr-2"></i>View Equipment Catalog
                 </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Introduction to Image Hover Effect -->
+    <section class="py-12 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Interactive Technology Showcase</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    Hover over the images below to see detailed information about our technology solutions. 
+                    This interactive feature demonstrates how we make complex technology accessible and understandable.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Image Gallery with Hover Overlay -->
+    <section class="py-12 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Image 1 with Hover Overlay -->
+                <div class="image-overlay-container bg-white rounded-xl shadow-md overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" 
+                         alt="Surveying Equipment" 
+                         class="w-full h-64 object-cover">
+                    <div class="image-overlay">
+                        <div class="overlay-content">
+                            <h3 class="text-xl font-bold mb-2">Advanced Surveying Equipment</h3>
+                            <p class="mb-4">Precision instruments for accurate land measurement and mapping</p>
+                            <button class="bg-amber-500 hover:bg-amber-600 text-white px-4 py-2 rounded-lg font-medium transition-colors duration-300">
+                                Learn More
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Survey Equipment</h3>
+                        <p class="text-gray-600">High-precision tools for land surveying and measurement</p>
+                    </div>
+                </div>
+
+                <!-- Image 2 with Hover Overlay -->
+                <div class="image-overlay-container bg-white rounded-xl shadow-md overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" 
+                         alt="Drone Technology" 
+                         class="w-full h-64 object-cover">
+                    <div class="image-overlay">
+                        <div class="overlay-content">
+                            <h3 class="text-xl font-bold mb-2">Aerial Mapping Drones</h3>
+                            <p class="mb-4">High-resolution aerial data collection for comprehensive site analysis</p>
+                            <button class="bg-amber-500 hover:bg-amber-600 text-white px-4 py-2 rounded-lg font-medium transition-colors duration-300">
+                                Learn More
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Drone Technology</h3>
+                        <p class="text-gray-600">Aerial surveying and mapping with advanced UAV systems</p>
+                    </div>
+                </div>
+
+                <!-- Image 3 with Hover Overlay -->
+                <div class="image-overlay-container bg-white rounded-xl shadow-md overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" 
+                         alt="GIS Software" 
+                         class="w-full h-64 object-cover">
+                    <div class="image-overlay">
+                        <div class="overlay-content">
+                            <h3 class="text-xl font-bold mb-2">GIS Software Solutions</h3>
+                            <p class="mb-4">Powerful tools for spatial analysis and data visualization</p>
+                            <button class="bg-amber-500 hover:bg-amber-600 text-white px-4 py-2 rounded-lg font-medium transition-colors duration-300">
+                                Learn More
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">GIS Software</h3>
+                        <p class="text-gray-600">Advanced geographic information systems for data analysis</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -194,14 +314,14 @@
                 </div>
                 <div class="tech-feature bg-gray-50 p-6 rounded-lg text-center">
                     <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-esri text-purple-600 text-2xl"></i>
+                        <i class="fas fa-map text-purple-600 text-2xl"></i>
                     </div>
                     <h3 class="font-semibold text-gray-800">Esri</h3>
                     <p class="text-gray-600 text-sm mt-2">GIS Software</p>
                 </div>
                 <div class="tech-feature bg-gray-50 p-6 rounded-lg text-center">
                     <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-drone-alt text-red-600 text-2xl"></i>
+                        <i class="fas fa-drone text-red-600 text-2xl"></i>
                     </div>
                     <h3 class="font-semibold text-gray-800">DJI</h3>
                     <p class="text-gray-600 text-sm mt-2">UAV Systems</p>
@@ -293,30 +413,44 @@
                     <i class="fas fa-phone mr-2"></i>Technology Consultation
                 </button>
                 <button class="bg-transparent border-2 border-white hover:bg-white hover:text-purple-800 text-white px-8 py-3 rounded-lg font-semibold text-lg transition duration-300">
-                    <i class="fas fa-catalog mr-2"></i>Request Equipment Demo
+                    <i class="fas fa-book mr-2"></i>Request Equipment Demo
                 </button>
             </div>
         </div>
     </section>
 
-
+    <!-- Footer Placeholder -->
     <div id="footer"></div>
+        
+
     <script>
+        // Simple script to handle component loading
         async function loadComponent(id, filePath) {
             const el = document.getElementById(id);
             try {
-            const response = await fetch(filePath);
-            if (!response.ok) throw new Error(`Failed to load ${filePath}`);
-            const html = await response.text();
-            el.innerHTML = html;
+                const response = await fetch(filePath);
+                if (!response.ok) throw new Error(`Failed to load ${filePath}`);
+                const html = await response.text();
+                el.innerHTML = html;
             } catch (error) {
-            console.error(error);
+                console.error(error);
+                // Fallback content if component fails to load
+                if (id === 'navbar') {
+                    el.innerHTML = `<div class="bg-white shadow-sm py-4"><div class="max-w-7xl mx-auto px-4 text-center">Navigation placeholder - component failed to load</div></div>`;
+                }
+                if (id === 'footer') {
+                    el.innerHTML = `<div class="bg-gray-800 text-white py-8"><div class="max-w-7xl mx-auto px-4 text-center">Footer placeholder - component failed to load</div></div>`;
+                }
             }
         }
 
-        loadComponent('navbar', 'components/external_navbar.html');
-        loadComponent('footer', 'components/external_footer.html');
+        // Load components if they exist
+        if (document.getElementById('navbar')) {
+            loadComponent('navbar', 'components/external_navbar.html');
+        }
+        if (document.getElementById('footer')) {
+            loadComponent('footer', 'components/external_footer.html');
+        }
     </script>
-    <script src="scripts/script.js"></script>
 </body>
 </html>

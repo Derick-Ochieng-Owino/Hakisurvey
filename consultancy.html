@@ -3,346 +3,487 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Consultancy & Environmental Services | HakiSurvey Plots Ltd</title>
-    <meta name="description" content="Professional environmental consultancy services in Kenya including EIA, environmental monitoring, geomatics consulting, and sustainable development support.">
+    <title>Consultancy Services | HakiSurvey Plots Ltd</title>
+    <meta name="description" content="Professional surveying consultancy services in Kenya including project planning, feasibility studies, and expert advisory for land development projects.">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles/style.css">
     <style>
-        body {    
+        body {
             font-family: 'Inter', sans-serif;
         }
         
-        .gradient-bg {
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        /* Image hover overlay effect */
+        .image-overlay-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 0.75rem;
         }
+        
+        .image-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .image-overlay-container:hover .image-overlay {
+            opacity: 1;
+        }
+        
+        .overlay-content {
+            color: white;
+            text-align: center;
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+        }
+        
+        .image-overlay-container:hover .overlay-content {
+            transform: translateY(0);
+        }
+        
+        /* Service card animations */
         .service-card {
             transition: all 0.3s ease;
             border-left: 4px solid transparent;
         }
+        
         .service-card:hover {
             transform: translateY(-5px);
             border-left-color: #3b82f6;
             box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
         }
+        
+        .consultancy-feature {
+            transition: all 0.3s ease;
+        }
+        
+        .consultancy-feature:hover {
+            transform: scale(1.05);
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
     </style>
 </head>
-<div id="navbar"></div>
 <body class="gradient-bg min-h-screen">
+    <!-- Navigation -->
+    <div id="navbar" class="bg-white shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+            <div class="flex justify-between items-center">
+                <div class="text-xl font-bold text-purple-700">HakiSurvey Plots Ltd</div>
+                <div class="space-x-6">
+                    <a href="#" class="text-gray-600 hover:text-purple-700">Home</a>
+                    <a href="#" class="text-gray-600 hover:text-purple-700">Services</a>
+                    <a href="#" class="text-purple-700 font-semibold">Consultancy</a>
+                    <a href="#" class="text-gray-600 hover:text-purple-700">Technology</a>
+                    <a href="#" class="text-gray-600 hover:text-purple-700">About</a>
+                    <a href="#" class="text-gray-600 hover:text-purple-700">Contact</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Hero Section -->
-    <section class="relative py-16 lg:py-24 bg-gradient-to-r from-green-800 to-green-600 text-white">
+    <section class="relative py-16 lg:py-24 bg-gradient-to-r from-blue-800 to-blue-600 text-white">
         <div class="absolute inset-0 bg-black opacity-40"></div>
         <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">Consultancy & Environmental Services</h1>
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">Consultancy Services</h1>
             <p class="text-xl md:text-2xl max-w-3xl mx-auto mb-8">
-                Expert environmental consulting and sustainable development solutions for responsible project implementation
+                Expert surveying consultancy and advisory services for land development, construction projects, and geospatial solutions
             </p>
             <div class="flex flex-col sm:flex-row justify-center gap-4">
                 <button class="bg-amber-500 hover:bg-amber-600 text-white px-8 py-3 rounded-lg font-semibold text-lg transition duration-300">
-                    <i class="fas fa-phone mr-2"></i>Consult Our Experts
+                    <i class="fas fa-calendar-check mr-2"></i>Schedule Consultation
                 </button>
-                <button class="bg-transparent border-2 border-white hover:bg-white hover:text-green-800 text-white px-8 py-3 rounded-lg font-semibold text-lg transition duration-300">
-                    <i class="fas fa-file-alt mr-2"></i>Download EIA Guidelines
+                <button class="bg-transparent border-2 border-white hover:bg-white hover:text-blue-800 text-white px-8 py-3 rounded-lg font-semibold text-lg transition duration-300">
+                    <i class="fas fa-download mr-2"></i>Download Brochure
                 </button>
             </div>
         </div>
     </section>
 
-    <!-- Services Grid -->
+    <!-- Introduction to Consultancy Services -->
+    <section class="py-12 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Expert Consultancy Solutions</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    Hover over the images below to explore our comprehensive consultancy services. 
+                    Our expert team provides specialized advisory services tailored to your project needs.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Consultancy Services Gallery with Hover Overlay -->
+    <section class="py-12 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Consultancy Service 1 with Hover Overlay -->
+                <div class="image-overlay-container bg-white rounded-xl shadow-md overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" 
+                         alt="Land Surveying Consultancy" 
+                         class="w-full h-64 object-cover">
+                    <div class="image-overlay">
+                        <div class="overlay-content">
+                            <h3 class="text-xl font-bold mb-2">Land Surveying Consultancy</h3>
+                            <p class="mb-4">Expert advice on boundary surveys, topographic mapping, and cadastral surveys</p>
+                            <button class="bg-amber-500 hover:bg-amber-600 text-white px-4 py-2 rounded-lg font-medium transition-colors duration-300">
+                                Learn More
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Land Surveying</h3>
+                        <p class="text-gray-600">Professional advisory services for all types of land surveys and boundary determinations</p>
+                    </div>
+                </div>
+
+                <!-- Consultancy Service 2 with Hover Overlay -->
+                <div class="image-overlay-container bg-white rounded-xl shadow-md overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1541976590-713941681591?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" 
+                         alt="Construction Project Advisory" 
+                         class="w-full h-64 object-cover">
+                    <div class="image-overlay">
+                        <div class="overlay-content">
+                            <h3 class="text-xl font-bold mb-2">Construction Project Advisory</h3>
+                            <p class="mb-4">Comprehensive consultancy for construction layout, monitoring, and as-built surveys</p>
+                            <button class="bg-amber-500 hover:bg-amber-600 text-white px-4 py-2 rounded-lg font-medium transition-colors duration-300">
+                                Learn More
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Construction Advisory</h3>
+                        <p class="text-gray-600">Expert guidance for construction projects from planning to completion</p>
+                    </div>
+                </div>
+
+                <!-- Consultancy Service 3 with Hover Overlay -->
+                <div class="image-overlay-container bg-white rounded-xl shadow-md overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" 
+                         alt="GIS & Mapping Consultancy" 
+                         class="w-full h-64 object-cover">
+                    <div class="image-overlay">
+                        <div class="overlay-content">
+                            <h3 class="text-xl font-bold mb-2">GIS & Mapping Consultancy</h3>
+                            <p class="mb-4">Strategic advice on GIS implementation, spatial analysis, and mapping solutions</p>
+                            <button class="bg-amber-500 hover:bg-amber-600 text-white px-4 py-2 rounded-lg font-medium transition-colors duration-300">
+                                Learn More
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">GIS & Mapping</h3>
+                        <p class="text-gray-600">Professional consultancy for geographic information systems and spatial data management</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Consultancy Services Grid -->
     <section class="py-16 lg:py-24">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Environmental & Consultancy Solutions</h2>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Comprehensive Consultancy Solutions</h2>
                 <p class="text-lg text-gray-600 max-w-3xl mx-auto">
-                    Comprehensive environmental consulting and geomatics expertise to ensure regulatory compliance and sustainable project development
+                    Our expert consultants provide specialized advisory services across all aspects of surveying, mapping, and land development
                 </p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Geomatics Consultancy -->
-                <div class="service-card bg-white rounded-xl p-6 shadow-md">
-                    <div class="w-14 h-14 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-                        <i class="fas fa-map-marked-alt text-blue-600 text-2xl"></i>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
+                <!-- Land & Cadastral Survey Consultancy -->
+                <div class="service-card bg-white rounded-xl p-8 shadow-md">
+                    <div class="w-16 h-16 bg-blue-100 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-map-marked-alt text-blue-600 text-3xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-3">Geomatics Consultancy</h3>
-                    <p class="text-gray-600 mb-4">
-                        Expert guidance on geospatial technology implementation, data management strategies, and surveying methodologies for optimal project outcomes.
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Land & Cadastral Survey Consultancy</h3>
+                    <p class="text-gray-600 mb-6 text-lg">
+                        Professional advisory services for land boundary determination, cadastral surveys, and property registration processes in compliance with Kenyan land laws.
                     </p>
-                    <ul class="text-gray-600 space-y-2">
-                        <li class="flex items-start">
-                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
-                            <span>Geospatial technology advisory</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
-                            <span>Survey methodology optimization</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
-                            <span>Data management strategies</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
-                            <span>Technology implementation planning</span>
-                        </li>
-                    </ul>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                        <div class="consultancy-feature bg-gray-50 p-4 rounded-lg">
+                            <i class="fas fa-landmark text-blue-500 text-xl mb-2"></i>
+                            <h4 class="font-semibold text-gray-800 mb-2">Boundary Determination</h4>
+                            <p class="text-gray-600 text-sm">Expert advice on property boundaries and land disputes</p>
+                        </div>
+                        <div class="consultancy-feature bg-gray-50 p-4 rounded-lg">
+                            <i class="fas fa-file-contract text-blue-500 text-xl mb-2"></i>
+                            <h4 class="font-semibold text-gray-800 mb-2">Title Processing</h4>
+                            <p class="text-gray-600 text-sm">Guidance on land title registration and documentation</p>
+                        </div>
+                        <div class="consultancy-feature bg-gray-50 p-4 rounded-lg">
+                            <i class="fas fa-gavel text-blue-500 text-xl mb-2"></i>
+                            <h4 class="font-semibold text-gray-800 mb-2">Legal Compliance</h4>
+                            <p class="text-gray-600 text-sm">Advisory on surveying regulations and legal requirements</p>
+                        </div>
+                        <div class="consultancy-feature bg-gray-50 p-4 rounded-lg">
+                            <i class="fas fa-people-arrows text-blue-500 text-xl mb-2"></i>
+                            <h4 class="font-semibold text-gray-800 mb-2">Dispute Resolution</h4>
+                            <p class="text-gray-600 text-sm">Mediation and expert witness services for land disputes</p>
+                        </div>
+                    </div>
+                    <div class="bg-blue-50 border-l-4 border-blue-500 p-4 rounded">
+                        <h4 class="font-semibold text-blue-800 mb-2">Additional Services:</h4>
+                        <ul class="text-blue-700 space-y-1">
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle mr-2 text-sm"></i>
+                                <span>Subdivision planning and approval guidance</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle mr-2 text-sm"></i>
+                                <span>Amalgamation and consolidation advisory</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle mr-2 text-sm"></i>
+                                <span>Easement and right-of-way consultations</span>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
 
-                <!-- Environmental Impact Assessments -->
-                <div class="service-card bg-white rounded-xl p-6 shadow-md">
-                    <div class="w-14 h-14 bg-green-100 rounded-lg flex items-center justify-center mb-4">
-                        <i class="fas fa-clipboard-check text-green-600 text-2xl"></i>
+                <!-- Engineering & Construction Survey Consultancy -->
+                <div class="service-card bg-white rounded-xl p-8 shadow-md">
+                    <div class="w-16 h-16 bg-green-100 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-hard-hat text-green-600 text-3xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-3">Environmental Impact Assessments (EIA)</h3>
-                    <p class="text-gray-600 mb-4">
-                        Comprehensive environmental impact studies and regulatory compliance assessments for development projects across all sectors in Kenya.
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Engineering & Construction Survey Consultancy</h3>
+                    <p class="text-gray-600 mb-6 text-lg">
+                        Expert advisory services for construction projects, infrastructure development, and engineering surveys to ensure precision and compliance with design specifications.
                     </p>
-                    <ul class="text-gray-600 space-y-2">
-                        <li class="flex items-start">
-                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
-                            <span>Project impact analysis</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
-                            <span>Regulatory compliance assessment</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
-                            <span>Stakeholder engagement facilitation</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
-                            <span>NEMA licensing support</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Environmental Monitoring -->
-                <div class="service-card bg-white rounded-xl p-6 shadow-md">
-                    <div class="w-14 h-14 bg-emerald-100 rounded-lg flex items-center justify-center mb-4">
-                        <i class="fas fa-chart-line text-emerald-600 text-2xl"></i>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                        <div class="consultancy-feature bg-gray-50 p-4 rounded-lg">
+                            <i class="fas fa-drafting-compass text-green-500 text-xl mb-2"></i>
+                            <h4 class="font-semibold text-gray-800 mb-2">Construction Layout</h4>
+                            <p class="text-gray-600 text-sm">Advisory on building positioning and alignment</p>
+                        </div>
+                        <div class="consultancy-feature bg-gray-50 p-4 rounded-lg">
+                            <i class="fas fa-road text-green-500 text-xl mb-2"></i>
+                            <h4 class="font-semibold text-gray-800 mb-2">Road & Highway Surveys</h4>
+                            <p class="text-gray-600 text-sm">Consultancy for transportation infrastructure projects</p>
+                        </div>
+                        <div class="consultancy-feature bg-gray-50 p-4 rounded-lg">
+                            <i class="fas fa-ruler-combined text-green-500 text-xl mb-2"></i>
+                            <h4 class="font-semibold text-gray-800 mb-2">Deformation Monitoring</h4>
+                            <p class="text-gray-600 text-sm">Expert advice on structural monitoring systems</p>
+                        </div>
+                        <div class="consultancy-feature bg-gray-50 p-4 rounded-lg">
+                            <i class="fas fa-tachometer-alt text-green-500 text-xl mb-2"></i>
+                            <h4 class="font-semibold text-gray-800 mb-2">Quantity Calculations</h4>
+                            <p class="text-gray-600 text-sm">Consultancy for earthwork and volume calculations</p>
+                        </div>
                     </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-3">Environmental Monitoring</h3>
-                    <p class="text-gray-600 mb-4">
-                        Long-term environmental monitoring programs and data collection to track ecological changes and ensure sustainable development practices.
-                    </p>
-                    <ul class="text-gray-600 space-y-2">
-                        <li class="flex items-start">
-                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
-                            <span>Ecological change tracking</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
-                            <span>Compliance monitoring programs</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
-                            <span>Environmental quality assessment</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
-                            <span>Biodiversity conservation monitoring</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Sustainable Development Support -->
-                <div class="service-card bg-white rounded-xl p-6 shadow-md">
-                    <div class="w-14 h-14 bg-teal-100 rounded-lg flex items-center justify-center mb-4">
-                        <i class="fas fa-seedling text-teal-600 text-2xl"></i>
+                    <div class="bg-green-50 border-l-4 border-green-500 p-4 rounded">
+                        <h4 class="font-semibold text-green-800 mb-2">Project Support:</h4>
+                        <ul class="text-green-700 space-y-1">
+                            <li class="flex items-center">
+                                <i class="fas fa-project-diagram mr-2 text-sm"></i>
+                                <span>Feasibility studies and site assessment</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-clipboard-check mr-2 text-sm"></i>
+                                <span>Quality control and compliance monitoring</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-file-alt mr-2 text-sm"></i>
+                                <span>Documentation and reporting advisory</span>
+                            </li>
+                        </ul>
                     </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-3">Sustainable Development Support</h3>
-                    <p class="text-gray-600 mb-4">
-                        Strategic guidance and implementation support for sustainable development projects that balance economic growth with environmental protection.
-                    </p>
-                    <ul class="text-gray-600 space-y-2">
-                        <li class="flex items-start">
-                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
-                            <span>Sustainability strategy development</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
-                            <span>Green project planning</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
-                            <span>Climate resilience planning</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
-                            <span>Sustainable resource management</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Environmental Compliance -->
-                <div class="service-card bg-white rounded-xl p-6 shadow-md">
-                    <div class="w-14 h-14 bg-amber-100 rounded-lg flex items-center justify-center mb-4">
-                        <i class="fas fa-balance-scale text-amber-600 text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-3">Environmental Compliance</h3>
-                    <p class="text-gray-600 mb-4">
-                        Ensuring project compliance with Kenyan environmental regulations and international standards through comprehensive auditing and reporting.
-                    </p>
-                    <ul class="text-gray-600 space-y-2">
-                        <li class="flex items-start">
-                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
-                            <span>Regulatory compliance auditing</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
-                            <span>Environmental permit acquisition</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
-                            <span>Compliance reporting</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
-                            <span>Environmental management systems</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Conservation Planning -->
-                <div class="service-card bg-white rounded-xl p-6 shadow-md">
-                    <div class="w-14 h-14 bg-lime-100 rounded-lg flex items-center justify-center mb-4">
-                        <i class="fas fa-paw text-lime-600 text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-3">Conservation Planning</h3>
-                    <p class="text-gray-600 mb-4">
-                        Development of conservation strategies and protected area management plans to preserve biodiversity and natural habitats.
-                    </p>
-                    <ul class="text-gray-600 space-y-2">
-                        <li class="flex items-start">
-                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
-                            <span>Protected area management</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
-                            <span>Wildlife corridor planning</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
-                            <span>Habitat restoration planning</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
-                            <span>Conservation area mapping</span>
-                        </li>
-                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Methodology Section -->
+    <!-- Consultancy Process Section -->
     <section class="py-16 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Our Consultancy Approach</h2>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Our Consultancy Process</h2>
                 <p class="text-lg text-gray-600 max-w-3xl mx-auto">
-                    Structured methodology for delivering comprehensive environmental and geomatics consulting services
+                    A structured approach to delivering expert advisory services that meet your specific project requirements
                 </p>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="text-center p-6">
-                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <span class="text-green-600 font-bold text-xl">1</span>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="consultancy-feature bg-gray-50 p-6 rounded-lg text-center">
+                    <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-purple-600 font-bold text-xl">1</span>
                     </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-3">Assessment</h3>
-                    <p class="text-gray-600">Comprehensive project evaluation and baseline studies to understand environmental context and requirements.</p>
+                    <h3 class="font-semibold text-gray-800 mb-3">Initial Consultation</h3>
+                    <p class="text-gray-600 text-sm">Understanding your project requirements, challenges, and objectives</p>
                 </div>
-                <div class="text-center p-6">
-                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <span class="text-green-600 font-bold text-xl">2</span>
+                <div class="consultancy-feature bg-gray-50 p-6 rounded-lg text-center">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-blue-600 font-bold text-xl">2</span>
                     </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-3">Planning</h3>
-                    <p class="text-gray-600">Strategic development of customized solutions and implementation plans tailored to project specific needs.</p>
+                    <h3 class="font-semibold text-gray-800 mb-3">Project Assessment</h3>
+                    <p class="text-gray-600 text-sm">Detailed analysis of your situation and development of tailored solutions</p>
                 </div>
-                <div class="text-center p-6">
+                <div class="consultancy-feature bg-gray-50 p-6 rounded-lg text-center">
                     <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
                         <span class="text-green-600 font-bold text-xl">3</span>
                     </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-3">Implementation</h3>
-                    <p class="text-gray-600">Execution of consulting services with continuous monitoring and stakeholder engagement throughout the process.</p>
+                    <h3 class="font-semibold text-gray-800 mb-3">Implementation Support</h3>
+                    <p class="text-gray-600 text-sm">Providing expert guidance and oversight during project execution</p>
                 </div>
-                <div class="text-center p-6">
-                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <span class="text-green-600 font-bold text-xl">4</span>
+                <div class="consultancy-feature bg-gray-50 p-6 rounded-lg text-center">
+                    <div class="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-amber-600 font-bold text-xl">4</span>
                     </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-3">Evaluation</h3>
-                    <p class="text-gray-600">Comprehensive reporting, impact assessment, and recommendations for continuous improvement.</p>
+                    <h3 class="font-semibold text-gray-800 mb-3">Review & Follow-up</h3>
+                    <p class="text-gray-600 text-sm">Evaluating outcomes and providing ongoing support as needed</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Regulatory Expertise Section -->
+    <!-- Expert Team Section -->
     <section class="py-16 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Regulatory Compliance Expertise</h2>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Our Consultancy Team</h2>
                 <p class="text-lg text-gray-600 max-w-3xl mx-auto">
-                    In-depth knowledge of Kenyan environmental regulations and international standards
+                    Experienced professionals with diverse expertise in surveying, engineering, and geospatial solutions
                 </p>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="bg-white p-6 rounded-lg shadow-md">
-                    <i class="fas fa-gavel text-3xl text-green-600 mb-4"></i>
-                    <h3 class="text-xl font-bold text-gray-800 mb-3">NEMA Regulations</h3>
-                    <p class="text-gray-600">Expert navigation of National Environment Management Authority requirements and licensing procedures.</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                    <div class="w-24 h-24 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-user-tie text-4xl text-purple-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Senior Survey Consultants</h3>
+                    <p class="text-gray-600">Registered surveyors with 15+ years of experience in cadastral and engineering surveys</p>
+                    <div class="mt-4 flex justify-center space-x-2">
+                        <span class="bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded">Boundary Surveys</span>
+                        <span class="bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded">Legal Compliance</span>
+                    </div>
                 </div>
-                <div class="bg-white p-6 rounded-lg shadow-md">
-                    <i class="fas fa-globe-africa text-3xl text-green-600 mb-4"></i>
-                    <h3 class="text-xl font-bold text-gray-800 mb-3">International Standards</h3>
-                    <p class="text-gray-600">Compliance with ISO 14001, IFC Performance Standards, and other international environmental frameworks.</p>
+                <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                    <div class="w-24 h-24 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-laptop-code text-4xl text-blue-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">GIS & Technology Experts</h3>
+                    <p class="text-gray-600">Specialists in geospatial technology, data analysis, and digital mapping solutions</p>
+                    <div class="mt-4 flex justify-center space-x-2">
+                        <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">Spatial Analysis</span>
+                        <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">GIS Implementation</span>
+                    </div>
                 </div>
-                <div class="bg-white p-6 rounded-lg shadow-md">
-                    <i class="fas fa-handshake text-3xl text-green-600 mb-4"></i>
-                    <h3 class="text-xl font-bold text-gray-800 mb-3">Stakeholder Engagement</h3>
-                    <p class="text-gray-600">Effective community consultation and stakeholder management for project acceptance and success.</p>
+                <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                    <div class="w-24 h-24 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-hard-hat text-4xl text-green-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Engineering Consultants</h3>
+                    <p class="text-gray-600">Civil engineers and construction specialists with expertise in infrastructure projects</p>
+                    <div class="mt-4 flex justify-center space-x-2">
+                        <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">Construction Layout</span>
+                        <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">Project Management</span>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- CTA Section -->
-    <section class="py-16 bg-green-700 text-white">
+    <section class="py-16 bg-blue-700 text-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="text-3xl md:text-4xl font-bold mb-6">Commit to Sustainable Development</h2>
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">Start Your Project With Expert Guidance</h2>
             <p class="text-xl mb-8 max-w-3xl mx-auto">
-                Partner with our environmental consultants to ensure your projects meet regulatory requirements while promoting ecological sustainability and community benefits.
+                Get professional consultancy services tailored to your specific project requirements and challenges.
             </p>
             <div class="flex flex-col sm:flex-row justify-center gap-4">
                 <button class="bg-amber-500 hover:bg-amber-600 text-white px-8 py-3 rounded-lg font-semibold text-lg transition duration-300">
-                    <i class="fas fa-phone mr-2"></i>Call +254 700 123 456
+                    <i class="fas fa-calendar-check mr-2"></i>Schedule Consultation
                 </button>
-                <button class="bg-transparent border-2 border-white hover:bg-white hover:text-green-800 text-white px-8 py-3 rounded-lg font-semibold text-lg transition duration-300">
-                    <i class="fas fa-envelope mr-2"></i>Request EIA Consultation
+                <button class="bg-transparent border-2 border-white hover:bg-white hover:text-blue-800 text-white px-8 py-3 rounded-lg font-semibold text-lg transition duration-300">
+                    <i class="fas fa-envelope mr-2"></i>Request Proposal
                 </button>
             </div>
         </div>
     </section>
 
-    <div id="footer"></div>
+    <!-- Footer -->
+    <div id="footer" class="bg-gray-800 text-white py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <p class="mb-4">© 2023 HakiSurvey Plots Ltd. All rights reserved.</p>
+                <div class="flex justify-center space-x-6">
+                    <a href="#" class="hover:text-amber-400">Privacy Policy</a>
+                    <a href="#" class="hover:text-amber-400">Terms of Service</a>
+                    <a href="#" class="hover:text-amber-400">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Explanation Section for New Users -->
+    <section class="py-12 bg-white border-t">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-blue-50 p-6 rounded-lg border border-blue-200">
+                <h3 class="text-xl font-bold text-blue-800 mb-3">Consultancy Services Overview</h3>
+                <p class="text-blue-700 mb-4">
+                    This page demonstrates our consultancy services using the same interactive UI pattern as our technology page. Here's what we offer:
+                </p>
+                <ul class="text-blue-700 space-y-2">
+                    <li class="flex items-start">
+                        <i class="fas fa-map-marked-alt text-blue-500 mt-1 mr-2"></i>
+                        <span><strong>Land Surveying Consultancy:</strong> Expert advice on boundary determination, cadastral surveys, and legal compliance</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-hard-hat text-blue-500 mt-1 mr-2"></i>
+                        <span><strong>Engineering & Construction:</strong> Professional guidance for construction projects and infrastructure development</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-laptop-code text-blue-500 mt-1 mr-2"></i>
+                        <span><strong>GIS & Technology:</strong> Strategic advice on geospatial technology implementation and data management</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-users text-blue-500 mt-1 mr-2"></i>
+                        <span><strong>Expert Team:</strong> Access to experienced professionals with diverse surveying and engineering expertise</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
     <script>
+        // Simple script to handle component loading
         async function loadComponent(id, filePath) {
             const el = document.getElementById(id);
             try {
-            const response = await fetch(filePath);
-            if (!response.ok) throw new Error(`Failed to load ${filePath}`);
-            const html = await response.text();
-            el.innerHTML = html;
+                const response = await fetch(filePath);
+                if (!response.ok) throw new Error(`Failed to load ${filePath}`);
+                const html = await response.text();
+                el.innerHTML = html;
             } catch (error) {
-            console.error(error);
+                console.error(error);
+                // Fallback content if component fails to load
+                if (id === 'navbar') {
+                    el.innerHTML = `<div class="bg-white shadow-sm py-4"><div class="max-w-7xl mx-auto px-4 text-center">Navigation placeholder - component failed to load</div></div>`;
+                }
+                if (id === 'footer') {
+                    el.innerHTML = `<div class="bg-gray-800 text-white py-8"><div class="max-w-7xl mx-auto px-4 text-center">Footer placeholder - component failed to load</div></div>`;
+                }
             }
         }
 
-        loadComponent('navbar', 'components/external_navbar.html');
-        loadComponent('footer', 'components/external_footer.html');
+        // Load components if they exist
+        if (document.getElementById('navbar')) {
+            loadComponent('navbar', 'components/external_navbar.html');
+        }
+        if (document.getElementById('footer')) {
+            loadComponent('footer', 'components/external_footer.html');
+        }
     </script>
-    <script src="scripts/script.js"></script>
 </body>
 </html>

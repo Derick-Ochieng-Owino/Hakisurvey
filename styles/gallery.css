@@ -1,0 +1,189 @@
+/* Auto-rotating gallery styles */
+.gallery-container {
+    position: relative;
+    height: 500px;
+    overflow: hidden;
+    border-radius: 1rem;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.gallery-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: flex-end;
+}
+
+.gallery-slide.active {
+    opacity: 1;
+}
+
+.gallery-content {
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+    color: white;
+    padding: 2rem;
+    width: 100%;
+}
+
+.gallery-indicators {
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 0.5rem;
+    z-index: 10;
+}
+
+.gallery-indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.gallery-indicator.active {
+    background: white;
+    transform: scale(1.2);
+}
+
+.gallery-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10;
+    font-size: 1.5rem;
+}
+
+.gallery-nav:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.gallery-prev {
+    left: 1rem;
+}
+
+.gallery-next {
+    right: 1rem;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .gallery-container {
+        height: 400px;
+    }
+    
+    .gallery-content {
+        padding: 1.5rem;
+    }
+    
+    .gallery-content h3 {
+        font-size: 1.5rem;
+    }
+    
+    .gallery-content p {
+        font-size: 1rem;
+    }
+    
+    .gallery-nav {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .gallery-container {
+        height: 300px;
+    }
+    
+    .gallery-content {
+        padding: 1rem;
+    }
+    
+    .gallery-content h3 {
+        font-size: 1.25rem;
+    }
+    
+    .gallery-content p {
+        font-size: 0.9rem;
+    }
+    
+    .gallery-indicators {
+        bottom: 0.5rem;
+    }
+}
+
+/* Image hover overlay effect */
+.image-overlay-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: 0.75rem;
+}
+
+.image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.image-overlay-container:hover .image-overlay {
+    opacity: 1;
+}
+
+.overlay-content {
+    color: white;
+    text-align: center;
+    transform: translateY(20px);
+    transition: transform 0.3s ease;
+}
+
+.image-overlay-container:hover .overlay-content {
+    transform: translateY(0);
+}
+
+/* Feature hover effects */
+.tech-feature,
+.consultancy-feature,
+.drone-feature,
+.engineering-feature,
+.surveying-feature {
+    transition: all 0.3s ease;
+}
+
+.tech-feature:hover,
+.consultancy-feature:hover,
+.drone-feature:hover,
+.engineering-feature:hover,
+.surveying-feature:hover {
+    transform: scale(1.05);
+}

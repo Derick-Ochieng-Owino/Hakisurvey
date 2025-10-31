@@ -27,6 +27,50 @@
             border-left-color: #3b82f6;
             box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
         }
+
+        /* Image hover overlay effect */
+.image-overlay-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: 0.75rem;
+}
+
+.image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.image-overlay-container:hover .image-overlay {
+    opacity: 1;
+}
+
+.overlay-content {
+    color: white;
+    text-align: center;
+    transform: translateY(20px);
+    transition: transform 0.3s ease;
+}
+
+.image-overlay-container:hover .overlay-content {
+    transform: translateY(0);
+}
+
+.engineering-feature {
+    transition: all 0.3s ease;
+}
+
+.engineering-feature:hover {
+    transform: scale(1.05);
+}
     </style>
 </head>
 <div id="navbar"></div>
@@ -49,6 +93,85 @@
             </div>
         </div>
     </section>
+
+    <!-- Gallery -->
+     <!-- Engineering Services Gallery with Hover Overlay -->
+<section class="py-12 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-8">
+            <h2 class="text-3xl font-bold text-gray-800 mb-4">Our Engineering Services in Action</h2>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                Hover over the images below to explore our comprehensive engineering and geospatial capabilities for infrastructure development.
+            </p>
+        </div>
+    </div>
+</section>
+
+<section class="py-12 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Engineering Service 1 with Hover Overlay -->
+            <div class="image-overlay-container bg-white rounded-xl shadow-md overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1541976590-713941681591?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" 
+                     alt="Highway Engineering" 
+                     class="w-full h-64 object-cover">
+                <div class="image-overlay">
+                    <div class="overlay-content">
+                        <h3 class="text-xl font-bold mb-2">Highway Engineering Surveys</h3>
+                        <p class="mb-4">Comprehensive route alignment and corridor mapping for transportation infrastructure</p>
+                        <button class="bg-amber-500 hover:bg-amber-600 text-white px-4 py-2 rounded-lg font-medium transition-colors duration-300">
+                            View Details
+                        </button>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Highway Engineering</h3>
+                    <p class="text-gray-600">Route optimization and corridor mapping for transportation projects</p>
+                </div>
+            </div>
+
+            <!-- Engineering Service 2 with Hover Overlay -->
+            <div class="image-overlay-container bg-white rounded-xl shadow-md overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" 
+                     alt="BIM Integration" 
+                     class="w-full h-64 object-cover">
+                <div class="image-overlay">
+                    <div class="overlay-content">
+                        <h3 class="text-xl font-bold mb-2">BIM & Digital Twins</h3>
+                        <p class="mb-4">Intelligent digital representations and Building Information Modeling integration</p>
+                        <button class="bg-amber-500 hover:bg-amber-600 text-white px-4 py-2 rounded-lg font-medium transition-colors duration-300">
+                            View Details
+                        </button>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">BIM Integration</h3>
+                    <p class="text-gray-600">Digital construction and intelligent asset management</p>
+                </div>
+            </div>
+
+            <!-- Engineering Service 3 with Hover Overlay -->
+            <div class="image-overlay-container bg-white rounded-xl shadow-md overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" 
+                     alt="Geospatial Analysis" 
+                     class="w-full h-64 object-cover">
+                <div class="image-overlay">
+                    <div class="overlay-content">
+                        <h3 class="text-xl font-bold mb-2">Geospatial Analysis</h3>
+                        <p class="mb-4">Advanced spatial data management and analysis for informed decision-making</p>
+                        <button class="bg-amber-500 hover:bg-amber-600 text-white px-4 py-2 rounded-lg font-medium transition-colors duration-300">
+                            View Details
+                        </button>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Geospatial Analysis</h3>
+                    <p class="text-gray-600">Spatial intelligence and data-driven insights</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
     <!-- Services Grid -->
     <section class="py-16 lg:py-24">
@@ -306,26 +429,28 @@
                 </p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="text-center p-6">
-                    <i class="fas fa-satellite-dish text-4xl text-blue-600 mb-4"></i>
-                    <h3 class="text-xl font-bold text-gray-800 mb-3">GNSS & RTK Systems</h3>
-                    <p class="text-gray-600">High-precision positioning with centimeter-level accuracy for engineering control.</p>
-                </div>
-                <div class="text-center p-6">
-                    <i class="fas fa-robot text-4xl text-blue-600 mb-4"></i>
-                    <h3 class="text-xl font-bold text-gray-800 mb-3">Robotic Total Stations</h3>
-                    <p class="text-gray-600">Automated surveying instruments for precise angle and distance measurements.</p>
-                </div>
-                <div class="text-center p-6">
-                    <i class="fas fa-laptop-code text-4xl text-blue-600 mb-4"></i>
-                    <h3 class="text-xl font-bold text-gray-800 mb-3">BIM Software</h3>
-                    <p class="text-gray-600">Advanced Building Information Modeling platforms for digital construction.</p>
-                </div>
-                <div class="text-center p-6">
-                    <i class="fas fa-cloud text-4xl text-blue-600 mb-4"></i>
-                    <h3 class="text-xl font-bold text-gray-800 mb-3">Cloud GIS Platforms</h3>
-                    <p class="text-gray-600">Enterprise spatial data management and analysis in cloud environments.</p>
-                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+    <div class="engineering-feature text-center p-6 bg-gray-50 rounded-lg">
+        <i class="fas fa-satellite-dish text-4xl text-blue-600 mb-4"></i>
+        <h3 class="text-xl font-bold text-gray-800 mb-3">GNSS & RTK Systems</h3>
+        <p class="text-gray-600">High-precision positioning with centimeter-level accuracy for engineering control.</p>
+    </div>
+    <div class="engineering-feature text-center p-6 bg-gray-50 rounded-lg">
+        <i class="fas fa-robot text-4xl text-blue-600 mb-4"></i>
+        <h3 class="text-xl font-bold text-gray-800 mb-3">Robotic Total Stations</h3>
+        <p class="text-gray-600">Automated surveying instruments for precise angle and distance measurements.</p>
+    </div>
+    <div class="engineering-feature text-center p-6 bg-gray-50 rounded-lg">
+        <i class="fas fa-laptop-code text-4xl text-blue-600 mb-4"></i>
+        <h3 class="text-xl font-bold text-gray-800 mb-3">BIM Software</h3>
+        <p class="text-gray-600">Advanced Building Information Modeling platforms for digital construction.</p>
+    </div>
+    <div class="engineering-feature text-center p-6 bg-gray-50 rounded-lg">
+        <i class="fas fa-cloud text-4xl text-blue-600 mb-4"></i>
+        <h3 class="text-xl font-bold text-gray-800 mb-3">Cloud GIS Platforms</h3>
+        <p class="text-gray-600">Enterprise spatial data management and analysis in cloud environments.</p>
+    </div>
+</div>
             </div>
         </div>
     </section>
@@ -340,25 +465,27 @@
                 </p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="bg-white p-6 rounded-lg shadow-md text-center">
-                    <i class="fas fa-bridge text-3xl text-blue-600 mb-4"></i>
-                    <h3 class="text-lg font-bold text-gray-800 mb-2">Civil Engineering</h3>
-                    <p class="text-gray-600 text-sm">Infrastructure design and construction</p>
-                </div>
-                <div class="bg-white p-6 rounded-lg shadow-md text-center">
-                    <i class="fas fa-city text-3xl text-blue-600 mb-4"></i>
-                    <h3 class="text-lg font-bold text-gray-800 mb-2">Urban Planning</h3>
-                    <p class="text-gray-600 text-sm">Smart city development</p>
-                </div>
-                <div class="bg-white p-6 rounded-lg shadow-md text-center">
-                    <i class="fas fa-industry text-3xl text-blue-600 mb-4"></i>
-                    <h3 class="text-lg font-bold text-gray-800 mb-2">Construction</h3>
-                    <p class="text-gray-600 text-sm">Building and development projects</p>
-                </div>
-                <div class="bg-white p-6 rounded-lg shadow-md text-center">
-                    <i class="fas fa-gem text-3xl text-blue-600 mb-4"></i>
-                    <h3 class="text-lg font-bold text-gray-800 mb-2">Government</h3>
-                    <p class="text-gray-600 text-sm">Public works and land administration</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="engineering-feature bg-white p-6 rounded-lg shadow-md text-center">
+                        <i class="fas fa-bridge text-3xl text-blue-600 mb-4"></i>
+                        <h3 class="text-lg font-bold text-gray-800 mb-2">Civil Engineering</h3>
+                        <p class="text-gray-600 text-sm">Infrastructure design and construction</p>
+                    </div>
+                    <div class="engineering-feature bg-white p-6 rounded-lg shadow-md text-center">
+                        <i class="fas fa-city text-3xl text-blue-600 mb-4"></i>
+                        <h3 class="text-lg font-bold text-gray-800 mb-2">Urban Planning</h3>
+                        <p class="text-gray-600 text-sm">Smart city development</p>
+                    </div>
+                    <div class="engineering-feature bg-white p-6 rounded-lg shadow-md text-center">
+                        <i class="fas fa-industry text-3xl text-blue-600 mb-4"></i>
+                        <h3 class="text-lg font-bold text-gray-800 mb-2">Construction</h3>
+                        <p class="text-gray-600 text-sm">Building and development projects</p>
+                    </div>
+                    <div class="engineering-feature bg-white p-6 rounded-lg shadow-md text-center">
+                        <i class="fas fa-gem text-3xl text-blue-600 mb-4"></i>
+                        <h3 class="text-lg font-bold text-gray-800 mb-2">Government</h3>
+                        <p class="text-gray-600 text-sm">Public works and land administration</p>
+                    </div>
                 </div>
             </div>
         </div>
