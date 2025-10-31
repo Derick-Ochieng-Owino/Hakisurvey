@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles/style.css">
+    <!-- Include the external gallery CSS -->
+    <link rel="stylesheet" href="styles/gallery.css">
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -31,11 +33,18 @@
         .step-card:hover {
             transform: scale(1.05);
         }
+        .property-feature {
+            transition: all 0.3s ease;
+        }
+        .property-feature:hover {
+            transform: scale(1.05);
+        }
     </style>
 </head>
 <div id="navbar"></div>
 <body class="gradient-bg min-h-screen">
 
+    <!-- Hero Section -->
     <section class="relative py-16 lg:py-24 bg-gradient-to-r from-amber-800 to-amber-600 text-white">
         <div class="absolute inset-0 bg-black opacity-40"></div>
         <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -54,6 +63,131 @@
         </div>
     </section>
 
+    <!-- Introduction to Land Services -->
+    <section class="py-12 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Our Land & Property Services</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    Watch our comprehensive land services automatically rotate every 3 seconds. Click the dots or use arrow keys to navigate between different property solutions.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Auto-Rotating Land Services Gallery -->
+    <section class="py-12 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div id="land-property-gallery" class="gallery-container mb-12"
+                 data-interval="3000"
+                 data-autoplay="true"
+                 data-show-nav="true"
+                 data-show-indicators="true"
+                 data-pause-on-hover="true">
+                
+                <!-- Property Brokerage -->
+                <div class="gallery-slide" style="background-image: url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80')">
+                    <div class="gallery-content">
+                        <h3 class="text-3xl font-bold mb-2">Property Brokerage Services</h3>
+                        <p class="text-xl mb-4">Helping clients buy, sell, and lease land or property with transparency, fair pricing, and smooth transactions throughout Kenya</p>
+                        <button class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-semibold transition duration-300">
+                            Explore Brokerage
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Land Verification -->
+                <div class="gallery-slide" style="background-image: url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80')">
+                    <div class="gallery-content">
+                        <h3 class="text-3xl font-bold mb-2">Land Verification Services</h3>
+                        <p class="text-xl mb-4">Comprehensive land ownership verification, document authenticity checks, and boundary confirmation to protect against fraud and legal disputes</p>
+                        <button class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-semibold transition duration-300">
+                            Verify Your Land
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Title Deed Processing -->
+                <div class="gallery-slide" style="background-image: url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80')">
+                    <div class="gallery-content">
+                        <h3 class="text-3xl font-bold mb-2">Title Deed Processing Support</h3>
+                        <p class="text-xl mb-4">Expert assistance in navigating Kenya's complex land documentation process, including title deed transfers, registrations, and compliance with land laws</p>
+                        <button class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-semibold transition duration-300">
+                            Process Documents
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Real Estate Mapping -->
+                <div class="gallery-slide" style="background-image: url('https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80')">
+                    <div class="gallery-content">
+                        <h3 class="text-3xl font-bold mb-2">Real Estate Mapping & Development</h3>
+                        <p class="text-xl mb-4">Professional mapping services for real estate projects, assisting developers with comprehensive planning, layout design, and feasibility studies</p>
+                        <button class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-semibold transition duration-300">
+                            Plan Development
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Boundary Confirmation -->
+                <div class="gallery-slide" style="background-image: url('https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80')">
+                    <div class="gallery-content">
+                        <h3 class="text-3xl font-bold mb-2">Boundary Confirmation Services</h3>
+                        <p class="text-xl mb-4">Precise boundary demarcation and confirmation services to prevent disputes and ensure clear property ownership documentation</p>
+                        <button class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-semibold transition duration-300">
+                            Confirm Boundaries
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Legal Compliance -->
+                <div class="gallery-slide" style="background-image: url('https://images.unsplash.com/photo-1541976590-713941681591?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80')">
+                    <div class="gallery-content">
+                        <h3 class="text-3xl font-bold mb-2">Legal Compliance Advisory</h3>
+                        <p class="text-xl mb-4">Expert guidance on land laws, regulatory requirements, and compliance procedures for all types of property transactions and developments</p>
+                        <button class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-semibold transition duration-300">
+                            Ensure Compliance
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Gallery Indicators -->
+                <div class="gallery-indicators">
+                    <div class="gallery-indicator" data-slide="0"></div>
+                    <div class="gallery-indicator" data-slide="1"></div>
+                    <div class="gallery-indicator" data-slide="2"></div>
+                    <div class="gallery-indicator" data-slide="3"></div>
+                    <div class="gallery-indicator" data-slide="4"></div>
+                    <div class="gallery-indicator" data-slide="5"></div>
+                </div>
+            </div>
+
+            <!-- Quick Service Overview -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
+                <div class="property-feature bg-white p-6 rounded-lg shadow-md text-center">
+                    <i class="fas fa-handshake text-3xl text-blue-600 mb-4"></i>
+                    <h3 class="text-lg font-bold text-gray-800 mb-2">Brokerage</h3>
+                    <p class="text-gray-600 text-sm">Buy, sell, and lease properties</p>
+                </div>
+                <div class="property-feature bg-white p-6 rounded-lg shadow-md text-center">
+                    <i class="fas fa-search text-3xl text-green-600 mb-4"></i>
+                    <h3 class="text-lg font-bold text-gray-800 mb-2">Verification</h3>
+                    <p class="text-gray-600 text-sm">Land ownership and document checks</p>
+                </div>
+                <div class="property-feature bg-white p-6 rounded-lg shadow-md text-center">
+                    <i class="fas fa-file-alt text-3xl text-amber-600 mb-4"></i>
+                    <h3 class="text-lg font-bold text-gray-800 mb-2">Documentation</h3>
+                    <p class="text-gray-600 text-sm">Title deed processing support</p>
+                </div>
+                <div class="property-feature bg-white p-6 rounded-lg shadow-md text-center">
+                    <i class="fas fa-map-marked-alt text-3xl text-purple-600 mb-4"></i>
+                    <h3 class="text-lg font-bold text-gray-800 mb-2">Mapping</h3>
+                    <p class="text-gray-600 text-sm">Real estate development planning</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Services Grid -->
     <section class="py-16 lg:py-24">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -66,16 +200,16 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <!-- Land & Property Brokerage -->
-                <div class="service-card bg-white rounded-xl p-8 shadow-md">
-                    <div class="flex items-start mb-6">
-                        <div class="w-16 h-16 bg-blue-100 rounded-lg flex items-center justify-center mr-6">
+                <div class="service-card bg-white rounded-xl p-6 md:p-8 shadow-md">
+                    <div class="flex flex-col md:flex-row md:items-start mb-6">
+                        <div class="w-16 h-16 bg-blue-100 rounded-lg flex items-center justify-center mb-4 md:mb-0 md:mr-6">
                             <i class="fas fa-handshake text-blue-600 text-2xl"></i>
                         </div>
-                        <div>
+                        <div class="flex-1">
                             <div class="bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-semibold inline-block mb-2">
                                 Service 1
                             </div>
-                            <h3 class="text-2xl font-bold text-gray-800">Land & Property Brokerage</h3>
+                            <h3 class="text-xl md:text-2xl font-bold text-gray-800">Land & Property Brokerage</h3>
                         </div>
                     </div>
                     <p class="text-gray-600 mb-6 text-lg leading-relaxed">
@@ -85,37 +219,37 @@
                     <div class="bg-blue-50 border-l-4 border-blue-500 p-4 rounded mb-6">
                         <h4 class="font-semibold text-blue-800 mb-3">Our Brokerage Services Include:</h4>
                         <ul class="text-blue-700 space-y-2">
-                            <li class="flex items-center">
-                                <i class="fas fa-check-circle mr-3 text-blue-500"></i>
-                                <span>Property valuation and market analysis</span>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle mr-3 text-blue-500 mt-1"></i>
+                                <span class="flex-1">Property valuation and market analysis</span>
                             </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-check-circle mr-3 text-blue-500"></i>
-                                <span>Buyer-seller matching and negotiation</span>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle mr-3 text-blue-500 mt-1"></i>
+                                <span class="flex-1">Buyer-seller matching and negotiation</span>
                             </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-check-circle mr-3 text-blue-500"></i>
-                                <span>Lease agreement facilitation</span>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle mr-3 text-blue-500 mt-1"></i>
+                                <span class="flex-1">Lease agreement facilitation</span>
                             </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-check-circle mr-3 text-blue-500"></i>
-                                <span>Transaction process management</span>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle mr-3 text-blue-500 mt-1"></i>
+                                <span class="flex-1">Transaction process management</span>
                             </li>
                         </ul>
                     </div>
                 </div>
 
                 <!-- Land Verification -->
-                <div class="service-card bg-white rounded-xl p-8 shadow-md">
-                    <div class="flex items-start mb-6">
-                        <div class="w-16 h-16 bg-green-100 rounded-lg flex items-center justify-center mr-6">
+                <div class="service-card bg-white rounded-xl p-6 md:p-8 shadow-md">
+                    <div class="flex flex-col md:flex-row md:items-start mb-6">
+                        <div class="w-16 h-16 bg-green-100 rounded-lg flex items-center justify-center mb-4 md:mb-0 md:mr-6">
                             <i class="fas fa-search text-green-600 text-2xl"></i>
                         </div>
-                        <div>
+                        <div class="flex-1">
                             <div class="bg-green-600 text-white px-3 py-1 rounded-full text-sm font-semibold inline-block mb-2">
                                 Service 2
                             </div>
-                            <h3 class="text-2xl font-bold text-gray-800">Land Verification</h3>
+                            <h3 class="text-xl md:text-2xl font-bold text-gray-800">Land Verification</h3>
                         </div>
                     </div>
                     <p class="text-gray-600 mb-6 text-lg leading-relaxed">
@@ -125,37 +259,37 @@
                     <div class="bg-green-50 border-l-4 border-green-500 p-4 rounded mb-6">
                         <h4 class="font-semibold text-green-800 mb-3">Verification Process Includes:</h4>
                         <ul class="text-green-700 space-y-2">
-                            <li class="flex items-center">
-                                <i class="fas fa-shield-alt mr-3 text-green-500"></i>
-                                <span>Title deed authenticity verification</span>
+                            <li class="flex items-start">
+                                <i class="fas fa-shield-alt mr-3 text-green-500 mt-1"></i>
+                                <span class="flex-1">Title deed authenticity verification</span>
                             </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-map-marker-alt mr-3 text-green-500"></i>
-                                <span>Physical boundary confirmation</span>
+                            <li class="flex items-start">
+                                <i class="fas fa-map-marker-alt mr-3 text-green-500 mt-1"></i>
+                                <span class="flex-1">Physical boundary confirmation</span>
                             </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-gavel mr-3 text-green-500"></i>
-                                <span>Legal status and encumbrance checks</span>
+                            <li class="flex items-start">
+                                <i class="fas fa-gavel mr-3 text-green-500 mt-1"></i>
+                                <span class="flex-1">Legal status and encumbrance checks</span>
                             </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-file-contract mr-3 text-green-500"></i>
-                                <span>Ownership history investigation</span>
+                            <li class="flex items-start">
+                                <i class="fas fa-file-contract mr-3 text-green-500 mt-1"></i>
+                                <span class="flex-1">Ownership history investigation</span>
                             </li>
                         </ul>
                     </div>
                 </div>
 
                 <!-- Land Documentation & Title Deed Processing -->
-                <div class="service-card bg-white rounded-xl p-8 shadow-md">
-                    <div class="flex items-start mb-6">
-                        <div class="w-16 h-16 bg-amber-100 rounded-lg flex items-center justify-center mr-6">
+                <div class="service-card bg-white rounded-xl p-6 md:p-8 shadow-md">
+                    <div class="flex flex-col md:flex-row md:items-start mb-6">
+                        <div class="w-16 h-16 bg-amber-100 rounded-lg flex items-center justify-center mb-4 md:mb-0 md:mr-6">
                             <i class="fas fa-file-alt text-amber-600 text-2xl"></i>
                         </div>
-                        <div>
+                        <div class="flex-1">
                             <div class="bg-amber-600 text-white px-3 py-1 rounded-full text-sm font-semibold inline-block mb-2">
                                 Service 3
                             </div>
-                            <h3 class="text-2xl font-bold text-gray-800">Land Documentation & Title Deed Processing Support</h3>
+                            <h3 class="text-xl md:text-2xl font-bold text-gray-800">Land Documentation & Title Deed Processing Support</h3>
                         </div>
                     </div>
                     <p class="text-gray-600 mb-6 text-lg leading-relaxed">
@@ -165,37 +299,37 @@
                     <div class="bg-amber-50 border-l-4 border-amber-500 p-4 rounded mb-6">
                         <h4 class="font-semibold text-amber-800 mb-3">Documentation Services:</h4>
                         <ul class="text-amber-700 space-y-2">
-                            <li class="flex items-center">
-                                <i class="fas fa-file-signature mr-3 text-amber-500"></i>
-                                <span>Title deed processing and transfers</span>
+                            <li class="flex items-start">
+                                <i class="fas fa-file-signature mr-3 text-amber-500 mt-1"></i>
+                                <span class="flex-1">Title deed processing and transfers</span>
                             </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-layer-group mr-3 text-amber-500"></i>
-                                <span>Land subdivision documentation</span>
+                            <li class="flex items-start">
+                                <i class="fas fa-layer-group mr-3 text-amber-500 mt-1"></i>
+                                <span class="flex-1">Land subdivision documentation</span>
                             </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-balance-scale mr-3 text-amber-500"></i>
-                                <span>Regulatory compliance assistance</span>
+                            <li class="flex items-start">
+                                <i class="fas fa-balance-scale mr-3 text-amber-500 mt-1"></i>
+                                <span class="flex-1">Regulatory compliance assistance</span>
                             </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-archive mr-3 text-amber-500"></i>
-                                <span>Land registry liaison services</span>
+                            <li class="flex items-start">
+                                <i class="fas fa-archive mr-3 text-amber-500 mt-1"></i>
+                                <span class="flex-1">Land registry liaison services</span>
                             </li>
                         </ul>
                     </div>
                 </div>
 
                 <!-- Real Estate Mapping & Property Development -->
-                <div class="service-card bg-white rounded-xl p-8 shadow-md">
-                    <div class="flex items-start mb-6">
-                        <div class="w-16 h-16 bg-purple-100 rounded-lg flex items-center justify-center mr-6">
+                <div class="service-card bg-white rounded-xl p-6 md:p-8 shadow-md">
+                    <div class="flex flex-col md:flex-row md:items-start mb-6">
+                        <div class="w-16 h-16 bg-purple-100 rounded-lg flex items-center justify-center mb-4 md:mb-0 md:mr-6">
                             <i class="fas fa-map-marked-alt text-purple-600 text-2xl"></i>
                         </div>
-                        <div>
+                        <div class="flex-1">
                             <div class="bg-purple-600 text-white px-3 py-1 rounded-full text-sm font-semibold inline-block mb-2">
                                 Service 4
                             </div>
-                            <h3 class="text-2xl font-bold text-gray-800">Real Estate Mapping & Property Development Support</h3>
+                            <h3 class="text-xl md:text-2xl font-bold text-gray-800">Real Estate Mapping & Property Development Support</h3>
                         </div>
                     </div>
                     <p class="text-gray-600 mb-6 text-lg leading-relaxed">
@@ -205,21 +339,21 @@
                     <div class="bg-purple-50 border-l-4 border-purple-500 p-4 rounded mb-6">
                         <h4 class="font-semibold text-purple-800 mb-3">Development Support Services:</h4>
                         <ul class="text-purple-700 space-y-2">
-                            <li class="flex items-center">
-                                <i class="fas fa-drafting-compass mr-3 text-purple-500"></i>
-                                <span>Site planning and layout design</span>
+                            <li class="flex items-start">
+                                <i class="fas fa-drafting-compass mr-3 text-purple-500 mt-1"></i>
+                                <span class="flex-1">Site planning and layout design</span>
                             </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-chart-line mr-3 text-purple-500"></i>
-                                <span>Development feasibility studies</span>
+                            <li class="flex items-start">
+                                <i class="fas fa-chart-line mr-3 text-purple-500 mt-1"></i>
+                                <span class="flex-1">Development feasibility studies</span>
                             </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-expand-arrows-alt mr-3 text-purple-500"></i>
-                                <span>Topographic and cadastral mapping</span>
+                            <li class="flex items-start">
+                                <i class="fas fa-expand-arrows-alt mr-3 text-purple-500 mt-1"></i>
+                                <span class="flex-1">Topographic and cadastral mapping</span>
                             </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-project-diagram mr-3 text-purple-500"></i>
-                                <span>Infrastructure planning support</span>
+                            <li class="flex items-start">
+                                <i class="fas fa-project-diagram mr-3 text-purple-500 mt-1"></i>
+                                <span class="flex-1">Infrastructure planning support</span>
                             </li>
                         </ul>
                     </div>
@@ -237,7 +371,7 @@
                     Structured approach to ensure secure and successful land transactions and development projects
                 </p>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 <div class="step-card bg-amber-50 p-6 rounded-lg text-center border-2 border-amber-200">
                     <div class="w-12 h-12 bg-amber-500 rounded-full flex items-center justify-center mx-auto mb-4">
                         <span class="text-white font-bold text-lg">1</span>
@@ -280,17 +414,17 @@
                 </p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                <div class="property-feature bg-white p-6 rounded-lg shadow-md text-center">
                     <i class="fas fa-shield-alt text-4xl text-green-600 mb-4"></i>
                     <h3 class="text-xl font-bold text-gray-800 mb-3">Risk Mitigation</h3>
                     <p class="text-gray-600">Comprehensive verification processes protect you from fraud, legal disputes, and ownership conflicts.</p>
                 </div>
-                <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                <div class="property-feature bg-white p-6 rounded-lg shadow-md text-center">
                     <i class="fas fa-clock text-4xl text-blue-600 mb-4"></i>
                     <h3 class="text-xl font-bold text-gray-800 mb-3">Time Efficiency</h3>
                     <p class="text-gray-600">Streamlined processes and expert handling of bureaucracy save you time and reduce delays.</p>
                 </div>
-                <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                <div class="property-feature bg-white p-6 rounded-lg shadow-md text-center">
                     <i class="fas fa-certificate text-4xl text-amber-600 mb-4"></i>
                     <h3 class="text-xl font-bold text-gray-800 mb-3">Legal Compliance</h3>
                     <p class="text-gray-600">Ensuring all transactions and documentation meet Kenyan land laws and regulatory requirements.</p>
@@ -318,6 +452,9 @@
     </section>
 
     <div id="footer"></div>
+
+    <!-- Include the external gallery JavaScript -->
+    <script src="scripts/gallery.js"></script>
     <script>
         async function loadComponent(id, filePath) {
             const el = document.getElementById(id);

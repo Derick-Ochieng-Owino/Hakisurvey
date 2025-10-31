@@ -9,8 +9,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/gallery.css">
     <style>
-
         body {
             font-family: 'Inter', sans-serif;
         }
@@ -27,50 +27,6 @@
             border-left-color: #3b82f6;
             box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
         }
-
-        /* Image hover overlay effect */
-.image-overlay-container {
-    position: relative;
-    overflow: hidden;
-    border-radius: 0.75rem;
-}
-
-.image-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.image-overlay-container:hover .image-overlay {
-    opacity: 1;
-}
-
-.overlay-content {
-    color: white;
-    text-align: center;
-    transform: translateY(20px);
-    transition: transform 0.3s ease;
-}
-
-.image-overlay-container:hover .overlay-content {
-    transform: translateY(0);
-}
-
-.engineering-feature {
-    transition: all 0.3s ease;
-}
-
-.engineering-feature:hover {
-    transform: scale(1.05);
-}
     </style>
 </head>
 <div id="navbar"></div>
@@ -94,84 +50,154 @@
         </div>
     </section>
 
-    <!-- Gallery -->
-     <!-- Engineering Services Gallery with Hover Overlay -->
-<section class="py-12 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-8">
-            <h2 class="text-3xl font-bold text-gray-800 mb-4">Our Engineering Services in Action</h2>
-            <p class="text-lg text-gray-600 max-w-3xl mx-auto">
-                Hover over the images below to explore our comprehensive engineering and geospatial capabilities for infrastructure development.
-            </p>
-        </div>
-    </div>
-</section>
-
-<section class="py-12 bg-gray-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- Engineering Service 1 with Hover Overlay -->
-            <div class="image-overlay-container bg-white rounded-xl shadow-md overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1541976590-713941681591?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" 
-                     alt="Highway Engineering" 
-                     class="w-full h-64 object-cover">
-                <div class="image-overlay">
-                    <div class="overlay-content">
-                        <h3 class="text-xl font-bold mb-2">Highway Engineering Surveys</h3>
-                        <p class="mb-4">Comprehensive route alignment and corridor mapping for transportation infrastructure</p>
-                        <button class="bg-amber-500 hover:bg-amber-600 text-white px-4 py-2 rounded-lg font-medium transition-colors duration-300">
-                            View Details
-                        </button>
-                    </div>
-                </div>
-                <div class="p-6">
-                    <h3 class="text-xl font-bold text-gray-800 mb-2">Highway Engineering</h3>
-                    <p class="text-gray-600">Route optimization and corridor mapping for transportation projects</p>
-                </div>
-            </div>
-
-            <!-- Engineering Service 2 with Hover Overlay -->
-            <div class="image-overlay-container bg-white rounded-xl shadow-md overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" 
-                     alt="BIM Integration" 
-                     class="w-full h-64 object-cover">
-                <div class="image-overlay">
-                    <div class="overlay-content">
-                        <h3 class="text-xl font-bold mb-2">BIM & Digital Twins</h3>
-                        <p class="mb-4">Intelligent digital representations and Building Information Modeling integration</p>
-                        <button class="bg-amber-500 hover:bg-amber-600 text-white px-4 py-2 rounded-lg font-medium transition-colors duration-300">
-                            View Details
-                        </button>
-                    </div>
-                </div>
-                <div class="p-6">
-                    <h3 class="text-xl font-bold text-gray-800 mb-2">BIM Integration</h3>
-                    <p class="text-gray-600">Digital construction and intelligent asset management</p>
-                </div>
-            </div>
-
-            <!-- Engineering Service 3 with Hover Overlay -->
-            <div class="image-overlay-container bg-white rounded-xl shadow-md overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" 
-                     alt="Geospatial Analysis" 
-                     class="w-full h-64 object-cover">
-                <div class="image-overlay">
-                    <div class="overlay-content">
-                        <h3 class="text-xl font-bold mb-2">Geospatial Analysis</h3>
-                        <p class="mb-4">Advanced spatial data management and analysis for informed decision-making</p>
-                        <button class="bg-amber-500 hover:bg-amber-600 text-white px-4 py-2 rounded-lg font-medium transition-colors duration-300">
-                            View Details
-                        </button>
-                    </div>
-                </div>
-                <div class="p-6">
-                    <h3 class="text-xl font-bold text-gray-800 mb-2">Geospatial Analysis</h3>
-                    <p class="text-gray-600">Spatial intelligence and data-driven insights</p>
-                </div>
+    <!-- Introduction to Engineering Services -->
+    <section class="py-12 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Our Engineering & Geospatial Services</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    Watch our comprehensive engineering services automatically rotate every 3 seconds. Click the dots or use arrow keys to navigate between different engineering solutions.
+                </p>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+
+    <!-- Auto-Rotating Engineering Services Gallery -->
+    <section class="py-12 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div id="engineering-geospatial-gallery" class="gallery-container mb-12"
+                data-interval="3000"
+                data-autoplay="true"
+                data-show-nav="true"
+                data-show-indicators="true"
+                data-pause-on-hover="true">
+                
+                <!-- Highway Surveys -->
+                <div class="gallery-slide" style="background-image: url('https://images.unsplash.com/photo-1541976590-713941681591?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80')">
+                    <div class="gallery-content">
+                        <h3 class="text-3xl font-bold mb-2">Highway Engineering Surveys</h3>
+                        <p class="text-xl mb-4">Comprehensive route alignment, corridor mapping, and planning surveys for road construction and transportation infrastructure projects</p>
+                        <button class="bg-amber-500 hover:bg-amber-600 text-white px-6 py-2 rounded-lg font-semibold transition duration-300">
+                            Plan Transportation Projects
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- As-Built Surveys -->
+                <div class="gallery-slide" style="background-image: url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80')">
+                    <div class="gallery-content">
+                        <h3 class="text-3xl font-bold mb-2">As-Built Surveys</h3>
+                        <p class="text-xl mb-4">Verification of constructed works against design specifications to ensure compliance, quality control, and accurate documentation</p>
+                        <button class="bg-amber-500 hover:bg-amber-600 text-white px-6 py-2 rounded-lg font-semibold transition duration-300">
+                            Verify Construction Quality
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Volumetric Surveys -->
+                <div class="gallery-slide" style="background-image: url('https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80')">
+                    <div class="gallery-content">
+                        <h3 class="text-3xl font-bold mb-2">Volumetric Surveys</h3>
+                        <p class="text-xl mb-4">3D modeling and precise material quantity calculations for earthworks, stockpile management, and construction progress tracking</p>
+                        <button class="bg-amber-500 hover:bg-amber-600 text-white px-6 py-2 rounded-lg font-semibold transition duration-300">
+                            Calculate Material Quantities
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- BIM & Digital Twins -->
+                <div class="gallery-slide" style="background-image: url('https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80')">
+                    <div class="gallery-content">
+                        <h3 class="text-3xl font-bold mb-2">BIM & Digital Twins</h3>
+                        <p class="text-xl mb-4">Integration of precise survey data with Building Information Modeling workflows to create intelligent digital representations</p>
+                        <button class="bg-amber-500 hover:bg-amber-600 text-white px-6 py-2 rounded-lg font-semibold transition duration-300">
+                            Implement Digital Construction
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Indoor Mapping -->
+                <div class="gallery-slide" style="background-image: url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80')">
+                    <div class="gallery-content">
+                        <h3 class="text-3xl font-bold mb-2">Indoor Mapping</h3>
+                        <p class="text-xl mb-4">Detailed mapping of complex indoor spaces and large facilities for navigation, planning, and facility management</p>
+                        <button class="bg-amber-500 hover:bg-amber-600 text-white px-6 py-2 rounded-lg font-semibold transition duration-300">
+                            Map Interior Spaces
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Site Engineering -->
+                <div class="gallery-slide" style="background-image: url('https://images.unsplash.com/photo-1473968512647-3e447244af8f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80')">
+                    <div class="gallery-content">
+                        <h3 class="text-3xl font-bold mb-2">Site Engineering</h3>
+                        <p class="text-xl mb-4">Precise construction setting out, deformation monitoring, and engineering control for building and infrastructure projects</p>
+                        <button class="bg-amber-500 hover:bg-amber-600 text-white px-6 py-2 rounded-lg font-semibold transition duration-300">
+                            Engineer Construction Sites
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Mapping & GIS Services -->
+                <div class="gallery-slide" style="background-image: url('https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80')">
+                    <div class="gallery-content">
+                        <h3 class="text-3xl font-bold mb-2">Mapping & GIS Services</h3>
+                        <p class="text-xl mb-4">Advanced spatial analysis, data integration, and mapping solutions for informed decision-making and resource management</p>
+                        <button class="bg-amber-500 hover:bg-amber-600 text-white px-6 py-2 rounded-lg font-semibold transition duration-300">
+                            Analyze Spatial Data
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Land Data Analysis -->
+                <div class="gallery-slide" style="background-image: url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80')">
+                    <div class="gallery-content">
+                        <h3 class="text-3xl font-bold mb-2">Land Data Analysis & Management</h3>
+                        <p class="text-xl mb-4">Comprehensive spatial data management, analysis, and visualization for government agencies and land management</p>
+                        <button class="bg-amber-500 hover:bg-amber-600 text-white px-6 py-2 rounded-lg font-semibold transition duration-300">
+                            Manage Land Data
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Gallery Indicators -->
+                <div class="gallery-indicators">
+                    <div class="gallery-indicator" data-slide="0"></div>
+                    <div class="gallery-indicator" data-slide="1"></div>
+                    <div class="gallery-indicator" data-slide="2"></div>
+                    <div class="gallery-indicator" data-slide="3"></div>
+                    <div class="gallery-indicator" data-slide="4"></div>
+                    <div class="gallery-indicator" data-slide="5"></div>
+                    <div class="gallery-indicator" data-slide="6"></div>
+                    <div class="gallery-indicator" data-slide="7"></div>
+                </div>
+            </div>
+
+            <!-- Quick Service Overview -->
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mt-12">
+                <div class="engineering-feature bg-white p-6 rounded-lg shadow-md text-center">
+                    <i class="fas fa-road text-3xl text-blue-600 mb-4"></i>
+                    <h3 class="text-lg font-bold text-gray-800 mb-2">Highway Surveys</h3>
+                    <p class="text-gray-600 text-sm">Transportation infrastructure planning</p>
+                </div>
+                <div class="engineering-feature bg-white p-6 rounded-lg shadow-md text-center">
+                    <i class="fas fa-project-diagram text-3xl text-purple-600 mb-4"></i>
+                    <h3 class="text-lg font-bold text-gray-800 mb-2">BIM Integration</h3>
+                    <p class="text-gray-600 text-sm">Digital construction workflows</p>
+                </div>
+                <div class="engineering-feature bg-white p-6 rounded-lg shadow-md text-center">
+                    <i class="fas fa-map-marked-alt text-3xl text-cyan-600 mb-4"></i>
+                    <h3 class="text-lg font-bold text-gray-800 mb-2">GIS Services</h3>
+                    <p class="text-gray-600 text-sm">Spatial analysis and mapping</p>
+                </div>
+                <div class="engineering-feature bg-white p-6 rounded-lg shadow-md text-center">
+                    <i class="fas fa-database text-3xl text-emerald-600 mb-4"></i>
+                    <h3 class="text-lg font-bold text-gray-800 mb-2">Data Management</h3>
+                    <p class="text-gray-600 text-sm">Land and spatial data systems</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Services Grid -->
     <section class="py-16 lg:py-24">
@@ -527,5 +553,6 @@
         loadComponent('footer', 'components/external_footer.html');
     </script>
     <script src="scripts/script.js"></script>
+    <script src="scripts/gallery.js"></script>
 </body>
 </html>

@@ -8,47 +8,12 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/gallery.css">
+    <link rel="stylesheet" href="styles/style.css">
     <style>
         body {
             font-family: 'Inter', sans-serif;
         }
-        
-        /* Image hover overlay effect */
-        .image-overlay-container {
-            position: relative;
-            overflow: hidden;
-            border-radius: 0.75rem;
-        }
-        
-        .image-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        
-        .image-overlay-container:hover .image-overlay {
-            opacity: 1;
-        }
-        
-        .overlay-content {
-            color: white;
-            text-align: center;
-            transform: translateY(20px);
-            transition: transform 0.3s ease;
-        }
-        
-        .image-overlay-container:hover .overlay-content {
-            transform: translateY(0);
-        }
-        
         /* Service card animations */
         .service-card {
             transition: all 0.3s ease;
@@ -76,21 +41,7 @@
 </head>
 <body class="gradient-bg min-h-screen">
     <!-- Navigation -->
-    <div id="navbar" class="bg-white shadow-sm">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-            <div class="flex justify-between items-center">
-                <div class="text-xl font-bold text-purple-700">HakiSurvey Plots Ltd</div>
-                <div class="space-x-6">
-                    <a href="#" class="text-gray-600 hover:text-purple-700">Home</a>
-                    <a href="#" class="text-gray-600 hover:text-purple-700">Services</a>
-                    <a href="#" class="text-purple-700 font-semibold">Consultancy</a>
-                    <a href="#" class="text-gray-600 hover:text-purple-700">Technology</a>
-                    <a href="#" class="text-gray-600 hover:text-purple-700">About</a>
-                    <a href="#" class="text-gray-600 hover:text-purple-700">Contact</a>
-                </div>
-            </div>
-        </div>
-    </div>
+    <div id="navbar"></div>
 
     <!-- Hero Section -->
     <section class="relative py-16 lg:py-24 bg-gradient-to-r from-blue-800 to-blue-600 text-white">
@@ -124,68 +75,157 @@
         </div>
     </section>
 
-    <!-- Consultancy Services Gallery with Hover Overlay -->
+        <!-- Introduction to Consultancy Services -->
+    <section class="py-12 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Expert Consultancy Solutions</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    Watch our consultancy services automatically rotate every 3 seconds. Click the dots or use arrow keys to navigate between different consultancy specialties.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Auto-Rotating Consultancy Gallery -->
     <section class="py-12 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Consultancy Service 1 with Hover Overlay -->
-                <div class="image-overlay-container bg-white rounded-xl shadow-md overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" 
-                         alt="Land Surveying Consultancy" 
-                         class="w-full h-64 object-cover">
-                    <div class="image-overlay">
-                        <div class="overlay-content">
-                            <h3 class="text-xl font-bold mb-2">Land Surveying Consultancy</h3>
-                            <p class="mb-4">Expert advice on boundary surveys, topographic mapping, and cadastral surveys</p>
-                            <button class="bg-amber-500 hover:bg-amber-600 text-white px-4 py-2 rounded-lg font-medium transition-colors duration-300">
-                                Learn More
-                            </button>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-800 mb-2">Land Surveying</h3>
-                        <p class="text-gray-600">Professional advisory services for all types of land surveys and boundary determinations</p>
+            <div id="consultancy-gallery" class="gallery-container mb-12"
+                data-interval="3000"
+                data-autoplay="true"
+                data-show-nav="true"
+                data-show-indicators="true"
+                data-pause-on-hover="true">
+                
+                <!-- Cadastral Survey -->
+                <div class="gallery-slide" style="background-image: url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80')">
+                    <div class="gallery-content">
+                        <h3 class="text-3xl font-bold mb-2">Cadastral Survey Consultancy</h3>
+                        <p class="text-xl mb-4">Professional advisory services for legal property boundary determination and land registration processes in compliance with Kenyan land laws</p>
+                        <button class="bg-amber-500 hover:bg-amber-600 text-white px-6 py-2 rounded-lg font-semibold transition duration-300">
+                            Learn About Cadastral Surveys
+                        </button>
                     </div>
                 </div>
-
-                <!-- Consultancy Service 2 with Hover Overlay -->
-                <div class="image-overlay-container bg-white rounded-xl shadow-md overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1541976590-713941681591?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" 
-                         alt="Construction Project Advisory" 
-                         class="w-full h-64 object-cover">
-                    <div class="image-overlay">
-                        <div class="overlay-content">
-                            <h3 class="text-xl font-bold mb-2">Construction Project Advisory</h3>
-                            <p class="mb-4">Comprehensive consultancy for construction layout, monitoring, and as-built surveys</p>
-                            <button class="bg-amber-500 hover:bg-amber-600 text-white px-4 py-2 rounded-lg font-medium transition-colors duration-300">
-                                Learn More
-                            </button>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-800 mb-2">Construction Advisory</h3>
-                        <p class="text-gray-600">Expert guidance for construction projects from planning to completion</p>
+                
+                <!-- Boundary Determination -->
+                <div class="gallery-slide" style="background-image: url('https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80')">
+                    <div class="gallery-content">
+                        <h3 class="text-3xl font-bold mb-2">Boundary Determination</h3>
+                        <p class="text-xl mb-4">Expert advice on property boundaries, land disputes, and precise boundary demarcation using advanced surveying techniques</p>
+                        <button class="bg-amber-500 hover:bg-amber-600 text-white px-6 py-2 rounded-lg font-semibold transition duration-300">
+                            Explore Boundary Services
+                        </button>
                     </div>
                 </div>
+                
+                <!-- Title Deed Processing -->
+                <div class="gallery-slide" style="background-image: url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80')">
+                    <div class="gallery-content">
+                        <h3 class="text-3xl font-bold mb-2">Title Deed Processing</h3>
+                        <p class="text-xl mb-4">Comprehensive guidance on land title registration, documentation, and property transfer processes with legal compliance</p>
+                        <button class="bg-amber-500 hover:bg-amber-600 text-white px-6 py-2 rounded-lg font-semibold transition duration-300">
+                            Understand Title Processing
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Legal Compliance -->
+                <div class="gallery-slide" style="background-image: url('https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80')">
+                    <div class="gallery-content">
+                        <h3 class="text-3xl font-bold mb-2">Legal Compliance Advisory</h3>
+                        <p class="text-xl mb-4">Expert advisory on surveying regulations, land laws, and compliance requirements for all types of development projects</p>
+                        <button class="bg-amber-500 hover:bg-amber-600 text-white px-6 py-2 rounded-lg font-semibold transition duration-300">
+                            Review Compliance Services
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Dispute Resolution -->
+                <div class="gallery-slide" style="background-image: url('https://images.unsplash.com/photo-1541976590-713941681591?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80')">
+                    <div class="gallery-content">
+                        <h3 class="text-3xl font-bold mb-2">Dispute Resolution</h3>
+                        <p class="text-xl mb-4">Professional mediation and expert witness services for land disputes, boundary conflicts, and property ownership issues</p>
+                        <button class="bg-amber-500 hover:bg-amber-600 text-white px-6 py-2 rounded-lg font-semibold transition duration-300">
+                            Resolve Land Disputes
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Construction Layout -->
+                <div class="gallery-slide" style="background-image: url('https://images.unsplash.com/photo-1473968512647-3e447244af8f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80')">
+                    <div class="gallery-content">
+                        <h3 class="text-3xl font-bold mb-2">Construction Layout</h3>
+                        <p class="text-xl mb-4">Expert advisory on building positioning, alignment, and construction setup for residential and commercial projects</p>
+                        <button class="bg-amber-500 hover:bg-amber-600 text-white px-6 py-2 rounded-lg font-semibold transition duration-300">
+                            Plan Construction Layout
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Road & Highway Surveys -->
+                <div class="gallery-slide" style="background-image: url('https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80')">
+                    <div class="gallery-content">
+                        <h3 class="text-3xl font-bold mb-2">Road & Highway Surveys</h3>
+                        <p class="text-xl mb-4">Comprehensive consultancy for transportation infrastructure projects including route optimization and corridor mapping</p>
+                        <button class="bg-amber-500 hover:bg-amber-600 text-white px-6 py-2 rounded-lg font-semibold transition duration-300">
+                            Survey Transportation Projects
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Deformation Monitoring -->
+                <div class="gallery-slide" style="background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80')">
+                    <div class="gallery-content">
+                        <h3 class="text-3xl font-bold mb-2">Deformation Monitoring</h3>
+                        <p class="text-xl mb-4">Expert advice on structural monitoring systems, settlement analysis, and deformation tracking for construction safety</p>
+                        <button class="bg-amber-500 hover:bg-amber-600 text-white px-6 py-2 rounded-lg font-semibold transition duration-300">
+                            Monitor Structural Safety
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Quantity Calculations -->
+                <div class="gallery-slide" style="background-image: url('https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80')">
+                    <div class="gallery-content">
+                        <h3 class="text-3xl font-bold mb-2">Quantity Calculations</h3>
+                        <p class="text-xl mb-4">Professional consultancy for earthwork calculations, volume measurements, and material quantity verification</p>
+                        <button class="bg-amber-500 hover:bg-amber-600 text-white px-6 py-2 rounded-lg font-semibold transition duration-300">
+                            Calculate Project Quantities
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Gallery Indicators -->
+                <div class="gallery-indicators">
+                    <div class="gallery-indicator" data-slide="0"></div>
+                    <div class="gallery-indicator" data-slide="1"></div>
+                    <div class="gallery-indicator" data-slide="2"></div>
+                    <div class="gallery-indicator" data-slide="3"></div>
+                    <div class="gallery-indicator" data-slide="4"></div>
+                    <div class="gallery-indicator" data-slide="5"></div>
+                    <div class="gallery-indicator" data-slide="6"></div>
+                    <div class="gallery-indicator" data-slide="7"></div>
+                    <div class="gallery-indicator" data-slide="8"></div>
+                </div>
+            </div>
 
-                <!-- Consultancy Service 3 with Hover Overlay -->
-                <div class="image-overlay-container bg-white rounded-xl shadow-md overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" 
-                         alt="GIS & Mapping Consultancy" 
-                         class="w-full h-64 object-cover">
-                    <div class="image-overlay">
-                        <div class="overlay-content">
-                            <h3 class="text-xl font-bold mb-2">GIS & Mapping Consultancy</h3>
-                            <p class="mb-4">Strategic advice on GIS implementation, spatial analysis, and mapping solutions</p>
-                            <button class="bg-amber-500 hover:bg-amber-600 text-white px-4 py-2 rounded-lg font-medium transition-colors duration-300">
-                                Learn More
-                            </button>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-800 mb-2">GIS & Mapping</h3>
-                        <p class="text-gray-600">Professional consultancy for geographic information systems and spatial data management</p>
-                    </div>
+            <!-- Quick Reference Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
+                <div class="consultancy-feature bg-white p-6 rounded-lg shadow-md text-center">
+                    <i class="fas fa-landmark text-3xl text-blue-600 mb-4"></i>
+                    <h3 class="text-lg font-bold text-gray-800 mb-2">Land Services</h3>
+                    <p class="text-gray-600 text-sm">Cadastral surveys, boundary determination, title processing</p>
+                </div>
+                <div class="consultancy-feature bg-white p-6 rounded-lg shadow-md text-center">
+                    <i class="fas fa-gavel text-3xl text-blue-600 mb-4"></i>
+                    <h3 class="text-lg font-bold text-gray-800 mb-2">Legal Services</h3>
+                    <p class="text-gray-600 text-sm">Compliance advisory and dispute resolution</p>
+                </div>
+                <div class="consultancy-feature bg-white p-6 rounded-lg shadow-md text-center">
+                    <i class="fas fa-hard-hat text-3xl text-blue-600 mb-4"></i>
+                    <h3 class="text-lg font-bold text-gray-800 mb-2">Engineering Services</h3>
+                    <p class="text-gray-600 text-sm">Construction layout, road surveys, quantity calculations</p>
                 </div>
             </div>
         </div>
@@ -412,52 +452,9 @@
         </div>
     </section>
 
-    <!-- Footer -->
-    <div id="footer" class="bg-gray-800 text-white py-8">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center">
-                <p class="mb-4">© 2023 HakiSurvey Plots Ltd. All rights reserved.</p>
-                <div class="flex justify-center space-x-6">
-                    <a href="#" class="hover:text-amber-400">Privacy Policy</a>
-                    <a href="#" class="hover:text-amber-400">Terms of Service</a>
-                    <a href="#" class="hover:text-amber-400">Contact Us</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Explanation Section for New Users -->
-    <section class="py-12 bg-white border-t">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="bg-blue-50 p-6 rounded-lg border border-blue-200">
-                <h3 class="text-xl font-bold text-blue-800 mb-3">Consultancy Services Overview</h3>
-                <p class="text-blue-700 mb-4">
-                    This page demonstrates our consultancy services using the same interactive UI pattern as our technology page. Here's what we offer:
-                </p>
-                <ul class="text-blue-700 space-y-2">
-                    <li class="flex items-start">
-                        <i class="fas fa-map-marked-alt text-blue-500 mt-1 mr-2"></i>
-                        <span><strong>Land Surveying Consultancy:</strong> Expert advice on boundary determination, cadastral surveys, and legal compliance</span>
-                    </li>
-                    <li class="flex items-start">
-                        <i class="fas fa-hard-hat text-blue-500 mt-1 mr-2"></i>
-                        <span><strong>Engineering & Construction:</strong> Professional guidance for construction projects and infrastructure development</span>
-                    </li>
-                    <li class="flex items-start">
-                        <i class="fas fa-laptop-code text-blue-500 mt-1 mr-2"></i>
-                        <span><strong>GIS & Technology:</strong> Strategic advice on geospatial technology implementation and data management</span>
-                    </li>
-                    <li class="flex items-start">
-                        <i class="fas fa-users text-blue-500 mt-1 mr-2"></i>
-                        <span><strong>Expert Team:</strong> Access to experienced professionals with diverse surveying and engineering expertise</span>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </section>
+    <div id="footer"></div>
 
     <script>
-        // Simple script to handle component loading
         async function loadComponent(id, filePath) {
             const el = document.getElementById(id);
             try {
@@ -485,5 +482,7 @@
             loadComponent('footer', 'components/external_footer.html');
         }
     </script>
+    <script src="scripts/gallery.js"></script>
+    <script src="scripts/script.js"></script>
 </body>
 </html>
