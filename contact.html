@@ -9,9 +9,55 @@
     <script src="https://unpkg.com/swiper@9/swiper-bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
     <link rel="stylesheet" href="styles/style.css">
+    <style>
+        #contact{
+            padding-top: 4rem;
+        }
+    </style>
 </head>
 <body>
-    <div id="navbar"></div>
+    <header id="navbar_header">
+        <nav id="navbar" class="navbar">
+            <div class="logo">
+                <div class="logo-icon">H</div>
+                <div class="logo-text">
+                    <span>Haki</span>
+                    <span>Survey</span>
+                </div>
+            </div>
+
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Home</a></li>
+                
+                <li class="dropdown">
+                    <a href="services.html" data-toggle="dropdown">
+                        Services <span class="arrow">▼</span>
+                    </a>
+                    <div class="dropdown-content">
+                        <a href="services/land.html">Land & Property Solutions</a>
+                        <a href="services/surveying.html">Surveying Specialties</a>
+                        <a href="services/aerial.html">Aerial & Drone Surveying</a>
+                        <a href="services/engineering.html">Engineering & Geospatial</a>
+                        <a href="services/consultancy.html">Consultancy & Environmental</a>
+                        <a href="services/technology.html">Technology & Innovation</a>
+                    </div>
+                </li>
+                
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="resources.html">Resources</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+
+            <button class="cta-button" onclick="showPage('contact')">Request Quote</button>
+
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
 
     <!-- CONTACT PAGE -->
     <div id="contact" class="page active-page">
@@ -26,7 +72,7 @@
                     <!-- Contact Form -->
                     <div data-aos="fade-right">
                         <h2 class="text-2xl font-bold text-gray-800 mb-6">Send us a Message</h2>
-                        <form class="space-y-6 bg-gray-50 p-8 rounded-xl">
+                        <form action="send_mail.php" method="post" enctype="multipart/form-data" class="space-y-6 bg-gray-50 p-8 rounded-xl" >
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div>
                                     <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Full Name *</label>
@@ -45,26 +91,59 @@
                                 <label for="service" class="block text-sm font-medium text-gray-700 mb-2">Service Interest</label>
                                 <select id="service" name="service" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
                                     <option value="">Select a service</option>
-                                    <option value="land-property">Land & Property Solutions</option>
-                                    <option value="surveying">Surveying Specialties</option>
-                                    <option value="aerial">Aerial & Drone Surveying</option>
-                                    <option value="engineering">Engineering & Geospatial Services</option>
-                                    <option value="consultancy">Consultancy & Environmental</option>
-                                    <option value="technology">Technology & Innovation</option>
+                                    <optgroup label="🏡 Land & Property Solutions">
+                                        <option value="land-acquisition">Land Acquisition & Subdivision</option>
+                                        <option value="property-valuation">Property Valuation & Feasibility Studies</option>
+                                        <option value="title-survey">Title Deed & Cadastral Surveys</option>
+                                        <option value="land-registration">Land Registration & Documentation</option>
+                                    </optgroup>
+                                    <optgroup label="📏 Surveying Specialties">
+                                        <option value="topographic-survey">Topographic & Boundary Surveys</option>
+                                        <option value="bathymetric-survey">Bathymetric & Hydrographic Surveys</option>
+                                        <option value="engineering-survey">Engineering & Control Surveys</option>
+                                        <option value="construction-setout">Construction Set-out & Monitoring</option>
+                                    </optgroup>
+                                    <optgroup label="🚁 Aerial & Drone Surveying">
+                                        <option value="orthomosaic-mapping">Orthomosaic & Photogrammetry Mapping</option>
+                                        <option value="lidar-survey">LiDAR & Terrain Modeling</option>
+                                        <option value="drone-inspection">Infrastructure & Utility Inspections</option>
+                                        <option value="vegetation-analysis">Vegetation & Environmental Analysis</option>
+                                    </optgroup>
+                                    <optgroup label="🛠️ Engineering & Geospatial Services">
+                                        <option value="route-alignment">Highway & Transport Corridor Mapping</option>
+                                        <option value="as-built-survey">As-Built & Utility Surveys</option>
+                                        <option value="volumetric-analysis">Volumetric & Earthwork Analysis</option>
+                                        <option value="gis-data">GIS Data Processing & Visualization</option>
+                                    </optgroup>
+                                    <optgroup label="🌿 Consultancy & Environmental">
+                                        <option value="environmental-impact">Environmental Impact Assessments (EIA)</option>
+                                        <option value="feasibility-studies">Feasibility & Site Assessment Studies</option>
+                                        <option value="policy-advisory">Land Policy & Planning Advisory</option>
+                                        <option value="environmental-monitoring">Environmental Monitoring & Compliance</option>
+                                    </optgroup>
+                                    <optgroup label="💡 Technology & Innovation">
+                                        <option value="gis-software">GIS Software Integration</option>
+                                        <option value="iot-monitoring">IoT-Based Monitoring Systems</option>
+                                        <option value="data-analytics">Spatial Data Analytics & Visualization</option>
+                                        <option value="ai-automation">AI & Automation for Smart Mapping</option>
+                                    </optgroup>
                                 </select>
+
                             </div>
                             <div>
                                 <label for="message" class="block text-sm font-medium text-gray-700 mb-2">Project Details / Message *</label>
                                 <textarea id="message" name="message" rows="5" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"></textarea>
                             </div>
+
                             <div class="flex items-center justify-between">
                                 <div>
                                     <label for="attachment" class="block text-sm font-medium text-gray-700 mb-2">Attach Files (Optional)</label>
                                     <input type="file" id="attachment" name="attachment" class="text-sm text-gray-500">
                                 </div>
-                                <button type="submit" id="quote" class="px-6 py-3 bg-blue-700 text-white font-medium rounded-lg hover:bg-blue-800 transition-colors">Send Message</button>
+                                <input type="text" name="_gotcha" style="display:none">
+                                <button type="submit" class="px-6 py-3 bg-blue-700 text-white font-medium rounded-lg hover:bg-blue-800 transition-colors">Send Message</button>
+                                <p class="text-sm text-green-600 hidden mt-2" id="form-status">Thank you! Your message has been sent.</p>
                             </div>
-                            <p id="form-status" class="text-sm text-green-600 hidden mt-2">Thank you! Your message has been sent successfully.</p>
                         </form>
                     </div>
                     
@@ -90,7 +169,7 @@
                                 <div class="flex items-center">
                                     <i class="fas fa-envelope text-blue-600 mr-4"></i>
                                     <div>
-                                        <p class="font-medium text-gray-800">info@hakisurvey.co.ke</p>
+                                        <p class="font-medium text-gray-800">info@hakisurveyplotsltd.com</p>
                                     </div>
                                 </div>
                                 <div class="flex items-start">
@@ -126,22 +205,104 @@
         </section>
     </div>
 
-    <div id="footer"></div>
-    <script>
-        async function loadComponent(id, filePath) {
-            const el = document.getElementById(id);
-            try {
-            const response = await fetch(filePath);
-            if (!response.ok) throw new Error(`Failed to load ${filePath}`);
-            const html = await response.text();
-            el.innerHTML = html;
-            } catch (error) {
-            console.error(error);
-            }
-        }
+        <!-- FOOTER SECTION -->
+<div id="footer">
+  <footer class="bg-gray-900 text-white py-12 w-full">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Footer Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+        <!-- Brand Section -->
+        <div>
+          <div class="flex items-center gap-2 mb-4">
+            <div class="w-8 h-8 rounded-full overflow-hidden bg-blue-600 flex items-center justify-center">
+              <img
+                src="https://i.pinimg.com/736x/6d/2e/a8/6d2ea81769e1c4a4e9da4dedbc3db9f6.jpg"
+                alt="HakiSurvey Logo"
+                class="w-full h-full object-cover rounded-full"
+              />
+            </div>
+            <span class="font-semibold text-lg">HakiSurvey Plots Ltd</span>
+          </div>
 
-        loadComponent('navbar', 'components/external_navbar.html');
-        loadComponent('footer', 'components/external_footer.html');
+          <p class="text-gray-400 mb-6 leading-relaxed max-w-md">
+            Providing innovative GIS and surveying solutions with cutting-edge
+            technology and expertise for over a decade.
+          </p>
+
+          <div class="flex gap-4 text-gray-400 text-xl">
+            <a href="#" class="hover:text-white"><i class="fab fa-linkedin"></i></a>
+            <a href="#" class="hover:text-white"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="hover:text-white"><i class="fab fa-facebook"></i></a>
+            <a href="#" class="hover:text-white"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div>
+          <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+          <ul class="space-y-2">
+            <li><a href="index.html" class="text-gray-400 hover:text-white transition">Home</a></li>
+            <li><a href="projects.html" class="text-gray-400 hover:text-white transition">Projects</a></li>
+            <li><a href="services.html" class="text-gray-400 hover:text-white transition">Services</a></li>
+            <li><a href="about.html" class="text-gray-400 hover:text-white transition">About Us</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition">Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact Info -->
+        <div>
+          <h3 class="text-lg font-semibold mb-4">Contact Info</h3>
+          <ul class="space-y-3 text-gray-400">
+            <li class="flex items-start gap-3">
+              <i class="fas fa-map-marker-alt text-blue-500 mt-1"></i>
+              <span>Survey Plaza, Westlands, Nairobi, Kenya</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <i class="fas fa-phone text-blue-500 mt-1"></i>
+              <span>+254 700 123 456</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <i class="fas fa-envelope text-blue-500 mt-1"></i>
+              <span>info@hakisurveyplotsltd.com</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Footer Bottom -->
+      <div class="border-t border-gray-700 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+        <p class="text-gray-400 text-sm">
+          © <span id="year"></span> HakiSurvey Plots Ltd. All rights reserved.
+        </p>
+        <div class="flex gap-6">
+          <a href="#" class="text-gray-400 text-sm hover:text-white">Privacy Policy</a>
+          <a href="#" class="text-gray-400 text-sm hover:text-white">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+</div>
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+    <script>
+        document.querySelector('form').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const form = e.target;
+        const formData = new FormData(form);
+
+        const response = await fetch(form.action, {
+            method: form.method,
+            body: formData,
+            headers: { 'Accept': 'application/json' }
+        });
+
+        if (response.ok) {
+            form.reset();
+            window.location.href = "thank-you.html";
+        } else {
+            alert("There was a problem submitting your form. Please try again.");
+        }
+        });
     </script>
     <script src="scripts/script.js"></script>
 </body>

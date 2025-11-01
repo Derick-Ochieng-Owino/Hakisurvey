@@ -1,25 +1,3 @@
-async function loadComponent(id, file) {
-    const el = document.getElementById(id);
-    if (!el) {
-        return;
-    }
-
-    try {
-        const response = await fetch(file);
-        if (!response.ok) throw new Error(`Failed to fetch ${file} (${response.status})`);
-        const html = await response.text();
-        el.innerHTML = html;
-        
-        if (id === 'navbar') {
-            initNavbarScripts(el);
-        } else if (id === 'footer') {
-            initFooterScripts(el);
-        }
-    } catch (err) {
-        loadFallbackComponent(id);
-    }
-}
-
 function loadFallbackComponent(id) {
     const el = document.getElementById(id);
     if (!el) return;
@@ -294,18 +272,6 @@ function initPageInteractions() {
     });
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-    loadComponent('navbar', 'components/external_navbar.html');
-    loadComponent('footer', 'components/external_footer.html');
-    initPageInteractions();
-
-    if (window.innerWidth > 968) {
-        setTimeout(() => {
-            if (typeof showService === 'function') showService('land-property');
-        }, 500);
-    }
-});
-
 function setActiveNavLink() {
     const currentPage = window.location.pathname.split('/').pop() || 'index.html';
     const navLinks = document.querySelectorAll('.nav-links a');
@@ -326,6 +292,5 @@ function setActiveNavLink() {
     });
 }
 
-window.loadComponent = loadComponent;
 window.showPage = showPage;
 window.showService = showService;

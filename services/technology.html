@@ -8,8 +8,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles/style.css">
-    <link rel="stylesheet" href="styles/gallery.css">
+    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="../styles/gallery.css">
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -35,9 +35,50 @@
         }
     </style>
 </head>
-<body class="bg-gradient-to-br from-gray-50 to-gray-100 min-h-screen">
+<body class="bg-gradient-to-br from-gray-50 to-gray-100 min-h-screen pt-16">
     <!-- Navigation Placeholder -->
-    <div id="navbar"></div>
+    <header id="navbar_header">
+    <nav id="navbar" class="navbar">
+        <div class="logo">
+            <div class="logo-icon">H</div>
+            <div class="logo-text">
+                <span>Haki</span>
+                <span>Survey</span>
+            </div>
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="index.html" class="active">Home</a></li>
+            
+            <li class="dropdown">
+                <a href="services.html" data-toggle="dropdown">
+                    Services <span class="arrow">▼</span>
+                </a>
+                <div class="dropdown-content">
+                    <a href="services/land.html">Land & Property Solutions</a>
+                    <a href="services/surveying.html">Surveying Specialties</a>
+                    <a href="services/aerial.html">Aerial & Drone Surveying</a>
+                    <a href="services/engineering.html">Engineering & Geospatial</a>
+                    <a href="services/consultancy.html">Consultancy & Environmental</a>
+                    <a href="services/technology.html">Technology & Innovation</a>
+                </div>
+            </li>
+            
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="resources.html">Resources</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+
+        <button class="cta-button" onclick="showPage('contact')">Request Quote</button>
+
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+</header>
 
     <!-- Hero Section -->
     <section class="relative py-16 lg:py-24 bg-gradient-to-r from-purple-800 to-purple-600 text-white">
@@ -60,18 +101,17 @@
 
 
     <!-- Introduction to Technology Gallery -->
-<section class="py-12 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-8">
-            <h2 class="text-3xl font-bold text-gray-800 mb-4">Interactive Technology Showcase</h2>
-            <p class="text-lg text-gray-600 max-w-3xl mx-auto">
-                Watch our technology solutions automatically rotate every 3 seconds. Click the dots or use arrow keys to navigate between different technologies.
-            </p>
+    <section class="py-12 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Interactive Technology Showcase</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    Watch our technology solutions automatically rotate every 3 seconds. Click the dots or use arrow keys to navigate between different technologies.
+                </p>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<!-- Auto-Rotating Technology Gallery -->
 <section class="py-12 bg-gray-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div id="technology-gallery" class="gallery-container mb-12"
@@ -82,7 +122,7 @@
              data-pause-on-hover="true">
             
             <!-- GNSS Systems -->
-            <div class="gallery-slide" style="background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80')">
+            <div class="gallery-slide" style="background-image: url('../images/GNSS.jpg')">
                 <div class="gallery-content">
                     <h3 class="text-3xl font-bold mb-2">GNSS Systems</h3>
                     <p class="text-xl mb-4">High-precision GPS and GNSS receivers with RTK capabilities for centimeter-level accuracy in surveying and mapping</p>
@@ -93,7 +133,7 @@
             </div>
             
             <!-- Drone Technology -->
-            <div class="gallery-slide" style="background-image: url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80')">
+            <div class="gallery-slide" style="background-image: url('../images/aerial.jpg')">
                 <div class="gallery-content">
                     <h3 class="text-3xl font-bold mb-2">Aerial Drone Systems</h3>
                     <p class="text-xl mb-4">Survey-grade drones for aerial mapping, photogrammetry, and comprehensive site analysis with high-resolution data collection</p>
@@ -104,7 +144,7 @@
             </div>
             
             <!-- 3D Scanners -->
-            <div class="gallery-slide" style="background-image: url('https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80')">
+            <div class="gallery-slide" style="background-image: url('../images/3Dscanner.jpg')">
                 <div class="gallery-content">
                     <h3 class="text-3xl font-bold mb-2">3D Laser Scanners</h3>
                     <p class="text-xl mb-4">High-resolution laser scanning technology for detailed 3D modeling, documentation, and point cloud generation</p>
@@ -115,7 +155,7 @@
             </div>
             
             <!-- GIS Platforms -->
-            <div class="gallery-slide" style="background-image: url('https://images.unsplash.com/photo-1541976590-713941681591?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80')">
+            <div class="gallery-slide" style="background-image: url('../images/GISplatforms.jpg')">
                 <div class="gallery-content">
                     <h3 class="text-3xl font-bold mb-2">GIS Platforms</h3>
                     <p class="text-xl mb-4">Enterprise and desktop GIS software solutions for spatial analysis, data management, and intelligent mapping</p>
@@ -137,7 +177,7 @@
             </div>
             
             <!-- Web GIS -->
-            <div class="gallery-slide" style="background-image: url('https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80')">
+            <div class="gallery-slide" style="background-image: url('../images/web.jpg')">
                 <div class="gallery-content">
                     <h3 class="text-3xl font-bold mb-2">Web GIS Solutions</h3>
                     <p class="text-xl mb-4">Cloud-based mapping applications, spatial data visualization, and interactive web mapping platforms for real-time access</p>
@@ -148,7 +188,7 @@
             </div>
 
             <!-- Mobile Solutions -->
-            <div class="gallery-slide" style="background-image: url('https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80')">
+            <div class="gallery-slide" style="background-image: url('../images/mobileGIS.jpg')">
                 <div class="gallery-content">
                     <h3 class="text-3xl font-bold mb-2">Mobile Solutions</h3>
                     <p class="text-xl mb-4">Field data collection apps, mobile mapping applications, and real-time data synchronization for on-site efficiency</p>
@@ -158,7 +198,6 @@
                 </div>
             </div>
             
-            <!-- Gallery Indicators -->
             <div class="gallery-indicators">
                 <div class="gallery-indicator" data-slide="0"></div>
                 <div class="gallery-indicator" data-slide="1"></div>
@@ -441,35 +480,86 @@
         </div>
     </section>
 
-    <div id="footer"></div>
+    <!-- FOOTER SECTION -->
+<div id="footer">
+  <footer class="bg-gray-900 text-white py-12 w-full">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Footer Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+        <!-- Brand Section -->
+        <div>
+          <div class="flex items-center gap-2 mb-4">
+            <div class="w-8 h-8 rounded-full overflow-hidden bg-blue-600 flex items-center justify-center">
+              <img
+                src="https://i.pinimg.com/736x/6d/2e/a8/6d2ea81769e1c4a4e9da4dedbc3db9f6.jpg"
+                alt="HakiSurvey Logo"
+                class="w-full h-full object-cover rounded-full"
+              />
+            </div>
+            <span class="font-semibold text-lg">HakiSurvey Plots Ltd</span>
+          </div>
 
-    <script>
-        async function loadComponent(id, filePath) {
-            const el = document.getElementById(id);
-            try {
-                const response = await fetch(filePath);
-                if (!response.ok) throw new Error(`Failed to load ${filePath}`);
-                const html = await response.text();
-                el.innerHTML = html;
-            } catch (error) {
-                console.error(error);
-                if (id === 'navbar') {
-                    el.innerHTML = `<div class="bg-white shadow-sm py-4"><div class="max-w-7xl mx-auto px-4 text-center">Navigation placeholder - component failed to load</div></div>`;
-                }
-                if (id === 'footer') {
-                    el.innerHTML = `<div class="bg-gray-800 text-white py-8"><div class="max-w-7xl mx-auto px-4 text-center">Footer placeholder - component failed to load</div></div>`;
-                }
-            }
-        }
+          <p class="text-gray-400 mb-6 leading-relaxed max-w-md">
+            Providing innovative GIS and surveying solutions with cutting-edge
+            technology and expertise for over a decade.
+          </p>
 
-        if (document.getElementById('navbar')) {
-            loadComponent('navbar', 'components/external_navbar.html');
-        }
-        if (document.getElementById('footer')) {
-            loadComponent('footer', 'components/external_footer.html');
-        }
-    </script>
-    <script src="scripts/gallery.js"></script>
+          <div class="flex gap-4 text-gray-400 text-xl">
+            <a href="#" class="hover:text-white"><i class="fab fa-linkedin"></i></a>
+            <a href="#" class="hover:text-white"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="hover:text-white"><i class="fab fa-facebook"></i></a>
+            <a href="#" class="hover:text-white"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div>
+          <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+          <ul class="space-y-2">
+            <li><a href="index.html" class="text-gray-400 hover:text-white transition">Home</a></li>
+            <li><a href="projects.html" class="text-gray-400 hover:text-white transition">Projects</a></li>
+            <li><a href="services.html" class="text-gray-400 hover:text-white transition">Services</a></li>
+            <li><a href="about.html" class="text-gray-400 hover:text-white transition">About Us</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition">Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact Info -->
+        <div>
+          <h3 class="text-lg font-semibold mb-4">Contact Info</h3>
+          <ul class="space-y-3 text-gray-400">
+            <li class="flex items-start gap-3">
+              <i class="fas fa-map-marker-alt text-blue-500 mt-1"></i>
+              <span>Survey Plaza, Westlands, Nairobi, Kenya</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <i class="fas fa-phone text-blue-500 mt-1"></i>
+              <span>+254 700 123 456</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <i class="fas fa-envelope text-blue-500 mt-1"></i>
+              <span>info@hakisurveyplotsltd.com</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Footer Bottom -->
+      <div class="border-t border-gray-700 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+        <p class="text-gray-400 text-sm">
+          © <span id="year"></span> HakiSurvey Plots Ltd. All rights reserved.
+        </p>
+        <div class="flex gap-6">
+          <a href="#" class="text-gray-400 text-sm hover:text-white">Privacy Policy</a>
+          <a href="#" class="text-gray-400 text-sm hover:text-white">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+</div>
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+    <script src="../scripts/gallery.js"></script>
     <script src="scripts/script.js"></script>
 </body>
 </html>

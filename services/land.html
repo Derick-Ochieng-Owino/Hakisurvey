@@ -5,12 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Land & Property Solutions | HakiSurvey Plots Ltd</title>
     <meta name="description" content="Comprehensive land and property services in Kenya including land verification, title deed processing, property brokerage, and real estate mapping solutions.">
-    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles/style.css">
-    <!-- Include the external gallery CSS -->
-    <link rel="stylesheet" href="styles/gallery.css">
+    <link rel="stylesheet" href="../styles/gallery.css">
+    <link rel="stylesheet" href="../styles/style.css">
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -41,9 +40,49 @@
         }
     </style>
 </head>
-<div id="navbar"></div>
-<body class="gradient-bg min-h-screen">
+<body class="gradient-bg min-h-screen pt-16">
+    <header id="navbar_header">
+        <nav id="navbar" class="navbar">
+            <div class="logo">
+                <div class="logo-icon">H</div>
+                <div class="logo-text">
+                    <span>Haki</span>
+                    <span>Survey</span>
+                </div>
+            </div>
 
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Home</a></li>
+                
+                <li class="dropdown">
+                    <a href="services.html" data-toggle="dropdown">
+                        Services <span class="arrow">▼</span>
+                    </a>
+                    <div class="dropdown-content">
+                        <a href="services/land.html">Land & Property Solutions</a>
+                        <a href="services/surveying.html">Surveying Specialties</a>
+                        <a href="services/aerial.html">Aerial & Drone Surveying</a>
+                        <a href="services/engineering.html">Engineering & Geospatial</a>
+                        <a href="services/consultancy.html">Consultancy & Environmental</a>
+                        <a href="services/technology.html">Technology & Innovation</a>
+                    </div>
+                </li>
+                
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="resources.html">Resources</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+
+            <button class="cta-button" onclick="showPage('contact')">Request Quote</button>
+
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
     <!-- Hero Section -->
     <section class="relative py-16 lg:py-24 bg-gradient-to-r from-amber-800 to-amber-600 text-white">
         <div class="absolute inset-0 bg-black opacity-40"></div>
@@ -451,26 +490,86 @@
         </div>
     </section>
 
-    <div id="footer"></div>
+    <!-- FOOTER SECTION -->
+<div id="footer">
+  <footer class="bg-gray-900 text-white py-12 w-full">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Footer Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+        <!-- Brand Section -->
+        <div>
+          <div class="flex items-center gap-2 mb-4">
+            <div class="w-8 h-8 rounded-full overflow-hidden bg-blue-600 flex items-center justify-center">
+              <img
+                src="https://i.pinimg.com/736x/6d/2e/a8/6d2ea81769e1c4a4e9da4dedbc3db9f6.jpg"
+                alt="HakiSurvey Logo"
+                class="w-full h-full object-cover rounded-full"
+              />
+            </div>
+            <span class="font-semibold text-lg">HakiSurvey Plots Ltd</span>
+          </div>
 
-    <!-- Include the external gallery JavaScript -->
-    <script src="scripts/gallery.js"></script>
-    <script>
-        async function loadComponent(id, filePath) {
-            const el = document.getElementById(id);
-            try {
-            const response = await fetch(filePath);
-            if (!response.ok) throw new Error(`Failed to load ${filePath}`);
-            const html = await response.text();
-            el.innerHTML = html;
-            } catch (error) {
-            console.error(error);
-            }
-        }
+          <p class="text-gray-400 mb-6 leading-relaxed max-w-md">
+            Providing innovative GIS and surveying solutions with cutting-edge
+            technology and expertise for over a decade.
+          </p>
 
-        loadComponent('navbar', 'components/external_navbar.html');
-        loadComponent('footer', 'components/external_footer.html');
-    </script>
+          <div class="flex gap-4 text-gray-400 text-xl">
+            <a href="#" class="hover:text-white"><i class="fab fa-linkedin"></i></a>
+            <a href="#" class="hover:text-white"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="hover:text-white"><i class="fab fa-facebook"></i></a>
+            <a href="#" class="hover:text-white"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div>
+          <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+          <ul class="space-y-2">
+            <li><a href="index.html" class="text-gray-400 hover:text-white transition">Home</a></li>
+            <li><a href="projects.html" class="text-gray-400 hover:text-white transition">Projects</a></li>
+            <li><a href="services.html" class="text-gray-400 hover:text-white transition">Services</a></li>
+            <li><a href="about.html" class="text-gray-400 hover:text-white transition">About Us</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition">Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact Info -->
+        <div>
+          <h3 class="text-lg font-semibold mb-4">Contact Info</h3>
+          <ul class="space-y-3 text-gray-400">
+            <li class="flex items-start gap-3">
+              <i class="fas fa-map-marker-alt text-blue-500 mt-1"></i>
+              <span>Survey Plaza, Westlands, Nairobi, Kenya</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <i class="fas fa-phone text-blue-500 mt-1"></i>
+              <span>+254 700 123 456</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <i class="fas fa-envelope text-blue-500 mt-1"></i>
+              <span>info@hakisurveyplotsltd.com</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Footer Bottom -->
+      <div class="border-t border-gray-700 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+        <p class="text-gray-400 text-sm">
+          © <span id="year"></span> HakiSurvey Plots Ltd. All rights reserved.
+        </p>
+        <div class="flex gap-6">
+          <a href="#" class="text-gray-400 text-sm hover:text-white">Privacy Policy</a>
+          <a href="#" class="text-gray-400 text-sm hover:text-white">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+</div>
+
+    <script src="../scripts/gallery.js"></script>
     <script src="scripts/script.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </body>
 </html>

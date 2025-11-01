@@ -1,6 +1,6 @@
 img {
   content-visibility: auto;
-  loading: lazy;
+  /* loading: lazy; */
 }
 
 .gallery-container {

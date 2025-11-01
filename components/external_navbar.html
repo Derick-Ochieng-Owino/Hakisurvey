@@ -16,12 +16,12 @@
                     Services <span class="arrow">▼</span>
                 </a>
                 <div class="dropdown-content">
-                    <a href="land.html">Land & Property Solutions</a>
-                    <a href="surveying.html">Surveying Specialties</a>
-                    <a href="aerial.html">Aerial & Drone Surveying</a>
-                    <a href="engineering.html">Engineering & Geospatial</a>
-                    <a href="consultancy.html">Consultancy & Environmental</a>
-                    <a href="technology.html">Technology & Innovation</a>
+                    <a href="services/land.html">Land & Property Solutions</a>
+                    <a href="services/surveying.html">Surveying Specialties</a>
+                    <a href="services/aerial.html">Aerial & Drone Surveying</a>
+                    <a href="services/engineering.html">Engineering & Geospatial</a>
+                    <a href="services/consultancy.html">Consultancy & Environmental</a>
+                    <a href="services/technology.html">Technology & Innovation</a>
                 </div>
             </li>
             
@@ -40,19 +40,3 @@
         </div>
     </nav>
 </header>
-<script>
-    async function loadComponent(id, filePath) {
-        const el = document.getElementById(id);
-        try {
-        const response = await fetch(filePath);
-        if (!response.ok) throw new Error(`Failed to load ${filePath}`);
-        const html = await response.text();
-        el.innerHTML = html;
-        } catch (error) {
-        console.error(error);
-        }
-    }
-
-    loadComponent('navbar', 'components/external_navbar.html');
-    loadComponent('footer', 'components/external_footer.html');
-</script>
