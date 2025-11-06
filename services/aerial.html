@@ -8,8 +8,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles/style.css">
-    <link rel="stylesheet" href="styles/gallery.css">
+    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="../styles/gallery.css">
     <style> 
         body {
             font-family: 'Inter', sans-serif;
@@ -33,7 +33,9 @@
     <header id="navbar_header">
     <nav id="navbar" class="navbar">
         <div class="logo">
-            <div class="logo-icon">H</div>
+            <div class="logo-icon">
+                <img src="../images/haki-logo.png" alt="HakiSurvey Logo" class="logo-img">
+            </div>
             <div class="logo-text">
                 <span>Haki</span>
                 <span>Survey</span>
@@ -41,26 +43,26 @@
         </div>
 
         <ul class="nav-links">
-            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="../index.html" class="active">Home</a></li>
             
             <li class="dropdown">
-                <a href="services.html" data-toggle="dropdown">
+                <a href="#" data-toggle="dropdown">
                     Services <span class="arrow">▼</span>
                 </a>
                 <div class="dropdown-content">
-                    <a href="services/land.html">Land & Property Solutions</a>
-                    <a href="services/surveying.html">Surveying Specialties</a>
-                    <a href="services/aerial.html">Aerial & Drone Surveying</a>
-                    <a href="services/engineering.html">Engineering & Geospatial</a>
-                    <a href="services/consultancy.html">Consultancy & Environmental</a>
-                    <a href="services/technology.html">Technology & Innovation</a>
+                    <a href="land.html">Land & Property Solutions</a>
+                    <a href="surveying.html">Surveying Specialties</a>
+                    <a href="aerial.html">Aerial & Drone Surveying</a>
+                    <a href="engineering.html">Engineering & Geospatial</a>
+                    <a href="consultancy.html">Consultancy & Environmental</a>
+                    <a href="technology.html">Technology & Innovation</a>
                 </div>
             </li>
             
-            <li><a href="projects.html">Projects</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="resources.html">Resources</a></li>
-            <li><a href="contact.html">Contact</a></li>
+            <li><a href="../projects.html">Projects</a></li>
+            <li><a href="../about.html">About</a></li>
+            <li><a href="../resources.html">Resources</a></li>
+            <li><a href="../contact.html">Contact</a></li>
         </ul>
 
         <button class="cta-button" onclick="showPage('contact')">Request Quote</button>
@@ -607,7 +609,7 @@
           <ul class="space-y-2">
             <li><a href="index.html" class="text-gray-400 hover:text-white transition">Home</a></li>
             <li><a href="projects.html" class="text-gray-400 hover:text-white transition">Projects</a></li>
-            <li><a href="services.html" class="text-gray-400 hover:text-white transition">Services</a></li>
+            <li><a href="../land.html" class="text-gray-400 hover:text-white transition">Services</a></li>
             <li><a href="about.html" class="text-gray-400 hover:text-white transition">About Us</a></li>
             <li><a href="#" class="text-gray-400 hover:text-white transition">Contact</a></li>
           </ul>
@@ -647,7 +649,15 @@
   </footer>
 </div>
 <script src="https://kit.fontawesome.com/3afa5a6358.js" crossorigin="anonymous"></script>
-    <script src="scripts/script.js"></script>
-    <script src="scripts/gallery.js"></script>
+    <script src="../scripts/script.js"></script>
+    <script src="../scripts/gallery.js"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", setActiveNavLink);
+    document.addEventListener('DOMContentLoaded', function() {
+        initNavbarScripts(document.body);
+        initFooterScripts(document.body);
+        initPageInteractions();
+    });
+    </script>
 </body>
 </html>

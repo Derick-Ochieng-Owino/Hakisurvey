@@ -1,77 +1,15 @@
-function loadFallbackComponent(id) {
-    const el = document.getElementById(id);
-    if (!el) return;
-
-    if (id === 'navbar') {
-        el.innerHTML = `
-            <header class="header">
-                <div class="container">
-                    <div class="header-content">
-                        <div class="logo">HakiSurvey Plots Ltd</div>
-                        <nav class="nav-links" id="nav-links">
-                            <a href="#" class="nav-link active">Home</a>
-                            <a href="#services" class="nav-link">Services</a>
-                            <a href="#about" class="nav-link">About</a>
-                            <a href="#projects" class="nav-link">Projects</a>
-                            <a href="#contact" class="nav-link">Contact</a>
-                        </nav>
-                        <div class="hamburger" id="hamburger">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </div>
-                    </div>
-                </div>
-            </header>
-        `;
-        initNavbarScripts(el);
-    } else if (id === 'footer') {
-        el.innerHTML = `
-            <footer class="footer">
-                <div class="container">
-                    <div class="footer-content">
-                        <div class="footer-column">
-                            <h3>HakiSurvey Plots Ltd</h3>
-                            <p>Professional surveying services across Kenya with precision, reliability, and expertise.</p>
-                        </div>
-                        <div class="footer-column">
-                            <h3>Quick Links</h3>
-                            <ul>
-                                <li><a href="#">Home</a></li>
-                                <li><a href="#services">Services</a></li>
-                                <li><a href="#about">About Us</a></li>
-                                <li><a href="#contact">Contact</a></li>
-                            </ul>
-                        </div>
-                        <div class="footer-column">
-                            <h3>Contact Info</h3>
-                            <ul>
-                                <li><i class="fas fa-map-marker-alt"></i> Nairobi, Kenya</li>
-                                <li><i class="fas fa-phone"></i> +254 700 000 000</li>
-                                <li><i class="fas fa-envelope"></i> info@hakisurvey.co.ke</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="footer-bottom">
-                        <p>&copy; <span id="year"></span> HakiSurvey Plots Ltd. All rights reserved.</p>
-                    </div>
-                </div>
-            </footer>
-        `;
-        initFooterScripts(el);
-    }
-}
-
 function initNavbarScripts(parentEl) {
     const hamburger = parentEl.querySelector('.hamburger');
     const navLinks = parentEl.querySelector('.nav-links');
     const dropdowns = parentEl.querySelectorAll('.dropdown');
 
+    // Hamburger toggle
     if (hamburger && navLinks) {
-        hamburger.addEventListener('click', () => {
+        hamburger.addEventListener('click', (e) => {
+            e.stopPropagation();
             hamburger.classList.toggle('active');
             navLinks.classList.toggle('active');
-            document.body.classList.toggle('menu-open', navLinks.classList.contains('active'));
+            document.body.classList.toggle('menu-open');
         });
     }
 
@@ -97,22 +35,32 @@ function initNavbarScripts(parentEl) {
         });
     });
 
-    // Close dropdowns when clicking outside on mobile
+    // Close menu when clicking outside on mobile
     document.addEventListener('click', function(e) {
-        if (window.innerWidth <= 968 && !e.target.closest('.nav-links')) {
+        if (window.innerWidth <= 968 && !e.target.closest('.navbar')) {
+            if (hamburger) hamburger.classList.remove('active');
+            if (navLinks) navLinks.classList.remove('active');
+            document.body.classList.remove('menu-open');
             dropdowns.forEach(dropdown => {
                 dropdown.classList.remove('active');
             });
         }
     });
 
-    // Close mobile menu when clicking on a link (except dropdown toggles)
+    // Close mobile menu when clicking on a link
     if (navLinks) {
         navLinks.addEventListener('click', function(e) {
-            if (e.target.tagName === 'A' && !e.target.parentElement.classList.contains('dropdown')) {
+            if (e.target.tagName === 'A' && window.innerWidth <= 968) {
                 if (hamburger) hamburger.classList.remove('active');
                 navLinks.classList.remove('active');
                 document.body.classList.remove('menu-open');
+                
+                // Only close dropdowns if not clicking a dropdown toggle
+                if (!e.target.parentElement.classList.contains('dropdown')) {
+                    dropdowns.forEach(dropdown => {
+                        dropdown.classList.remove('active');
+                    });
+                }
             }
         });
     }
@@ -130,27 +78,6 @@ function initNavbarScripts(parentEl) {
     });
 
     setActiveNavLink();
-
-    const navLinksAll = parentEl.querySelectorAll('.nav-link');
-    navLinksAll.forEach(link => {
-        link.addEventListener('click', function(e) {
-            if (this.getAttribute('href').startsWith('#')) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href').substring(1);
-                showPage(targetId);
-                
-                // Close mobile menu after clicking a link
-                if (window.innerWidth <= 968) {
-                    if (hamburger) hamburger.classList.remove('active');
-                    if (navLinks) navLinks.classList.remove('active');
-                    document.body.classList.remove('menu-open');
-                    dropdowns.forEach(dropdown => {
-                        dropdown.classList.remove('active');
-                    });
-                }
-            }
-        });
-    });
 }
 
 function initFooterScripts(parentEl) {
@@ -273,24 +200,35 @@ function initPageInteractions() {
 }
 
 function setActiveNavLink() {
-    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    const currentPath = window.location.pathname;
+    const currentFile = currentPath.split('/').pop();
     const navLinks = document.querySelectorAll('.nav-links a');
-    
+
     navLinks.forEach(link => {
-        link.classList.remove('active');
         const linkHref = link.getAttribute('href');
-        
-        // Main page match
-        if (linkHref === currentPage) {
+        link.classList.remove('active');
+
+        // Root page match (index.html or /)
+        if (
+            (currentFile === '' || currentFile === 'index.html') &&
+            (linkHref === 'index.html' || linkHref === './index.html')
+        ) {
             link.classList.add('active');
         }
-        
-        // Services page special handling
-        if (currentPage === 'services.html' && linkHref === 'services.html') {
+
+        // Exact file match
+        else if (linkHref === currentFile) {
+            link.classList.add('active');
+        }
+
+        // Match subfolder files (e.g., /services/aerial.html)
+        else if (currentPath.includes('/services/') && linkHref.includes('services')) {
+            link.classList.add('active');
+        }
+
+        // Match other folders dynamically
+        else if (currentPath.endsWith(linkHref)) {
             link.classList.add('active');
         }
     });
 }
-
-window.showPage = showPage;
-window.showService = showService;

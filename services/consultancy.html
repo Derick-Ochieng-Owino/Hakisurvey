@@ -44,7 +44,9 @@
     <header id="navbar_header">
     <nav id="navbar" class="navbar">
         <div class="logo">
-            <div class="logo-icon">H</div>
+            <div class="logo-icon">
+                <img src="../images/haki-logo.png" alt="HakiSurvey Logo" class="logo-img">
+            </div>
             <div class="logo-text">
                 <span>Haki</span>
                 <span>Survey</span>
@@ -52,26 +54,26 @@
         </div>
 
         <ul class="nav-links">
-            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="../index.html" class="active">Home</a></li>
             
             <li class="dropdown">
-                <a href="services.html" data-toggle="dropdown">
+                <a href="#" data-toggle="dropdown">
                     Services <span class="arrow">▼</span>
                 </a>
                 <div class="dropdown-content">
-                    <a href="services/land.html">Land & Property Solutions</a>
-                    <a href="services/surveying.html">Surveying Specialties</a>
-                    <a href="services/aerial.html">Aerial & Drone Surveying</a>
-                    <a href="services/engineering.html">Engineering & Geospatial</a>
-                    <a href="services/consultancy.html">Consultancy & Environmental</a>
-                    <a href="services/technology.html">Technology & Innovation</a>
+                    <a href="land.html">Land & Property Solutions</a>
+                    <a href="surveying.html">Surveying Specialties</a>
+                    <a href="aerial.html">Aerial & Drone Surveying</a>
+                    <a href="engineering.html">Engineering & Geospatial</a>
+                    <a href="consultancy.html">Consultancy & Environmental</a>
+                    <a href="technology.html">Technology & Innovation</a>
                 </div>
             </li>
             
-            <li><a href="projects.html">Projects</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="resources.html">Resources</a></li>
-            <li><a href="contact.html">Contact</a></li>
+            <li><a href="../projects.html">Projects</a></li>
+            <li><a href="../about.html">About</a></li>
+            <li><a href="../resources.html">Resources</a></li>
+            <li><a href="../contact.html">Contact</a></li>
         </ul>
 
         <button class="cta-button" onclick="showPage('contact')">Request Quote</button>
@@ -531,7 +533,7 @@
           <ul class="space-y-2">
             <li><a href="index.html" class="text-gray-400 hover:text-white transition">Home</a></li>
             <li><a href="projects.html" class="text-gray-400 hover:text-white transition">Projects</a></li>
-            <li><a href="services.html" class="text-gray-400 hover:text-white transition">Services</a></li>
+            <li><a href="../land.html" class="text-gray-400 hover:text-white transition">Services</a></li>
             <li><a href="about.html" class="text-gray-400 hover:text-white transition">About Us</a></li>
             <li><a href="#" class="text-gray-400 hover:text-white transition">Contact</a></li>
           </ul>
@@ -570,8 +572,16 @@
     </div>
   </footer>
 </div>
-<script src="https://kit.fontawesome.com/3afa5a6358.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/3afa5a6358.js" crossorigin="anonymous"></script>
     <script src="../scripts/gallery.js"></script>
     <script src="../scripts/script.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", setActiveNavLink);
+        document.addEventListener('DOMContentLoaded', function() {
+        initNavbarScripts(document.body);
+        initFooterScripts(document.body);
+        initPageInteractions();
+    });
+    </script>
 </body>
 </html>

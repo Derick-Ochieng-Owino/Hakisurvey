@@ -19,7 +19,9 @@
     <header id="navbar_header">
         <nav id="navbar" class="navbar">
             <div class="logo">
-                <div class="logo-icon">H</div>
+                <div class="logo-icon">
+                    <img src="images/haki-logo.png" alt="HakiSurvey Logo" class="logo-img">
+                </div>
                 <div class="logo-text">
                     <span>Haki</span>
                     <span>Survey</span>
@@ -30,7 +32,7 @@
                 <li><a href="index.html" class="active">Home</a></li>
                 
                 <li class="dropdown">
-                    <a href="services.html" data-toggle="dropdown">
+                    <a href="#" data-toggle="dropdown">
                         Services <span class="arrow">▼</span>
                     </a>
                     <div class="dropdown-content">
@@ -243,7 +245,7 @@
           <ul class="space-y-2">
             <li><a href="index.html" class="text-gray-400 hover:text-white transition">Home</a></li>
             <li><a href="projects.html" class="text-gray-400 hover:text-white transition">Projects</a></li>
-            <li><a href="services.html" class="text-gray-400 hover:text-white transition">Services</a></li>
+            <li><a href="services/land.html" class="text-gray-400 hover:text-white transition">Services</a></li>
             <li><a href="about.html" class="text-gray-400 hover:text-white transition">About Us</a></li>
             <li><a href="#" class="text-gray-400 hover:text-white transition">Contact</a></li>
           </ul>
@@ -303,6 +305,12 @@
             alert("There was a problem submitting your form. Please try again.");
         }
         });
+        document.addEventListener("DOMContentLoaded", setActiveNavLink);
+        document.addEventListener('DOMContentLoaded', function() {
+        initNavbarScripts(document.body);
+        initFooterScripts(document.body);
+        initPageInteractions();
+    });
     </script>
     <script src="scripts/script.js"></script>
 </body>
