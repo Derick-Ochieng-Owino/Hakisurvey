@@ -8,15 +8,16 @@
     <meta name="keywords" content="surveying Kenya, cadastral surveys, drone mapping, GIS services, land verification, topographic surveys">
     <meta name="author" content="HakiSurvey Plots Ltd">
     
-    <!-- Open Graph / Social Media Meta Tags -->
     <meta property="og:title" content="HakiSurvey Plots Ltd | Professional Surveying & GIS Services in Kenya">
     <meta property="og:description" content="Leading surveying company in Kenya offering cadastral surveys, drone mapping, GIS solutions, and land verification services.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://hakisurvey.co.ke">
     <link rel="stylesheet" href="styles/style.css">
-    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://unpkg.com/swiper@9/swiper-bundle.min.css" />
     <script src="https://unpkg.com/swiper@9/swiper-bundle.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://kit.fontawesome.com/3afa5a6358.js" crossorigin="anonymous"></script>
+    <script src="scripts/swiper-bundle.min.js"></script>
     <style>
         .hero-overlay { background: linear-gradient(180deg, rgba(0,0,0,0.35), rgba(0,0,0,0.55)); }
         .hero-media { height: 56vh; min-height: 360px; max-height: 720px; }
@@ -52,7 +53,9 @@
     <header id="navbar_header">
         <nav id="navbar" class="navbar">
             <div class="logo">
-                <div class="logo-icon">H</div>
+                <div class="logo-icon">
+                    <img src="images/haki-logo.png" alt="HakiSurvey Logo" class="logo-img">
+                </div>
                 <div class="logo-text">
                     <span>Haki</span>
                     <span>Survey</span>
@@ -385,10 +388,11 @@
     </div>
   </footer>
 </div>
-<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 
-    <script src="scripts/swiper-bundle.min.js"></script>
-    <script src="scripts/script.js"></script>
+    <!-- WhatsApp floating -->
+    <a href="https://wa.me/254700123456?text=Hi%20HakiSurvey%2C%20I%20need%20a%20survey%20quote." target="_blank" class="fixed right-6 bottom-6 z-50 shadow-lg rounded-full bg-green-500 p-4 text-white" title="Chat on WhatsApp">
+        <i class="fa-brands fa-whatsapp fa-lg"></i>
+    </a>
     
     <script>
         // Lazy loading for images
@@ -416,10 +420,6 @@
             lazyLoadImages();
         });
     </script>
-    
-    <!-- WhatsApp floating -->
-    <a href="https://wa.me/254700123456?text=Hi%20HakiSurvey%2C%20I%20need%20a%20survey%20quote." target="_blank" class="fixed right-6 bottom-6 z-50 shadow-lg rounded-full bg-green-500 p-4 text-white" title="Chat on WhatsApp">
-        <i class="fa-brands fa-whatsapp fa-lg"></i>
-    </a>
+    <script src="scripts/script.js"></script>
 </body>
 </html>
