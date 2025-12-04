@@ -1,0 +1,1252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aerial & Drone Surveying Services | HakiSurvey</title>
+    <meta name="description" content="Comprehensive aerial surveying and drone mapping services including 3D modeling, environmental monitoring, and infrastructure planning.">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="styles/aerial.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Aerial & Drone Surveying Services | HakiSurvey">
+    <meta property="og:description" content="Professional drone surveying and aerial mapping solutions">
+    <meta property="og:image" content="/images/drone-surveying-og.jpg">
+    <meta property="og:url" content="https://hakisurvey.com/aerial.html">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+
+    <style>
+        /* ===== AERIAL SERVICES PAGE STYLES ===== */
+:root {
+    --primary-blue: #2c3e50;
+    --secondary-blue: #3498db;
+    --accent-teal: #1abc9c;
+    --light-gray: #f8f9fa;
+    --medium-gray: #e9ecef;
+    --dark-gray: #343a40;
+    --success-green: #28a745;
+    --warning-yellow: #ffc107;
+    --danger-red: #dc3545;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.15);
+    --transition: all 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* ===== HERO SECTION ===== */
+.hero-section {
+    background: linear-gradient(rgba(44, 62, 80, 0.9), rgba(44, 62, 80, 0.8)), 
+                url('../images/drone-hero-bg.jpg') center/cover;
+    color: white;
+    padding: 100px 20px;
+    display: flex;
+    align-items: center;
+    min-height: 80vh;
+    position: relative;
+}
+
+.hero-content {
+    flex: 1;
+    max-width: 600px;
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+    background: linear-gradient(45deg, #3498db, #1abc9c);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.hero-subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+    max-width: 500px;
+}
+
+.hero-cta {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.hero-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.drone-animation {
+    font-size: 10rem;
+    color: var(--secondary-blue);
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+}
+
+/* ===== BUTTONS ===== */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1.8rem;
+    border-radius: 30px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: var(--transition);
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.btn-primary {
+    background: linear-gradient(45deg, var(--secondary-blue), var(--accent-teal));
+    color: white;
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: white;
+    border: 2px solid white;
+}
+
+.btn-secondary:hover {
+    background: white;
+    color: var(--primary-blue);
+}
+
+.btn-view-details {
+    background: var(--secondary-blue);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: var(--transition);
+    font-size: 0.9rem;
+}
+
+.btn-view-details:hover {
+    background: var(--primary-blue);
+}
+
+/* ===== SERVICE FILTER SECTION ===== */
+.service-filter-section {
+    padding: 80px 0;
+    background: white;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+}
+
+.section-subtitle {
+    text-align: center;
+    color: var(--dark-gray);
+    margin-bottom: 3rem;
+    font-size: 1.1rem;
+}
+
+.filter-nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 3rem;
+}
+
+.filter-btn {
+    padding: 0.8rem 1.8rem;
+    border: 2px solid var(--secondary-blue);
+    background: white;
+    color: var(--secondary-blue);
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+    background: var(--secondary-blue);
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* ===== SERVICES GRID ===== */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 4rem;
+}
+
+.service-card {
+    background: white;
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    border: 1px solid var(--medium-gray);
+    cursor: pointer;
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--secondary-blue);
+}
+
+.card-icon {
+    font-size: 2.5rem;
+    color: var(--secondary-blue);
+    margin-bottom: 1rem;
+}
+
+.card-title {
+    font-size: 1.3rem;
+    color: var(--primary-blue);
+    margin-bottom: 0.8rem;
+}
+
+.card-desc {
+    color: var(--dark-gray);
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+}
+
+.card-features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.feature-tag {
+    background: var(--light-gray);
+    color: var(--primary-blue);
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.category-badge {
+    display: inline-block;
+    background: var(--accent-teal);
+    color: white;
+    padding: 0.3rem 1rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.card-action {
+    margin-top: 1rem;
+    text-align: center;
+}
+
+/* ===== SERVICE DETAIL SECTION ===== */
+.service-detail-section {
+    padding: 80px 0;
+    background: var(--light-gray);
+}
+
+.service-detail-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.service-detail-title {
+    font-size: 2.2rem;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+}
+
+.service-detail-subtitle {
+    color: var(--dark-gray);
+    font-size: 1.1rem;
+}
+
+.service-detail-container {
+    background: white;
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: var(--shadow);
+}
+
+.detail-header {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 2px solid var(--medium-gray);
+}
+
+.detail-icon {
+    font-size: 3rem;
+    color: var(--secondary-blue);
+}
+
+.detail-meta {
+    flex: 1;
+}
+
+.category-display {
+    display: inline-block;
+    background: var(--primary-blue);
+    color: white;
+    padding: 0.5rem 1.5rem;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.detail-features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+}
+
+.feature-display {
+    background: linear-gradient(45deg, var(--secondary-blue), var(--accent-teal));
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-weight: 500;
+}
+
+.detail-image-container {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 2rem;
+    height: 400px;
+}
+
+.detail-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.detail-image:hover {
+    transform: scale(1.05);
+}
+
+.image-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(0,0,0,0.8));
+    padding: 2rem;
+    color: white;
+}
+
+.image-caption {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.detail-content {
+    margin-bottom: 2rem;
+}
+
+.detail-content h4 {
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem 0;
+    font-size: 1.3rem;
+}
+
+.detail-content ul {
+    list-style-position: inside;
+    margin-left: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.detail-content li {
+    margin-bottom: 0.5rem;
+    padding-left: 0.5rem;
+}
+
+.case-study {
+    background: var(--light-gray);
+    border-left: 4px solid var(--accent-teal);
+    padding: 1.5rem;
+    margin: 2rem 0;
+    border-radius: 0 5px 5px 0;
+}
+
+.case-study h4 {
+    color: var(--accent-teal);
+    margin-top: 0;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 4rem 2rem;
+    color: var(--dark-gray);
+}
+
+.empty-state i {
+    color: var(--secondary-blue);
+    margin-bottom: 1.5rem;
+}
+
+.empty-state h3 {
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+}
+
+.detail-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    padding-top: 2rem;
+    border-top: 2px solid var(--medium-gray);
+}
+
+/* ===== TECHNOLOGY SECTION ===== */
+.technology-section {
+    padding: 80px 0;
+    background: white;
+}
+
+.tech-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.tech-card {
+    text-align: center;
+    padding: 2rem;
+    border-radius: 10px;
+    background: var(--light-gray);
+    transition: var(--transition);
+}
+
+.tech-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow);
+}
+
+.tech-icon {
+    font-size: 2.5rem;
+    color: var(--secondary-blue);
+    margin-bottom: 1rem;
+}
+
+.tech-card h3 {
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+}
+
+/* ===== CONTACT CTA ===== */
+.contact-cta {
+    padding: 80px 0;
+    background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+    color: white;
+    text-align: center;
+}
+
+.cta-title {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.cta-text {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 768px) {
+    .hero-section {
+        flex-direction: column;
+        text-align: center;
+        padding: 60px 20px;
+    }
+    
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .hero-cta {
+        justify-content: center;
+    }
+    
+    .drone-animation {
+        font-size: 6rem;
+        margin-top: 2rem;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .filter-nav {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .filter-btn {
+        width: 100%;
+        max-width: 300px;
+    }
+    
+    .detail-header {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .detail-image-container {
+        height: 250px;
+    }
+    
+    .detail-actions {
+        flex-direction: column;
+    }
+    
+    .cta-title {
+        font-size: 2rem;
+    }
+    
+    .tech-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 2rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+    
+    .section-title {
+        font-size: 1.8rem;
+    }
+    
+    .btn {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .cta-buttons {
+        flex-direction: column;
+    }
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.service-card {
+    animation: fadeIn 0.6s ease-out;
+}
+
+/* ===== PRINT STYLES ===== */
+@media print {
+    .hero-cta,
+    .filter-nav,
+    .card-action,
+    .detail-actions,
+    .contact-cta {
+        display: none !important;
+    }
+    
+    .service-card {
+        break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ddd;
+    }
+    
+    body {
+        background: white;
+        color: black;
+    }
+}
+    </style>
+</head>
+<body>
+    <!-- Navbar and Footer will be loaded automatically -->
+    
+    <main class="aerial-services-page">
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-content">
+                <h1 class="hero-title">Aerial & Drone Surveying Services</h1>
+                <p class="hero-subtitle">Cutting-edge drone technology for precise aerial mapping, 3D modeling, and environmental monitoring</p>
+                <div class="hero-cta">
+                    <a href="#contact" class="btn btn-primary">Request Aerial Survey</a>
+                    <a href="#services" class="btn btn-secondary">Explore Services</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="drone-animation">
+                    <i class="fas fa-drone"></i>
+                </div>
+            </div>
+        </section>
+
+        <!-- Service Filter Navigation -->
+        <section class="service-filter-section" id="services">
+            <div class="container">
+                <h2 class="section-title">Our Aerial Surveying Specialties</h2>
+                <p class="section-subtitle">Click on any service to view detailed information</p>
+                
+                <div class="filter-nav">
+                    <button class="filter-btn active" data-filter="all">All Services</button>
+                    <button class="filter-btn" data-filter="mapping">Aerial Mapping</button>
+                    <button class="filter-btn" data-filter="monitoring">Monitoring</button>
+                    <button class="filter-btn" data-filter="modeling">3D Modeling</button>
+                    <button class="filter-btn" data-filter="planning">Planning & Analysis</button>
+                </div>
+                
+                <!-- Service Cards Grid -->
+                <div class="services-grid" id="services-container">
+                    <!-- Cards will be populated by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Detailed Service Content Area -->
+        <section class="service-detail-section">
+            <div class="container">
+                <div class="service-detail-header">
+                    <h2 class="service-detail-title" id="service-title">Select a Service to Learn More</h2>
+                    <p class="service-detail-subtitle" id="service-subtitle">Click on any service card above for detailed information</p>
+                </div>
+                
+                <div class="service-detail-content" id="service-detail">
+                    <div class="empty-state">
+                        <i class="fas fa-drone fa-4x"></i>
+                        <h3>No Service Selected</h3>
+                        <p>Click on any service card to view detailed information, applications, and case studies.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Technology & Equipment Section -->
+        <section class="technology-section">
+            <div class="container">
+                <h2 class="section-title">Our Drone Technology</h2>
+                <div class="tech-grid">
+                    <div class="tech-card">
+                        <div class="tech-icon">
+                            <i class="fas fa-camera-alt"></i>
+                        </div>
+                        <h3>High-Resolution Cameras</h3>
+                        <p>20MP+ cameras with multispectral and thermal imaging capabilities</p>
+                    </div>
+                    <div class="tech-card">
+                        <div class="tech-icon">
+                            <i class="fas fa-satellite"></i>
+                        </div>
+                        <h3>RTK GPS Systems</h3>
+                        <p>Centimeter-level accuracy with Real-Time Kinematic positioning</p>
+                    </div>
+                    <div class="tech-card">
+                        <div class="tech-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h3>AI Processing</h3>
+                        <p>Advanced AI algorithms for automated feature detection and analysis</p>
+                    </div>
+                    <div class="tech-card">
+                        <div class="tech-icon">
+                            <i class="fas fa-wind"></i>
+                        </div>
+                        <h3>Weather Resistant</h3>
+                        <p>Operational in various weather conditions with wind resistance up to 45 km/h</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact CTA -->
+        <section class="contact-cta" id="contact">
+            <div class="container">
+                <h2 class="cta-title">Ready to Start Your Aerial Survey Project?</h2>
+                <p class="cta-text">Get in touch with our team of certified drone pilots and surveying experts</p>
+                <div class="cta-buttons">
+                    <a href="tel:+254700123456" class="btn btn-primary">
+                        <i class="fas fa-phone"></i> Call Now: +254 700 123 456
+                    </a>
+                    <a href="mailto:aerial@hakisurveyplotsltd.com" class="btn btn-secondary">
+                        <i class="fas fa-envelope"></i> Email Our Aerial Team
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Service Data and Script -->
+    <script>
+        // Service data array
+        const aerialServices = [
+            {
+                id: 1,
+                title: "Drone Surveying & Aerial Mapping",
+                category: "mapping",
+                shortDesc: "High-resolution imagery for accurate mapping",
+                longDesc: `
+                    <p>Our drone surveying and aerial mapping services utilize state-of-the-art UAV technology equipped with high-resolution cameras and advanced sensors to capture detailed aerial imagery. We provide centimeter-level accuracy for various applications.</p>
+                    
+                    <h4>Key Applications:</h4>
+                    <ul>
+                        <li><strong>Topographic Mapping:</strong> Detailed terrain models for engineering and planning</li>
+                        <li><strong>Orthomosaic Maps:</strong> Georeferenced, distortion-free aerial imagery</li>
+                        <li><strong>Cadastral Surveys:</strong> Property boundary mapping and verification</li>
+                        <li><strong>Volume Calculations:</strong> Precise measurements for mining and construction</li>
+                        <li><strong>Infrastructure Mapping:</strong> Utilities, roads, and urban planning</li>
+                    </ul>
+                    
+                    <h4>Technical Specifications:</h4>
+                    <ul>
+                        <li>Resolution: Up to 2cm/pixel ground sampling distance</li>
+                        <li>Accuracy: Horizontal ±2cm, Vertical ±3cm (with RTK)</li>
+                        <li>Coverage: Up to 200 hectares per day</li>
+                        <li>Output Formats: GeoTIFF, LAS, DXF, Shapefile, PDF</li>
+                    </ul>
+                    
+                    <div class="case-study">
+                        <h4>Case Study: Large-Scale Land Development</h4>
+                        <p>Completed a 500-hectare topographic survey in 3 days, providing detailed contour maps and volumetric calculations that saved the client 3 weeks compared to traditional survey methods.</p>
+                    </div>
+                `,
+                image: "images/drone-mapping.jpg",
+                features: ["2cm Accuracy", "Fast Coverage", "Multiple Output Formats"],
+                icon: "fas fa-map-marked-alt"
+            },
+            {
+                id: 2,
+                title: "Construction Monitoring",
+                category: "monitoring",
+                shortDesc: "Real-time site visuals and progress tracking",
+                longDesc: `
+                    <p>Our construction monitoring services provide regular aerial updates of your construction site, allowing for real-time progress tracking, quality control, and documentation. Using automated flight paths, we ensure consistent data collection throughout the project lifecycle.</p>
+                    
+                    <h4>Key Applications:</h4>
+                    <ul>
+                        <li><strong>Progress Reporting:</strong> Weekly/Monthly aerial documentation</li>
+                        <li><strong>Quantity Verification:</strong> Material stockpile measurements</li>
+                        <li><strong>Safety Monitoring:</strong> Identify potential hazards from aerial perspective</li>
+                        <li><strong>As-Built Verification:</strong> Compare actual construction with design plans</li>
+                        <li><strong>Site Logistics Planning:</strong> Optimize material storage and equipment placement</li>
+                    </ul>
+                    
+                    <h4>Monitoring Benefits:</h4>
+                    <ul>
+                        <li>Reduces site visits by up to 60%</li>
+                        <li>Provides objective progress evidence for stakeholders</li>
+                        <li>Early detection of deviations from design</li>
+                        <li>Enhanced safety through remote inspection</li>
+                        <li>Comprehensive project documentation</li>
+                    </ul>
+                    
+                    <div class="case-study">
+                        <h4>Case Study: Highway Construction Project</h4>
+                        <p>Provided bi-weekly aerial monitoring for a 25km highway project, identifying earthwork discrepancies early and saving an estimated Ksh 15M in rework costs.</p>
+                    </div>
+                `,
+                image: "images/construction-monitoring.jpg",
+                features: ["Regular Updates", "Progress Tracking", "Safety Monitoring"],
+                icon: "fas fa-hard-hat"
+            },
+            {
+                id: 3,
+                title: "Environmental Monitoring",
+                category: "monitoring",
+                shortDesc: "Ecological change & conservation analysis",
+                longDesc: `
+                    <p>Environmental monitoring using drone technology provides non-invasive methods for ecological assessment, habitat mapping, and conservation planning. Our multispectral and thermal sensors detect environmental changes invisible to the naked eye.</p>
+                    
+                    <h4>Key Applications:</h4>
+                    <ul>
+                        <li><strong>Habitat Mapping:</strong> Wildlife corridor identification and preservation</li>
+                        <li><strong>Vegetation Analysis:</strong> NDVI mapping for plant health assessment</li>
+                        <li><strong>Erosion Monitoring:</strong> Track soil erosion and sediment transport</li>
+                        <li><strong>Water Quality Assessment:</strong> Detect algae blooms and pollution plumes</li>
+                        <li><strong>Conservation Planning:</strong> Data for environmental impact assessments</li>
+                    </ul>
+                    
+                    <h4>Technical Capabilities:</h4>
+                    <ul>
+                        <li>Multispectral imaging for vegetation health analysis</li>
+                        <li>Thermal imaging for wildlife detection and water temperature mapping</li>
+                        <li>High-resolution RGB for detailed habitat documentation</li>
+                        <li>Time-series analysis for change detection</li>
+                        <li>Integration with GIS for spatial analysis</li>
+                    </ul>
+                    
+                    <div class="case-study">
+                        <h4>Case Study: Wetland Conservation</h4>
+                        <p>Mapped 800 hectares of wetland area, identifying invasive species spread and providing data that supported successful conservation grant applications.</p>
+                    </div>
+                `,
+                image: "images/environmental-monitoring.jpg",
+                features: ["Multispectral Imaging", "Habitat Analysis", "Conservation Support"],
+                icon: "fas fa-leaf"
+            },
+            {
+                id: 4,
+                title: "Agricultural Mapping",
+                category: "mapping",
+                shortDesc: "Multispectral crop & farm data analysis",
+                longDesc: `
+                    <p>Agricultural drone mapping provides farmers with actionable insights for precision agriculture. Our multispectral sensors capture data beyond visible light, revealing crop health, moisture levels, and nutrient deficiencies.</p>
+                    
+                    <h4>Key Applications:</h4>
+                    <ul>
+                        <li><strong>Crop Health Monitoring:</strong> NDVI, NDRE, and other vegetation indices</li>
+                        <li><strong>Yield Estimation:</strong> Early prediction of harvest volumes</li>
+                        <li><strong>Irrigation Planning:</strong> Identify areas of water stress</li>
+                        <li><strong>Disease Detection:</strong> Early identification of crop diseases</li>
+                        <li><strong>Soil Analysis:</strong> Variability mapping for precision farming</li>
+                    </ul>
+                    
+                    <h4>Data Deliverables:</h4>
+                    <ul>
+                        <li>Vegetation health maps (NDVI, NDRE)</li>
+                        <li>Prescription maps for variable rate application</li>
+                        <li>Plant counting and spacing analysis</li>
+                        <li>Elevation models for drainage planning</li>
+                        <li>Time-series growth analysis</li>
+                    </ul>
+                    
+                    <div class="case-study">
+                        <h4>Case Study: Large-Scale Farm Optimization</h4>
+                        <p>For a 1,200-acre maize farm, our drone mapping identified nutrient-deficient areas, allowing targeted fertilizer application that increased yield by 18% while reducing fertilizer use by 30%.</p>
+                    </div>
+                `,
+                image: "images/agricultural-mapping.jpg",
+                features: ["Crop Health Analysis", "Yield Estimation", "Precision Agriculture"],
+                icon: "fas fa-tractor"
+            },
+            {
+                id: 5,
+                title: "3D Modeling",
+                category: "modeling",
+                shortDesc: "Photorealistic terrain & structures",
+                longDesc: `
+                    <p>Create highly detailed 3D models of terrain, structures, and assets using photogrammetry techniques. Our 3D models provide accurate representations for visualization, analysis, and planning purposes.</p>
+                    
+                    <h4>Key Applications:</h4>
+                    <ul>
+                        <li><strong>Architectural Visualization:</strong> 3D models for design and planning</li>
+                        <li><strong>Asset Management:</strong> Digital twins of infrastructure assets</li>
+                        <li><strong>Cultural Heritage:</strong> Preservation and documentation of historical sites</li>
+                        <li><strong>Real Estate:</strong> Interactive property showcases</li>
+                        <li><strong>Engineering Design:</strong> As-built models for renovation projects</li>
+                    </ul>
+                    
+                    <h4>Model Types:</h4>
+                    <ul>
+                        <li><strong>Textured Mesh Models:</strong> Photorealistic surface models</li>
+                        <li><strong>Point Clouds:</strong> Dense XYZ data for engineering applications</li>
+                        <li><strong>Digital Terrain Models:</strong> Bare earth surface without vegetation</li>
+                        <li><strong>Digital Surface Models:</strong> Terrain with all surface features</li>
+                        <li><strong>Orthophotos:</strong> Georeferenced aerial imagery</li>
+                    </ul>
+                    
+                    <div class="case-study">
+                        <h4>Case Study: Historical Building Preservation</h4>
+                        <p>Created a millimeter-accurate 3D model of a century-old building, providing documentation for restoration work and creating virtual tours for educational purposes.</p>
+                    </div>
+                `,
+                image: "images/3d-modeling.jpg",
+                features: ["Photorealistic Models", "Multiple Formats", "High Accuracy"],
+                icon: "fas fa-cube"
+            },
+            {
+                id: 6,
+                title: "Infrastructure Planning",
+                category: "planning",
+                shortDesc: "Route design, utilities, smart layouts",
+                longDesc: `
+                    <p>Aerial data provides critical information for infrastructure planning and design. Our services support route optimization, utility planning, and smart city development with accurate, up-to-date spatial data.</p>
+                    
+                    <h4>Key Applications:</h4>
+                    <ul>
+                        <li><strong>Route Planning:</strong> Road, rail, and pipeline corridor analysis</li>
+                        <li><strong>Utility Mapping:</strong> Existing utility documentation and planning</li>
+                        <li><strong>Urban Planning:</strong> Smart city development and zoning</li>
+                        <li><strong>Site Selection:</strong> Optimal location analysis for development</li>
+                        <li><strong>Flood Risk Assessment:</strong> Watershed analysis and drainage planning</li>
+                    </ul>
+                    
+                    <h4>Planning Benefits:</h4>
+                    <ul>
+                        <li>Reduces planning time by up to 40%</li>
+                        <li>Identifies potential issues before construction</li>
+                        <li>Optimizes resource allocation</li>
+                        <li>Improves stakeholder communication with visual data</li>
+                        <li>Supports sustainable development goals</li>
+                    </ul>
+                    
+                    <div class="case-study">
+                        <h4>Case Study: New Town Planning</h4>
+                        <p>Provided comprehensive aerial data for a new 500-acre township development, enabling optimized road network design and utility routing that saved Ksh 80M in construction costs.</p>
+                    </div>
+                `,
+                image: "images/infrastructure-planning.jpg",
+                features: ["Route Optimization", "Utility Planning", "Cost Savings"],
+                icon: "fas fa-road"
+            },
+            {
+                id: 7,
+                title: "Digital Terrain Models",
+                category: "modeling",
+                shortDesc: "DTMs & Digital Elevation Models",
+                longDesc: `
+                    <p>Digital Terrain Models (DTMs) and Digital Elevation Models (DEMs) provide accurate representations of the earth's surface, essential for engineering, hydrology, and environmental analysis.</p>
+                    
+                    <h4>Key Applications:</h4>
+                    <ul>
+                        <li><strong>Hydrological Modeling:</strong> Watershed delineation and flood analysis</li>
+                        <li><strong>Cut & Fill Calculations:</strong> Earthwork optimization for construction</li>
+                        <li><strong>Slope Analysis:</strong> Stability assessment and grading design</li>
+                        <li><strong>Visibility Analysis:</strong> Line-of-sight for telecommunications</li>
+                        <li><strong>Geological Analysis:</strong> Terrain feature identification</li>
+                    </ul>
+                    
+                    <h4>Model Specifications:</h4>
+                    <ul>
+                        <li><strong>DTM (Digital Terrain Model):</strong> Bare earth surface without vegetation or structures</li>
+                        <li><strong>DEM (Digital Elevation Model):</strong> Includes terrain and sometimes surface features</li>
+                        <li><strong>DSM (Digital Surface Model):</strong> Top of all surface features</li>
+                        <li>Accuracy: Typically 5-10cm vertical accuracy</li>
+                        <li>Resolution: Adjustable from 1cm to 1m grid spacing</li>
+                    </ul>
+                    
+                    <div class="case-study">
+                        <h4>Case Study: Flood Risk Assessment</h4>
+                        <p>Created high-resolution DTMs for a river basin, enabling accurate flood modeling that informed development restrictions and early warning systems.</p>
+                    </div>
+                `,
+                image: "images/digital-terrain.jpg",
+                features: ["Bare Earth Models", "High Accuracy", "Multiple Resolutions"],
+                icon: "fas fa-mountain"
+            },
+            {
+                id: 8,
+                title: "Volumetric Calculations",
+                category: "planning",
+                shortDesc: "Stockpiles, cut & fill, earthworks",
+                longDesc: `
+                    <p>Accurate volumetric calculations for mining, construction, and agriculture using repeatable drone surveys. Our method provides faster, safer, and more accurate measurements than traditional techniques.</p>
+                    
+                    <h4>Key Applications:</h4>
+                    <ul>
+                        <li><strong>Mining:</strong> Stockpile inventory management</li>
+                        <li><strong>Construction:</strong> Cut and fill calculations</li>
+                        <li><strong>Landfills:</strong> Capacity monitoring and planning</li>
+                        <li><strong>Agriculture:</strong> Silage and compost pile measurements</li>
+                        <li><strong>Quarry Operations:</strong> Extraction volume tracking</li>
+                    </ul>
+                    
+                    <h4>Measurement Process:</h4>
+                    <ol>
+                        <li><strong>Initial Survey:</strong> Establish baseline measurements</li>
+                        <li><strong>Regular Monitoring:</strong> Scheduled repeat surveys</li>
+                        <li><strong>Change Detection:</strong> Compare surveys to calculate volumes</li>
+                        <li><strong>Reporting:</strong> Detailed volume reports with confidence intervals</li>
+                        <li><strong>Integration:</strong> Data integration with inventory systems</li>
+                    </ol>
+                    
+                    <div class="case-study">
+                        <h4>Case Study: Mining Stockpile Management</h4>
+                        <p>Reduced stockpile measurement time from 3 days to 2 hours with improved accuracy from ±5% to ±1%, resulting in better inventory management and reduced financial discrepancies.</p>
+                    </div>
+                `,
+                image: "images/volumetric-calculations.jpg",
+                features: ["High Accuracy", "Fast Measurements", "Repeatable Process"],
+                icon: "fas fa-calculator"
+            },
+            {
+                id: 9,
+                title: "Disaster Assessment",
+                category: "monitoring",
+                shortDesc: "Emergency response & damage mapping",
+                longDesc: `
+                    <p>Rapid response drone services for disaster assessment provide emergency teams with critical information for response planning, damage assessment, and recovery operations.</p>
+                    
+                    <h4>Key Applications:</h4>
+                    <ul>
+                        <li><strong>Post-Disaster Assessment:</strong> Rapid damage evaluation</li>
+                        <li><strong>Search & Rescue Support:</strong> Aerial reconnaissance in inaccessible areas</li>
+                        <li><strong>Infrastructure Inspection:</strong> Damage assessment of critical infrastructure</li>
+                        <li><strong>Environmental Impact:</strong> Assessment of ecological damage</li>
+                        <li><strong>Recovery Planning:</strong> Data for reconstruction planning</li>
+                    </ul>
+                    
+                    <h4>Emergency Response Capabilities:</h4>
+                    <ul>
+                        <li><strong>Rapid Deployment:</strong> Can be airborne within 60 minutes of notification</li>
+                        <li><strong>All-Weather Drones:</strong> Operate in challenging conditions</li>
+                        <li><strong>Live Streaming:</strong> Real-time video feed to command centers</li>
+                        <li><strong>Thermal Imaging:</strong> Night operations and heat signature detection</li>
+                        <li><strong>GIS Integration:</strong> Immediate data processing and mapping</li>
+                    </ul>
+                    
+                    <div class="case-study">
+                        <h4>Case Study: Flood Disaster Response</h4>
+                        <p>Provided immediate aerial assessment after major flooding, identifying blocked drainage channels and inaccessible areas, enabling targeted rescue operations that reached affected communities 2 days faster.</p>
+                    </div>
+                `,
+                image: "images/disaster-assessment.jpg",
+                features: ["Rapid Response", "Real-time Data", "All-weather Capable"],
+                icon: "fas fa-first-aid"
+            }
+        ];
+
+        // Initialize when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeAerialPage();
+        });
+
+        function initializeAerialPage() {
+            renderServiceCards();
+            setupFilterButtons();
+            setupServiceCardClicks();
+            
+            // Show first service by default
+            if (aerialServices.length > 0) {
+                showServiceDetail(aerialServices[0]);
+            }
+        }
+
+        function renderServiceCards(filter = 'all') {
+            const container = document.getElementById('services-container');
+            container.innerHTML = '';
+            
+            const filteredServices = filter === 'all' 
+                ? aerialServices 
+                : aerialServices.filter(service => service.category === filter);
+            
+            filteredServices.forEach(service => {
+                const card = document.createElement('div');
+                card.className = 'service-card';
+                card.dataset.id = service.id;
+                card.dataset.category = service.category;
+                
+                card.innerHTML = `
+                    <div class="card-icon">
+                        <i class="${service.icon}"></i>
+                    </div>
+                    <h3 class="card-title">${service.title}</h3>
+                    <p class="card-desc">${service.shortDesc}</p>
+                    <div class="card-features">
+                        ${service.features.map(feat => `<span class="feature-tag">${feat}</span>`).join('')}
+                    </div>
+                    <div class="card-category">
+                        <span class="category-badge">${service.category}</span>
+                    </div>
+                    <div class="card-action">
+                        <button class="btn-view-details">
+                            <i class="fas fa-info-circle"></i> View Details
+                        </button>
+                    </div>
+                `;
+                
+                container.appendChild(card);
+            });
+        }
+
+        function setupFilterButtons() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Update active button
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Filter services
+                    const filter = this.dataset.filter;
+                    renderServiceCards(filter);
+                    setupServiceCardClicks();
+                    
+                    // Show first service of filtered results
+                    const filteredServices = filter === 'all' 
+                        ? aerialServices 
+                        : aerialServices.filter(service => service.category === filter);
+                    
+                    if (filteredServices.length > 0) {
+                        showServiceDetail(filteredServices[0]);
+                    } else {
+                        showEmptyState();
+                    }
+                });
+            });
+        }
+
+        function setupServiceCardClicks() {
+            const serviceCards = document.querySelectorAll('.service-card');
+            
+            serviceCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    const serviceId = parseInt(this.dataset.id);
+                    const service = aerialServices.find(s => s.id === serviceId);
+                    
+                    if (service) {
+                        showServiceDetail(service);
+                        
+                        // Scroll to detail section
+                        document.querySelector('.service-detail-section').scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        }
+
+        function showServiceDetail(service) {
+            document.getElementById('service-title').textContent = service.title;
+            document.getElementById('service-subtitle').textContent = service.shortDesc;
+            
+            const detailContainer = document.getElementById('service-detail');
+            detailContainer.innerHTML = `
+                <div class="service-detail-container">
+                    <div class="detail-header">
+                        <div class="detail-icon">
+                            <i class="${service.icon}"></i>
+                        </div>
+                        <div class="detail-meta">
+                            <span class="category-display">${service.category.toUpperCase()}</span>
+                            <div class="detail-features">
+                                ${service.features.map(feat => `<span class="feature-display">${feat}</span>`).join('')}
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="detail-image-container">
+                        <img src="${service.image}" alt="${service.title}" class="detail-image" onerror="this.src='images/placeholder.jpg'">
+                        <div class="image-overlay">
+                            <span class="image-caption">${service.title}</span>
+                        </div>
+                    </div>
+                    
+                    <div class="detail-content">
+                        ${service.longDesc}
+                    </div>
+                    
+                    <div class="detail-actions">
+                        <button class="btn btn-primary" onclick="inquireAboutService('${service.title}')">
+                            <i class="fas fa-envelope"></i> Inquire About This Service
+                        </button>
+                        <button class="btn btn-secondary" onclick="downloadServicePDF(${service.id})">
+                            <i class="fas fa-download"></i> Download Service Sheet (PDF)
+                        </button>
+                    </div>
+                </div>
+            `;
+        }
+
+        function showEmptyState() {
+            document.getElementById('service-title').textContent = 'Select a Service to Learn More';
+            document.getElementById('service-subtitle').textContent = 'Click on any service card above for detailed information';
+            
+            const detailContainer = document.getElementById('service-detail');
+            detailContainer.innerHTML = `
+                <div class="empty-state">
+                    <i class="fas fa-drone fa-4x"></i>
+                    <h3>No Service Selected</h3>
+                    <p>Click on any service card to view detailed information, applications, and case studies.</p>
+                </div>
+            `;
+        }
+
+        // Global functions for button actions
+        window.inquireAboutService = function(serviceName) {
+            window.location.href = `contact.html?service=${encodeURIComponent(serviceName)}&type=aerial`;
+        };
+
+        window.downloadServicePDF = function(serviceId) {
+            const service = aerialServices.find(s => s.id === serviceId);
+            if (service) {
+                alert(`Downloading service sheet for: ${service.title}\n\nThis feature would typically generate and download a PDF brochure.`);
+                // In production, this would call your PDF generation API
+                // window.open(`/downloads/service-${serviceId}.pdf`, '_blank');
+            }
+        };
+    </script>
+
+    <!-- Load Components (Navbar & Footer) -->
+    <script src="scripts/load-components.js"></script>
+</body>
+</html>

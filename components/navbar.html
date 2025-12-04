@@ -1,40 +1,72 @@
-<!-- Your exact navbar structure -->
 <header id="navbar_header">
     <nav id="navbar" class="navbar">
         <div class="logo">
-            <div class="logo-icon">
-                <img src="images/haki-logo.png" alt="HakiSurvey Logo" class="logo-img">
-            </div>
-            <div class="logo-text">
-                <span>Haki</span>
-                <span>Survey</span>
-            </div>
+            <a href="/">
+                <div class="logo-icon">
+                    <img src="/images/hakisurvey-logo.png" alt="HakiSurvey Logo" class="logo-img">
+                </div>
+                <div class="logo-text">
+                    <span>Haki</span>
+                    <span>Survey</span>
+                </div>
+            </a>
         </div>
 
         <ul class="nav-links">
-            <li><a href="index.html" class="nav-link">Home</a></li>
+            <li><a href="/" class="nav-link">Home</a></li>
             
             <li class="dropdown">
                 <a href="#" class="nav-link" data-toggle="dropdown">
                     Services <span class="arrow">▼</span>
                 </a>
                 <div class="dropdown-content">
-                    <a href="services/land.html">Land & Property Solutions</a>
-                    <a href="services/surveying.html">Surveying Specialties</a>
-                    <a href="services/aerial.html">Aerial & Drone Surveying</a>
-                    <a href="services/engineering.html">Engineering & Geospatial</a>
-                    <a href="services/consultancy.html">Consultancy & Environmental</a>
-                    <a href="services/technology.html">Technology & Innovation</a>
+                    <a href="/services/land.html">Land & Property Solutions</a>
+                    <a href="/services/surveying.html">Surveying Specialties</a>
+                    <a href="/services/aerial.html">Aerial & Drone Surveying</a>
+                    <a href="/services/engineering.html">Engineering & Geospatial</a>
+                    <a href="/services/consultancy.html">Consultancy & Environmental</a>
+                    <a href="/services/technology.html">Technology & Innovation</a>
                 </div>
             </li>
             
-            <li><a href="projects.html" class="nav-link">Projects</a></li>
-            <li><a href="about.html" class="nav-link">About</a></li>
-            <li><a href="resources.html" class="nav-link">Resources</a></li>
-            <li><a href="contact.html" class="nav-link">Contact</a></li>
+            <li class="dropdown">
+                <a href="#" class="nav-link" data-toggle="dropdown">
+                    Surveying <span class="arrow">▼</span>
+                </a>
+                <div class="dropdown-content">
+                    <a href="/surveys/bathymetric.html">Bathymetric</a>
+                    <a href="/surveys/boundary.html">Boundary Demarcation</a>
+                    <a href="/surveys/cadastral.html">Cadastral Survey</a>
+                    <a href="/surveys/gpr.html">Ground Penetrating Radar</a>
+                    <a href="/surveys/resource-mapping.html">Resource Mapping</a>
+                    <a href="/surveys/topographical.html">Topographical Survey</a>
+                </div>
+            </li>
+
+            <li class="dropdown">
+                <div class="dropdown-menu">
+                    <a href="/aerial.html" class="nav-link" data-toggle="dropdown">Aerial & Drone Surveying</a>
+                    <div class="dropdown-content">
+                        <a href="/aerial.html?filter=mapping&service=1">Drone Surveying & Aerial Mapping</a>
+                        <a href="/aerial.html?filter=monitoring&service=2">Construction Monitoring</a>
+                        <a href="/aerial.html?filter=monitoring&service=3">Environmental Monitoring</a>
+                        <a href="/aerial.html?filter=mapping&service=4">Agricultural Mapping</a>
+                        <a href="/aerial.html?filter=modeling&service=5">3D Modeling</a>
+                        <a href="/aerial.html?filter=planning&service=6">Infrastructure Planning</a>
+                        <a href="/aerial.html?filter=modeling&service=7">Digital Terrain Models</a>
+                        <a href="/aerial.html?filter=planning&service=8">Volumetric Calculations</a>
+                        <a href="/aerial.html?filter=monitoring&service=9">Disaster Assessment</a>
+                    </div>
+                </div>
+            </li>
+                        
+            <li><a href="/projects.html" class="nav-link">Projects</a></li>
+            <li><a href="/about.html" class="nav-link">About</a></li>
+            <li><a href="/resources.html" class="nav-link">Resources</a></li>
+            <li><a href="/contact.html" class="nav-link">Contact</a></li>
         </ul>
 
-        <button class="cta-button" onclick="window.location.href='contact.html'">Request Quote</button>
+        <button class="cta-button" onclick="window.location.href='/contact.html'">Request Quote</button>
 
         <div class="hamburger">
             <span></span>
@@ -43,6 +75,3 @@
         </div>
     </nav>
 </header>
-
-<!-- Mobile overlay (for closing menu when clicking outside) -->
-<div class="mobile-overlay"></div>

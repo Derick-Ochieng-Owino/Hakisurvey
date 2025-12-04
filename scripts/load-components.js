@@ -3,14 +3,16 @@ class ComponentLoader {
         this.components = [
             { 
                 name: 'navbar', 
-                html: './components/navbar.html',
-                css: './components/navbar.css',
+                html: '/components/navbar.html',
+                css: '/components/navbar.css',
+                js: '/components/navbar.js',
                 position: 'afterbegin'
             },
             { 
                 name: 'footer', 
-                html: './components/footer.html',
-                css: './components/footer.css',
+                html: '/components/footer.html',
+                css: '/components/footer.css',
+                js: '/components/footer.js',
                 position: 'beforeend'
             }
         ];
@@ -24,6 +26,20 @@ class ComponentLoader {
             await this.loadComponent(component);
         }
         this.initComponents();
+    }
+
+    getBasePath() {
+        // Determine if we're in a subfolder
+        const path = window.location.pathname;
+        
+        // If we're in services folder (or any subfolder)
+        if (path.includes('/services/') || path.includes('/blog/') || path.includes('/projects/')) {
+            // Go up one level to reach root
+            return '../';
+        }
+        
+        // If we're in root folder
+        return './';
     }
     
     async loadComponent(component) {
@@ -147,22 +163,46 @@ class ComponentLoader {
     }
     
     setActiveNavLink() {
-        const currentPath = window.location.pathname;
-        const currentFile = currentPath.split('/').pop() || 'index.html';
-        const navLinks = document.querySelectorAll('.nav-link');
+    const currentPath = window.location.pathname;
+    const navLinks = document.querySelectorAll('.nav-link');
+    
+    navLinks.forEach(link => {
+        let href = link.getAttribute('href');
+        link.classList.remove('active');
         
-        navLinks.forEach(link => {
-            const href = link.getAttribute('href');
-            link.classList.remove('active');
-            
-            // Check if this link corresponds to current page
-            if (href === currentFile || 
-                (currentFile === 'index.html' && (href === './index.html' || href === 'index.html')) ||
-                (currentPath.includes('/services/') && href.includes('services'))) {
+        // Handle root-relative paths (starting with /)
+        if (href.startsWith('/')) {
+            if (currentPath === href || 
+                (currentPath === '/' && href === '/index.html') ||
+                (currentPath === '/index.html' && href === '/')) {
                 link.classList.add('active');
             }
-        });
+        } 
+        // Handle dropdown service links
+        else if (href.includes('services/')) {
+            // Check if current path matches this service
+            if (currentPath.includes(href.replace('.html', ''))) {
+                link.classList.add('active');
+            }
+        }
+        // Handle other relative paths
+        else {
+            const currentFile = currentPath.split('/').pop() || 'index.html';
+            if (href === currentFile || 
+                (currentFile === 'index.html' && (href === './index.html' || href === 'index.html'))) {
+                link.classList.add('active');
+            }
+        }
+    });
+    
+    // Also highlight the parent "Services" dropdown if on a services page
+    if (currentPath.includes('/services/')) {
+        const servicesDropdown = document.querySelector('.dropdown > a.nav-link');
+        if (servicesDropdown) {
+            servicesDropdown.classList.add('active');
+        }
     }
+}
 }
 
 // Initialize when DOM is ready

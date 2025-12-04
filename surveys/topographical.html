@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Topographical Surveying - Elevation and Feature Mapping</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        /* Custom Styles to match the LIGHT & Teal Aesthetic */
+        :root {
+            /* Light Base Colors */
+            --color-light-primary: #f8f8f8;
+            --color-light-bg: #ffffff;
+            --color-dark-text: #333333;
+            
+            /* Accent Colors */
+            --color-teal-accent: #008080;
+            --color-orange-accent: #e67e22;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--color-light-bg);
+            color: var(--color-dark-text);
+        }
+
+        /* Utility classes for consistency */
+        .bg-primary-light { background-color: var(--color-light-primary); }
+        .text-teal { color: var(--color-teal-accent); }
+        .text-orange { color: var(--color-orange-accent); }
+        .border-accent { border-color: #e0e0e0; }
+        
+        .shadow-teal {
+            box-shadow: 0 4px 15px rgba(0, 128, 128, 0.15);
+        }
+
+        .cta-button-style {
+            background: linear-gradient(45deg, var(--color-teal-accent) 0%, var(--color-orange-accent) 100%);
+            color: #ffffff;
+            transition: all 0.3s ease;
+            font-weight: 700;
+        }
+
+        .cta-button-style:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 20px rgba(0, 128, 128, 0.4), 0 0 30px rgba(230, 126, 34, 0.3);
+        }
+
+        a {
+            transition: color 0.3s;
+        }
+        a:hover {
+            color: var(--color-teal-accent);
+        }
+
+        /* Section Headings */
+        .section-heading {
+            border-left: 5px solid var(--color-orange-accent);
+            padding-left: 1rem;
+            line-height: 1;
+        }
+    </style>
+</head>
+<body>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+
+        <!-- Header Section -->
+        <header class="text-center mb-16">
+            <h1 class="text-5xl font-extrabold mb-4 text-teal drop-shadow-lg sm:text-6xl">
+                Topographical Surveys
+            </h1>
+            <p class="text-2xl font-light text-gray-700">
+                Detailed Mapping of Land Features, Elevation, and Contours
+            </p>
+        </header>
+
+        <!-- Introduction Section -->
+        <section class="bg-primary-light p-8 rounded-xl shadow-teal mb-16 border border-accent">
+            <h2 class="section-heading text-3xl font-bold mb-6 text-orange">
+                What is a Topographical Survey?
+            </h2>
+            <p class="text-lg leading-relaxed text-gray-700">
+                A topographical survey (or *topo survey*) is the process of precisely locating and mapping the natural and artificial features on a parcel of land, including elevation changes. Unlike cadastral surveys which focus only on boundaries, a topo survey captures every detail necessary for <strong class="text-teal">engineering design, architectural planning, and site development</strong>.
+            </p>
+            <p class="text-lg leading-relaxed mt-4 text-gray-700">
+                The final product is a detailed map that shows utility locations, trees, buildings, fences, drainage features, and most importantly, <strong class="text-teal">contour lines</strong> indicating the shape and slope of the earth.
+            </p>
+        </section>
+
+        <!-- Key Objectives -->
+        <section class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+            <div class="p-6 bg-primary-light rounded-lg shadow-lg border border-accent">
+                <h3 class="font-bold text-xl mb-3 text-teal">Engineering Design</h3>
+                <p class="text-sm text-gray-600">Foundation for roads, drainage systems, and grading plans.</p>
+            </div>
+            <div class="p-6 bg-primary-light rounded-lg shadow-lg border border-accent">
+                <h3 class="font-bold text-xl mb-3 text-teal">Architectural Planning</h3>
+                <p class="text-sm text-gray-600">Ensuring structures fit the existing terrain and managing runoff.</p>
+            </div>
+            <div class="p-6 bg-primary-light rounded-lg shadow-lg border border-accent">
+                <h3 class="font-bold text-xl mb-3 text-teal">Earthworks & Volumes</h3>
+                <p class="text-sm text-gray-600">Calculating cut-and-fill volumes for construction budgeting.</p>
+            </div>
+            <div class="p-6 bg-primary-light rounded-lg shadow-lg border border-accent">
+                <h3 class="font-bold text-xl mb-3 text-teal">Contour Analysis</h3>
+                <p class="text-sm text-gray-600">Visualizing slope and drainage patterns across the site.</p>
+            </div>
+        </section>
+
+        <!-- The Process Section -->
+        <section class="mb-16">
+            <h2 class="section-heading text-4xl font-bold mb-10 text-orange">
+                The Topographical Survey Process: Data Capture to DTM
+            </h2>
+            <p class="text-lg mb-8 text-gray-700">
+                We employ a combination of ground-based and aerial techniques to ensure comprehensive and accurate data capture.
+            </p>
+
+            <div class="grid md:grid-cols-2 gap-12">
+                <!-- Step 1: Control & Data Capture -->
+                <div class="bg-primary-light p-8 rounded-xl shadow-lg border border-accent">
+                    <h3 class="text-2xl font-semibold mb-4 text-orange">1. Establishing Control and Feature Capture</h3>
+                    <p class="text-gray-700 mb-4">
+                        The process begins by establishing accurate survey control points (horizontal and vertical datum). Field crews then capture the X, Y, Z coordinates of features.
+                    </p>
+                    <ul class="list-disc ml-6 space-y-2 text-gray-600">
+                        <li><strong>Ground Capture:</strong> Using high-precision Total Stations or <strong class="text-teal">GNSS/RTK systems</strong> to collect spot shots of breakpoints, utilities, and ground surface changes.</li>
+                        <li><strong>Aerial Mapping:</strong> Utilizing Drones (UAVs) with high-resolution cameras to generate dense point clouds via photogrammetry for large areas. [Image of Surveyor using a Total Station on a construction site]</li>
+                    </ul>
+                </div>
+                
+                <!-- Placeholder Image 1: Total Station -->
+                <div class="text-center md:order-last order-first">
+                    <img src="https://placehold.co/600x350/f0f0f0/333333?text=Topographical+Survey+Data+Capture" alt="Surveyor using a Total Station or GNSS equipment on site" class="rounded-xl shadow-2xl mx-auto border-2 border-teal-accent">
+                    <p class="mt-3 text-sm italic text-gray-600">
+                        Modern instruments ensure millimeter-level accuracy for 3D coordinate capture.
+                    </p>
+                </div>
+
+                <!-- Step 2: Digital Terrain Model (DTM) Generation -->
+                <div class="bg-primary-light p-8 rounded-xl shadow-lg border border-accent">
+                    <h3 class="text-2xl font-semibold mb-4 text-orange">2. Digital Terrain Model (DTM) Generation</h3>
+                    <p class="text-gray-700 mb-4">
+                        The raw 3D data points are processed in specialized software to build a continuous mathematical surface representation of the bare earth.
+                    </p>
+                    <ul class="list-disc ml-6 space-y-2 text-gray-600">
+                        <li><strong>Point Cloud Classification:</strong> Removing non-ground features (vehicles, trees, buildings) to isolate the true terrain.</li>
+                        <li><strong>Triangulated Irregular Network (TIN):</strong> Creating a network of triangles from the points, forming the basis of the DTM.</li>
+                    </ul>
+                </div>
+
+                <!-- Placeholder Image 2: DTM -->
+                 <div class="text-center">
+                    <img src="https://placehold.co/600x350/f0f0f0/333333?text=Digital+Terrain+Model+Wireframe" alt="Computer-generated Digital Terrain Model (DTM) wireframe" class="rounded-xl shadow-2xl mx-auto border-2 border-teal-accent">
+                    <p class="mt-3 text-sm italic text-gray-600">
+                        A wireframe view of the DTM, showing the complex geometry of the ground surface.
+                    </p>
+                </div>
+                
+                <!-- Step 3: Contour & Deliverable Production -->
+                <div class="bg-primary-light p-8 rounded-xl shadow-lg border border-accent">
+                    <h3 class="text-2xl font-semibold mb-4 text-orange">3. Contour and Plan Production</h3>
+                    <p class="text-gray-700 mb-4">
+                        The final DTM is used to automatically generate contours, planimetrics, and profiles required by the client.
+                    </p>
+                    <ul class="list-disc ml-6 space-y-2 text-gray-600">
+                        <li><strong>Contour Generation:</strong> Drawing lines that connect points of equal elevation (e.g., 1-foot or 1-meter intervals). [Image of a Topographical map with contour lines]</li>
+                        <li><strong>Planimetrics:</strong> Symbolically representing all captured features (manholes, curbing, fences, buildings) on the map.</li>
+                    </ul>
+                </div>
+
+                <!-- Placeholder Image 3: Contour Map -->
+                <div class="text-center">
+                    <img src="https://placehold.co/600x350/f0f0f0/333333?text=Topographical+Map+with+Contour+Lines" alt="Topographical map showing contour lines and ground features" class="rounded-xl shadow-2xl mx-auto border-2 border-teal-accent">
+                    <p class="mt-3 text-sm italic text-gray-600">
+                        The final map, displaying contour lines and all observed site features.
+                    </p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Services Offered Section -->
+        <section class="mb-16">
+            <h2 class="section-heading text-4xl font-bold mb-10 text-orange">
+                Applications of Topographical Surveys
+            </h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Service 1 -->
+                <div class="p-6 bg-primary-light rounded-xl shadow-lg border border-accent">
+                    <h3 class="text-2xl font-semibold mb-3 text-teal">Site Planning and Zoning</h3>
+                    <p class="text-gray-600">Required documentation for development permits, demonstrating compliance with zoning and setback regulations based on terrain.</p>
+                </div>
+                <!-- Service 2 -->
+                <div class="p-6 bg-primary-light rounded-xl shadow-lg border border-accent">
+                    <h3 class="text-2xl font-semibold mb-3 text-teal">Drainage and Stormwater Design</h3>
+                    <p class="text-gray-600">The primary input for modeling water flow, identifying flood risk areas, and designing effective drainage and retention systems.</p>
+                </div>
+                <!-- Service 3 -->
+                <div class="p-6 bg-primary-light rounded-xl shadow-lg border border-accent">
+                    <h3 class="text-2xl font-semibold mb-3 text-teal">Volume Calculations (Cut and Fill)</h3>
+                    <p class="text-gray-600">Determining the precise amount of soil/material needed to be added or removed to achieve a proposed finished grade, crucial for construction budgets.</p>
+                </div>
+                <!-- Service 4 -->
+                <div class="p-6 bg-primary-light rounded-xl shadow-lg border border-accent">
+                    <h3 class="text-2xl font-semibold mb-3 text-teal">Road and Utility Corridor Design</h3>
+                    <p class="text-gray-600">Providing cross-sections and profiles necessary for designing the vertical alignment of highways, railways, and gravity-fed pipelines.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA and Assurance Block -->
+        <section class="bg-primary-light p-12 rounded-xl shadow-2xl text-center border-4 border-teal-accent/50">
+            <p class="text-3xl font-extrabold mb-4 text-orange">
+                ⛰️ Foundation of Design
+            </p>
+            <p class="text-xl italic text-gray-700 mb-8">
+                "Every successful construction, civil engineering, or architectural project begins with a certified topographical map."
+            </p>
+            <h3 class="text-4xl font-bold mb-6 text-teal">Start Your Project with Precision Data</h3>
+            <p class="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
+                Need a detailed map for your next development? Contact us to discuss your scale and accuracy requirements.
+            </p>
+            <a href="/contact.html" class="inline-block px-10 py-4 rounded-full text-lg cta-button-style">
+                Request a Topographical Quote
+            </a>
+        </section>
+
+    </main>
+    <script src="../scripts/load-components.js"></script>
+</body>
+</html>
