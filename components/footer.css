@@ -1,0 +1,100 @@
+/* ===== FOOTER STYLES ===== */
+.footer-container {
+    margin-top: auto; /* Pushes footer to bottom if using flex layout */
+}
+
+/* Social Icons Animation */
+.footer-container .fa-linkedin:hover {
+    color: #0077b5;
+}
+
+.footer-container .fa-twitter:hover {
+    color: #1da1f2;
+}
+
+.footer-container .fa-facebook:hover {
+    color: #1877f2;
+}
+
+.footer-container .fa-instagram:hover {
+    background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Link hover effects */
+.footer-container a {
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.footer-container a:not(.footer-container .text-xl a)::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: white;
+    transition: width 0.3s ease;
+}
+
+.footer-container a:hover::after {
+    width: 100%;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .footer-container .grid-cols-1.md\:grid-cols-3 {
+        gap: 2rem;
+    }
+    
+    .footer-container .flex-col.md\:flex-row {
+        text-align: center;
+    }
+    
+    .footer-container .space-y-2 li {
+        margin-bottom: 0.75rem;
+    }
+}
+
+/* Print styles */
+@media print {
+    .footer-container {
+        display: none;
+    }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .footer-container .bg-gray-900 {
+        background-color: #111827 !important;
+    }
+    
+    .footer-container .border-gray-700 {
+        border-color: #374151 !important;
+    }
+    
+    .footer-container .text-gray-400 {
+        color: #9ca3af !important;
+    }
+}
+
+/* Accessibility improvements */
+.footer-container a:focus {
+    outline: 2px solid #3498db;
+    outline-offset: 2px;
+}
+
+.footer-container .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
