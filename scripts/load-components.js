@@ -4,14 +4,12 @@ class ComponentLoader {
             { 
                 name: 'navbar', 
                 html: '/components/navbar.html',
-                css: '/components/navbar.css',
                 js: '/components/navbar.js',
                 position: 'afterbegin'
             },
             { 
                 name: 'footer', 
                 html: '/components/footer.html',
-                css: '/components/footer.css',
                 js: '/components/footer.js',
                 position: 'beforeend'
             }
@@ -64,37 +62,9 @@ class ComponentLoader {
                 document.body.insertBefore(container, document.body.firstChild);
             }
             
-            // Load CSS
-            await this.loadCSS(component.css);
-            
         } catch (error) {
             console.error(`Error loading ${component.name}:`, error);
         }
-    }
-    
-    async loadCSS(cssPath) {
-        return new Promise((resolve) => {
-            // Check if already loaded
-            if (document.querySelector(`link[href="${cssPath}"]`)) {
-                resolve();
-                return;
-            }
-            
-            const link = document.createElement('link');
-            link.rel = 'stylesheet';
-            link.href = cssPath;
-            
-            link.onload = () => {
-                resolve();
-            };
-            
-            link.onerror = () => {
-                console.warn(`Failed to load CSS: ${cssPath}`);
-                resolve();
-            };
-            
-            document.head.appendChild(link);
-        });
     }
     
     initComponents() {

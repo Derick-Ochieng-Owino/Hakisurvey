@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comprehensive Surveying Services - HakiSurvey</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        /* Define Custom Colors & Fonts */
+        :root {
+            --color-light-bg: #ffffff;
+            --color-light-card: #f8f8f8;
+            --color-dark-text: #212121;
+            --color-teal-accent: #008080;
+            --color-orange-accent: #e67e22;
+        }
+
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--color-light-bg);
+            color: var(--color-dark-text);
+            line-height: 1.6;
+            width: 100%;
+            overflow-x: hidden;
+        }
+
+        /* Utility classes */
+        .text-teal { color: var(--color-teal-accent); }
+        .text-orange { color: var(--color-orange-accent); }
+        
+        .cta-button-style {
+            background: linear-gradient(45deg, var(--color-teal-accent) 0%, var(--color-orange-accent) 100%);
+            color: #ffffff;
+            transition: all 0.3s ease;
+            font-weight: 700;
+        }
+        .cta-button-style:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 128, 128, 0.4);
+        }
+
+        /* Section Headings */
+        .section-heading {
+            border-left: 6px solid var(--color-orange-accent);
+            padding-left: 1.25rem;
+            line-height: 1.2;
+        }
+
+        /* Dynamic Page Transitions */
+        .survey-page {
+            display: none;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+            width: 100%;
+        }
+        .survey-page.active {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Navigation Links */
+        .survey-nav-link {
+            cursor: pointer;
+            padding: 0.75rem 1.5rem;
+            border-radius: 9999px;
+            transition: all 0.3s ease;
+            border: 2px solid #e5e7eb;
+            font-weight: 600;
+            white-space: nowrap;
+            font-size: 0.95rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        .survey-nav-link:hover {
+            border-color: var(--color-teal-accent);
+            background-color: rgba(0, 128, 128, 0.05);
+        }
+        .survey-nav-link.active {
+            background-color: var(--color-teal-accent);
+            color: white;
+            border-color: var(--color-teal-accent);
+            box-shadow: 0 4px 15px rgba(0, 128, 128, 0.3);
+        }
+
+        /* Hero Section - Full Width */
+        .hero-section {
+            position: relative;
+            width: 100vw;
+            margin-left: calc(-50vw + 50%);
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: var(--hero-bg-color, linear-gradient(135deg, #0f766e 0%, #0e7490 100%));
+            color: white;
+            padding: 2rem 1rem;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: var(--hero-bg-image, linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3)));
+            background-size: cover;
+            background-position: center;
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            width: 100%;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(90deg, #fff 0%, #a5f3fc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.125rem, 2vw, 1.5rem);
+            font-weight: 300;
+            margin-bottom: 2.5rem;
+            color: #f0f0f0;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid #fff;
+            color: #ffffff;
+            padding: 0.9rem 2rem;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            min-width: 160px;
+        }
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: scale(1.05);
+        }
+
+        /* Navigation Bar - Scrollable */
+        #survey-navigation {
+            position: sticky;
+            top: 0;
+            z-index: 40;
+            background-color: white;
+            border-bottom: 1px solid #e5e7eb;
+            padding: 1rem 0;
+            width: 100%;
+        }
+
+        .nav-scroll-container {
+            width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: thin;
+            scrollbar-color: var(--color-teal-accent) transparent;
+        }
+
+        .nav-scroll-container::-webkit-scrollbar {
+            height: 4px;
+        }
+
+        .nav-scroll-container::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .nav-scroll-container::-webkit-scrollbar-thumb {
+            background-color: var(--color-teal-accent);
+            border-radius: 2px;
+        }
+
+        .nav-inner {
+            display: inline-flex;
+            gap: 0.75rem;
+            padding: 0 1rem;
+            min-width: min-content;
+        }
+
+        /* Main Content */
+        .main-container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        /* Service Cards */
+        .service-card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 1.5rem;
+            height: 100%;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .service-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0, 128, 128, 0.1);
+            border-color: var(--color-teal-accent);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--color-light-card) 0%, #f0f9ff 100%);
+            border: 2px solid var(--color-teal-accent);
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Responsive Grid */
+        .service-grid {
+            display: grid;
+            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        }
+
+        /* Loading animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        /* Mobile adjustments */
+        @media (max-width: 640px) {
+            .hero-section {
+                min-height: 70vh;
+                padding: 1rem;
+            }
+
+            .hero-content {
+                padding: 1rem;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.125rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .hero-buttons button,
+            .hero-buttons a {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .survey-nav-link {
+                padding: 0.6rem 1rem;
+                font-size: 0.875rem;
+            }
+
+            .service-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .main-container {
+                padding: 0 0.75rem;
+            }
+        }
+
+        @media (min-width: 641px) and (max-width: 1024px) {
+            .hero-section {
+                min-height: 75vh;
+            }
+
+            .service-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Prevent horizontal overflow */
+        .overflow-x-hidden {
+            overflow-x: hidden;
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+
+    <!-- Full Width Hero Section -->
+    <section class="hero-section" id="hero-section">
+        <div class="hero-content">
+            <h2 id="hero-title" class="hero-title">Bathymetric & Hydrographic Surveying Services</h2>
+            <p id="hero-subtitle" class="hero-subtitle">Precision Mapping of Underwater Terrain for Safe Navigation & Development</p>
+            <div class="hero-buttons">
+                <button onclick="window.location.href='/contact.html'" class="inline-block px-8 py-3 rounded-full text-lg cta-button-style">
+                    Get a Quote
+                </button>
+                <a href="#content-section" class="btn-secondary inline-block px-8 py-3 rounded-full text-lg">
+                    Explore Services
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Navigation Bar -->
+    <nav id="survey-navigation">
+        <div class="nav-scroll-container">
+            <div class="nav-inner">
+                <button class="survey-nav-link active" data-page="bathymetric"
+                        data-title="Bathymetric & Hydrographic Surveying Services"
+                        data-subtitle="Precision Mapping of Underwater Terrain for Safe Navigation & Development"
+                        data-bg-color="linear-gradient(135deg, #0f766e 0%, #0e7490 100%)"
+                        data-bg-image="images/bathymetric.png">
+                    🌊 Bathymetric
+                </button>
+                <button class="survey-nav-link" data-page="topographical"
+                        data-title="Topographical Surveys (Topo Surveys)"
+                        data-subtitle="The Essential Blueprint for Construction and Civil Engineering Projects"
+                        data-bg-color="linear-gradient(135deg, #059669 0%, #047857 100%)"
+                        data-bg-image="images/topographical.jpg">
+                    📐 Topographical
+                </button>
+                <button class="survey-nav-link" data-page="cadastral"
+                        data-title="Cadastral Surveying (Legal Boundary Definition)"
+                        data-subtitle="Defining Your Land Boundary with Certified Legal Accuracy for Title Registration"
+                        data-bg-color="linear-gradient(135deg, #0d9488 0%, #0c8a7f 100%)"
+                        data-bg-image="images/cadastral.jpg">
+                    🎯 Cadastral
+                </button>
+                <button class="survey-nav-link" data-page="boundary"
+                        data-title="Boundary Demarcation & Re-establishment"
+                        data-subtitle="Certified Placement of Physical Markers on Your Legal Property Line"
+                        data-bg-color="linear-gradient(135deg, #0891b2 0%, #0e7490 100%)"
+                        data-bg-image="images/boundary.jpg">
+                    📏 Boundary
+                </button>
+                <button class="survey-nav-link" data-page="gpr"
+                        data-title="Ground Penetrating Radar (GPR) Surveying"
+                        data-subtitle="Non-Destructive Mapping of Hidden Utilities, Voids, and Subsurface Features"
+                        data-bg-color="linear-gradient(135deg, #0284c7 0%, #0369a1 100%)"
+                        data-bg-image="images/gpr.png">
+                    ⚠️ GPR
+                </button>
+                <button class="survey-nav-link" data-page="resource-mapping"
+                        data-title="Resource Mapping & GIS Services"
+                        data-subtitle="Geospatial Quantification and Intelligent Management for Natural Assets"
+                        data-bg-color="linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%)"
+                        data-bg-image="images/resource-mapping.jpg">
+                    🌍 Resource
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main class="main-container" id="content-section">
+        
+        <!-- Bathymetric Survey Page -->
+        <div id="bathymetric" class="survey-page active">
+            <section class="bg-light-card p-6 md:p-8 rounded-xl border border-gray-200 mb-10 shadow-teal">
+                <h3 class="section-heading text-2xl md:text-3xl font-bold mb-4 text-orange">
+                    The Underwater Equivalent of Topography
+                </h3>
+                <p class="text-base md:text-lg text-gray-700 mb-4">
+                    <strong class="text-teal">Bathymetric Surveying</strong> is the science of measuring the depth of water in oceans, lakes, rivers, and reservoirs to map the underwater terrain, known as <strong>bathymetry</strong>. Using sophisticated acoustic equipment like Single-Beam and Multi-Beam Echo Sounders mounted on specialized vessels or drones.
+                </p>
+                <p class="text-base md:text-lg text-gray-700">
+                    This data is essential for <strong>safe maritime navigation</strong>, planning coastal defense projects, calculating sediment volume in reservoirs, and designing underwater infrastructure such as pipelines, cables, and jetties. Our reports adhere to strict <strong>International Hydrographic Organization (IHO)</strong> standards.
+                </p>
+            </section>
+
+            <div class="service-grid mb-16">
+                <div class="service-card fade-in">
+                    <h4 class="font-bold text-lg md:text-xl mb-3 text-teal">Dredging Volume Calculation</h4>
+                    <p class="text-sm text-gray-600">Accurately calculating volumes of material to be removed from ports and channels.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <h4 class="font-bold text-lg md:text-xl mb-3 text-teal">Marine Infrastructure</h4>
+                    <p class="text-sm text-gray-600">Surveys for placement of breakwaters, offshore wind turbines, and oil/gas platforms.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <h4 class="font-bold text-lg md:text-xl mb-3 text-teal">Navigation Charting</h4>
+                    <p class="text-sm text-gray-600">Producing up-to-date and accurate nautical charts for vessel safety.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <h4 class="font-bold text-lg md:text-xl mb-3 text-teal">Reservoir Sedimentation</h4>
+                    <p class="text-sm text-gray-600">Monitoring water storage capacity by measuring accumulated sediment volumes.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Topographical Survey Page -->
+        <div id="topographical" class="survey-page">
+            <section class="bg-light-card p-6 md:p-8 rounded-xl border border-gray-200 mb-10 shadow-teal">
+                <h3 class="section-heading text-2xl md:text-3xl font-bold mb-4 text-orange">
+                    What They Are and Why They Are Critical
+                </h3>
+                <p class="text-base md:text-lg text-gray-700 mb-4">
+                    A <strong class="text-teal">Topographical Survey</strong> is a detailed map of land, precisely locating all natural features (elevation, contours, trees, water bodies) and man-made features (buildings, utilities, roads, fences). It provides the three-dimensional "as-is" condition of the land.
+                </p>
+                <p class="text-base md:text-lg text-gray-700">
+                    These surveys are the <strong>foundation of any design process</strong>. Architects and engineers rely on this data to design structures, plan drainage, determine foundation depths, and calculate earthwork volumes accurately. We utilize Total Stations, GPS, and Drone Photogrammetry to deliver highly accurate Digital Elevation Models (DEMs).
+                </p>
+            </section>
+
+            <div class="service-grid mb-16">
+                <div class="service-card fade-in">
+                    <h4 class="font-bold text-lg md:text-xl mb-3 text-teal">Detailed Contour Maps</h4>
+                    <p class="text-sm text-gray-600">Representing slope and elevation changes for drainage and grading plans.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <h4 class="font-bold text-lg md:text-xl mb-3 text-teal">Site Planning & Permits</h4>
+                    <p class="text-sm text-gray-600">Mandatory input for securing building permits and developing site layouts.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <h4 class="font-bold text-lg md:text-xl mb-3 text-teal">Volume Calculations</h4>
+                    <p class="text-sm text-gray-600">Accurate calculation of cut and fill volumes for earthworks budgeting.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <h4 class="font-bold text-lg md:text-xl mb-3 text-teal">Infrastructure Design</h4>
+                    <p class="text-sm text-gray-600">Providing elevations for the design of roads, sewers, and utility connections.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cadastral Survey Page -->
+        <div id="cadastral" class="survey-page">
+            <section class="bg-light-card p-6 md:p-8 rounded-xl border border-gray-200 mb-10 shadow-teal">
+                <h3 class="section-heading text-2xl md:text-3xl font-bold mb-4 text-orange">
+                    The Legal Foundation of Land Ownership
+                </h3>
+                <p class="text-base md:text-lg text-gray-700 mb-4">
+                    A <strong class="text-teal">Cadastral Survey</strong> is a specialized, legally binding survey used to create, redefine, and document property boundaries for land registration and title deed creation. It is the definitive legal measurement of a property.
+                </p>
+                <p class="text-base md:text-lg text-gray-700">
+                    This process involves extensive research of historical records and precise field measurements. The final <strong>Cadastral Plan</strong> is certified by a licensed surveyor and submitted to land authorities, protecting the owner's investment and preventing future ownership disputes.
+                </p>
+            </section>
+
+            <div class="service-grid mb-16">
+                <div class="service-card fade-in">
+                    <h4 class="font-bold text-lg md:text-xl mb-3 text-teal">Title Deed Creation</h4>
+                    <p class="text-sm text-gray-600">Mandatory for first registration of land and securing legal proof of ownership.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <h4 class="font-bold text-lg md:text-xl mb-3 text-teal">Land Subdivision/Amalgamation</h4>
+                    <p class="text-sm text-gray-600">Legally splitting a parcel into multiple plots or combining multiple plots.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <h4 class="font-bold text-lg md:text-xl mb-3 text-teal">Boundary Confirmation</h4>
+                    <p class="text-sm text-gray-600">Resolving conflicts by legally re-establishing exact property limits.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <h4 class="font-bold text-lg md:text-xl mb-3 text-teal">Conveyancing & Sale</h4>
+                    <p class="text-sm text-gray-600">Providing certified accuracy for lawful transfer of property ownership.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Boundary Demarcation Page -->
+        <div id="boundary" class="survey-page">
+            <section class="bg-light-card p-6 md:p-8 rounded-xl border border-gray-200 mb-10 shadow-teal">
+                <h3 class="section-heading text-2xl md:text-3xl font-bold mb-4 text-orange">
+                    From Paper Plan to Physical Marker
+                </h3>
+                <p class="text-base md:text-lg text-gray-700 mb-4">
+                    While a Cadastral Survey produces a legal map, <strong class="text-teal">Boundary Demarcation</strong> is the physical field process. A licensed surveyor marks the exact corners and points of the boundary on the ground with durable, visible markers.
+                </p>
+                <p class="text-base md:text-lg text-gray-700">
+                    This service is essential when erecting <strong>fences, walls, or new structures</strong> to ensure they don't encroach on neighboring land. It transforms an abstract legal description into a tangible, visible reality.
+                </p>
+            </section>
+
+            <div class="service-grid mb-16">
+                <div class="service-card fade-in">
+                    <h4 class="font-bold text-lg md:text-xl mb-3 text-teal">Fence & Wall Construction</h4>
+                    <p class="text-sm text-gray-600">Accurate guiding for builders to prevent boundary encroachment.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <h4 class="font-bold text-lg md:text-xl mb-3 text-teal">Lost Boundary Recovery</h4>
+                    <p class="text-sm text-gray-600">Re-establishing lost or disturbed corner markers using original data.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <h4 class="font-bold text-lg md:text-xl mb-3 text-teal">Site Setout</h4>
+                    <p class="text-sm text-gray-600">Establishing corner markers for construction setout surveys.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <h4 class="font-bold text-lg md:text-xl mb-3 text-teal">Land Purchase Due Diligence</h4>
+                    <p class="text-sm text-gray-600">Physically verifying property size and location before purchase.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- GPR Survey Page -->
+        <div id="gpr" class="survey-page">
+            <section class="bg-light-card p-6 md:p-8 rounded-xl border border-gray-200 mb-10 shadow-teal">
+                <h3 class="section-heading text-2xl md:text-3xl font-bold mb-4 text-orange">
+                    Locating the Unseen Underground Infrastructure
+                </h3>
+                <p class="text-base md:text-lg text-gray-700 mb-4">
+                    <strong class="text-teal">GPR</strong> uses high-frequency radio waves transmitted into the ground. When these waves encounter changes in subsurface materials—such as soil vs. plastic pipe or concrete—they reflect back to a receiver.
+                </p>
+                <p class="text-base md:text-lg text-gray-700">
+                    This <strong>non-destructive</strong> technique is crucial for Subsurface Utility Engineering (SUE). We locate gas lines, water mains, fiber optic cables, old foundations, and rebar within concrete slabs before any digging occurs.
+                </p>
+            </section>
+
+            <div class="service-grid mb-16">
+                <div class="service-card fade-in">
+                    <h4 class="font-bold text-lg md:text-xl mb-3 text-teal">Utility Locating (SUE)</h4>
+                    <p class="text-sm text-gray-600">Mapping buried pipes, cables, and conduits prior to excavation.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <h4 class="font-bold text-lg md:text-xl mb-3 text-teal">Concrete Scanning</h4>
+                    <p class="text-sm text-gray-600">Locating internal reinforcement and conduits inside concrete.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <h4 class="font-bold text-lg md:text-xl mb-3 text-teal">Void & Sinkhole Detection</h4>
+                    <p class="text-sm text-gray-600">Identifying unstable ground or hidden cavities beneath structures.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <h4 class="font-bold text-lg md:text-xl mb-3 text-teal">Forensic & Archaeological</h4>
+                    <p class="text-sm text-gray-600">Non-invasively mapping buried historical features or objects.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Resource Mapping Page -->
+        <div id="resource-mapping" class="survey-page">
+            <section class="bg-light-card p-6 md:p-8 rounded-xl border border-gray-200 mb-10 shadow-teal">
+                <h3 class="section-heading text-2xl md:text-3xl font-bold mb-4 text-orange">
+                    Data-Driven Decisions for Natural Resources
+                </h3>
+                <p class="text-base md:text-lg text-gray-700 mb-4">
+                    <strong class="text-teal">Resource Mapping</strong> combines field surveying with Geographic Information Systems (GIS), remote sensing, and specialized analysis to accurately locate, quantify, and monitor natural resources.
+                </p>
+                <p class="text-base md:text-lg text-gray-700">
+                    Our GIS specialists create powerful, layered maps and databases that reveal patterns, assess environmental impact, and forecast yield. Essential for sustainable land use planning in mining, forestry, and agriculture.
+                </p>
+            </section>
+
+            <div class="service-grid mb-16">
+                <div class="service-card fade-in">
+                    <h4 class="font-bold text-lg md:text-xl mb-3 text-teal">Stockpile Quantification</h4>
+                    <p class="text-sm text-gray-600">Rapid, accurate volume calculation for material inventory management.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <h4 class="font-bold text-lg md:text-xl mb-3 text-teal">Precision Agriculture</h4>
+                    <p class="text-sm text-gray-600">Mapping soil health, water stress, and yield variability for farming.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <h4 class="font-bold text-lg md:text-xl mb-3 text-teal">Environmental Impact Assessment</h4>
+                    <p class="text-sm text-gray-600">Monitoring changes in land cover, erosion, and habitat health.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <h4 class="font-bold text-lg md:text-xl mb-3 text-teal">Infrastructure Route Optimization</h4>
+                    <p class="text-sm text-gray-600">Selecting efficient and environmentally sensitive routes.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA Section -->
+        <section class="cta-section p-8 md:p-12 text-center mb-12 mt-8">
+            <p class="text-2xl md:text-4xl font-extrabold mb-4 text-orange">
+                🤝 Start Your Project on Solid Ground
+            </p>
+            <h3 class="text-3xl md:text-5xl font-bold mb-6 text-teal">Request a Quote & Expert Consultation</h3>
+            <p class="text-lg md:text-xl text-gray-700 mb-8 max-w-3xl mx-auto">
+                Our certified surveyors provide the detailed, accurate data you need to ensure compliance, minimize risk, and build with confidence.
+            </p>
+            <button onclick="window.location.href='/contact.html'" class="inline-block px-8 md:px-12 py-4 md:py-5 rounded-full text-lg md:text-xl cta-button-style">
+                Get a Free Project Assessment
+            </button>
+        </section>
+
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const navButtons = document.querySelectorAll('.survey-nav-link');
+            const surveyPages = document.querySelectorAll('.survey-page');
+            const heroSection = document.getElementById('hero-section');
+            const heroTitle = document.getElementById('hero-title');
+            const heroSubtitle = document.getElementById('hero-subtitle');
+            const styleElement = document.createElement('style');
+
+            // Set up CSS variables for Hero Background
+            styleElement.innerHTML = `
+                :root {
+                    --hero-bg-color: linear-gradient(135deg, #0f766e 0%, #0e7490 100%);
+                    --hero-bg-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3));
+                }
+                .hero-section::before {
+                    background-image: var(--hero-bg-image);
+                    transition: background-image 0.5s ease;
+                }
+            `;
+            document.head.appendChild(styleElement);
+
+            // Function to switch between pages
+            function switchPage(pageId) {
+                const activeButton = document.querySelector(`.survey-nav-link[data-page="${pageId}"]`);
+                
+                if (!activeButton) return;
+
+                const newTitle = activeButton.getAttribute('data-title');
+                const newSubtitle = activeButton.getAttribute('data-subtitle');
+                const bgColor = activeButton.getAttribute('data-bg-color');
+                const bgImage = activeButton.getAttribute('data-bg-image');
+                
+                // Update Hero Content
+                heroTitle.textContent = newTitle;
+                heroSubtitle.textContent = newSubtitle;
+                
+                // Update Hero Background with fallback
+                document.documentElement.style.setProperty('--hero-bg-color', bgColor);
+                if (bgImage) {
+                    document.documentElement.style.setProperty('--hero-bg-image', 
+                        `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3)), url('${bgImage}')`);
+                } else {
+                    document.documentElement.style.setProperty('--hero-bg-image', 
+                        'linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3))');
+                }
+
+                // Update active states
+                surveyPages.forEach(page => {
+                    page.classList.remove('active');
+                });
+                navButtons.forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                
+                const activePage = document.getElementById(pageId);
+                if (activePage) {
+                    activePage.classList.remove('active');
+                    setTimeout(() => {
+                        activePage.classList.add('active');
+                        activeButton.classList.add('active');
+                    }, 50);
+                }
+                
+                // Update URL and scroll
+                history.pushState(null, null, `#${pageId}`);
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+            
+            // Add click events
+            navButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const pageId = this.getAttribute('data-page');
+                    switchPage(pageId);
+                });
+            });
+            
+            // Check URL hash on load
+            function checkHash() {
+                const hash = window.location.hash.substring(1);
+                const defaultPage = 'bathymetric';
+                const validPages = ['topographical', 'cadastral', 'boundary', 'gpr', 'bathymetric', 'resource-mapping'];
+                
+                if (validPages.includes(hash)) {
+                    switchPage(hash);
+                } else {
+                    switchPage(defaultPage);
+                }
+            }
+            
+            // Handle browser back/forward
+            window.addEventListener('popstate', checkHash);
+            
+            // Initial check
+            checkHash();
+            
+            // Add scroll effect to navigation
+            window.addEventListener('scroll', function() {
+                const nav = document.getElementById('survey-navigation');
+                if (window.scrollY > 100) {
+                    nav.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)';
+                } else {
+                    nav.style.boxShadow = 'none';
+                }
+            });
+        });
+    </script>
+    <script src="scripts/load-components.js"></script>
+</body>
+</html>

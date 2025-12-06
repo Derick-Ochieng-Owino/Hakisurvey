@@ -3,129 +3,673 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resources | Hakisurvey Plots</title>
+    <title>Resources | HakiSurvey Plots Ltd</title>
     <link rel="icon" href="images/hakisurvey-logo.png" type="image/x-icon" />
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://unpkg.com/swiper@9/swiper-bundle.min.css" />
     <script src="https://unpkg.com/swiper@9/swiper-bundle.min.js"></script>
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-   <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+    <link rel="stylesheet" href="styles/style.css">
+    <style>
+        /* Custom Styles */
+        .section-title {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            width: 60%;
+            height: 4px;
+            background: linear-gradient(to right, #3b82f6, #10b981);
+            bottom: -10px;
+            left: 20%;
+            border-radius: 2px;
+        }
+        
+        .resource-card {
+            transition: all 0.3s ease;
+            border: 1px solid #e5e7eb;
+            overflow: hidden;
+        }
+        
+        .resource-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border-color: #3b82f6;
+        }
+        
+        .download-btn {
+            background: linear-gradient(to right, #3b82f6, #1d4ed8);
+            transition: all 0.3s ease;
+        }
+        
+        .download-btn:hover {
+            background: linear-gradient(to right, #2563eb, #1e40af);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
+        }
+        
+        .read-btn {
+            background: linear-gradient(to right, #10b981, #059669);
+            transition: all 0.3s ease;
+        }
+        
+        .read-btn:hover {
+            background: linear-gradient(to right, #0da271, #047857);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(16, 185, 129, 0.3);
+        }
+        
+        .category-tag {
+            transition: all 0.3s ease;
+        }
+        
+        .category-tag:hover {
+            transform: scale(1.05);
+        }
+        
+        .file-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .resource-card:hover .file-icon {
+            transform: scale(1.1);
+        }
+        
+        .hero-section {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #f1f5f9 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-section:before {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(16, 185, 129, 0.1) 100%);
+            top: -200px;
+            right: -200px;
+        }
+        
+        .hero-section:after {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, rgba(16, 185, 129, 0.05) 100%);
+            bottom: -150px;
+            left: -150px;
+        }
+        
+        .stat-number {
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 800;
+        }
+        
+        .filter-btn {
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .filter-btn.active {
+            background: linear-gradient(to right, #3b82f6, #1d4ed8);
+            color: white;
+            border-color: #3b82f6;
+        }
+        
+        .file-progress {
+            height: 4px;
+            background: #e5e7eb;
+            border-radius: 2px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .file-progress-bar {
+            position: absolute;
+            height: 100%;
+            background: linear-gradient(to right, #10b981, #3b82f6);
+            border-radius: 2px;
+            animation: progress 1.5s ease-in-out;
+        }
+        
+        @keyframes progress {
+            from { width: 0%; }
+            to { width: var(--progress); }
+        }
+        
+        .case-study-card {
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            height: 200px;
+        }
+        
+        .case-study-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent 50%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 20px;
+            color: white;
+        }
+        
+        .blog-card {
+            transition: all 0.4s ease;
+        }
+        
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .blog-image {
+            height: 180px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .blog-card:hover .blog-image {
+            transform: scale(1.05);
+        }
+        
+        .search-input {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' class='h-5 w-5 text-gray-400' viewBox='0 0 20 20' fill='currentColor'%3E%3Cpath fill-rule='evenodd' d='M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z' clip-rule='evenodd' /%3E%3C/svg%3E");
+            background-position: 15px center;
+            background-repeat: no-repeat;
+            padding-left: 45px;
+            background-size: 20px;
+        }
+        
+        .view-all-btn {
+            transition: all 0.3s ease;
+            border: 2px solid #3b82f6;
+        }
+        
+        .view-all-btn:hover {
+            background: #3b82f6;
+            color: white;
+        }
+    </style>
 </head>
 <body>
     <!-- RESOURCES PAGE -->
     <div id="resources" class="page active-page">
-        <section class="py-16 bg-gradient-to-b from-gray-50 to-white">
+        <!-- Hero Section -->
+        <section class="hero-section py-20 relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="text-center mb-12">
+                    <span class="inline-block px-4 py-2 bg-blue-100 text-blue-700 font-medium rounded-full mb-6">
+                        <i class="fas fa-database mr-2"></i>Knowledge Center
+                    </span>
+                    <h1 class="section-title text-4xl md:text-5xl font-bold text-gray-900 mb-6">Resources & Insights</h1>
+                    <p class="text-gray-600 max-w-3xl mx-auto text-lg mb-8">Access our comprehensive library of service brochures, detailed case studies, industry insights, and cutting-edge research in surveying and geospatial technology.</p>
+                    
+                    <div class="flex flex-wrap justify-center gap-6 mt-10">
+                        <div class="bg-white rounded-xl p-6 text-center w-48 shadow-lg">
+                            <div class="stat-number text-4xl mb-2">24+</div>
+                            <div class="text-gray-600 font-medium">Downloadable Resources</div>
+                        </div>
+                        <div class="bg-white rounded-xl p-6 text-center w-48 shadow-lg">
+                            <div class="stat-number text-4xl mb-2">18</div>
+                            <div class="text-gray-600 font-medium">Case Studies</div>
+                        </div>
+                        <div class="bg-white rounded-xl p-6 text-center w-48 shadow-lg">
+                            <div class="stat-number text-4xl mb-2">42+</div>
+                            <div class="text-gray-600 font-medium">Industry Articles</div>
+                        </div>
+                        <div class="bg-white rounded-xl p-6 text-center w-48 shadow-lg">
+                            <div class="stat-number text-4xl mb-2">500+</div>
+                            <div class="text-gray-600 font-medium">Monthly Downloads</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Search & Filter -->
+                <div class="max-w-3xl mx-auto mb-12">
+                    <div class="bg-white rounded-xl shadow-lg p-4">
+                        <div class="flex flex-col md:flex-row gap-4">
+                            <div class="flex-1">
+                                <input type="text" 
+                                       placeholder="Search resources, case studies, articles..." 
+                                       class="search-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                            </div>
+                            <div class="flex flex-wrap gap-2 justify-center">
+                                <button class="filter-btn px-4 py-2 bg-blue-50 text-blue-700 font-medium rounded-lg hover:bg-blue-100 active">All Resources</button>
+                                <button class="filter-btn px-4 py-2 bg-gray-100 text-gray-700 font-medium rounded-lg hover:bg-gray-200">Brochures</button>
+                                <button class="filter-btn px-4 py-2 bg-gray-100 text-gray-700 font-medium rounded-lg hover:bg-gray-200">Case Studies</button>
+                                <button class="filter-btn px-4 py-2 bg-gray-100 text-gray-700 font-medium rounded-lg hover:bg-gray-200">Articles</button>
+                                <button class="filter-btn px-4 py-2 bg-gray-100 text-gray-700 font-medium rounded-lg hover:bg-gray-200">Whitepapers</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Main Resources Section -->
+        <section class="py-16 bg-white">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-12" data-aos="fade-up">
-                    <h1 class="text-3xl font-bold text-gray-800 mb-4">Resources</h1>
-                    <p class="text-gray-600 max-w-2xl mx-auto">Access our service brochures, case studies, and industry insights to learn more about our capabilities and expertise.</p>
-                </div>
-                
-                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
-                    <!-- Service Brochures -->
-                    <div class="bg-white rounded-xl shadow p-6" data-aos="fade-up">
-                        <div class="flex items-center mb-6">
-                            <div class="w-12 h-12 rounded-lg bg-blue-100 flex items-center justify-center text-blue-700 mr-4">
-                                <i class="fas fa-file-pdf text-xl"></i>
-                            </div>
-                            <h2 class="text-2xl font-bold text-gray-800">Service Brochures</h2>
+                <!-- Service Brochures -->
+                <div class="mb-16">
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8">
+                        <div>
+                            <h2 class="section-title text-3xl font-bold text-gray-900 mb-2">Service Brochures</h2>
+                            <p class="text-gray-600">Download detailed PDFs about our services, capabilities, and technology</p>
                         </div>
-                        <p class="text-gray-600 mb-6">Download our detailed service brochures to learn more about our capabilities, equipment, and project approach.</p>
-                        <div class="space-y-4">
-                            <div class="flex items-center justify-between p-4 border rounded-lg">
-                                <div>
-                                    <h3 class="font-semibold text-gray-800">Comprehensive Services Overview</h3>
-                                    <p class="text-sm text-gray-600">PDF • 2.4 MB</p>
-                                </div>
-                                <a href="#" class="px-4 py-2 bg-blue-600 text-white rounded-lg text-sm hover:bg-blue-700">Download</a>
-                            </div>
-                            <div class="flex items-center justify-between p-4 border rounded-lg">
-                                <div>
-                                    <h3 class="font-semibold text-gray-800">Drone Surveying Capabilities</h3>
-                                    <p class="text-sm text-gray-600">PDF • 1.8 MB</p>
-                                </div>
-                                <a href="#" class="px-4 py-2 bg-blue-600 text-white rounded-lg text-sm hover:bg-blue-700">Download</a>
-                            </div>
-                            <div class="flex items-center justify-between p-4 border rounded-lg">
-                                <div>
-                                    <h3 class="font-semibold text-gray-800">Land & Property Solutions</h3>
-                                    <p class="text-sm text-gray-600">PDF • 1.5 MB</p>
-                                </div>
-                                <a href="#" class="px-4 py-2 bg-blue-600 text-white rounded-lg text-sm hover:bg-blue-700">Download</a>
-                            </div>
-                        </div>
+                        <a href="#" class="view-all-btn px-6 py-2 text-blue-600 font-semibold rounded-lg mt-4 md:mt-0">
+                            View All Brochures <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
                     </div>
                     
-                    <!-- Case Studies -->
-                    <div class="bg-white rounded-xl shadow p-6" data-aos="fade-up" data-aos-delay="100">
-                        <div class="flex items-center mb-6">
-                            <div class="w-12 h-12 rounded-lg bg-green-100 flex items-center justify-center text-green-700 mr-4">
-                                <i class="fas fa-clipboard-list text-xl"></i>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <!-- Brochure 1 -->
+                        <div class="resource-card bg-white rounded-xl p-6">
+                            <div class="flex items-start mb-6">
+                                <div class="file-icon bg-blue-100 text-blue-600 mr-4">
+                                    <i class="fas fa-file-pdf text-2xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-bold text-gray-900 mb-2">Comprehensive Services Overview 2024</h3>
+                                    <div class="flex items-center text-sm text-gray-500 mb-2">
+                                        <span class="mr-3"><i class="far fa-file mr-1"></i> PDF</span>
+                                        <span><i class="far fa-hdd mr-1"></i> 2.4 MB</span>
+                                    </div>
+                                    <div class="file-progress">
+                                        <div class="file-progress-bar" style="--progress: 85%; width: 85%;"></div>
+                                    </div>
+                                    <div class="text-xs text-gray-500 mt-1">85% downloaded this month</div>
+                                </div>
                             </div>
-                            <h2 class="text-2xl font-bold text-gray-800">Case Studies</h2>
+                            <p class="text-gray-600 mb-6">Complete guide to all our surveying, mapping, and geospatial services with detailed technical specifications.</p>
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center">
+                                    <i class="far fa-clock text-gray-400 mr-2"></i>
+                                    <span class="text-sm text-gray-600">Updated: Jan 2024</span>
+                                </div>
+                                <button class="download-btn px-5 py-2.5 text-white font-medium rounded-lg flex items-center">
+                                    <i class="fas fa-download mr-2"></i> Download
+                                </button>
+                            </div>
                         </div>
-                        <p class="text-gray-600 mb-6">Explore detailed case studies showcasing our project methodologies, challenges, and successful outcomes.</p>
-                        <div class="space-y-4">
-                            <div class="p-4 border rounded-lg">
-                                <h3 class="font-semibold text-gray-800 mb-2">Highway Route Survey — Eastern Corridor</h3>
-                                <p class="text-sm text-gray-600 mb-3">How we delivered precise topographic data for a major infrastructure project.</p>
-                                <a href="#" class="text-blue-600 text-sm font-medium">Read Case Study →</a>
+                        
+                        <!-- Brochure 2 -->
+                        <div class="resource-card bg-white rounded-xl p-6">
+                            <div class="flex items-start mb-6">
+                                <div class="file-icon bg-green-100 text-green-600 mr-4">
+                                    <i class="fas fa-drone text-2xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-bold text-gray-900 mb-2">Drone Surveying Capabilities</h3>
+                                    <div class="flex items-center text-sm text-gray-500 mb-2">
+                                        <span class="mr-3"><i class="far fa-file mr-1"></i> PDF</span>
+                                        <span><i class="far fa-hdd mr-1"></i> 1.8 MB</span>
+                                    </div>
+                                    <div class="file-progress">
+                                        <div class="file-progress-bar" style="--progress: 92%; width: 92%;"></div>
+                                    </div>
+                                    <div class="text-xs text-gray-500 mt-1">92% downloaded this month</div>
+                                </div>
                             </div>
-                            <div class="p-4 border rounded-lg">
-                                <h3 class="font-semibold text-gray-800 mb-2">Agricultural Multispectral Mapping</h3>
-                                <p class="text-sm text-gray-600 mb-3">Using drone technology to optimize crop health and irrigation.</p>
-                                <a href="#" class="text-blue-600 text-sm font-medium">Read Case Study →</a>
-                            </div>
-                            <div class="p-4 border rounded-lg">
-                                <h3 class="font-semibold text-gray-800 mb-2">Urban Development — As-Built Surveys</h3>
-                                <p class="text-sm text-gray-600 mb-3">Precision verification for a multi-story commercial development.</p>
-                                <a href="#" class="text-blue-600 text-sm font-medium">Read Case Study →</a>
+                            <p class="text-gray-600 mb-6">Detailed specifications of our drone fleet, sensors, and aerial mapping capabilities with sample deliverables.</p>
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center">
+                                    <i class="far fa-clock text-gray-400 mr-2"></i>
+                                    <span class="text-sm text-gray-600">Updated: Feb 2024</span>
+                                </div>
+                                <button class="download-btn px-5 py-2.5 text-white font-medium rounded-lg flex items-center">
+                                    <i class="fas fa-download mr-2"></i> Download
+                                </button>
                             </div>
                         </div>
-                    </div>
-                    
-                    <!-- Blog & Insights -->
-                    <div class="bg-white rounded-xl shadow p-6" data-aos="fade-up" data-aos-delay="200">
-                        <div class="flex items-center mb-6">
-                            <div class="w-12 h-12 rounded-lg bg-purple-100 flex items-center justify-center text-purple-700 mr-4">
-                                <i class="fas fa-blog text-xl"></i>
+                        
+                        <!-- Brochure 3 -->
+                        <div class="resource-card bg-white rounded-xl p-6">
+                            <div class="flex items-start mb-6">
+                                <div class="file-icon bg-purple-100 text-purple-600 mr-4">
+                                    <i class="fas fa-map-marked-alt text-2xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-bold text-gray-900 mb-2">Land & Property Solutions</h3>
+                                    <div class="flex items-center text-sm text-gray-500 mb-2">
+                                        <span class="mr-3"><i class="far fa-file mr-1"></i> PDF</span>
+                                        <span><i class="far fa-hdd mr-1"></i> 1.5 MB</span>
+                                    </div>
+                                    <div class="file-progress">
+                                        <div class="file-progress-bar" style="--progress: 78%; width: 78%;"></div>
+                                    </div>
+                                    <div class="text-xs text-gray-500 mt-1">78% downloaded this month</div>
+                                </div>
                             </div>
-                            <h2 class="text-2xl font-bold text-gray-800">Blog & Insights</h2>
-                        </div>
-                        <p class="text-gray-600 mb-6">Stay updated with the latest industry trends, technology advancements, and best practices in surveying and geospatial solutions.</p>
-                        <div class="space-y-4">
-                            <div class="p-4 border rounded-lg">
-                                <span class="text-xs font-medium text-blue-600 bg-blue-50 px-2 py-1 rounded">Technology</span>
-                                <h3 class="font-semibold text-gray-800 mt-2 mb-2">The Future of Drone Surveying in East Africa</h3>
-                                <p class="text-sm text-gray-600 mb-3">Exploring how drone technology is transforming land surveying practices across the region.</p>
-                                <a href="#" class="text-blue-600 text-sm font-medium">Read Article →</a>
-                            </div>
-                            <div class="p-4 border rounded-lg">
-                                <span class="text-xs font-medium text-green-600 bg-green-50 px-2 py-1 rounded">Best Practices</span>
-                                <h3 class="font-semibold text-gray-800 mt-2 mb-2">5 Key Considerations for Land Verification</h3>
-                                <p class="text-sm text-gray-600 mb-3">Essential factors to evaluate before purchasing or developing land.</p>
-                                <a href="#" class="text-blue-600 text-sm font-medium">Read Article →</a>
-                            </div>
-                            <div class="p-4 border rounded-lg">
-                                <span class="text-xs font-medium text-purple-600 bg-purple-50 px-2 py-1 rounded">Industry News</span>
-                                <h3 class="font-semibold text-gray-800 mt-2 mb-2">New Regulations for Surveying Professionals</h3>
-                                <p class="text-sm text-gray-600 mb-3">Updates on licensing requirements and professional standards.</p>
-                                <a href="#" class="text-blue-600 text-sm font-medium">Read Article →</a>
+                            <p class="text-gray-600 mb-6">Comprehensive guide to cadastral surveys, land subdivision, title processing, and property documentation.</p>
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center">
+                                    <i class="far fa-clock text-gray-400 mr-2"></i>
+                                    <span class="text-sm text-gray-600">Updated: Dec 2023</span>
+                                </div>
+                                <button class="download-btn px-5 py-2.5 text-white font-medium rounded-lg flex items-center">
+                                    <i class="fas fa-download mr-2"></i> Download
+                                </button>
                             </div>
                         </div>
                     </div>
                 </div>
                 
-                <div class="text-center" data-aos="fade-up">
-                    <p class="text-gray-600 mb-6">Need specific information or have questions about our resources?</p>
-                    <a href="#" class="inline-block px-6 py-3 bg-yellow-500 text-white rounded-lg shadow hover:bg-yellow-600" onclick="showPage('contact')">Contact Our Team</a>
+                <!-- Case Studies -->
+                <div class="mb-16">
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8">
+                        <div>
+                            <h2 class="section-title text-3xl font-bold text-gray-900 mb-2">Featured Case Studies</h2>
+                            <p class="text-gray-600">Real-world examples of our project methodologies and successful outcomes</p>
+                        </div>
+                        <a href="#" class="view-all-btn px-6 py-2 text-blue-600 font-semibold rounded-lg mt-4 md:mt-0">
+                            View All Case Studies <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                        <!-- Case Study 1 -->
+                        <div class="resource-card bg-white rounded-xl overflow-hidden">
+                            <div class="case-study-card" style="background-image: url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=800&q=80');">
+                                <div class="case-study-overlay">
+                                    <span class="category-tag inline-block px-3 py-1 bg-blue-600 text-white text-xs font-medium rounded-full mb-3">Infrastructure</span>
+                                    <h3 class="text-xl font-bold text-white mb-2">Highway Route Survey — Eastern Corridor</h3>
+                                    <p class="text-blue-100 text-sm">Major infrastructure project • 6-month timeline</p>
+                                </div>
+                            </div>
+                            <div class="p-6">
+                                <div class="mb-4">
+                                    <h4 class="font-semibold text-gray-800 mb-2">Project Highlights</h4>
+                                    <div class="flex flex-wrap gap-2 mb-4">
+                                        <span class="px-3 py-1 bg-blue-50 text-blue-700 text-xs font-medium rounded-full">150km Surveyed</span>
+                                        <span class="px-3 py-1 bg-green-50 text-green-700 text-xs font-medium rounded-full">98% Accuracy</span>
+                                        <span class="px-3 py-1 bg-purple-50 text-purple-700 text-xs font-medium rounded-full">3D Modeling</span>
+                                    </div>
+                                </div>
+                                <p class="text-gray-600 mb-6">Comprehensive topographic survey and corridor mapping for route optimization and precise earthwork volume calculations for a major highway project.</p>
+                                <div class="flex items-center justify-between">
+                                    <div class="text-sm text-gray-500">
+                                        <i class="far fa-calendar-alt mr-1"></i> Completed: June 2023
+                                    </div>
+                                    <a href="#" class="read-btn px-5 py-2.5 text-white font-medium rounded-lg flex items-center">
+                                        <i class="fas fa-book-open mr-2"></i> Read Study
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Case Study 2 -->
+                        <div class="resource-card bg-white rounded-xl overflow-hidden">
+                            <div class="case-study-card" style="background-image: url('https://i.pinimg.com/736x/e3/7d/18/e37d180fe8d123459ab43a7ba5d2d3e9.jpg');">
+                                <div class="case-study-overlay">
+                                    <span class="category-tag inline-block px-3 py-1 bg-green-600 text-white text-xs font-medium rounded-full mb-3">Agriculture</span>
+                                    <h3 class="text-xl font-bold text-white mb-2">Agricultural Multispectral Mapping</h3>
+                                    <p class="text-blue-100 text-sm">500-acre farm • Precision agriculture</p>
+                                </div>
+                            </div>
+                            <div class="p-6">
+                                <div class="mb-4">
+                                    <h4 class="font-semibold text-gray-800 mb-2">Project Highlights</h4>
+                                    <div class="flex flex-wrap gap-2 mb-4">
+                                        <span class="px-3 py-1 bg-green-50 text-green-700 text-xs font-medium rounded-full">NDVI Analysis</span>
+                                        <span class="px-3 py-1 bg-blue-50 text-blue-700 text-xs font-medium rounded-full">Drone Mapping</span>
+                                        <span class="px-3 py-1 bg-yellow-50 text-yellow-700 text-xs font-medium rounded-full">Yield Optimization</span>
+                                    </div>
+                                </div>
+                                <p class="text-gray-600 mb-6">Advanced drone multispectral flights for crop health analysis, precision irrigation planning, and yield optimization on a large-scale agricultural operation.</p>
+                                <div class="flex items-center justify-between">
+                                    <div class="text-sm text-gray-500">
+                                        <i class="far fa-calendar-alt mr-1"></i> Completed: March 2023
+                                    </div>
+                                    <a href="#" class="read-btn px-5 py-2.5 text-white font-medium rounded-lg flex items-center">
+                                        <i class="fas fa-book-open mr-2"></i> Read Study
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Blog & Insights -->
+                <div class="mb-16">
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8">
+                        <div>
+                            <h2 class="section-title text-3xl font-bold text-gray-900 mb-2">Latest Insights & Articles</h2>
+                            <p class="text-gray-600">Industry trends, technology updates, and best practices in surveying</p>
+                        </div>
+                        <a href="#" class="view-all-btn px-6 py-2 text-blue-600 font-semibold rounded-lg mt-4 md:mt-0">
+                            View All Articles <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <!-- Article 1 -->
+                        <div class="blog-card bg-white rounded-xl overflow-hidden border border-gray-200">
+                            <div class="overflow-hidden h-48">
+                                <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=800&q=80" 
+                                     alt="Drone Technology" 
+                                     class="w-full h-full blog-image object-cover">
+                            </div>
+                            <div class="p-6">
+                                <div class="flex items-center justify-between mb-4">
+                                    <span class="category-tag px-3 py-1 bg-blue-50 text-blue-700 text-xs font-medium rounded-full">Technology</span>
+                                    <span class="text-sm text-gray-500">May 15, 2024</span>
+                                </div>
+                                <h3 class="text-xl font-bold text-gray-900 mb-3">The Future of Drone Surveying in East Africa</h3>
+                                <p class="text-gray-600 mb-6">Exploring how drone technology is transforming land surveying practices across the region with real-world applications.</p>
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center text-sm text-gray-500">
+                                        <i class="far fa-clock mr-1"></i> 5 min read
+                                    </div>
+                                    <a href="#" class="text-blue-600 font-medium hover:text-blue-800">
+                                        Read Article <i class="fas fa-arrow-right ml-1"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Article 2 -->
+                        <div class="blog-card bg-white rounded-xl overflow-hidden border border-gray-200">
+                            <div class="overflow-hidden h-48">
+                                <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=800&q=80" 
+                                     alt="Land Verification" 
+                                     class="w-full h-full blog-image object-cover">
+                            </div>
+                            <div class="p-6">
+                                <div class="flex items-center justify-between mb-4">
+                                    <span class="category-tag px-3 py-1 bg-green-50 text-green-700 text-xs font-medium rounded-full">Best Practices</span>
+                                    <span class="text-sm text-gray-500">April 22, 2024</span>
+                                </div>
+                                <h3 class="text-xl font-bold text-gray-900 mb-3">5 Key Considerations for Land Verification</h3>
+                                <p class="text-gray-600 mb-6">Essential factors to evaluate before purchasing or developing land, including legal, technical, and environmental aspects.</p>
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center text-sm text-gray-500">
+                                        <i class="far fa-clock mr-1"></i> 7 min read
+                                    </div>
+                                    <a href="#" class="text-blue-600 font-medium hover:text-blue-800">
+                                        Read Article <i class="fas fa-arrow-right ml-1"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Article 3 -->
+                        <div class="blog-card bg-white rounded-xl overflow-hidden border border-gray-200">
+                            <div class="overflow-hidden h-48">
+                                <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=800&q=80" 
+                                     alt="Regulations" 
+                                     class="w-full h-full blog-image object-cover">
+                            </div>
+                            <div class="p-6">
+                                <div class="flex items-center justify-between mb-4">
+                                    <span class="category-tag px-3 py-1 bg-purple-50 text-purple-700 text-xs font-medium rounded-full">Industry News</span>
+                                    <span class="text-sm text-gray-500">March 30, 2024</span>
+                                </div>
+                                <h3 class="text-xl font-bold text-gray-900 mb-3">New Regulations for Surveying Professionals</h3>
+                                <p class="text-gray-600 mb-6">Updates on licensing requirements, professional standards, and compliance for surveyors across East Africa.</p>
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center text-sm text-gray-500">
+                                        <i class="far fa-clock mr-1"></i> 6 min read
+                                    </div>
+                                    <a href="#" class="text-blue-600 font-medium hover:text-blue-800">
+                                        Read Article <i class="fas fa-arrow-right ml-1"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Newsletter & CTA -->
+                <div class="bg-gradient-to-r from-blue-600 to-blue-800 rounded-2xl p-12 text-white text-center">
+                    <h2 class="text-3xl font-bold mb-6">Stay Updated with Our Latest Resources</h2>
+                    <p class="text-blue-100 mb-8 max-w-2xl mx-auto text-lg">Subscribe to our newsletter to receive new case studies, industry insights, and technology updates directly in your inbox.</p>
+                    
+                    <div class="max-w-md mx-auto">
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <input type="email" 
+                                   placeholder="Enter your email address" 
+                                   class="flex-1 px-6 py-3 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-300">
+                            <button class="px-8 py-3 bg-white text-blue-700 font-bold rounded-lg hover:bg-blue-50 transition-colors">
+                                Subscribe
+                            </button>
+                        </div>
+                        <p class="text-blue-200 text-sm mt-4">We respect your privacy. Unsubscribe at any time.</p>
+                    </div>
+                    
+                    <div class="mt-12 pt-8 border-t border-blue-500">
+                        <p class="text-blue-100 mb-6">Need specific resources or have questions?</p>
+                        <a href="#" class="inline-flex items-center px-8 py-4 bg-white text-blue-700 font-bold rounded-xl text-lg hover:bg-blue-50 transition-colors" onclick="showPage('contact')">
+                            <i class="fas fa-headset mr-3"></i> Contact Our Team
+                        </a>
+                    </div>
                 </div>
             </div>
         </section>
     </div>
 
-</div>
     <script src="https://kit.fontawesome.com/3afa5a6358.js" crossorigin="anonymous"></script>
     <script src="scripts/load-components.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Filter functionality
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const resourceCards = document.querySelectorAll('.resource-card, .blog-card');
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    const filter = this.textContent.trim();
+                    
+                    // Filter resources
+                    resourceCards.forEach(card => {
+                        if (filter === 'All Resources') {
+                            card.style.display = 'block';
+                        } else {
+                            // This is a simplified filter - in real implementation, 
+                            // you would have data attributes on cards for proper filtering
+                            card.style.display = 'block';
+                        }
+                    });
+                });
+            });
+            
+            // Search functionality
+            const searchInput = document.querySelector('.search-input');
+            searchInput.addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase();
+                
+                resourceCards.forEach(card => {
+                    const cardText = card.textContent.toLowerCase();
+                    if (cardText.includes(searchTerm)) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+            
+            // Download button functionality
+            const downloadButtons = document.querySelectorAll('.download-btn');
+            downloadButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const card = this.closest('.resource-card');
+                    const title = card.querySelector('h3').textContent;
+                    
+                    // Show download confirmation
+                    const originalText = this.innerHTML;
+                    this.innerHTML = '<i class="fas fa-check mr-2"></i> Downloaded!';
+                    this.disabled = true;
+                    
+                    // Simulate download
+                    setTimeout(() => {
+                        this.innerHTML = originalText;
+                        this.disabled = false;
+                    }, 2000);
+                    
+                    console.log(`Downloading: ${title}`);
+                });
+            });
+            
+            // Add hover effects
+            const cards = document.querySelectorAll('.resource-card, .blog-card');
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.zIndex = '10';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.zIndex = '1';
+                });
+            });
+            
+            // Newsletter subscription
+            const newsletterForm = document.querySelector('.bg-gradient-to-r form');
+            if (newsletterForm) {
+                newsletterForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const emailInput = this.querySelector('input[type="email"]');
+                    
+                    if (emailInput.value) {
+                        alert('Thank you for subscribing to our newsletter!');
+                        emailInput.value = '';
+                    }
+                });
+            }
+        });
+        
+        // Function to show page (assuming this exists in your main app)
+        function showPage(pageId) {
+            console.log(`Navigating to ${pageId} page`);
+            // Implementation would depend on your SPA navigation
+        }
+    </script>
 </body>
 </html>
