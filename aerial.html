@@ -12,9 +12,7 @@
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Custom Styles -->
     <style>
-        /* Custom Colors */
         :root {
             --primary-teal: #008080;
             --secondary-orange: #e67e22;
@@ -28,7 +26,6 @@
             scroll-behavior: smooth;
         }
 
-        /* Hero Background Animation */
         @keyframes gradientMove {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
@@ -41,17 +38,18 @@
             animation: gradientMove 15s ease infinite;
         }
 
-        /* Card Hover Effects */
-        .service-card {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        .service-hero {
+            min-height: 60vh;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: relative;
         }
 
-        .service-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0, 128, 128, 0.15);
+        .service-hero-overlay {
+            background: linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0.8));
         }
 
-        /* Image Zoom Effect */
         .image-zoom {
             transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
         }
@@ -109,82 +107,14 @@
             margin: 4rem 0;
         }
 
-        /* Drone Animation */
-        .drone-icon {
-            animation: float 6s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            33% { transform: translateY(-15px) rotate(2deg); }
-            66% { transform: translateY(5px) rotate(-2deg); }
-        }
-
-        /* Filter Button Animation */
-        .filter-btn {
+        /* Technology Card Hover */
+        .tech-card {
             transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
         }
 
-        .filter-btn::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            transition: width 0.6s, height 0.6s;
-        }
-
-        .filter-btn:active::after {
-            width: 300px;
-            height: 300px;
-        }
-
-        /* Service Card Image Overlay */
-        .card-image-container {
-            position: relative;
-            overflow: hidden;
-            border-radius: 12px 12px 0 0;
-        }
-
-        .card-image-container::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(to bottom, transparent 50%, rgba(0, 0, 0, 0.7));
-            transition: opacity 0.3s ease;
-        }
-
-        .service-card:hover .card-image-container::after {
-            opacity: 0.8;
-        }
-
-        /* Responsive Image Handling */
-        .responsive-image {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            object-position: center;
-        }
-
-        @media (min-width: 768px) {
-            .responsive-image {
-                height: 240px;
-            }
-        }
-
-        @media (min-width: 1024px) {
-            .responsive-image {
-                height: 280px;
-            }
+        .tech-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(0, 128, 128, 0.1);
         }
 
         /* Detail Section Image */
@@ -207,217 +137,92 @@
             pointer-events: none;
         }
 
-        /* Technology Card Hover */
-        .tech-card {
-            transition: all 0.3s ease;
-        }
-
-        .tech-card:hover {
-            transform: translateY(-5px) scale(1.02);
-            box-shadow: 0 15px 30px rgba(0, 128, 128, 0.1);
-        }
-
         /* Print Styles */
         @media print {
             .no-print {
                 display: none !important;
             }
             
-            .service-card {
-                break-inside: avoid;
-                box-shadow: none;
-                border: 1px solid #ddd;
-            }
-            
             body {
                 font-size: 12pt;
-            }
-            
-            img {
-                max-width: 300px !important;
             }
         }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800 font-sans">
-
-    <!-- Navbar will be loaded automatically -->
-
-    <!-- Hero Section -->
-    <section class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-        <!-- Animated Background Gradient -->
-        <div class="absolute inset-0 gradient-bg opacity-90"></div>
-        
-        <!-- Background Pattern -->
-        <div class="absolute inset-0 opacity-10" 
-             style="background-image: url('data:image/svg+xml,%3Csvg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z" fill="%23008080" fill-opacity="0.4" fill-rule="evenodd"/%3E%3C/svg%3E')">
-        </div>
-
-        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <div class="animate-fade-in-up">
-                <!-- Animated Drone Icon -->
-                <div class="mb-8 flex justify-center">
-                    <div class="drone-icon text-6xl md:text-8xl text-white">
-                        <i class="fas fa-drone"></i>
-                    </div>
+    <!-- Service Hero Section -->
+    <section id="service-hero" class="service-hero pt-20">
+        <!-- Background image will be set by JavaScript -->
+        <div class="service-hero-overlay absolute inset-0"></div>
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center">
+            <div class="py-16 md:py-24 animate-fade-in-up">
+                <div id="service-icon" class="mb-6 inline-block p-4 rounded-2xl bg-white/20 backdrop-blur-sm">
+                    <!-- Icon will be set by JavaScript -->
                 </div>
-
-                <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
-                    Aerial & Drone Surveying
-                    <span class="block text-xl md:text-3xl text-teal-200 mt-4">
-                        Precision from the Sky
-                    </span>
+                <h1 id="service-title" class="text-4xl md:text-6xl font-bold text-white mb-6">
+                    <!-- Title will be set by JavaScript -->
                 </h1>
-                
-                <p class="text-xl md:text-2xl text-gray-100 mb-10 max-w-3xl mx-auto">
-                    Advanced drone technology delivering centimeter-accurate aerial data for construction, agriculture, environmental monitoring, and infrastructure planning across Kenya.
+                <p id="service-brief" class="text-xl text-gray-200 max-w-3xl mb-8">
+                    <!-- Brief description will be set by JavaScript -->
                 </p>
-
-                <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-                    <a href="#services" 
-                       class="bg-gradient-to-r from-teal-500 to-blue-600 hover:from-teal-600 hover:to-blue-700 text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl inline-flex items-center justify-center gap-2">
-                        <i class="fas fa-search"></i>
-                        Explore Services
+                <div class="flex flex-wrap gap-4">
+                    <a href="#service-details" 
+                       class="bg-white text-teal-700 hover:bg-gray-100 px-6 py-3 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 inline-flex items-center gap-2">
+                        <i class="fas fa-arrow-down"></i>
+                        Learn More
                     </a>
                     <a href="#contact" 
-                       class="bg-white/20 backdrop-blur-sm border-2 border-white/30 hover:bg-white/30 text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 transform hover:scale-105 inline-flex items-center justify-center gap-2">
+                       class="bg-teal-600 hover:bg-teal-700 text-white px-6 py-3 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 inline-flex items-center gap-2">
                         <i class="fas fa-calendar-alt"></i>
-                        Schedule Survey
+                        Schedule Service
                     </a>
                 </div>
-
-                <!-- Quick Stats -->
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12">
-                    <div class="bg-white/10 backdrop-blur-sm p-4 rounded-xl border border-white/20">
-                        <div class="text-3xl font-bold text-white">99%</div>
-                        <div class="text-teal-200 text-sm">Accuracy Rate</div>
-                    </div>
-                    <div class="bg-white/10 backdrop-blur-sm p-4 rounded-xl border border-white/20">
-                        <div class="text-3xl font-bold text-white">500+</div>
-                        <div class="text-teal-200 text-sm">Projects Completed</div>
-                    </div>
-                    <div class="bg-white/10 backdrop-blur-sm p-4 rounded-xl border border-white/20">
-                        <div class="text-3xl font-bold text-white">24/7</div>
-                        <div class="text-teal-200 text-sm">Emergency Response</div>
-                    </div>
-                    <div class="bg-white/10 backdrop-blur-sm p-4 rounded-xl border border-white/20">
-                        <div class="text-3xl font-bold text-white">47</div>
-                        <div class="text-teal-200 text-sm">Counties Served</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Scroll Indicator -->
-        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-            <a href="#services" class="text-white/70 hover:text-white">
-                <i class="fas fa-chevron-down text-2xl"></i>
-            </a>
-        </div>
-    </section>
-
-    <!-- Service Filter Section -->
-    <section id="services" class="py-16 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                    Comprehensive Aerial Surveying Services
-                </h2>
-                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
-                    Select a service category to explore our specialized drone surveying solutions
-                </p>
-            </div>
-
-            <!-- Filter Buttons -->
-            <div class="flex flex-wrap justify-center gap-3 mb-12">
-                <button class="filter-btn px-6 py-3 rounded-full bg-teal-600 text-white font-semibold transition-all duration-300 hover:bg-teal-700" data-filter="all">
-                    All Services
-                </button>
-                <button class="filter-btn px-6 py-3 rounded-full border-2 border-teal-600 text-teal-600 font-semibold hover:bg-teal-50 transition-all duration-300" data-filter="mapping">
-                    <i class="fas fa-map-marked-alt mr-2"></i>Mapping
-                </button>
-                <button class="filter-btn px-6 py-3 rounded-full border-2 border-blue-600 text-blue-600 font-semibold hover:bg-blue-50 transition-all duration-300" data-filter="monitoring">
-                    <i class="fas fa-chart-line mr-2"></i>Monitoring
-                </button>
-                <button class="filter-btn px-6 py-3 rounded-full border-2 border-purple-600 text-purple-600 font-semibold hover:bg-purple-50 transition-all duration-300" data-filter="modeling">
-                    <i class="fas fa-cube mr-2"></i>3D Modeling
-                </button>
-                <button class="filter-btn px-6 py-3 rounded-full border-2 border-orange-600 text-orange-600 font-semibold hover:bg-orange-50 transition-all duration-300" data-filter="planning">
-                    <i class="fas fa-project-diagram mr-2"></i>Planning
-                </button>
-            </div>
-
-            <!-- Services Grid -->
-            <div id="services-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Cards will be populated by JavaScript -->
             </div>
         </div>
     </section>
 
-    <!-- Service Detail Section -->
-    <section class="py-16 bg-gradient-to-b from-gray-50 to-white">
+    <!-- Service Details Section -->
+    <section id="service-details" class="py-16 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div id="service-detail">
-                <!-- Default empty state -->
+            <div id="service-content" class="animate-fade-in-up">
+                <!-- Content will be populated by JavaScript -->
                 <div class="text-center py-16">
                     <div class="inline-block p-6 bg-teal-100 rounded-full mb-6">
                         <i class="fas fa-drone text-4xl text-teal-600"></i>
                     </div>
                     <h3 class="text-2xl font-bold text-gray-900 mb-3">
-                        Select a Service to Learn More
+                        Loading Service Details...
                     </h3>
                     <p class="text-gray-600 max-w-md mx-auto">
-                        Click on any service card above to view detailed information, applications, technical specifications, and case studies.
+                        Please select a service from the dropdown menu to view detailed information.
                     </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Technology Section -->
-    <section class="py-16 bg-gradient-to-r from-teal-900 to-blue-900 text-white">
+    <!-- Other Services Section -->
+    <section class="py-16 bg-gradient-to-b from-gray-50 to-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">
-                    Advanced Drone Technology
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">
+                    Explore Our Other Services
                 </h2>
-                <p class="text-xl text-blue-100 max-w-3xl mx-auto">
-                    State-of-the-art equipment and software for precise aerial data collection
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    We offer a comprehensive range of aerial surveying and drone solutions
                 </p>
             </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="tech-card bg-white/10 backdrop-blur-sm p-6 rounded-xl border border-white/20">
-                    <div class="text-4xl text-teal-300 mb-4">
-                        <i class="fas fa-camera"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-2">High-Resolution Cameras</h3>
-                    <p class="text-blue-100">20MP+ with multispectral and thermal imaging capabilities for detailed aerial photography.</p>
-                </div>
-
-                <div class="tech-card bg-white/10 backdrop-blur-sm p-6 rounded-xl border border-white/20">
-                    <div class="text-4xl text-teal-300 mb-4">
-                        <i class="fas fa-satellite"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-2">RTK GPS Systems</h3>
-                    <p class="text-blue-100">Centimeter-level accuracy with Real-Time Kinematic positioning for precise geolocation.</p>
-                </div>
-
-                <div class="tech-card bg-white/10 backdrop-blur-sm p-6 rounded-xl border border-white/20">
-                    <div class="text-4xl text-teal-300 mb-4">
-                        <i class="fas fa-brain"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-2">AI Processing</h3>
-                    <p class="text-blue-100">Advanced AI algorithms for automated feature detection, analysis, and classification.</p>
-                </div>
-
-                <div class="tech-card bg-white/10 backdrop-blur-sm p-6 rounded-xl border border-white/20">
-                    <div class="text-4xl text-teal-300 mb-4">
-                        <i class="fas fa-wind"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-2">Weather Resistant</h3>
-                    <p class="text-blue-100">Operational in various weather conditions with wind resistance up to 45 km/h.</p>
-                </div>
+            
+            <div id="other-services" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Other services will be populated by JavaScript -->
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="/aerial.html" 
+                   class="inline-flex items-center gap-2 px-6 py-3 border-2 border-teal-600 text-teal-600 hover:bg-teal-50 font-semibold rounded-lg transition-all duration-300">
+                    <i class="fas fa-th-large"></i>
+                    View All Services Grid
+                </a>
             </div>
         </div>
     </section>
@@ -444,24 +249,6 @@
                     Email Our Team
                 </a>
             </div>
-
-            <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="p-4">
-                    <i class="fas fa-clock text-2xl text-teal-300 mb-2"></i>
-                    <h4 class="font-bold mb-1">Fast Response</h4>
-                    <p class="text-blue-100 text-sm">24-hour response time</p>
-                </div>
-                <div class="p-4">
-                    <i class="fas fa-certificate text-2xl text-teal-300 mb-2"></i>
-                    <h4 class="font-bold mb-1">Certified Pilots</h4>
-                    <p class="text-blue-100 text-sm">KCAA licensed operators</p>
-                </div>
-                <div class="p-4">
-                    <i class="fas fa-shield-alt text-2xl text-teal-300 mb-2"></i>
-                    <h4 class="font-bold mb-1">Fully Insured</h4>
-                    <p class="text-blue-100 text-sm">Comprehensive liability coverage</p>
-                </div>
-            </div>
         </div>
     </section>
 
@@ -475,698 +262,1756 @@
 
     <!-- JavaScript -->
     <script>
-        // Service data with descriptive images
-        const aerialServices = [
-            {
-                id: 1,
+        // Service data with detailed information
+        const aerialServices = {
+            1: {
                 title: "Drone Surveying & Aerial Mapping",
                 category: "mapping",
-                shortDesc: "High-resolution aerial imagery for precise topographic and cadastral mapping",
-                longDesc: `
-                    <div class="space-y-6">
-                        <div class="detail-image-container">
-                            <img src="https://images.unsplash.com/photo-1534274988757-a28bf1a57c17?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
-                                 alt="Drone mapping agricultural field" 
-                                 class="w-full h-96 object-cover image-zoom">
-                        </div>
-                        
-                        <div class="grid md:grid-cols-2 gap-8">
-                            <div>
-                                <h4 class="text-xl font-bold text-gray-900 mb-4">Applications</h4>
-                                <ul class="space-y-3">
-                                    <li class="flex items-start">
-                                        <i class="fas fa-check-circle text-teal-600 mt-1 mr-3"></i>
-                                        <span><strong>Topographic Mapping:</strong> Detailed terrain models for engineering projects</span>
-                                    </li>
-                                    <li class="flex items-start">
-                                        <i class="fas fa-check-circle text-teal-600 mt-1 mr-3"></i>
-                                        <span><strong>Cadastral Surveys:</strong> Property boundary verification and mapping</span>
-                                    </li>
-                                    <li class="flex items-start">
-                                        <i class="fas fa-check-circle text-teal-600 mt-1 mr-3"></i>
-                                        <span><strong>Orthomosaic Maps:</strong> Georeferenced, distortion-free aerial imagery</span>
-                                    </li>
-                                </ul>
-                            </div>
-                            
-                            <div>
-                                <h4 class="text-xl font-bold text-gray-900 mb-4">Technical Specifications</h4>
-                                <div class="space-y-2">
-                                    <div class="flex justify-between">
-                                        <span class="text-gray-600">Resolution</span>
-                                        <span class="font-semibold">Up to 2cm/pixel</span>
-                                    </div>
-                                    <div class="flex justify-between">
-                                        <span class="text-gray-600">Accuracy</span>
-                                        <span class="font-semibold">Horizontal ±2cm, Vertical ±3cm</span>
-                                    </div>
-                                    <div class="flex justify-between">
-                                        <span class="text-gray-600">Coverage</span>
-                                        <span class="font-semibold">200+ hectares/day</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="bg-gradient-to-r from-teal-50 to-blue-50 p-6 rounded-xl border border-teal-100">
-                            <h4 class="text-xl font-bold text-gray-900 mb-3">Case Study: Large-Scale Land Development</h4>
-                            <p class="text-gray-700">
-                                Completed a 500-hectare topographic survey in 3 days, providing detailed contour maps and volumetric calculations that saved the client 3 weeks compared to traditional survey methods.
+                briefDesc: "High-resolution aerial imagery for precise topographic and cadastral mapping across Kenya",
+                heroImage: "https://images.unsplash.com/photo-1534274988757-a28bf1a57c17?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
+                icon: "fas fa-map-marked-alt",
+                color: "teal",
+                detailedContent: `
+                    <div class="space-y-12">
+                        <!-- Introduction -->
+                        <div class="prose prose-lg max-w-none">
+                            <h2 class="text-3xl font-bold text-gray-900 mb-6">Precision Aerial Mapping Solutions</h2>
+                            <p class="text-gray-700 mb-6">
+                                Our drone surveying and aerial mapping services provide centimeter-accurate spatial data for a wide range of applications. Using advanced drone technology equipped with high-resolution cameras and RTK GPS systems, we deliver detailed topographic maps, orthomosaics, and cadastral surveys faster and more cost-effectively than traditional methods.
                             </p>
                         </div>
+
+                        <!-- Image Gallery -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            <div class="detail-image-container">
+                                <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                                     alt="Drone mapping agricultural field" 
+                                     class="w-full h-64 object-cover image-zoom">
+                            </div>
+                            <div class="detail-image-container">
+                                <img src="https://images.unsplash.com/photo-1534088568595-a066f410bcda?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                                     alt="Aerial mapping results" 
+                                     class="w-full h-64 object-cover image-zoom">
+                            </div>
+                        </div>
+
+                        <!-- Applications -->
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-900 mb-6">Applications</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div class="bg-teal-50 p-6 rounded-xl">
+                                    <h4 class="text-xl font-bold text-teal-800 mb-3">Topographic Mapping</h4>
+                                    <p class="text-gray-700">Detailed terrain models for engineering projects, urban planning, and environmental studies with accuracy up to ±2cm horizontal and ±3cm vertical.</p>
+                                </div>
+                                <div class="bg-blue-50 p-6 rounded-xl">
+                                    <h4 class="text-xl font-bold text-blue-800 mb-3">Cadastral Surveys</h4>
+                                    <p class="text-gray-700">Property boundary verification and mapping for land registration, dispute resolution, and development planning.</p>
+                                </div>
+                                <div class="bg-green-50 p-6 rounded-xl">
+                                    <h4 class="text-xl font-bold text-green-800 mb-3">Orthomosaic Creation</h4>
+                                    <p class="text-gray-700">Georeferenced, distortion-free aerial imagery stitched together to create seamless maps for GIS analysis and planning.</p>
+                                </div>
+                                <div class="bg-purple-50 p-6 rounded-xl">
+                                    <h4 class="text-xl font-bold text-purple-800 mb-3">Infrastructure Planning</h4>
+                                    <p class="text-gray-700">Site analysis and planning for roads, pipelines, power lines, and other linear infrastructure projects.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Technical Specifications -->
+                        <div class="bg-gray-50 p-8 rounded-2xl">
+                            <h3 class="text-2xl font-bold text-gray-900 mb-6">Technical Specifications</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                                <div class="text-center">
+                                    <div class="text-3xl font-bold text-teal-600 mb-2">2cm/pixel</div>
+                                    <p class="text-gray-600">Spatial Resolution</p>
+                                </div>
+                                <div class="text-center">
+                                    <div class="text-3xl font-bold text-teal-600 mb-2">200+ ha/day</div>
+                                    <p class="text-gray-600">Daily Coverage</p>
+                                </div>
+                                <div class="text-center">
+                                    <div class="text-3xl font-bold text-teal-600 mb-2">99.5%</div>
+                                    <p class="text-gray-600">Accuracy Rate</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Deliverables -->
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-900 mb-6">Deliverables</h3>
+                            <div class="flex flex-wrap gap-3">
+                                <span class="px-4 py-2 bg-teal-100 text-teal-800 rounded-full">GeoTIFF Orthomosaics</span>
+                                <span class="px-4 py-2 bg-blue-100 text-blue-800 rounded-full">Digital Elevation Models</span>
+                                <span class="px-4 py-2 bg-green-100 text-green-800 rounded-full">Contour Maps</span>
+                                <span class="px-4 py-2 bg-purple-100 text-purple-800 rounded-full">Point Clouds</span>
+                                <span class="px-4 py-2 bg-yellow-100 text-yellow-800 rounded-full">GIS Shapefiles</span>
+                                <span class="px-4 py-2 bg-red-100 text-red-800 rounded-full">Survey Reports</span>
+                            </div>
+                        </div>
                     </div>
-                `,
-                features: ["2cm Accuracy", "Fast Coverage", "Multiple Formats"],
-                icon: "fas fa-map-marked-alt"
+                `
             },
-            {
-                id: 2,
+            2: {
                 title: "Construction Monitoring",
                 category: "monitoring",
-                shortDesc: "Real-time site progress tracking and quality control",
-                longDesc: `
-                    <div class="space-y-6">
-                        <div class="detail-image-container">
-                            <img src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
-                                 alt="Construction site drone monitoring" 
-                                 class="w-full h-96 object-cover image-zoom">
+                briefDesc: "Real-time site progress tracking and quality control for construction projects",
+                heroImage: "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
+                icon: "fas fa-hard-hat",
+                color: "blue",
+                detailedContent: `
+                    <div class="space-y-12">
+                        <!-- Introduction -->
+                        <div class="prose prose-lg max-w-none">
+                            <h2 class="text-3xl font-bold text-gray-900 mb-6">Construction Progress Monitoring</h2>
+                            <p class="text-gray-700 mb-6">
+                                Our construction monitoring service provides regular aerial updates of your construction site, offering objective evidence of progress, material quantities, and site conditions. Automated flight paths ensure consistent data collection throughout the project lifecycle.
+                            </p>
                         </div>
-                        
-                        <h4 class="text-xl font-bold text-gray-900">Weekly/Monthly Progress Documentation</h4>
-                        <p class="text-gray-700">
-                            Regular aerial updates provide objective evidence of construction progress, material quantities, and site conditions. Our automated flight paths ensure consistent data collection throughout the project lifecycle.
-                        </p>
-                        
-                        <div class="grid md:grid-cols-2 gap-8">
-                            <div>
-                                <h5 class="font-bold text-gray-900 mb-3">Monitoring Benefits</h5>
-                                <ul class="space-y-2">
-                                    <li class="flex items-start">
-                                        <i class="fas fa-chart-line text-blue-600 mt-1 mr-3"></i>
-                                        <span>Reduces site visits by 60%</span>
-                                    </li>
-                                    <li class="flex items-start">
-                                        <i class="fas fa-shield-alt text-blue-600 mt-1 mr-3"></i>
-                                        <span>Enhanced safety through remote inspection</span>
-                                    </li>
-                                    <li class="flex items-start">
-                                        <i class="fas fa-money-bill-wave text-blue-600 mt-1 mr-3"></i>
-                                        <span>Cost savings through early issue detection</span>
-                                    </li>
-                                </ul>
+
+                        <!-- Image Gallery -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            <div class="detail-image-container">
+                                <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                                     alt="Construction site aerial view" 
+                                     class="w-full h-64 object-cover image-zoom">
                             </div>
-                            
-                            <div>
-                                <h5 class="font-bold text-gray-900 mb-3">Deliverables</h5>
-                                <div class="flex flex-wrap gap-2">
-                                    <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Progress Reports</span>
-                                    <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Quantity Surveys</span>
-                                    <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">As-Built Documentation</span>
-                                    <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">QA/QC Reports</span>
+                            <div class="detail-image-container">
+                                <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                                     alt="Construction progress monitoring" 
+                                     class="w-full h-64 object-cover image-zoom">
+                            </div>
+                        </div>
+
+                        <!-- Benefits -->
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-900 mb-6">Key Benefits</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div class="flex items-start space-x-4">
+                                    <div class="flex-shrink-0 w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                                        <i class="fas fa-chart-line text-blue-600"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-xl font-bold text-gray-900 mb-2">Progress Tracking</h4>
+                                        <p class="text-gray-700">Regular updates provide clear evidence of project milestones and timelines.</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start space-x-4">
+                                    <div class="flex-shrink-0 w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                                        <i class="fas fa-shield-alt text-blue-600"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-xl font-bold text-gray-900 mb-2">Safety Monitoring</h4>
+                                        <p class="text-gray-700">Identify potential safety hazards without putting personnel at risk.</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start space-x-4">
+                                    <div class="flex-shrink-0 w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                                        <i class="fas fa-money-bill-wave text-blue-600"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-xl font-bold text-gray-900 mb-2">Cost Control</h4>
+                                        <p class="text-gray-700">Early detection of issues prevents costly rework and delays.</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start space-x-4">
+                                    <div class="flex-shrink-0 w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                                        <i class="fas fa-users text-blue-600"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-xl font-bold text-gray-900 mb-2">Stakeholder Communication</h4>
+                                        <p class="text-gray-700">Clear visual documentation for investors, clients, and regulatory bodies.</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+
+                        <!-- Monitoring Schedule -->
+                        <div class="bg-blue-50 p-8 rounded-2xl">
+                            <h3 class="text-2xl font-bold text-gray-900 mb-6">Monitoring Schedule Options</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                                <div class="bg-white p-6 rounded-xl text-center">
+                                    <h4 class="text-xl font-bold text-blue-800 mb-3">Weekly</h4>
+                                    <p class="text-gray-600 mb-4">For fast-track projects requiring close monitoring</p>
+                                    <div class="text-2xl font-bold text-blue-600">From $500/week</div>
+                                </div>
+                                <div class="bg-white p-6 rounded-xl text-center">
+                                    <h4 class="text-xl font-bold text-blue-800 mb-3">Bi-weekly</h4>
+                                    <p class="text-gray-600 mb-4">Standard monitoring for most construction projects</p>
+                                    <div class="text-2xl font-bold text-blue-600">From $800/bi-weekly</div>
+                                </div>
+                                <div class="bg-white p-6 rounded-xl text-center">
+                                    <h4 class="text-xl font-bold text-blue-800 mb-3">Monthly</h4>
+                                    <p class="text-gray-600 mb-4">For long-term projects with slower pace</p>
+                                    <div class="text-2xl font-bold text-blue-600">From $1,200/month</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Deliverables -->
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-900 mb-6">Standard Deliverables</h3>
+                            <ul class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <li class="flex items-center">
+                                    <i class="fas fa-check-circle text-blue-600 mr-3"></i>
+                                    <span>Progress reports with annotated images</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-check-circle text-blue-600 mr-3"></i>
+                                    <span>Quantity surveys and material tracking</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-check-circle text-blue-600 mr-3"></i>
+                                    <span>3D models showing construction progress</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-check-circle text-blue-600 mr-3"></i>
+                                    <span>Time-lapse video compilations</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-check-circle text-blue-600 mr-3"></i>
+                                    <span>Site compliance documentation</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-check-circle text-blue-600 mr-3"></i>
+                                    <span>As-built vs. as-designed comparisons</span>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
-                `,
-                features: ["Progress Tracking", "Quality Control", "Safety Monitoring"],
-                icon: "fas fa-hard-hat"
+                `
             },
-            {
-                id: 3,
+            3: {
                 title: "Environmental Monitoring",
                 category: "monitoring",
-                shortDesc: "Ecological change detection and conservation planning",
-                longDesc: `
-                    <div class="space-y-6">
-                        <div class="detail-image-container">
-                            <img src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
-                                 alt="Drone monitoring forest conservation" 
-                                 class="w-full h-96 object-cover image-zoom">
+                briefDesc: "Ecological change detection and conservation planning using advanced drone technology",
+                heroImage: "https://images.unsplash.com/photo-1518837695005-2083093ee35b?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
+                icon: "fas fa-leaf",
+                color: "green",
+                detailedContent: `
+                    <div class="space-y-12">
+                        <!-- Introduction -->
+                        <div class="prose prose-lg max-w-none">
+                            <h2 class="text-3xl font-bold text-gray-900 mb-6">Environmental Conservation Monitoring</h2>
+                            <p class="text-gray-700 mb-6">
+                                Our environmental monitoring services use multispectral and thermal imaging to provide detailed ecological data for conservation planning, habitat assessment, and environmental impact studies. Drones offer a non-invasive method to monitor sensitive ecosystems.
+                            </p>
                         </div>
-                        
-                        <div class="grid md:grid-cols-2 gap-8">
-                            <div>
-                                <h4 class="text-xl font-bold text-gray-900 mb-4">Applications</h4>
-                                <ul class="space-y-3">
-                                    <li class="flex items-start">
-                                        <i class="fas fa-tree text-green-600 mt-1 mr-3"></i>
-                                        <span><strong>Habitat Mapping:</strong> Wildlife corridor identification</span>
-                                    </li>
-                                    <li class="flex items-start">
-                                        <i class="fas fa-leaf text-green-600 mt-1 mr-3"></i>
-                                        <span><strong>Vegetation Analysis:</strong> NDVI mapping for plant health</span>
-                                    </li>
-                                    <li class="flex items-start">
-                                        <i class="fas fa-water text-green-600 mt-1 mr-3"></i>
-                                        <span><strong>Water Quality:</strong> Pollution and algae bloom detection</span>
-                                    </li>
-                                </ul>
+
+                        <!-- Image Gallery -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            <div class="detail-image-container">
+                                <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                                     alt="Forest conservation monitoring" 
+                                     class="w-full h-64 object-cover image-zoom">
                             </div>
-                            
-                            <div>
-                                <h4 class="text-xl font-bold text-gray-900 mb-4">Technology Used</h4>
-                                <div class="space-y-3">
-                                    <div class="flex items-center">
-                                        <i class="fas fa-camera text-green-600 mr-3"></i>
-                                        <span>Multispectral Imaging</span>
+                            <div class="detail-image-container">
+                                <img src="https://images.unsplash.com/photo-1511497584788-876760111969?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                                     alt="Wetland environmental monitoring" 
+                                     class="w-full h-64 object-cover image-zoom">
+                            </div>
+                        </div>
+
+                        <!-- Applications -->
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-900 mb-6">Environmental Applications</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div class="bg-green-50 p-6 rounded-xl">
+                                    <div class="flex items-center mb-4">
+                                        <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center mr-4">
+                                            <i class="fas fa-tree text-green-600"></i>
+                                        </div>
+                                        <h4 class="text-xl font-bold text-green-800">Habitat Mapping</h4>
                                     </div>
-                                    <div class="flex items-center">
-                                        <i class="fas fa-thermometer-half text-green-600 mr-3"></i>
-                                        <span>Thermal Sensors</span>
+                                    <p class="text-gray-700">Detailed mapping of wildlife corridors, nesting areas, and sensitive habitats for conservation planning and biodiversity assessment.</p>
+                                </div>
+                                <div class="bg-blue-50 p-6 rounded-xl">
+                                    <div class="flex items-center mb-4">
+                                        <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center mr-4">
+                                            <i class="fas fa-water text-blue-600"></i>
+                                        </div>
+                                        <h4 class="text-xl font-bold text-blue-800">Water Quality Monitoring</h4>
                                     </div>
-                                    <div class="flex items-center">
-                                        <i class="fas fa-map text-green-600 mr-3"></i>
-                                        <span>GIS Integration</span>
+                                    <p class="text-gray-700">Detection of pollution sources, algae blooms, and water temperature variations in rivers, lakes, and coastal areas.</p>
+                                </div>
+                                <div class="bg-yellow-50 p-6 rounded-xl">
+                                    <div class="flex items-center mb-4">
+                                        <div class="w-10 h-10 bg-yellow-100 rounded-lg flex items-center justify-center mr-4">
+                                            <i class="fas fa-seedling text-yellow-600"></i>
+                                        </div>
+                                        <h4 class="text-xl font-bold text-yellow-800">Vegetation Analysis</h4>
+                                    </div>
+                                    <p class="text-gray-700">NDVI and NDRE mapping for plant health assessment, invasive species detection, and reforestation monitoring.</p>
+                                </div>
+                                <div class="bg-red-50 p-6 rounded-xl">
+                                    <div class="flex items-center mb-4">
+                                        <div class="w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center mr-4">
+                                            <i class="fas fa-fire text-red-600"></i>
+                                        </div>
+                                        <h4 class="text-xl font-bold text-red-800">Wildlife Protection</h4>
+                                    </div>
+                                    <p class="text-gray-700">Anti-poaching surveillance, animal population counts, and migration pattern tracking in protected areas.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Technology -->
+                        <div class="bg-gray-50 p-8 rounded-2xl">
+                            <h3 class="text-2xl font-bold text-gray-900 mb-6">Advanced Technology Used</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                                <div class="text-center">
+                                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                        <i class="fas fa-camera text-green-600 text-2xl"></i>
+                                    </div>
+                                    <h4 class="font-bold text-gray-900">Multispectral Sensors</h4>
+                                    <p class="text-sm text-gray-600">Captures data across multiple spectral bands</p>
+                                </div>
+                                <div class="text-center">
+                                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                        <i class="fas fa-thermometer-half text-green-600 text-2xl"></i>
+                                    </div>
+                                    <h4 class="font-bold text-gray-900">Thermal Imaging</h4>
+                                    <p class="text-sm text-gray-600">Detects heat signatures for wildlife tracking</p>
+                                </div>
+                                <div class="text-center">
+                                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                        <i class="fas fa-satellite text-green-600 text-2xl"></i>
+                                    </div>
+                                    <h4 class="font-bold text-gray-900">RTK Positioning</h4>
+                                    <p class="text-sm text-gray-600">Centimeter-accurate geolocation data</p>
+                                </div>
+                                <div class="text-center">
+                                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                        <i class="fas fa-brain text-green-600 text-2xl"></i>
+                                    </div>
+                                    <h4 class="font-bold text-gray-900">AI Analysis</h4>
+                                    <p class="text-sm text-gray-600">Automated feature detection and classification</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Case Studies -->
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-900 mb-6">Environmental Impact Case Studies</h3>
+                            <div class="space-y-6">
+                                <div class="bg-white border border-gray-200 rounded-xl p-6">
+                                    <h4 class="text-xl font-bold text-gray-900 mb-2">Coastal Erosion Monitoring</h4>
+                                    <p class="text-gray-700 mb-3">Monthly monitoring of 15km coastline to track erosion patterns and inform coastal protection strategies. Data used to secure conservation funding.</p>
+                                    <div class="flex items-center text-sm text-gray-600">
+                                        <i class="fas fa-calendar-alt mr-2"></i>
+                                        <span>Ongoing since 2021</span>
+                                        <i class="fas fa-map-marker-alt mx-4"></i>
+                                        <span>Kwale County</span>
+                                    </div>
+                                </div>
+                                <div class="bg-white border border-gray-200 rounded-xl p-6">
+                                    <h4 class="text-xl font-bold text-gray-900 mb-2">Reforestation Project Tracking</h4>
+                                    <p class="text-gray-700 mb-3">Annual monitoring of 500-hectare reforestation area using NDVI analysis to assess tree health and survival rates, providing data for carbon credit certification.</p>
+                                    <div class="flex items-center text-sm text-gray-600">
+                                        <i class="fas fa-calendar-alt mr-2"></i>
+                                        <span>2019-2023</span>
+                                        <i class="fas fa-map-marker-alt mx-4"></i>
+                                        <span>Aberdare Range</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                `,
-                features: ["Multispectral", "Habitat Analysis", "Conservation"],
-                icon: "fas fa-leaf"
+                `
             },
-            {
-                id: 4,
+            4: {
                 title: "Agricultural Mapping",
                 category: "mapping",
-                shortDesc: "Precision agriculture and crop health analysis",
-                longDesc: `
-                    <div class="space-y-6">
-                        <div class="detail-image-container">
-                            <img src="https://images.unsplash.com/photo-1559131397-f94da358a9f5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80" 
-                                 alt="Agricultural drone mapping" 
-                                 class="w-full h-96 object-cover image-zoom">
+                briefDesc: "Precision agriculture and crop health analysis for increased yields",
+                heroImage: "https://images.unsplash.com/photo-1559131397-f94da358a9f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=2069&q=80",
+                icon: "fas fa-tractor",
+                color: "yellow",
+                detailedContent: `
+                    <div class="space-y-12">
+                        <!-- Introduction -->
+                        <div class="prose prose-lg max-w-none">
+                            <h2 class="text-3xl font-bold text-gray-900 mb-6">Precision Agriculture Solutions</h2>
+                            <p class="text-gray-700 mb-6">
+                                Transform your farming operations with data-driven insights from our agricultural drone mapping services. Multispectral sensors capture data beyond visible light, revealing crop health, moisture levels, and nutrient deficiencies for optimized farm management.
+                            </p>
                         </div>
-                        
-                        <h4 class="text-xl font-bold text-gray-900">Transform Your Farming with Data-Driven Insights</h4>
-                        <p class="text-gray-700">
-                            Our agricultural drone mapping services provide farmers with actionable insights for precision agriculture. Multispectral sensors capture data beyond visible light, revealing crop health, moisture levels, and nutrient deficiencies.
-                        </p>
-                        
-                        <div class="grid md:grid-cols-3 gap-6">
-                            <div class="bg-gradient-to-b from-green-50 to-white p-4 rounded-lg border border-green-100">
-                                <h5 class="font-bold text-green-800 mb-2">Crop Health</h5>
-                                <p class="text-sm text-gray-600">NDVI/NDRE vegetation indices for health assessment</p>
+
+                        <!-- Image Gallery -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            <div class="detail-image-container">
+                                <img src="https://images.unsplash.com/photo-1560493676-04071c5f467b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                                     alt="Agricultural drone flying over crops" 
+                                     class="w-full h-64 object-cover image-zoom">
                             </div>
-                            <div class="bg-gradient-to-b from-yellow-50 to-white p-4 rounded-lg border border-yellow-100">
-                                <h5 class="font-bold text-yellow-800 mb-2">Yield Estimation</h5>
-                                <p class="text-sm text-gray-600">Early prediction of harvest volumes and quality</p>
+                            <div class="detail-image-container">
+                                <img src="https://images.unsplash.com/photo-1505253668822-42074d58a7c6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                                     alt="NDVI crop health map" 
+                                     class="w-full h-64 object-cover image-zoom">
                             </div>
-                            <div class="bg-gradient-to-b from-blue-50 to-white p-4 rounded-lg border border-blue-100">
-                                <h5 class="font-bold text-blue-800 mb-2">Irrigation Planning</h5>
-                                <p class="text-sm text-gray-600">Identify areas of water stress and optimize irrigation</p>
+                        </div>
+
+                        <!-- Services Grid -->
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            <div class="bg-gradient-to-b from-green-50 to-white p-6 rounded-xl border border-green-100">
+                                <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
+                                    <i class="fas fa-heartbeat text-green-600"></i>
+                                </div>
+                                <h3 class="text-xl font-bold text-green-800 mb-3">Crop Health Monitoring</h3>
+                                <p class="text-gray-700">NDVI/NDRE vegetation indices for early detection of stress, disease, and nutrient deficiencies.</p>
+                                <ul class="mt-4 space-y-2">
+                                    <li class="flex items-center text-sm">
+                                        <i class="fas fa-check text-green-600 mr-2"></i>
+                                        <span>Early pest detection</span>
+                                    </li>
+                                    <li class="flex items-center text-sm">
+                                        <i class="fas fa-check text-green-600 mr-2"></i>
+                                        <span>Disease outbreak mapping</span>
+                                    </li>
+                                    <li class="flex items-center text-sm">
+                                        <i class="fas fa-check text-green-600 mr-2"></i>
+                                        <span>Nutrient deficiency analysis</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-gradient-to-b from-yellow-50 to-white p-6 rounded-xl border border-yellow-100">
+                                <div class="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center mb-4">
+                                    <i class="fas fa-chart-bar text-yellow-600"></i>
+                                </div>
+                                <h3 class="text-xl font-bold text-yellow-800 mb-3">Yield Estimation</h3>
+                                <p class="text-gray-700">Early prediction of harvest volumes and quality based on plant density and health indicators.</p>
+                                <ul class="mt-4 space-y-2">
+                                    <li class="flex items-center text-sm">
+                                        <i class="fas fa-check text-yellow-600 mr-2"></i>
+                                        <span>Pre-harvest yield prediction</span>
+                                    </li>
+                                    <li class="flex items-center text-sm">
+                                        <i class="fas fa-check text-yellow-600 mr-2"></i>
+                                        <span>Quality assessment</span>
+                                    </li>
+                                    <li class="flex items-center text-sm">
+                                        <i class="fas fa-check text-yellow-600 mr-2"></i>
+                                        <span>Harvest planning optimization</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-gradient-to-b from-blue-50 to-white p-6 rounded-xl border border-blue-100">
+                                <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+                                    <i class="fas fa-tint text-blue-600"></i>
+                                </div>
+                                <h3 class="text-xl font-bold text-blue-800 mb-3">Irrigation Planning</h3>
+                                <p class="text-gray-700">Identify areas of water stress and optimize irrigation schedules for water conservation.</p>
+                                <ul class="mt-4 space-y-2">
+                                    <li class="flex items-center text-sm">
+                                        <i class="fas fa-check text-blue-600 mr-2"></i>
+                                        <span>Soil moisture mapping</span>
+                                    </li>
+                                    <li class="flex items-center text-sm">
+                                        <i class="fas fa-check text-blue-600 mr-2"></i>
+                                        <span>Irrigation system optimization</span>
+                                    </li>
+                                    <li class="flex items-center text-sm">
+                                        <i class="fas fa-check text-blue-600 mr-2"></i>
+                                        <span>Water usage efficiency analysis</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Crop Types -->
+                        <div class="bg-yellow-50 p-8 rounded-2xl">
+                            <h3 class="text-2xl font-bold text-gray-900 mb-6">Crops We Monitor</h3>
+                            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                                <div class="bg-white p-4 rounded-lg text-center">
+                                    <div class="text-3xl mb-2">🌽</div>
+                                    <p class="font-semibold">Maize</p>
+                                </div>
+                                <div class="bg-white p-4 rounded-lg text-center">
+                                    <div class="text-3xl mb-2">🌾</div>
+                                    <p class="font-semibold">Wheat</p>
+                                </div>
+                                <div class="bg-white p-4 rounded-lg text-center">
+                                    <div class="text-3xl mb-2">☕</div>
+                                    <p class="font-semibold">Coffee</p>
+                                </div>
+                                <div class="bg-white p-4 rounded-lg text-center">
+                                    <div class="text-3xl mb-2">🍵</div>
+                                    <p class="font-semibold">Tea</p>
+                                </div>
+                                <div class="bg-white p-4 rounded-lg text-center">
+                                    <div class="text-3xl mb-2">🍌</div>
+                                    <p class="font-semibold">Bananas</p>
+                                </div>
+                                <div class="bg-white p-4 rounded-lg text-center">
+                                    <div class="text-3xl mb-2">🥑</div>
+                                    <p class="font-semibold">Avocado</p>
+                                </div>
+                                <div class="bg-white p-4 rounded-lg text-center">
+                                    <div class="text-3xl mb-2">🌺</div>
+                                    <p class="font-semibold">Flowers</p>
+                                </div>
+                                <div class="bg-white p-4 rounded-lg text-center">
+                                    <div class="text-3xl mb-2">🥦</div>
+                                    <p class="font-semibold">Vegetables</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Benefits -->
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-900 mb-6">Farmer Benefits</h3>
+                            <div class="space-y-4">
+                                <div class="flex items-start">
+                                    <div class="flex-shrink-0 mt-1">
+                                        <i class="fas fa-chart-line text-yellow-600 text-xl"></i>
+                                    </div>
+                                    <div class="ml-4">
+                                        <h4 class="text-lg font-bold text-gray-900">Increased Yields</h4>
+                                        <p class="text-gray-700">Farmers using our services report average yield increases of 15-25% through optimized input application and early problem detection.</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <div class="flex-shrink-0 mt-1">
+                                        <i class="fas fa-money-bill-wave text-yellow-600 text-xl"></i>
+                                    </div>
+                                    <div class="ml-4">
+                                        <h4 class="text-lg font-bold text-gray-900">Cost Reduction</h4>
+                                        <p class="text-gray-700">Precise application of fertilizers, pesticides, and water reduces input costs by 20-40% while maintaining crop quality.</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <div class="flex-shrink-0 mt-1">
+                                        <i class="fas fa-clock text-yellow-600 text-xl"></i>
+                                    </div>
+                                    <div class="ml-4">
+                                        <h4 class="text-lg font-bold text-gray-900">Time Savings</h4>
+                                        <p class="text-gray-700">Survey 100 hectares in 2 hours instead of 2 days of manual inspection, freeing up time for other farm operations.</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                `,
-                features: ["Crop Analysis", "Yield Estimation", "Precision Ag"],
-                icon: "fas fa-tractor"
+                `
             },
-            {
-                id: 5,
+            5: {
                 title: "3D Modeling",
                 category: "modeling",
-                shortDesc: "Photorealistic terrain and structure modeling",
-                longDesc: `
-                    <div class="space-y-6">
-                        <div class="detail-image-container">
-                            <img src="https://images.unsplash.com/photo-1542744095-fcf48d80b0fd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2076&q=80" 
-                                 alt="3D modeling of urban development" 
-                                 class="w-full h-96 object-cover image-zoom">
+                briefDesc: "Photorealistic terrain and structure modeling for visualization and analysis",
+                heroImage: "https://images.unsplash.com/photo-1542744095-fcf48d80b0fd?ixlib=rb-4.0.3&auto=format&fit=crop&w=2076&q=80",
+                icon: "fas fa-cube",
+                color: "purple",
+                detailedContent: `
+                    <div class="space-y-12">
+                        <!-- Introduction -->
+                        <div class="prose prose-lg max-w-none">
+                            <h2 class="text-3xl font-bold text-gray-900 mb-6">Advanced 3D Modeling Services</h2>
+                            <p class="text-gray-700 mb-6">
+                                Create immersive, photorealistic 3D models of terrain, structures, and sites for visualization, analysis, and planning. Our drone-based photogrammetry produces highly detailed 3D models with millimeter-level accuracy.
+                            </p>
                         </div>
-                        
-                        <div class="grid md:grid-cols-2 gap-8">
-                            <div>
-                                <h4 class="text-xl font-bold text-gray-900 mb-4">Model Types</h4>
-                                <ul class="space-y-3">
-                                    <li class="flex items-start">
-                                        <i class="fas fa-cube text-purple-600 mt-1 mr-3"></i>
-                                        <span><strong>Textured Mesh Models:</strong> Photorealistic surface models</span>
-                                    </li>
-                                    <li class="flex items-start">
-                                        <i class="fas fa-cloud text-purple-600 mt-1 mr-3"></i>
-                                        <span><strong>Point Clouds:</strong> Dense XYZ data for engineering</span>
-                                    </li>
-                                    <li class="flex items-start">
-                                        <i class="fas fa-mountain text-purple-600 mt-1 mr-3"></i>
-                                        <span><strong>Digital Terrain Models:</strong> Bare earth surface models</span>
-                                    </li>
-                                </ul>
+
+                        <!-- Image Gallery -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            <div class="detail-image-container">
+                                <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                                     alt="3D model of building" 
+                                     class="w-full h-64 object-cover image-zoom">
                             </div>
-                            
-                            <div>
-                                <h4 class="text-xl font-bold text-gray-900 mb-4">Applications</h4>
-                                <div class="space-y-3">
-                                    <div class="flex items-center">
-                                        <i class="fas fa-building text-purple-600 mr-3"></i>
-                                        <span>Architectural Visualization</span>
+                            <div class="detail-image-container">
+                                <img src="https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                                     alt="3D modeling process" 
+                                     class="w-full h-64 object-cover image-zoom">
+                            </div>
+                        </div>
+
+                        <!-- Model Types -->
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-900 mb-6">Types of 3D Models</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                                <div class="bg-gradient-to-b from-purple-50 to-white p-6 rounded-xl border border-purple-100">
+                                    <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+                                        <i class="fas fa-cube text-purple-600"></i>
                                     </div>
-                                    <div class="flex items-center">
-                                        <i class="fas fa-history text-purple-600 mr-3"></i>
-                                        <span>Cultural Heritage Preservation</span>
+                                    <h4 class="text-xl font-bold text-purple-800 mb-3">Textured Mesh Models</h4>
+                                    <p class="text-gray-700 mb-4">Photorealistic 3D surface models with actual photographic textures applied, perfect for visualization and presentations.</p>
+                                    <div class="text-sm text-purple-600">
+                                        <i class="fas fa-file-export mr-1"></i>
+                                        Formats: OBJ, FBX, 3DS
                                     </div>
-                                    <div class="flex items-center">
-                                        <i class="fas fa-home text-purple-600 mr-3"></i>
-                                        <span>Real Estate Showcases</span>
+                                </div>
+                                
+                                <div class="bg-gradient-to-b from-blue-50 to-white p-6 rounded-xl border border-blue-100">
+                                    <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+                                        <i class="fas fa-cloud text-blue-600"></i>
+                                    </div>
+                                    <h4 class="text-xl font-bold text-blue-800 mb-3">Point Clouds</h4>
+                                    <p class="text-gray-700 mb-4">Dense XYZ data points for precise measurements, engineering analysis, and CAD integration with millions of data points.</p>
+                                    <div class="text-sm text-blue-600">
+                                        <i class="fas fa-file-export mr-1"></i>
+                                        Formats: LAS, LAZ, E57, PTS
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-gradient-to-b from-teal-50 to-white p-6 rounded-xl border border-teal-100">
+                                    <div class="w-12 h-12 bg-teal-100 rounded-lg flex items-center justify-center mb-4">
+                                        <i class="fas fa-mountain text-teal-600"></i>
+                                    </div>
+                                    <h4 class="text-xl font-bold text-teal-800 mb-3">Digital Terrain Models</h4>
+                                    <p class="text-gray-700 mb-4">Bare earth surface models with vegetation and structures removed, essential for hydrological and engineering studies.</p>
+                                    <div class="text-sm text-teal-600">
+                                        <i class="fas fa-file-export mr-1"></i>
+                                        Formats: GeoTIFF, DEM, GRID
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Applications -->
+                        <div class="bg-gray-50 p-8 rounded-2xl">
+                            <h3 class="text-2xl font-bold text-gray-900 mb-6">Industry Applications</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                                <div class="text-center">
+                                    <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                        <i class="fas fa-building text-purple-600 text-2xl"></i>
+                                    </div>
+                                    <h4 class="font-bold text-gray-900">Architecture</h4>
+                                    <p class="text-sm text-gray-600">Site analysis and context modeling</p>
+                                </div>
+                                <div class="text-center">
+                                    <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                        <i class="fas fa-home text-purple-600 text-2xl"></i>
+                                    </div>
+                                    <h4 class="font-bold text-gray-900">Real Estate</h4>
+                                    <p class="text-sm text-gray-600">Property visualization and virtual tours</p>
+                                </div>
+                                <div class="text-center">
+                                    <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                        <i class="fas fa-history text-purple-600 text-2xl"></i>
+                                    </div>
+                                    <h4 class="font-bold text-gray-900">Heritage</h4>
+                                    <p class="text-sm text-gray-600">Cultural site preservation</p>
+                                </div>
+                                <div class="text-center">
+                                    <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                        <i class="fas fa-film text-purple-600 text-2xl"></i>
+                                    </div>
+                                    <h4 class="font-bold text-gray-900">Entertainment</h4>
+                                    <p class="text-sm text-gray-600">Film and game asset creation</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Workflow -->
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-900 mb-6">3D Modeling Workflow</h3>
+                            <div class="space-y-8">
+                                <div class="flex items-start">
+                                    <div class="flex-shrink-0 w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mr-6">
+                                        <span class="font-bold text-purple-600">1</span>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-xl font-bold text-gray-900 mb-2">Data Collection</h4>
+                                        <p class="text-gray-700">Automated drone flight captures thousands of overlapping high-resolution images with 80% frontal overlap and 70% side overlap for optimal 3D reconstruction.</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <div class="flex-shrink-0 w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mr-6">
+                                        <span class="font-bold text-purple-600">2</span>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-xl font-bold text-gray-900 mb-2">Photogrammetric Processing</h4>
+                                        <p class="text-gray-700">Advanced software aligns images, creates dense point clouds, generates mesh models, and applies textures with photorealistic quality.</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <div class="flex-shrink-0 w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mr-6">
+                                        <span class="font-bold text-purple-600">3</span>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-xl font-bold text-gray-900 mb-2">Model Refinement</h4>
+                                        <p class="text-gray-700">Manual cleanup and optimization of models, hole filling, mesh simplification, and texture enhancement for various use cases.</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <div class="flex-shrink-0 w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mr-6">
+                                        <span class="font-bold text-purple-600">4</span>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-xl font-bold text-gray-900 mb-2">Delivery & Integration</h4>
+                                        <p class="text-gray-700">Models delivered in required formats with documentation, ready for use in CAD software, game engines, VR applications, or web viewers.</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                `,
-                features: ["Photorealistic", "Multiple Formats", "High Accuracy"],
-                icon: "fas fa-cube"
+                `
             },
-            {
-                id: 6,
+            6: {
                 title: "Infrastructure Planning",
                 category: "planning",
-                shortDesc: "Route optimization and smart city development",
-                longDesc: `
-                    <div class="space-y-6">
-                        <div class="detail-image-container">
-                            <img src="https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
-                                 alt="Urban infrastructure planning" 
-                                 class="w-full h-96 object-cover image-zoom">
+                briefDesc: "Route optimization and smart city development using aerial intelligence",
+                heroImage: "https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
+                icon: "fas fa-road",
+                color: "orange",
+                detailedContent: `
+                    <div class="space-y-12">
+                        <!-- Introduction -->
+                        <div class="prose prose-lg max-w-none">
+                            <h2 class="text-3xl font-bold text-gray-900 mb-6">Infrastructure Planning & Development</h2>
+                            <p class="text-gray-700 mb-6">
+                                Aerial data provides critical information for infrastructure planning and design. Our services support route optimization, utility planning, and smart city development with accurate, up-to-date spatial data that reduces planning time and costs.
+                            </p>
                         </div>
-                        
-                        <h4 class="text-xl font-bold text-gray-900">Smart Planning with Aerial Intelligence</h4>
-                        <p class="text-gray-700">
-                            Aerial data provides critical information for infrastructure planning and design. Our services support route optimization, utility planning, and smart city development with accurate, up-to-date spatial data.
-                        </p>
-                        
-                        <div class="grid md:grid-cols-2 gap-8">
-                            <div>
-                                <h5 class="font-bold text-gray-900 mb-3">Planning Benefits</h5>
-                                <ul class="space-y-2">
-                                    <li class="flex items-start">
-                                        <i class="fas fa-clock text-orange-600 mt-1 mr-3"></i>
-                                        <span>Reduces planning time by up to 40%</span>
-                                    </li>
-                                    <li class="flex items-start">
-                                        <i class="fas fa-search text-orange-600 mt-1 mr-3"></i>
-                                        <span>Identifies potential issues before construction</span>
-                                    </li>
-                                    <li class="flex items-start">
-                                        <i class="fas fa-chart-pie text-orange-600 mt-1 mr-3"></i>
-                                        <span>Optimizes resource allocation and budgeting</span>
-                                    </li>
-                                </ul>
+
+                        <!-- Image Gallery -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            <div class="detail-image-container">
+                                <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                                     alt="Urban infrastructure planning" 
+                                     class="w-full h-64 object-cover image-zoom">
                             </div>
-                            
-                            <div>
-                                <h5 class="font-bold text-gray-900 mb-3">Key Applications</h5>
-                                <div class="flex flex-wrap gap-2">
-                                    <span class="bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm">Route Planning</span>
-                                    <span class="bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm">Utility Mapping</span>
-                                    <span class="bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm">Urban Planning</span>
-                                    <span class="bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm">Flood Risk</span>
+                            <div class="detail-image-container">
+                                <img src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                                     alt="Road network planning" 
+                                     class="w-full h-64 object-cover image-zoom">
+                            </div>
+                        </div>
+
+                        <!-- Planning Benefits -->
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-900 mb-6">Planning Advantages</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div class="flex items-start space-x-4">
+                                    <div class="flex-shrink-0 w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center">
+                                        <i class="fas fa-clock text-orange-600"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-xl font-bold text-gray-900 mb-2">Time Efficiency</h4>
+                                        <p class="text-gray-700">Reduces planning time by up to 40% compared to traditional ground surveys through rapid data collection and analysis.</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start space-x-4">
+                                    <div class="flex-shrink-0 w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center">
+                                        <i class="fas fa-search text-orange-600"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-xl font-bold text-gray-900 mb-2">Risk Mitigation</h4>
+                                        <p class="text-gray-700">Identifies potential issues like unstable terrain, existing utilities, and environmental constraints before construction begins.</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start space-x-4">
+                                    <div class="flex-shrink-0 w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center">
+                                        <i class="fas fa-chart-pie text-orange-600"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-xl font-bold text-gray-900 mb-2">Cost Optimization</h4>
+                                        <p class="text-gray-700">Optimizes resource allocation, material requirements, and construction sequencing for maximum budget efficiency.</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start space-x-4">
+                                    <div class="flex-shrink-0 w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center">
+                                        <i class="fas fa-eye text-orange-600"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-xl font-bold text-gray-900 mb-2">Stakeholder Visualization</h4>
+                                        <p class="text-gray-700">Provides clear visualizations for public consultations, investor presentations, and regulatory approvals.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Key Applications -->
+                        <div class="bg-orange-50 p-8 rounded-2xl">
+                            <h3 class="text-2xl font-bold text-gray-900 mb-6">Key Applications</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                                <div class="bg-white p-4 rounded-lg">
+                                    <div class="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center mb-3">
+                                        <i class="fas fa-route text-orange-600"></i>
+                                    </div>
+                                    <h4 class="font-bold text-gray-900 mb-2">Route Planning</h4>
+                                    <p class="text-sm text-gray-600">Road, rail, and pipeline corridor optimization</p>
+                                </div>
+                                <div class="bg-white p-4 rounded-lg">
+                                    <div class="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center mb-3">
+                                        <i class="fas fa-bolt text-orange-600"></i>
+                                    </div>
+                                    <h4 class="font-bold text-gray-900 mb-2">Utility Mapping</h4>
+                                    <p class="text-sm text-gray-600">Power lines, water, and telecom infrastructure</p>
+                                </div>
+                                <div class="bg-white p-4 rounded-lg">
+                                    <div class="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center mb-3">
+                                        <i class="fas fa-city text-orange-600"></i>
+                                    </div>
+                                    <h4 class="font-bold text-gray-900 mb-2">Urban Planning</h4>
+                                    <p class="text-sm text-gray-600">Smart city development and zoning</p>
+                                </div>
+                                <div class="bg-white p-4 rounded-lg">
+                                    <div class="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center mb-3">
+                                        <i class="fas fa-water text-orange-600"></i>
+                                    </div>
+                                    <h4 class="font-bold text-gray-900 mb-2">Flood Risk</h4>
+                                    <p class="text-sm text-gray-600">Drainage planning and flood mitigation</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Case Study -->
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-900 mb-6">Project Case Study: Highway Corridor Planning</h3>
+                            <div class="bg-white border border-gray-200 rounded-xl p-6">
+                                <div class="grid md:grid-cols-2 gap-8">
+                                    <div>
+                                        <h4 class="text-xl font-bold text-gray-900 mb-4">Challenge</h4>
+                                        <p class="text-gray-700 mb-4">
+                                            Planning a 50km highway section through challenging terrain with multiple environmental constraints, existing settlements, and utility corridors.
+                                        </p>
+                                        <div class="space-y-2">
+                                            <div class="flex items-center">
+                                                <i class="fas fa-exclamation-triangle text-orange-600 mr-3"></i>
+                                                <span>Environmental sensitivity areas</span>
+                                            </div>
+                                            <div class="flex items-center">
+                                                <i class="fas fa-home text-orange-600 mr-3"></i>
+                                                <span>30+ existing settlements</span>
+                                            </div>
+                                            <div class="flex items-center">
+                                                <i class="fas fa-mountain text-orange-600 mr-3"></i>
+                                                <span>Complex terrain with steep slopes</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-xl font-bold text-gray-900 mb-4">Solution & Results</h4>
+                                        <p class="text-gray-700 mb-4">
+                                            Our aerial survey provided detailed topographic data, environmental mapping, and 3D visualization that enabled optimal route selection.
+                                        </p>
+                                        <div class="space-y-2">
+                                            <div class="flex items-center">
+                                                <i class="fas fa-check-circle text-green-600 mr-3"></i>
+                                                <span>40% reduction in planning time</span>
+                                            </div>
+                                            <div class="flex items-center">
+                                                <i class="fas fa-check-circle text-green-600 mr-3"></i>
+                                                <span>15% cost savings on earthworks</span>
+                                            </div>
+                                            <div class="flex items-center">
+                                                <i class="fas fa-check-circle text-green-600 mr-3"></i>
+                                                <span>Zero community relocation required</span>
+                                            </div>
+                                            <div class="flex items-center">
+                                                <i class="fas fa-check-circle text-green-600 mr-3"></i>
+                                                <span>Completed environmental approvals 3 months early</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Deliverables -->
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-900 mb-6">Planning Deliverables</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                                <div class="border border-gray-200 rounded-lg p-4">
+                                    <h4 class="font-bold text-gray-900 mb-2">Corridor Analysis Reports</h4>
+                                    <p class="text-sm text-gray-600">Comparative analysis of multiple route options with cost-benefit assessment</p>
+                                </div>
+                                <div class="border border-gray-200 rounded-lg p-4">
+                                    <h4 class="font-bold text-gray-900 mb-2">Environmental Impact Maps</h4>
+                                    <p class="text-sm text-gray-600">Sensitive area mapping and mitigation planning</p>
+                                </div>
+                                <div class="border border-gray-200 rounded-lg p-4">
+                                    <h4 class="font-bold text-gray-900 mb-2">3D Visualization Models</h4>
+                                    <p class="text-sm text-gray-600">Interactive models for stakeholder engagement</p>
+                                </div>
+                                <div class="border border-gray-200 rounded-lg p-4">
+                                    <h4 class="font-bold text-gray-900 mb-2">Earthwork Calculations</h4>
+                                    <p class="text-sm text-gray-600">Cut and fill volumes for budget estimation</p>
+                                </div>
+                                <div class="border border-gray-200 rounded-lg p-4">
+                                    <h4 class="font-bold text-gray-900 mb-2">Utility Conflict Analysis</h4>
+                                    <p class="text-sm text-gray-600">Identification of existing infrastructure conflicts</p>
+                                </div>
+                                <div class="border border-gray-200 rounded-lg p-4">
+                                    <h4 class="font-bold text-gray-900 mb-2">Access Planning</h4>
+                                    <p class="text-sm text-gray-600">Construction access and logistics planning</p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                `,
-                features: ["Route Optimization", "Utility Planning", "Cost Savings"],
-                icon: "fas fa-road"
+                `
             },
-            {
-                id: 7,
+            7: {
                 title: "Digital Terrain Models",
                 category: "modeling",
-                shortDesc: "DTMs & Digital Elevation Models for engineering",
-                longDesc: `
-                    <div class="space-y-6">
-                        <div class="detail-image-container">
-                            <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
-                                 alt="Digital terrain model visualization" 
-                                 class="w-full h-96 object-cover image-zoom">
+                briefDesc: "DTMs & Digital Elevation Models for engineering and hydrological studies",
+                heroImage: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
+                icon: "fas fa-mountain",
+                color: "teal",
+                detailedContent: `
+                    <div class="space-y-12">
+                        <!-- Introduction -->
+                        <div class="prose prose-lg max-w-none">
+                            <h2 class="text-3xl font-bold text-gray-900 mb-6">Digital Terrain Modeling Services</h2>
+                            <p class="text-gray-700 mb-6">
+                                Create accurate Digital Terrain Models (DTMs) and Digital Elevation Models (DEMs) for engineering, hydrological studies, and environmental planning. Our drone-based terrain modeling provides centimeter-level accuracy for critical decision-making.
+                            </p>
                         </div>
-                        
-                        <div class="grid md:grid-cols-2 gap-8">
-                            <div>
-                                <h4 class="text-xl font-bold text-gray-900 mb-4">Model Types</h4>
-                                <ul class="space-y-3">
-                                    <li class="flex items-start">
-                                        <i class="fas fa-mountain text-teal-600 mt-1 mr-3"></i>
-                                        <span><strong>DTM:</strong> Digital Terrain Model (bare earth)</span>
-                                    </li>
-                                    <li class="flex items-start">
-                                        <i class="fas fa-layer-group text-teal-600 mt-1 mr-3"></i>
-                                        <span><strong>DEM:</strong> Digital Elevation Model</span>
-                                    </li>
-                                    <li class="flex items-start">
-                                        <i class="fas fa-chart-area text-teal-600 mt-1 mr-3"></i>
-                                        <span><strong>DSM:</strong> Digital Surface Model</span>
-                                    </li>
-                                </ul>
+
+                        <!-- Image Gallery -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            <div class="detail-image-container">
+                                <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                                     alt="Mountain terrain model" 
+                                     class="w-full h-64 object-cover image-zoom">
                             </div>
-                            
-                            <div>
-                                <h4 class="text-xl font-bold text-gray-900 mb-4">Applications</h4>
-                                <div class="space-y-3">
-                                    <div class="flex items-center">
-                                        <i class="fas fa-water text-teal-600 mr-3"></i>
-                                        <span>Hydrological Modeling</span>
+                            <div class="detail-image-container">
+                                <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                                     alt="Terrain contour visualization" 
+                                     class="w-full h-64 object-cover image-zoom">
+                            </div>
+                        </div>
+
+                        <!-- Model Types -->
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-900 mb-6">Model Types & Applications</h3>
+                            <div class="space-y-8">
+                                <div class="grid md:grid-cols-2 gap-8 items-center">
+                                    <div>
+                                        <div class="flex items-center mb-4">
+                                            <div class="w-12 h-12 bg-teal-100 rounded-lg flex items-center justify-center mr-4">
+                                                <i class="fas fa-mountain text-teal-600"></i>
+                                            </div>
+                                            <h4 class="text-xl font-bold text-teal-800">Digital Terrain Model (DTM)</h4>
+                                        </div>
+                                        <p class="text-gray-700 mb-4">Bare earth surface model with all vegetation and structures removed. Essential for engineering design and hydrological modeling.</p>
+                                        <ul class="space-y-2">
+                                            <li class="flex items-center text-sm">
+                                                <i class="fas fa-check text-teal-600 mr-2"></i>
+                                                <span>Earthwork calculations</span>
+                                            </li>
+                                            <li class="flex items-center text-sm">
+                                                <i class="fas fa-check text-teal-600 mr-2"></i>
+                                                <span>Flood modeling</span>
+                                            </li>
+                                            <li class="flex items-center text-sm">
+                                                <i class="fas fa-check text-teal-600 mr-2"></i>
+                                                <span>Route planning</span>
+                                            </li>
+                                        </ul>
                                     </div>
-                                    <div class="flex items-center">
-                                        <i class="fas fa-truck-pickup text-teal-600 mr-3"></i>
-                                        <span>Earthwork Calculations</span>
+                                    <div class="bg-teal-50 p-6 rounded-xl">
+                                        <h5 class="font-bold text-teal-800 mb-2">Accuracy Specifications</h5>
+                                        <div class="space-y-2">
+                                            <div class="flex justify-between">
+                                                <span>Vertical Accuracy:</span>
+                                                <span class="font-semibold">±3cm RMSE</span>
+                                            </div>
+                                            <div class="flex justify-between">
+                                                <span>Horizontal Accuracy:</span>
+                                                <span class="font-semibold">±2cm RMSE</span>
+                                            </div>
+                                            <div class="flex justify-between">
+                                                <span>Point Density:</span>
+                                                <span class="font-semibold">50-100 pts/m²</span>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="flex items-center">
-                                        <i class="fas fa-eye text-teal-600 mr-3"></i>
-                                        <span>Visibility Analysis</span>
+                                </div>
+                                
+                                <div class="grid md:grid-cols-2 gap-8 items-center">
+                                    <div>
+                                        <div class="flex items-center mb-4">
+                                            <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mr-4">
+                                                <i class="fas fa-layer-group text-blue-600"></i>
+                                            </div>
+                                            <h4 class="text-xl font-bold text-blue-800">Digital Elevation Model (DEM)</h4>
+                                        </div>
+                                        <p class="text-gray-700 mb-4">Surface model including terrain and above-ground features. Used for visibility analysis and 3D visualization.</p>
+                                        <ul class="space-y-2">
+                                            <li class="flex items-center text-sm">
+                                                <i class="fas fa-check text-blue-600 mr-2"></i>
+                                                <span>Line of sight analysis</span>
+                                            </li>
+                                            <li class="flex items-center text-sm">
+                                                <i class="fas fa-check text-blue-600 mr-2"></i>
+                                                <span>Solar potential mapping</span>
+                                            </li>
+                                            <li class="flex items-center text-sm">
+                                                <i class="fas fa-check text-blue-600 mr-2"></i>
+                                                <span>Viewshed analysis</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="bg-blue-50 p-6 rounded-xl">
+                                        <h5 class="font-bold text-blue-800 mb-2">Available Resolutions</h5>
+                                        <div class="grid grid-cols-3 gap-2">
+                                            <div class="text-center">
+                                                <div class="font-bold text-blue-600">0.5m</div>
+                                                <div class="text-xs text-gray-600">Regional</div>
+                                            </div>
+                                            <div class="text-center">
+                                                <div class="font-bold text-blue-600">0.25m</div>
+                                                <div class="text-xs text-gray-600">District</div>
+                                            </div>
+                                            <div class="text-center">
+                                                <div class="font-bold text-blue-600">0.1m</div>
+                                                <div class="text-xs text-gray-600">Site</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="grid md:grid-cols-2 gap-8 items-center">
+                                    <div>
+                                        <div class="flex items-center mb-4">
+                                            <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mr-4">
+                                                <i class="fas fa-chart-area text-green-600"></i>
+                                            </div>
+                                            <h4 class="text-xl font-bold text-green-800">Digital Surface Model (DSM)</h4>
+                                        </div>
+                                        <p class="text-gray-700 mb-4">Complete surface model including buildings, vegetation, and all above-ground features for urban planning and analysis.</p>
+                                        <ul class="space-y-2">
+                                            <li class="flex items-center text-sm">
+                                                <i class="fas fa-check text-green-600 mr-2"></i>
+                                                <span>Urban heat island analysis</span>
+                                            </li>
+                                            <li class="flex items-center text-sm">
+                                                <i class="fas fa-check text-green-600 mr-2"></i>
+                                                <span>Building height analysis</span>
+                                            </li>
+                                            <li class="flex items-center text-sm">
+                                                <i class="fas fa-check text-green-600 mr-2"></i>
+                                                <span>Vegetation canopy modeling</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="bg-green-50 p-6 rounded-xl">
+                                        <h5 class="font-bold text-green-800 mb-2">Processing Capabilities</h5>
+                                        <div class="space-y-2">
+                                            <div class="flex items-center">
+                                                <i class="fas fa-check text-green-600 mr-2"></i>
+                                                <span class="text-sm">Automatic vegetation removal</span>
+                                            </div>
+                                            <div class="flex items-center">
+                                                <i class="fas fa-check text-green-600 mr-2"></i>
+                                                <span class="text-sm">Building footprint extraction</span>
+                                            </div>
+                                            <div class="flex items-center">
+                                                <i class="fas fa-check text-green-600 mr-2"></i>
+                                                <span class="text-sm">Contour generation</span>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
+                        <!-- Applications -->
+                        <div class="bg-teal-50 p-8 rounded-2xl">
+                            <h3 class="text-2xl font-bold text-gray-900 mb-6">Engineering Applications</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                                <div class="bg-white p-6 rounded-xl">
+                                    <div class="w-12 h-12 bg-teal-100 rounded-lg flex items-center justify-center mb-4">
+                                        <i class="fas fa-water text-teal-600"></i>
+                                    </div>
+                                    <h4 class="text-xl font-bold text-gray-900 mb-3">Hydrological Modeling</h4>
+                                    <p class="text-gray-700">Watershed delineation, flow accumulation, floodplain mapping, and drainage network analysis for water resource management.</p>
+                                </div>
+                                <div class="bg-white p-6 rounded-xl">
+                                    <div class="w-12 h-12 bg-teal-100 rounded-lg flex items-center justify-center mb-4">
+                                        <i class="fas fa-truck-pickup text-teal-600"></i>
+                                    </div>
+                                    <h4 class="text-xl font-bold text-gray-900 mb-3">Earthwork Calculations</h4>
+                                    <p class="text-gray-700">Cut and fill volume calculations for construction projects, mining operations, and land development with 95%+ accuracy.</p>
+                                </div>
+                                <div class="bg-white p-6 rounded-xl">
+                                    <div class="w-12 h-12 bg-teal-100 rounded-lg flex items-center justify-center mb-4">
+                                        <i class="fas fa-eye text-teal-600"></i>
+                                    </div>
+                                    <h4 class="text-xl font-bold text-gray-900 mb-3">Visibility Analysis</h4>
+                                    <p class="text-gray-700">Line of sight studies for telecommunications, security planning, and scenic view protection in development projects.</p>
+                                </div>
+                                <div class="bg-white p-6 rounded-xl">
+                                    <div class="w-12 h-12 bg-teal-100 rounded-lg flex items-center justify-center mb-4">
+                                        <i class="fas fa-sun text-teal-600"></i>
+                                    </div>
+                                    <h4 class="text-xl font-bold text-gray-900 mb-3">Solar Potential</h4>
+                                    <p class="text-gray-700">Solar radiation modeling for renewable energy projects, identifying optimal locations for solar panel installation.</p>
+                                </div>
+                                <div class="bg-white p-6 rounded-xl">
+                                    <div class="w-12 h-12 bg-teal-100 rounded-lg flex items-center justify-center mb-4">
+                                        <i class="fas fa-exclamation-triangle text-teal-600"></i>
+                                    </div>
+                                    <h4 class="text-xl font-bold text-gray-900 mb-3">Slope Stability</h4>
+                                    <p class="text-gray-700">Slope angle analysis for landslide risk assessment, road construction, and foundation planning in hilly areas.</p>
+                                </div>
+                                <div class="bg-white p-6 rounded-xl">
+                                    <div class="w-12 h-12 bg-teal-100 rounded-lg flex items-center justify-center mb-4">
+                                        <i class="fas fa-road text-teal-600"></i>
+                                    </div>
+                                    <h4 class="text-xl font-bold text-gray-900 mb-3">Route Engineering</h4>
+                                    <p class="text-gray-700">Grade optimization, vertical alignment design, and cross-section generation for linear infrastructure projects.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Deliverables -->
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-900 mb-6">Standard Deliverables</h3>
+                            <div class="overflow-x-auto">
+                                <table class="min-w-full divide-y divide-gray-200">
+                                    <thead>
+                                        <tr class="bg-gray-50">
+                                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Format</th>
+                                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Description</th>
+                                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Typical Use</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="bg-white divide-y divide-gray-200">
+                                        <tr>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">GeoTIFF</td>
+                                            <td class="px-6 py-4 text-sm text-gray-700">Raster terrain model with embedded georeferencing</td>
+                                            <td class="px-6 py-4 text-sm text-gray-700">GIS analysis and mapping</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">LAS/LAZ</td>
+                                            <td class="px-6 py-4 text-sm text-gray-700">LiDAR point cloud format with classification</td>
+                                            <td class="px-6 py-4 text-sm text-gray-700">Engineering design and analysis</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">DXF/DWG</td>
+                                            <td class="px-6 py-4 text-sm text-gray-700">CAD formats with contour lines and spot heights</td>
+                                            <td class="px-6 py-4 text-sm text-gray-700">CAD integration and design</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">CSV/XYZ</td>
+                                            <td class="px-6 py-4 text-sm text-gray-700">Text format with XYZ coordinates</td>
+                                            <td class="px-6 py-4 text-sm text-gray-700">Custom analysis and processing</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">KML/KMZ</td>
+                                            <td class="px-6 py-4 text-sm text-gray-700">Google Earth compatible format</td>
+                                            <td class="px-6 py-4 text-sm text-gray-700">Visualization and presentation</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
-                `,
-                features: ["Bare Earth Models", "High Accuracy", "Multiple Resolutions"],
-                icon: "fas fa-mountain"
+                `
             },
-            {
-                id: 8,
+            8: {
                 title: "Volumetric Calculations",
                 category: "planning",
-                shortDesc: "Stockpile measurements and earthwork calculations",
-                longDesc: `
-                    <div class="space-y-6">
-                        <div class="detail-image-container">
-                            <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80" 
-                                 alt="Mining stockpile volumetric calculation" 
-                                 class="w-full h-96 object-cover image-zoom">
+                briefDesc: "Stockpile measurements and earthwork calculations with high accuracy",
+                heroImage: "https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&auto=format&fit=crop&w=2069&q=80",
+                icon: "fas fa-calculator",
+                color: "gray",
+                detailedContent: `
+                    <div class="space-y-12">
+                        <!-- Introduction -->
+                        <div class="prose prose-lg max-w-none">
+                            <h2 class="text-3xl font-bold text-gray-900 mb-6">Precision Volumetric Calculations</h2>
+                            <p class="text-gray-700 mb-6">
+                                Accurate volumetric calculations for mining, construction, and agriculture using repeatable drone surveys. Our method provides faster, safer, and more accurate measurements than traditional techniques, with accuracy rates exceeding 99% for regular stockpile measurements.
+                            </p>
                         </div>
-                        
-                        <h4 class="text-xl font-bold text-gray-900">Precise Volume Measurements for Industry</h4>
-                        <p class="text-gray-700">
-                            Accurate volumetric calculations for mining, construction, and agriculture using repeatable drone surveys. Our method provides faster, safer, and more accurate measurements than traditional techniques.
-                        </p>
-                        
+
+                        <!-- Image Gallery -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            <div class="detail-image-container">
+                                <img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                                     alt="Mining stockpile volumetric calculation" 
+                                     class="w-full h-64 object-cover image-zoom">
+                            </div>
+                            <div class="detail-image-container">
+                                <img src="https://images.unsplash.com/photo-1574175679108-4cdfa3aa90dc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                                     alt="Earthwork volume calculations" 
+                                     class="w-full h-64 object-cover image-zoom">
+                            </div>
+                        </div>
+
+                        <!-- Measurement Process -->
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-900 mb-6">Four-Step Measurement Process</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                                <div class="bg-gradient-to-b from-gray-50 to-white p-6 rounded-xl border border-gray-200 text-center">
+                                    <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                        <span class="text-2xl font-bold text-gray-700">1</span>
+                                    </div>
+                                    <h4 class="text-xl font-bold text-gray-900 mb-3">Initial Survey</h4>
+                                    <p class="text-gray-700">Establish baseline measurements and create reference surfaces for future comparisons.</p>
+                                </div>
+                                <div class="bg-gradient-to-b from-gray-50 to-white p-6 rounded-xl border border-gray-200 text-center">
+                                    <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                        <span class="text-2xl font-bold text-gray-700">2</span>
+                                    </div>
+                                    <h4 class="text-xl font-bold text-gray-900 mb-3">Regular Monitoring</h4>
+                                    <p class="text-gray-700">Scheduled repeat surveys at weekly, monthly, or quarterly intervals as required.</p>
+                                </div>
+                                <div class="bg-gradient-to-b from-gray-50 to-white p-6 rounded-xl border border-gray-200 text-center">
+                                    <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                        <span class="text-2xl font-bold text-gray-700">3</span>
+                                    </div>
+                                    <h4 class="text-xl font-bold text-gray-900 mb-3">Change Detection</h4>
+                                    <p class="text-gray-700">Compare current survey with baseline to calculate material added or removed.</p>
+                                </div>
+                                <div class="bg-gradient-to-b from-gray-50 to-white p-6 rounded-xl border border-gray-200 text-center">
+                                    <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                        <span class="text-2xl font-bold text-gray-700">4</span>
+                                    </div>
+                                    <h4 class="text-xl font-bold text-gray-900 mb-3">Detailed Reporting</h4>
+                                    <p class="text-gray-700">Comprehensive reports with confidence intervals, change analysis, and visualizations.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Industries Served -->
+                        <div class="bg-gray-50 p-8 rounded-2xl">
+                            <h3 class="text-2xl font-bold text-gray-900 mb-6">Industries Served</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                                <div class="bg-white p-6 rounded-xl">
+                                    <div class="flex items-center mb-4">
+                                        <div class="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center mr-4">
+                                            <i class="fas fa-industry text-gray-600"></i>
+                                        </div>
+                                        <h4 class="text-xl font-bold text-gray-900">Mining & Quarry</h4>
+                                    </div>
+                                    <p class="text-gray-700 mb-4">Stockpile inventory management, production tracking, and reserve calculations for minerals, aggregates, and coal.</p>
+                                    <ul class="space-y-2">
+                                        <li class="flex items-center text-sm">
+                                            <i class="fas fa-check text-gray-600 mr-2"></i>
+                                            <span>Ore stockpile measurements</span>
+                                        </li>
+                                        <li class="flex items-center text-sm">
+                                            <i class="fas fa-check text-gray-600 mr-2"></i>
+                                            <span>Waste dump volumes</span>
+                                        </li>
+                                        <li class="flex items-center text-sm">
+                                            <i class="fas fa-check text-gray-600 mr-2"></i>
+                                            <span>Production reconciliation</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-white p-6 rounded-xl">
+                                    <div class="flex items-center mb-4">
+                                        <div class="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center mr-4">
+                                            <i class="fas fa-hard-hat text-gray-600"></i>
+                                        </div>
+                                        <h4 class="text-xl font-bold text-gray-900">Construction</h4>
+                                    </div>
+                                    <p class="text-gray-700 mb-4">Earthwork calculations, material inventory, and cut/fill analysis for construction projects and land development.</p>
+                                    <ul class="space-y-2">
+                                        <li class="flex items-center text-sm">
+                                            <i class="fas fa-check text-gray-600 mr-2"></i>
+                                            <span>Excavation volumes</span>
+                                        </li>
+                                        <li class="flex items-center text-sm">
+                                            <i class="fas fa-check text-gray-600 mr-2"></i>
+                                            <span>Fill material calculations</span>
+                                        </li>
+                                        <li class="flex items-center text-sm">
+                                            <i class="fas fa-check text-gray-600 mr-2"></i>
+                                            <span>Subgrade preparation tracking</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-white p-6 rounded-xl">
+                                    <div class="flex items-center mb-4">
+                                        <div class="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center mr-4">
+                                            <i class="fas fa-seedling text-gray-600"></i>
+                                        </div>
+                                        <h4 class="text-xl font-bold text-gray-900">Agriculture</h4>
+                                    </div>
+                                    <p class="text-gray-700 mb-4">Grain silo measurements, compost pile volumes, and irrigation pond capacity calculations for farming operations.</p>
+                                    <ul class="space-y-2">
+                                        <li class="flex items-center text-sm">
+                                            <i class="fas fa-check text-gray-600 mr-2"></i>
+                                            <span>Grain storage monitoring</span>
+                                        </li>
+                                        <li class="flex items-center text-sm">
+                                            <i class="fas fa-check text-gray-600 mr-2"></i>
+                                            <span>Compost volume tracking</span>
+                                        </li>
+                                        <li class="flex items-center text-sm">
+                                            <i class="fas fa-check text-gray-600 mr-2"></i>
+                                            <span>Water reservoir capacity</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Accuracy & Benefits -->
                         <div class="grid md:grid-cols-2 gap-8">
                             <div>
-                                <h5 class="font-bold text-gray-900 mb-3">Measurement Process</h5>
-                                <ol class="space-y-2 list-decimal list-inside">
-                                    <li><strong>Initial Survey:</strong> Establish baseline measurements</li>
-                                    <li><strong>Regular Monitoring:</strong> Scheduled repeat surveys</li>
-                                    <li><strong>Change Detection:</strong> Compare surveys for volumes</li>
-                                    <li><strong>Reporting:</strong> Detailed reports with confidence intervals</li>
-                                </ol>
+                                <h3 class="text-2xl font-bold text-gray-900 mb-6">Accuracy Specifications</h3>
+                                <div class="space-y-4">
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-gray-700">Measurement Accuracy</span>
+                                        <span class="font-bold text-gray-900">99%+</span>
+                                    </div>
+                                    <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                        <div class="bg-gray-600 h-2.5 rounded-full" style="width: 99%"></div>
+                                    </div>
+                                    
+                                    <div class="flex items-center justify-between mt-6">
+                                        <span class="text-gray-700">Repeatability</span>
+                                        <span class="font-bold text-gray-900">±0.5%</span>
+                                    </div>
+                                    <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                        <div class="bg-gray-600 h-2.5 rounded-full" style="width: 99.5%"></div>
+                                    </div>
+                                    
+                                    <div class="flex items-center justify-between mt-6">
+                                        <span class="text-gray-700">Survey Speed</span>
+                                        <span class="font-bold text-gray-900">10x faster</span>
+                                    </div>
+                                    <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                        <div class="bg-gray-600 h-2.5 rounded-full" style="width: 90%"></div>
+                                    </div>
+                                </div>
                             </div>
                             
                             <div>
-                                <h5 class="font-bold text-gray-900 mb-3">Industries Served</h5>
-                                <div class="space-y-2">
-                                    <div class="flex items-center">
-                                        <i class="fas fa-industry text-gray-600 mr-3"></i>
-                                        <span>Mining & Quarry Operations</span>
+                                <h3 class="text-2xl font-bold text-gray-900 mb-6">Business Benefits</h3>
+                                <div class="space-y-4">
+                                    <div class="flex items-start">
+                                        <div class="flex-shrink-0 mt-1">
+                                            <i class="fas fa-safety text-green-600 text-xl"></i>
+                                        </div>
+                                        <div class="ml-4">
+                                            <h4 class="text-lg font-bold text-gray-900">Enhanced Safety</h4>
+                                            <p class="text-gray-700">No need for personnel to climb stockpiles or enter hazardous areas for measurements.</p>
+                                        </div>
                                     </div>
-                                    <div class="flex items-center">
-                                        <i class="fas fa-hard-hat text-gray-600 mr-3"></i>
-                                        <span>Construction & Earthworks</span>
+                                    <div class="flex items-start">
+                                        <div class="flex-shrink-0 mt-1">
+                                            <i class="fas fa-clock text-blue-600 text-xl"></i>
+                                        </div>
+                                        <div class="ml-4">
+                                            <h4 class="text-lg font-bold text-gray-900">Time Efficiency</h4>
+                                            <p class="text-gray-700">Survey large stockpiles in minutes instead of hours or days required for traditional methods.</p>
+                                        </div>
                                     </div>
-                                    <div class="flex items-center">
-                                        <i class="fas fa-seedling text-gray-600 mr-3"></i>
-                                        <span>Agriculture & Farming</span>
+                                    <div class="flex items-start">
+                                        <div class="flex-shrink-0 mt-1">
+                                            <i class="fas fa-chart-line text-purple-600 text-xl"></i>
+                                        </div>
+                                        <div class="ml-4">
+                                            <h4 class="text-lg font-bold text-gray-900">Improved Inventory Control</h4>
+                                            <p class="text-gray-700">Regular, accurate measurements enable better production planning and financial reporting.</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
+                        <!-- Case Study -->
+                        <div class="bg-gradient-to-r from-gray-800 to-gray-900 text-white p-8 rounded-2xl">
+                            <h3 class="text-2xl font-bold mb-6">Case Study: Large Mining Operation</h3>
+                            <div class="grid md:grid-cols-2 gap-8">
+                                <div>
+                                    <h4 class="text-xl font-bold mb-4">Before Drone Volumetrics</h4>
+                                    <ul class="space-y-3">
+                                        <li class="flex items-center">
+                                            <i class="fas fa-times text-red-400 mr-3"></i>
+                                            <span>Monthly stocktake took 5 days with 3 surveyors</span>
+                                        </li>
+                                        <li class="flex items-center">
+                                            <i class="fas fa-times text-red-400 mr-3"></i>
+                                            <span>Measurement accuracy varied by ±10%</span>
+                                        </li>
+                                        <li class="fas fa-times text-red-400 mr-3"></i>
+                                            <span>Safety incidents during manual measurements</span>
+                                        </li>
+                                        <li class="flex items-center">
+                                            <i class="fas fa-times text-red-400 mr-3"></i>
+                                            <span>Production delays during surveys</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h4 class="text-xl font-bold mb-4">After Implementing Our Solution</h4>
+                                    <ul class="space-y-3">
+                                        <li class="flex items-center">
+                                            <i class="fas fa-check text-green-400 mr-3"></i>
+                                            <span>Monthly stocktake completed in 4 hours</span>
+                                        </li>
+                                        <li class="flex items-center">
+                                            <i class="fas fa-check text-green-400 mr-3"></i>
+                                            <span>Measurement accuracy improved to 99.2%</span>
+                                        </li>
+                                        <li class="flex items-center">
+                                            <i class="fas fa-check text-green-400 mr-3"></i>
+                                            <span>Zero safety incidents related to stocktaking</span>
+                                        </li>
+                                        <li class="flex items-center">
+                                            <i class="fas fa-check text-green-400 mr-3"></i>
+                                            <span>No production interruption during surveys</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="mt-6 pt-6 border-t border-gray-700">
+                                <p class="text-gray-300">
+                                    <strong>Result:</strong> Annual savings of $250,000 in labor costs and inventory discrepancies reduced from 8% to 0.8%.
+                                </p>
+                            </div>
+                        </div>
                     </div>
-                `,
-                features: ["High Accuracy", "Fast Measurements", "Repeatable"],
-                icon: "fas fa-calculator"
+                `
             },
-            {
-                id: 9,
+            9: {
                 title: "Disaster Assessment",
                 category: "monitoring",
-                shortDesc: "Emergency response and damage mapping",
-                longDesc: `
-                    <div class="space-y-6">
-                        <div class="detail-image-container">
-                            <img src="https://images.unsplash.com/photo-1534088568595-a066f410bcda?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80" 
-                                 alt="Drone disaster assessment" 
-                                 class="w-full h-96 object-cover image-zoom">
+                briefDesc: "Emergency response and damage mapping for disaster management",
+                heroImage: "https://images.unsplash.com/photo-1534088568595-a066f410bcda?ixlib=rb-4.0.3&auto=format&fit=crop&w=2069&q=80",
+                icon: "fas fa-first-aid",
+                color: "red",
+                detailedContent: `
+                    <div class="space-y-12">
+                        <!-- Introduction -->
+                        <div class="prose prose-lg max-w-none">
+                            <h2 class="text-3xl font-bold text-gray-900 mb-6">Emergency Disaster Assessment</h2>
+                            <p class="text-gray-700 mb-6">
+                                Our rapid response drone services for disaster assessment provide emergency teams with critical information for response planning, damage assessment, and recovery operations. We can be airborne within 60 minutes of notification, providing real-time data to support life-saving decisions.
+                            </p>
                         </div>
-                        
-                        <h4 class="text-xl font-bold text-gray-900">Rapid Response Aerial Assessment</h4>
-                        <p class="text-gray-700">
-                            Our rapid response drone services for disaster assessment provide emergency teams with critical information for response planning, damage assessment, and recovery operations.
-                        </p>
-                        
-                        <div class="grid md:grid-cols-2 gap-8">
-                            <div>
-                                <h5 class="font-bold text-gray-900 mb-3">Emergency Capabilities</h5>
-                                <ul class="space-y-2">
-                                    <li class="flex items-start">
-                                        <i class="fas fa-bolt text-red-600 mt-1 mr-3"></i>
-                                        <span><strong>Rapid Deployment:</strong> Airborne within 60 minutes</span>
-                                    </li>
-                                    <li class="flex items-start">
-                                        <i class="fas fa-video text-red-600 mt-1 mr-3"></i>
-                                        <span><strong>Live Streaming:</strong> Real-time feed to command centers</span>
-                                    </li>
-                                    <li class="flex items-start">
-                                        <i class="fas fa-thermometer text-red-600 mt-1 mr-3"></i>
-                                        <span><strong>Thermal Imaging:</strong> Night operations and heat detection</span>
-                                    </li>
-                                </ul>
+
+                        <!-- Image Gallery -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            <div class="detail-image-container">
+                                <img src="https://images.unsplash.com/photo-1502136969935-8d8eef54d77b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                                     alt="Flood disaster assessment" 
+                                     class="w-full h-64 object-cover image-zoom">
                             </div>
-                            
-                            <div>
-                                <h5 class="font-bold text-gray-900 mb-3">Applications</h5>
-                                <div class="space-y-3">
-                                    <div class="flex items-center">
-                                        <i class="fas fa-home text-red-600 mr-3"></i>
-                                        <span>Post-Disaster Damage Assessment</span>
+                            <div class="detail-image-container">
+                                <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                                     alt="Earthquake damage assessment" 
+                                     class="w-full h-64 object-cover image-zoom">
+                            </div>
+                        </div>
+
+                        <!-- Emergency Capabilities -->
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-900 mb-6">Rapid Response Capabilities</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                                <div class="bg-gradient-to-b from-red-50 to-white p-6 rounded-xl border border-red-100">
+                                    <div class="flex items-center mb-4">
+                                        <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mr-4">
+                                            <i class="fas fa-bolt text-red-600"></i>
+                                        </div>
+                                        <h4 class="text-xl font-bold text-red-800">Rapid Deployment</h4>
                                     </div>
-                                    <div class="flex items-center">
-                                        <i class="fas fa-search text-red-600 mr-3"></i>
-                                        <span>Search & Rescue Support</span>
+                                    <p class="text-gray-700">On-call 24/7 emergency response teams ready for immediate deployment. Airborne within 60 minutes of notification.</p>
+                                    <div class="mt-4 text-sm text-red-600">
+                                        <i class="fas fa-clock mr-1"></i>
+                                        Response time: <60 minutes
                                     </div>
-                                    <div class="flex items-center">
-                                        <i class="fas fa-tools text-red-600 mr-3"></i>
-                                        <span>Recovery Planning</span>
+                                </div>
+                                
+                                <div class="bg-gradient-to-b from-red-50 to-white p-6 rounded-xl border border-red-100">
+                                    <div class="flex items-center mb-4">
+                                        <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mr-4">
+                                            <i class="fas fa-video text-red-600"></i>
+                                        </div>
+                                        <h4 class="text-xl font-bold text-red-800">Live Streaming</h4>
                                     </div>
+                                    <p class="text-gray-700">Real-time video feed to emergency command centers, enabling immediate situational awareness and decision-making.</p>
+                                    <div class="mt-4 text-sm text-red-600">
+                                        <i class="fas fa-wifi mr-1"></i>
+                                        Live feed to command centers
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-gradient-to-b from-red-50 to-white p-6 rounded-xl border border-red-100">
+                                    <div class="flex items-center mb-4">
+                                        <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mr-4">
+                                            <i class="fas fa-thermometer text-red-600"></i>
+                                        </div>
+                                        <h4 class="text-xl font-bold text-red-800">Thermal Imaging</h4>
+                                    </div>
+                                    <p class="text-gray-700">Night operations and heat signature detection for search and rescue, fire monitoring, and infrastructure assessment.</p>
+                                    <div class="mt-4 text-sm text-red-600">
+                                        <i class="fas fa-moon mr-1"></i>
+                                        24/7 all-weather operations
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Disaster Types -->
+                        <div class="bg-red-50 p-8 rounded-2xl">
+                            <h3 class="text-2xl font-bold text-gray-900 mb-6">Disaster Types We Cover</h3>
+                            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                                <div class="bg-white p-4 rounded-lg text-center">
+                                    <div class="text-3xl mb-2">💧</div>
+                                    <p class="font-semibold text-gray-900">Floods</p>
+                                    <p class="text-xs text-gray-600">Flood extent mapping, damage assessment</p>
+                                </div>
+                                <div class="bg-white p-4 rounded-lg text-center">
+                                    <div class="text-3xl mb-2">🌋</div>
+                                    <p class="font-semibold text-gray-900">Landslides</p>
+                                    <p class="text-xs text-gray-600">Slope stability, displacement monitoring</p>
+                                </div>
+                                <div class="bg-white p-4 rounded-lg text-center">
+                                    <div class="text-3xl mb-2">🔥</div>
+                                    <p class="font-semibold text-gray-900">Fires</p>
+                                    <p class="text-xs text-gray-600">Fire perimeter, hot spot detection</p>
+                                </div>
+                                <div class="bg-white p-4 rounded-lg text-center">
+                                    <div class="text-3xl mb-2">🏚️</div>
+                                    <p class="font-semibold text-gray-900">Earthquakes</p>
+                                    <p class="text-xs text-gray-600">Structural damage assessment</p>
+                                </div>
+                                <div class="bg-white p-4 rounded-lg text-center">
+                                    <div class="text-3xl mb-2">🌀</div>
+                                    <p class="font-semibold text-gray-900">Storms</p>
+                                    <p class="text-xs text-gray-600">Wind damage, debris assessment</p>
+                                </div>
+                                <div class="bg-white p-4 rounded-lg text-center">
+                                    <div class="text-3xl mb-2">☢️</div>
+                                    <p class="font-semibold text-gray-900">HazMat</p>
+                                    <p class="text-xs text-gray-600">Chemical spill monitoring</p>
+                                </div>
+                                <div class="bg-white p-4 rounded-lg text-center">
+                                    <div class="text-3xl mb-2">🚨</div>
+                                    <p class="font-semibold text-gray-900">Accidents</p>
+                                    <p class="text-xs text-gray-600">Industrial accidents, transport incidents</p>
+                                </div>
+                                <div class="bg-white p-4 rounded-lg text-center">
+                                    <div class="text-3xl mb-2">🦠</div>
+                                    <p class="font-semibold text-gray-900">Epidemics</p>
+                                    <p class="text-xs text-gray-600">Population movement, quarantine monitoring</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Applications -->
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-900 mb-6">Emergency Applications</h3>
+                            <div class="grid md:grid-cols-2 gap-8">
+                                <div>
+                                    <h4 class="text-xl font-bold text-gray-900 mb-4">Search & Rescue Support</h4>
+                                    <div class="space-y-4">
+                                        <div class="flex items-start">
+                                            <div class="flex-shrink-0 mt-1">
+                                                <i class="fas fa-search text-red-600"></i>
+                                            </div>
+                                            <div class="ml-4">
+                                                <h5 class="font-bold text-gray-900">Aerial Search Patterns</h5>
+                                                <p class="text-gray-700">Systematic search patterns covering large areas quickly with thermal imaging for body heat detection.</p>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-start">
+                                            <div class="flex-shrink-0 mt-1">
+                                                <i class="fas fa-broadcast-tower text-red-600"></i>
+                                            </div>
+                                            <div class="ml-4">
+                                                <h5 class="font-bold text-gray-900">Communication Relay</h5>
+                                                <p class="text-gray-700">Drones can act as temporary communication relays in areas with damaged infrastructure.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <h4 class="text-xl font-bold text-gray-900 mb-4">Damage Assessment</h4>
+                                    <div class="space-y-4">
+                                        <div class="flex items-start">
+                                            <div class="flex-shrink-0 mt-1">
+                                                <i class="fas fa-home text-red-600"></i>
+                                            </div>
+                                            <div class="ml-4">
+                                                <h5 class="font-bold text-gray-900">Structural Damage Mapping</h5>
+                                                <p class="text-gray-700">Rapid assessment of building damage levels for triage and safety evaluation.</p>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-start">
+                                            <div class="flex-shrink-0 mt-1">
+                                                <i class="fas fa-road text-red-600"></i>
+                                            </div>
+                                            <div class="ml-4">
+                                                <h5 class="font-bold text-gray-900">Infrastructure Assessment</h5>
+                                                <p class="text-gray-700">Evaluation of road, bridge, and utility damage for restoration planning.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Workflow -->
+                        <div class="bg-gray-50 p-8 rounded-2xl">
+                            <h3 class="text-2xl font-bold text-gray-900 mb-6">Emergency Response Workflow</h3>
+                            <div class="relative">
+                                <div class="absolute left-8 top-0 bottom-0 w-0.5 bg-red-200"></div>
+                                <div class="space-y-8 relative">
+                                    <div class="flex items-start">
+                                        <div class="flex-shrink-0 w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mr-8 z-10">
+                                            <i class="fas fa-phone-alt text-red-600 text-xl"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="text-xl font-bold text-gray-900 mb-2">Emergency Alert</h4>
+                                            <p class="text-gray-700">24/7 emergency hotline receives disaster notification. Response team activated immediately.</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start">
+                                        <div class="flex-shrink-0 w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mr-8 z-10">
+                                            <i class="fas fa-plane text-red-600 text-xl"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="text-xl font-bold text-gray-900 mb-2">Rapid Deployment</h4>
+                                            <p class="text-gray-700">Team mobilized with appropriate equipment. Drones airborne within 60 minutes of alert.</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start">
+                                        <div class="flex-shrink-0 w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mr-8 z-10">
+                                            <i class="fas fa-satellite-dish text-red-600 text-xl"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="text-xl font-bold text-gray-900 mb-2">Live Data Collection</h4>
+                                            <p class="text-gray-700">Real-time video and imagery streamed to command center. Initial assessment within 2 hours.</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start">
+                                        <div class="flex-shrink-0 w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mr-8 z-10">
+                                            <i class="fas fa-map-marked-alt text-red-600 text-xl"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="text-xl font-bold text-gray-900 mb-2">Detailed Assessment</h4>
+                                            <p class="text-gray-700">Comprehensive mapping and damage assessment. Detailed reports within 24 hours.</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start">
+                                        <div class="flex-shrink-0 w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mr-8 z-10">
+                                            <i class="fas fa-tools text-red-600 text-xl"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="text-xl font-bold text-gray-900 mb-2">Recovery Support</h4>
+                                            <p class="text-gray-700">Ongoing monitoring and data support for recovery operations, reconstruction planning, and insurance claims.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Partnership -->
+                        <div class="bg-gradient-to-r from-red-700 to-red-800 text-white p-8 rounded-2xl">
+                            <h3 class="text-2xl font-bold mb-6">Emergency Services Partnership</h3>
+                            <p class="mb-6 text-red-100">
+                                We work in partnership with government agencies, UN organizations, and NGOs to provide disaster response services across East Africa. Our teams are trained in emergency procedures and can integrate seamlessly with existing response frameworks.
+                            </p>
+                            <div class="flex flex-wrap gap-4">
+                                <div class="flex items-center">
+                                    <i class="fas fa-handshake mr-2"></i>
+                                    <span>Memorandum of Understanding with NDMA</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <i class="fas fa-certificate mr-2"></i>
+                                    <span>UN Humanitarian Air Operations certified</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <i class="fas fa-users mr-2"></i>
+                                    <span>Trained in emergency coordination protocols</span>
                                 </div>
                             </div>
                         </div>
                     </div>
-                `,
-                features: ["Rapid Response", "Real-time Data", "All-weather"],
-                icon: "fas fa-first-aid"
+                `
             }
-        ];
+        };
 
-        // Initialize page
-        document.addEventListener('DOMContentLoaded', function() {
-            renderServiceCards();
-            setupFilterButtons();
-            setupServiceCardClicks();
-            
-            // Show first service by default
-            if (aerialServices.length > 0) {
-                showServiceDetail(aerialServices[0]);
+        // Get service ID from URL parameter
+        function getServiceIdFromUrl() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return parseInt(urlParams.get('service')) || 1; // Default to service 1
+        }
+
+        // Update page for selected service
+        function updateServicePage(serviceId) {
+            const service = aerialServices[serviceId];
+            if (!service) return;
+
+            // Update hero section
+            document.getElementById('service-hero').style.backgroundImage = `url('${service.heroImage}')`;
+            document.getElementById('service-icon').innerHTML = `<i class="${service.icon} text-3xl text-white"></i>`;
+            document.getElementById('service-title').textContent = service.title;
+            document.getElementById('service-brief').textContent = service.briefDesc;
+
+            // Update service content
+            document.getElementById('service-content').innerHTML = service.detailedContent;
+
+            // Update other services section
+            updateOtherServices(serviceId);
+
+            // Update document title
+            document.title = `${service.title} | HakiSurvey Aerial Services`;
+
+            // Update meta description
+            const metaDescription = document.querySelector('meta[name="description"]');
+            if (metaDescription) {
+                metaDescription.content = service.briefDesc;
             }
-            
-            // Add scroll animations
-            setupScrollAnimations();
-        });
+        }
 
-        function renderServiceCards(filter = 'all') {
-            const container = document.getElementById('services-container');
-            container.innerHTML = '';
+        // Update other services section
+        function updateOtherServices(currentServiceId) {
+            const otherServicesContainer = document.getElementById('other-services');
+            otherServicesContainer.innerHTML = '';
             
-            const filteredServices = filter === 'all' 
-                ? aerialServices 
-                : aerialServices.filter(service => service.category === filter);
+            // Get 3 random services (excluding current one)
+            const serviceIds = Object.keys(aerialServices).map(id => parseInt(id));
+            const otherServiceIds = serviceIds.filter(id => id !== currentServiceId);
+            const randomServiceIds = otherServiceIds.sort(() => 0.5 - Math.random()).slice(0, 3);
             
-            filteredServices.forEach((service, index) => {
-                const card = document.createElement('div');
-                card.className = `service-card animate-fade-in-up stagger-${(index % 5) + 1}`;
-                card.dataset.id = service.id;
-                card.dataset.category = service.category;
+            randomServiceIds.forEach(serviceId => {
+                const service = aerialServices[serviceId];
+                const color = service.color;
                 
-                const categoryColors = {
-                    'mapping': 'teal',
-                    'monitoring': 'blue',
-                    'modeling': 'purple',
-                    'planning': 'orange'
-                };
+                const serviceCard = document.createElement('a');
+                serviceCard.href = `/aerial.html?service=${serviceId}`;
+                serviceCard.className = `bg-white rounded-xl shadow-md overflow-hidden border border-gray-200 hover:border-${color}-300 transition-all duration-300 hover:shadow-lg`;
                 
-                const color = categoryColors[service.category] || 'gray';
-                
-                card.innerHTML = `
-                    <div class="bg-white rounded-xl shadow-md overflow-hidden h-full border border-gray-200 hover:border-${color}-300">
-                        <div class="card-image-container h-48">
-                            <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                                 alt="${service.title}" 
-                                 class="responsive-image">
-                            <div class="absolute bottom-0 left-0 right-0 p-4 z-10">
-                                <span class="inline-block px-3 py-1 bg-${color}-600 text-white text-xs font-semibold rounded-full">
-                                    ${service.category.toUpperCase()}
-                                </span>
+                serviceCard.innerHTML = `
+                    <div class="p-6">
+                        <div class="flex items-start mb-4">
+                            <div class="flex-shrink-0">
+                                <div class="w-12 h-12 rounded-lg bg-${color}-100 flex items-center justify-center">
+                                    <i class="${service.icon} text-${color}-600 text-xl"></i>
+                                </div>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-lg font-bold text-gray-900 mb-2">${service.title}</h3>
+                                <p class="text-sm text-gray-600">${service.briefDesc.substring(0, 80)}...</p>
                             </div>
                         </div>
-                        
-                        <div class="p-6">
-                            <div class="flex items-start mb-4">
-                                <div class="flex-shrink-0">
-                                    <div class="w-12 h-12 rounded-lg bg-${color}-100 flex items-center justify-center">
-                                        <i class="${service.icon} text-${color}-600 text-xl"></i>
-                                    </div>
-                                </div>
-                                <div class="ml-4">
-                                    <h3 class="text-xl font-bold text-gray-900 mb-2">${service.title}</h3>
-                                    <p class="text-gray-600">${service.shortDesc}</p>
-                                </div>
-                            </div>
-                            
-                            <div class="mt-4 flex flex-wrap gap-2">
-                                ${service.features.map(feat => `
-                                    <span class="px-3 py-1 bg-${color}-50 text-${color}-700 text-sm font-medium rounded-full">
-                                        ${feat}
-                                    </span>
-                                `).join('')}
-                            </div>
-                            
-                            <div class="mt-6">
-                                <button class="view-details-btn w-full py-3 bg-gradient-to-r from-${color}-500 to-${color}-600 hover:from-${color}-600 hover:to-${color}-700 text-white font-semibold rounded-lg transition-all duration-300 flex items-center justify-center gap-2">
-                                    <i class="fas fa-info-circle"></i>
-                                    View Details
-                                </button>
-                            </div>
+                        <div class="mt-4">
+                            <span class="inline-flex items-center text-${color}-600 font-medium">
+                                Learn More
+                                <i class="fas fa-arrow-right ml-2 text-sm"></i>
+                            </span>
                         </div>
                     </div>
                 `;
                 
-                container.appendChild(card);
+                otherServicesContainer.appendChild(serviceCard);
             });
         }
 
-        function setupFilterButtons() {
-            const filterButtons = document.querySelectorAll('.filter-btn');
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            const serviceId = getServiceIdFromUrl();
+            updateServicePage(serviceId);
             
-            filterButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    // Update active button
-                    filterButtons.forEach(btn => {
-                        btn.classList.remove('bg-teal-600', 'text-white');
-                        btn.classList.add('border-2');
-                    });
-                    this.classList.remove('border-2');
-                    this.classList.add('bg-teal-600', 'text-white');
-                    
-                    // Filter services
-                    const filter = this.dataset.filter;
-                    renderServiceCards(filter);
-                    setupServiceCardClicks();
-                    
-                    // Show first service of filtered results
-                    const filteredServices = filter === 'all' 
-                        ? aerialServices 
-                        : aerialServices.filter(service => service.category === filter);
-                    
-                    if (filteredServices.length > 0) {
-                        showServiceDetail(filteredServices[0]);
-                    }
-                });
-            });
-        }
-
-        function setupServiceCardClicks() {
-            const serviceCards = document.querySelectorAll('.service-card');
-            const viewButtons = document.querySelectorAll('.view-details-btn');
-            
-            serviceCards.forEach(card => {
-                card.addEventListener('click', function(e) {
-                    if (!e.target.closest('.view-details-btn')) return;
-                    
-                    const serviceId = parseInt(this.dataset.id);
-                    const service = aerialServices.find(s => s.id === serviceId);
-                    
-                    if (service) {
-                        showServiceDetail(service);
-                        
-                        // Scroll to detail section
-                        document.getElementById('service-detail').scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                    }
-                });
-            });
-        }
-
-        function showServiceDetail(service) {
-            const categoryColors = {
-                'mapping': 'teal',
-                'monitoring': 'blue',
-                'modeling': 'purple',
-                'planning': 'orange'
-            };
-            
-            const color = categoryColors[service.category] || 'gray';
-            
-            const detailContainer = document.getElementById('service-detail');
-            detailContainer.innerHTML = `
-                <div class="bg-white rounded-2xl shadow-xl overflow-hidden animate-fade-in-up">
-                    <div class="p-8">
-                        <div class="flex flex-col md:flex-row md:items-center justify-between mb-8">
-                            <div>
-                                <div class="flex items-center gap-4 mb-4">
-                                    <div class="w-16 h-16 rounded-xl bg-${color}-100 flex items-center justify-center">
-                                        <i class="${service.icon} text-${color}-600 text-2xl"></i>
-                                    </div>
-                                    <div>
-                                        <h3 class="text-3xl font-bold text-gray-900">${service.title}</h3>
-                                        <p class="text-gray-600 mt-2">${service.shortDesc}</p>
-                                    </div>
-                                </div>
-                                
-                                <div class="flex flex-wrap gap-2">
-                                    <span class="px-4 py-2 bg-${color}-600 text-white font-semibold rounded-full">
-                                        ${service.category.toUpperCase()}
-                                    </span>
-                                    ${service.features.map(feat => `
-                                        <span class="px-4 py-2 bg-${color}-50 text-${color}-700 font-medium rounded-full">
-                                            ${feat}
-                                        </span>
-                                    `).join('')}
-                                </div>
-                            </div>
-                            
-                            <div class="mt-4 md:mt-0">
-                                <button onclick="inquireAboutService('${service.title}')" 
-                                        class="px-6 py-3 bg-gradient-to-r from-${color}-500 to-${color}-600 hover:from-${color}-600 hover:to-${color}-700 text-white font-semibold rounded-lg transition-all duration-300 flex items-center gap-2">
-                                    <i class="fas fa-envelope"></i>
-                                    Inquire Now
-                                </button>
-                            </div>
-                        </div>
-                        
-                        ${service.longDesc}
-                        
-                        <div class="mt-8 pt-8 border-t border-gray-200">
-                            <h4 class="text-xl font-bold text-gray-900 mb-4">Ready to Use This Service?</h4>
-                            <div class="flex flex-col sm:flex-row gap-4">
-                                <a href="tel:+254700123456" 
-                                   class="flex-1 px-6 py-4 bg-gradient-to-r from-teal-500 to-blue-600 hover:from-teal-600 hover:to-blue-700 text-white font-semibold rounded-lg transition-all duration-300 text-center">
-                                    <i class="fas fa-phone mr-2"></i>
-                                    Call for Quote
-                                </a>
-                                <a href="mailto:aerial@hakisurvey.com?subject=Inquiry about ${service.title}" 
-                                   class="flex-1 px-6 py-4 border-2 border-teal-600 text-teal-600 hover:bg-teal-50 font-semibold rounded-lg transition-all duration-300 text-center">
-                                    <i class="fas fa-envelope mr-2"></i>
-                                    Email Request
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            `;
-        }
+            // Add animation to elements as they come into view
+            setupScrollAnimations();
+        });
 
         function setupScrollAnimations() {
             const observerOptions = {
@@ -1182,10 +2027,12 @@
                 });
             }, observerOptions);
 
-            document.querySelectorAll('.tech-card, .service-card').forEach(card => {
-                observer.observe(card);
+            // Observe detail images and content sections
+            document.querySelectorAll('.detail-image-container, .tech-card').forEach(el => {
+                observer.observe(el);
             });
         }
+
         // Global functions for button actions
         window.inquireAboutService = function(serviceName) {
             const subject = `Inquiry about ${serviceName} - Aerial Surveying`;
